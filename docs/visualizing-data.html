@@ -164,7 +164,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="visualizing-data" class="section level1">
-<h1><span class="header-section-number">3</span> Visualizing Data</h1>
+<h1><span class="header-section-number">Chapter 3</span> Visualizing Data</h1>
 <p>Part A of these Notes is designed to ease your transition into working effectively with data, so that you can better understand it. We’ll start by visualizing some data from the US National Health and Nutrition Examination Survey, or NHANES. We’ll display R code as we go, but we’ll return to all of the key coding ideas involved later in the Notes.</p>
 <div id="the-nhanes-data-collecting-a-sample" class="section level2">
 <h2><span class="header-section-number">3.1</span> The NHANES data: Collecting a Sample</h2>
@@ -201,7 +201,7 @@ nh_data</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> nh_data, <span class="kw">aes</span>(<span class="dt">x =</span> Age, <span class="dt">y =</span> Height)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_point</span>()</code></pre></div>
 <pre><code>Warning: Removed 25 rows containing missing values (geom_point).</code></pre>
-<p><img src="_main_files/figure-html/nh_data_heightbyage1-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/nh_data_heightbyage1-fig-1.png" width="672" /></p>
 <p>We note several interesting results here.</p>
 <ol style="list-style-type: decimal">
 <li>As a warning, R tells us that it has “Removed 25 rows containing missing values (geom_point).” Only 975 subjects plotted here, because the remaining 25 people have missing (NA) values for either Height, Age or both.</li>
@@ -250,7 +250,7 @@ nh_data</code></pre></div>
 <span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Height-Age Relationship in NHANES sample&quot;</span>, 
          <span class="dt">y =</span> <span class="st">&quot;Height in cm.&quot;</span>)</code></pre></div>
-<p><img src="_main_files/figure-html/nh_data_heightbyageandgender1-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/nh_data_heightbyageandgender1-fig-1.png" width="672" /></p>
 <div id="can-we-show-the-female-and-male-relationships-in-separate-panels" class="section level3">
 <h3><span class="header-section-number">3.4.1</span> Can we show the Female and Male relationships in separate panels?</h3>
 <p>Sure.</p>
@@ -259,7 +259,7 @@ nh_data</code></pre></div>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Height-Age Relationship in NHANES sample&quot;</span>, 
          <span class="dt">y =</span> <span class="st">&quot;Height in cm.&quot;</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>Gender)</code></pre></div>
-<p><img src="_main_files/figure-html/nh_data_heightbyageandgender2-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/nh_data_heightbyageandgender2-fig-1.png" width="672" /></p>
 </div>
 <div id="can-we-add-a-smooth-curve-to-show-the-relationship-in-each-plot" class="section level3">
 <h3><span class="header-section-number">3.4.2</span> Can we add a smooth curve to show the relationship in each plot?</h3>
@@ -271,7 +271,7 @@ nh_data</code></pre></div>
          <span class="dt">y =</span> <span class="st">&quot;Height in cm.&quot;</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">theme_bw</span>() <span class="op">+</span>
 <span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>Gender)</code></pre></div>
-<p><img src="_main_files/figure-html/nh_data_heightbyageandgender3-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/nh_data_heightbyageandgender3-fig-1.png" width="672" /></p>
 </div>
 <div id="what-if-we-want-to-assume-straight-line-relationships" class="section level3">
 <h3><span class="header-section-number">3.4.3</span> What if we want to assume straight line relationships?</h3>
@@ -283,7 +283,7 @@ nh_data</code></pre></div>
          <span class="dt">y =</span> <span class="st">&quot;Height in cm.&quot;</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">theme_bw</span>() <span class="op">+</span>
 <span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>Gender)</code></pre></div>
-<p><img src="_main_files/figure-html/nh_data_heightbyageandgender4-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/nh_data_heightbyageandgender4-fig-1.png" width="672" /></p>
 </div>
 </div>
 <div id="a-subset-ages-21-79" class="section level2">
@@ -316,7 +316,7 @@ nh_data_<span class="dv">2179</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> nh_data_<span class="dv">2179</span>, <span class="kw">aes</span>(<span class="dt">x =</span> Height)) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_histogram</span>() </code></pre></div>
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="_main_files/figure-html/nh_data_2179_heighthistogram-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/nh_data_2179_heighthistogram-fig-1.png" width="672" /></p>
 <p>We can do several things to clean this up.</p>
 <ol style="list-style-type: decimal">
 <li>We’ll change the color of the lines for each bar of the histogram.</li>
@@ -328,7 +328,7 @@ nh_data_<span class="dv">2179</span></code></pre></div>
 <span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">25</span>, <span class="dt">col =</span> <span class="st">&quot;yellow&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Height of NHANES subjects ages 21-79&quot;</span>,
          <span class="dt">x =</span> <span class="st">&quot;Height in cm.&quot;</span>)</code></pre></div>
-<p><img src="_main_files/figure-html/nh_data_2179_heighthistogram2-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/nh_data_2179_heighthistogram2-fig-1.png" width="672" /></p>
 <div id="changing-a-histograms-fill-and-color" class="section level3">
 <h3><span class="header-section-number">3.6.1</span> Changing a Histogram’s Fill and Color</h3>
 <p>The CWRU color guide (<a href="https://case.edu/umc/our-brand/visual-guidelines/" class="uri">https://case.edu/umc/our-brand/visual-guidelines/</a>) lists the HTML color schemes for CWRU blue and CWRU gray. Let’s match that color scheme.</p>
@@ -340,7 +340,7 @@ cwru.gray &lt;-<span class="st"> &#39;#626262&#39;</span>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Height of NHANES subjects ages 21-79&quot;</span>,
          <span class="dt">x =</span> <span class="st">&quot;Height in cm.&quot;</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">theme_bw</span>()</code></pre></div>
-<p><img src="_main_files/figure-html/nh_data_2179_histogramwithCWRUscheme-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/nh_data_2179_histogramwithCWRUscheme-fig-1.png" width="672" /></p>
 <p>Note the other changes to the graph above.</p>
 <ol style="list-style-type: decimal">
 <li>We changed the theme to replace the gray background.</li>
@@ -354,13 +354,13 @@ cwru.gray &lt;-<span class="st"> &#39;#626262&#39;</span>
 <span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Height by Gender for NHANES subjects ages 21-79&quot;</span>,
          <span class="dt">y =</span> <span class="st">&quot;Height in cm.&quot;</span>)</code></pre></div>
-<p><img src="_main_files/figure-html/nh_data_2179_heightbygender1-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/nh_data_2179_heightbygender1-fig-1.png" width="672" /></p>
 <p>This plot isn’t so useful. We can improve things a little by jittering the points horizontally, so that the overlap is reduced.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> nh_data_<span class="dv">2179</span>, <span class="kw">aes</span>(<span class="dt">x =</span> Gender, <span class="dt">y =</span> Height, <span class="dt">color =</span> Gender)) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.2</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Height by Gender (jittered) for NHANES subjects ages 21-79&quot;</span>,
          <span class="dt">y =</span> <span class="st">&quot;Height in cm.&quot;</span>)</code></pre></div>
-<p><img src="_main_files/figure-html/nh_data_2179_heightbygender2-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/nh_data_2179_heightbygender2-fig-1.png" width="672" /></p>
 <p>Perhaps it might be better to summarize the distribution in a different way. We might consider a boxplot of the data.</p>
 <div id="a-boxplot-of-height-by-gender" class="section level3">
 <h3><span class="header-section-number">3.7.1</span> A Boxplot of Height by Gender</h3>
@@ -368,7 +368,7 @@ cwru.gray &lt;-<span class="st"> &#39;#626262&#39;</span>
 <span class="st">    </span><span class="kw">geom_boxplot</span>() <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Boxplot of Height by Gender for NHANES subjects ages 21-79&quot;</span>,
          <span class="dt">y =</span> <span class="st">&quot;Height in cm.&quot;</span>)</code></pre></div>
-<p><img src="_main_files/figure-html/nh_data_2179_heightbygenderbox-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/nh_data_2179_heightbygenderbox-fig-1.png" width="672" /></p>
 <p>Or perhaps we’d like to see a pair of histograms?</p>
 </div>
 <div id="histograms-of-height-by-gender" class="section level3">
@@ -378,7 +378,7 @@ cwru.gray &lt;-<span class="st"> &#39;#626262&#39;</span>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Histogram of Height by Gender for NHANES subjects ages 21-79&quot;</span>,
          <span class="dt">x =</span> <span class="st">&quot;Height in cm.&quot;</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>Gender)</code></pre></div>
-<p><img src="_main_files/figure-html/nh_data_2179_heightbygenderhist-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/nh_data_2179_heightbygenderhist-fig-1.png" width="672" /></p>
 <p>Can we redraw these histograms so that they are a little more comparable, and to get rid of the unnecessary legend?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> nh_data_<span class="dv">2179</span>, <span class="kw">aes</span>(<span class="dt">x =</span> Height, <span class="dt">fill =</span> Gender)) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">color =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">bins =</span> <span class="dv">20</span>) <span class="op">+</span><span class="st"> </span>
@@ -386,7 +386,7 @@ cwru.gray &lt;-<span class="st"> &#39;#626262&#39;</span>
          <span class="dt">x =</span> <span class="st">&quot;Height in cm.&quot;</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">facet_grid</span>(Gender <span class="op">~</span><span class="st"> </span>.)</code></pre></div>
-<p><img src="_main_files/figure-html/nh_data_2179_heightbygenderhist2-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/nh_data_2179_heightbygenderhist2-fig-1.png" width="672" /></p>
 </div>
 </div>
 <div id="a-look-at-body-mass-index" class="section level2">
@@ -404,13 +404,13 @@ cwru.gray &lt;-<span class="st"> &#39;#626262&#39;</span>
 <span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">1</span>, <span class="dt">fill =</span> cwru.blue, <span class="dt">col =</span> cwru.gray) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Histogram of BMI: NHANES subjects ages 21-79&quot;</span>,
          <span class="dt">x =</span> <span class="st">&quot;Body-mass index&quot;</span>)</code></pre></div>
-<p><img src="_main_files/figure-html/nh_data_2179_bmihistbin1-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/nh_data_2179_bmihistbin1-fig-1.png" width="672" /></p>
 <p>Note how different this picture looks if instead we bin up groups of 5 kg/m<sup>2</sup> at a time. Which is the more useful representation will depend a lot on what questions you’re trying to answer.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> nh_data_<span class="dv">2179</span>, <span class="kw">aes</span>(<span class="dt">x =</span> BMI)) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">5</span>, <span class="dt">fill =</span> cwru.blue, <span class="dt">col =</span> cwru.gray) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Histogram of BMI: NHANES subjects ages 21-79&quot;</span>,
          <span class="dt">x =</span> <span class="st">&quot;Body-mass index&quot;</span>)</code></pre></div>
-<p><img src="_main_files/figure-html/nh_data_2179_bmihistbin5-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/nh_data_2179_bmihistbin5-fig-1.png" width="672" /></p>
 <div id="bmi-by-gender" class="section level3">
 <h3><span class="header-section-number">3.8.1</span> BMI by Gender</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> nh_data_<span class="dv">2179</span>, <span class="kw">aes</span>(<span class="dt">x =</span> BMI, <span class="dt">fill =</span> Gender)) <span class="op">+</span><span class="st"> </span>
@@ -419,7 +419,7 @@ cwru.gray &lt;-<span class="st"> &#39;#626262&#39;</span>
          <span class="dt">x =</span> <span class="st">&quot;Body-mass index&quot;</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">facet_grid</span>(Gender <span class="op">~</span><span class="st"> </span>.)</code></pre></div>
-<p><img src="_main_files/figure-html/nh_data_2179_bmibygenderhist-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/nh_data_2179_bmibygenderhist-fig-1.png" width="672" /></p>
 <p>As an accompanying numerical summary, we might ask how many people fall into each of these Gender categories, and what is their “average” BMI.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_data_<span class="dv">2179</span> <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">group_by</span>(Gender) <span class="op">%&gt;%</span>
@@ -458,7 +458,7 @@ cwru.gray &lt;-<span class="st"> &#39;#626262&#39;</span>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;BMI by Diabetes Status for NHANES ages 21-79&quot;</span>,
          <span class="dt">x =</span> <span class="st">&quot;Body-mass index&quot;</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="ot">FALSE</span>) </code></pre></div>
-<p><img src="_main_files/figure-html/nh_data_2179_bmibydiabetes-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/nh_data_2179_bmibydiabetes-fig-1.png" width="672" /></p>
 <p>How many people fall into each of these Diabetes categories, and what is their “average” BMI?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_data_<span class="dv">2179</span> <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">group_by</span>(Diabetes) <span class="op">%&gt;%</span>
@@ -497,7 +497,7 @@ cwru.gray &lt;-<span class="st"> &#39;#626262&#39;</span>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;BMI by Race for NHANES ages 21-79&quot;</span>,
          <span class="dt">x =</span> <span class="st">&quot;Body-mass index&quot;</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="ot">FALSE</span>) </code></pre></div>
-<p><img src="_main_files/figure-html/nh_data_2179_bmibyrace-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/nh_data_2179_bmibyrace-fig-1.png" width="672" /></p>
 <p>How many people fall into each of these Race1 categories, and what is their “average” BMI?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_data_<span class="dv">2179</span> <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">group_by</span>(Race1) <span class="op">%&gt;%</span>
@@ -552,7 +552,7 @@ cwru.gray &lt;-<span class="st"> &#39;#626262&#39;</span>
 <span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;BMI vs. Pulse rate for NHANES subjects, ages 21-79&quot;</span>)</code></pre></div>
-<p><img src="_main_files/figure-html/nh_data_2179_bmivspulse-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/nh_data_2179_bmivspulse-fig-1.png" width="672" /></p>
 </div>
 <div id="diabetes-vs.no-diabetes" class="section level3">
 <h3><span class="header-section-number">3.8.5</span> Diabetes vs. No Diabetes</h3>
@@ -566,7 +566,7 @@ cwru.gray &lt;-<span class="st"> &#39;#626262&#39;</span>
 <span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;BMI vs. Pulse rate for NHANES subjects, ages 21-79&quot;</span>)</code></pre></div>
-<p><img src="_main_files/figure-html/nh_data_2179_bmivspulsewithdm-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/nh_data_2179_bmivspulsewithdm-fig-1.png" width="672" /></p>
 <p>This plot might be easier to interpret if we faceted by Diabetes status, as well.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> nh_data_<span class="dv">2179</span>, 
        <span class="kw">aes</span>(<span class="dt">x =</span> BMI, <span class="dt">y =</span> Pulse, 
@@ -575,7 +575,7 @@ cwru.gray &lt;-<span class="st"> &#39;#626262&#39;</span>
 <span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;BMI vs. Pulse rate for NHANES subjects, ages 21-79&quot;</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>Diabetes)</code></pre></div>
-<p><img src="_main_files/figure-html/nh_data_2179_bmivspulsewithdmfacets-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/nh_data_2179_bmivspulsewithdmfacets-fig-1.png" width="672" /></p>
 </div>
 </div>
 <div id="general-health-status" class="section level2">
@@ -593,7 +593,7 @@ Excellent     Vgood      Good      Fair      Poor
 <p>Usually, a <strong>bar chart</strong> is the best choice for a graphing a variable made up of categories.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> nh_data_<span class="dv">2179</span>, <span class="kw">aes</span>(<span class="dt">x =</span> HealthGen)) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_bar</span>()</code></pre></div>
-<p><img src="_main_files/figure-html/HealthGengraph1-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/HealthGengraph1-fig-1.png" width="672" /></p>
 <p>There are lots of things we can do to make this plot fancier.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> nh_data_<span class="dv">2179</span>, <span class="kw">aes</span>(<span class="dt">x =</span> HealthGen, <span class="dt">fill =</span> HealthGen)) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_bar</span>() <span class="op">+</span><span class="st"> </span>
@@ -601,7 +601,7 @@ Excellent     Vgood      Good      Fair      Poor
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Self-Reported Health Status&quot;</span>,
          <span class="dt">y =</span> <span class="st">&quot;Number of NHANES subjects&quot;</span>,
          <span class="dt">title =</span> <span class="st">&quot;Self-Reported Health Status in NHANES subjects ages 21-79&quot;</span>)</code></pre></div>
-<p><img src="_main_files/figure-html/HealthGengraph2-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/HealthGengraph2-fig-1.png" width="672" /></p>
 <p>Or, we can really go crazy…</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_data_<span class="dv">2179</span> <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">count</span>(HealthGen) <span class="op">%&gt;%</span>
@@ -619,7 +619,7 @@ Excellent     Vgood      Good      Fair      Poor
          <span class="dt">y =</span> <span class="st">&quot;Percentage of NHANES subjects&quot;</span>,
          <span class="dt">title =</span> <span class="st">&quot;Self-Reported Health Status in NHANES subjects ages 21-79&quot;</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">theme_bw</span>()</code></pre></div>
-<p><img src="_main_files/figure-html/HealthGengraph3-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/HealthGengraph3-fig-1.png" width="672" /></p>
 </div>
 <div id="working-with-tables" class="section level3">
 <h3><span class="header-section-number">3.9.2</span> Working with Tables</h3>
@@ -839,7 +839,7 @@ Gender   Excellent Vgood Good Fair Poor Sum
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;BMI by Health Status, Overall Health for NHANES ages 21-79&quot;</span>,
          <span class="dt">y =</span> <span class="st">&quot;Body-mass index&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;Self-Reported Overall Health&quot;</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="ot">FALSE</span>) </code></pre></div>
-<p><img src="_main_files/figure-html/nh_data_2179_bmibyhealth-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/nh_data_2179_bmibyhealth-fig-1.png" width="672" /></p>
 <p>We can see that not too many people self-identify with the “Poor” health category.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_data_<span class="dv">2179</span> <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">group_by</span>(HealthGen) <span class="op">%&gt;%</span>
@@ -898,7 +898,7 @@ Gender   Excellent Vgood Good Fair Poor Sum
 <span class="st">    </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>Gender) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">coord_flip</span>()</code></pre></div>
-<p><img src="_main_files/figure-html/nh_data_2179_bmibyhealthbygender1-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/nh_data_2179_bmibyhealthbygender1-fig-1.png" width="672" /></p>
 <p>Here’s a plot of faceted histograms, which might be used to address similar questions.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> nh_data_<span class="dv">2179</span>, <span class="kw">aes</span>(<span class="dt">x =</span> BMI, <span class="dt">fill =</span> Gender)) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">color =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">bins =</span> <span class="dv">20</span>) <span class="op">+</span><span class="st"> </span>
@@ -906,7 +906,7 @@ Gender   Excellent Vgood Good Fair Poor Sum
          <span class="dt">x =</span> <span class="st">&quot;Body-mass index&quot;</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">facet_grid</span>(HealthGen <span class="op">~</span><span class="st"> </span>Gender)</code></pre></div>
-<p><img src="_main_files/figure-html/nh_data_2179_bmibyhealthbygender2-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/nh_data_2179_bmibyhealthbygender2-fig-1.png" width="672" /></p>
 </div>
 </div>
 <div id="conclusions" class="section level2">
