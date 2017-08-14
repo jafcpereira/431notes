@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Data Science for Biological, Medical and Health Research: Notes for 431</title>
+  <meta name="description" content="Data Science for Biological, Medical and Health Research: Notes for 431">
+  <meta name="generator" content="bookdown 0.4.1 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Data Science for Biological, Medical and Health Research: Notes for 431" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Data Science for Biological, Medical and Health Research: Notes for 431" />
+  
+  
+  
+
+<meta name="author" content="Thomas E. Love, Ph.D.">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="the-national-youth-fitness-survey-nyfs1.html">
+<link rel="next" href="references.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#structure"><i class="fa fa-check"></i>Structure</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-philosophy"><i class="fa fa-check"></i>Course Philosophy</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="data-science.html"><a href="data-science.html"><i class="fa fa-check"></i><b>1</b> Data Science</a><ul>
+<li class="chapter" data-level="1.1" data-path="data-science.html"><a href="data-science.html#why-a-unicorn"><i class="fa fa-check"></i><b>1.1</b> Why a unicorn?</a></li>
+<li class="chapter" data-level="1.2" data-path="data-science.html"><a href="data-science.html#data-science-project-cycle"><i class="fa fa-check"></i><b>1.2</b> Data Science Project Cycle</a></li>
+<li class="chapter" data-level="1.3" data-path="data-science.html"><a href="data-science.html#what-will-we-discuss-in-431"><i class="fa fa-check"></i><b>1.3</b> What Will We Discuss in 431?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="setting-up-r.html"><a href="setting-up-r.html"><i class="fa fa-check"></i><b>2</b> Setting Up R</a><ul>
+<li class="chapter" data-level="2.1" data-path="setting-up-r.html"><a href="setting-up-r.html#r-markdown"><i class="fa fa-check"></i><b>2.1</b> R Markdown</a></li>
+<li class="chapter" data-level="2.2" data-path="setting-up-r.html"><a href="setting-up-r.html#r-packages"><i class="fa fa-check"></i><b>2.2</b> R Packages</a></li>
+<li class="chapter" data-level="2.3" data-path="setting-up-r.html"><a href="setting-up-r.html#other-packages"><i class="fa fa-check"></i><b>2.3</b> Other Packages</a></li>
+</ul></li>
+<li class="part"><span><b>Part A. Exploring Data</b></span></li>
+<li class="chapter" data-level="3" data-path="dataviz.html"><a href="dataviz.html"><i class="fa fa-check"></i><b>3</b> Visualizing Data</a><ul>
+<li class="chapter" data-level="3.1" data-path="dataviz.html"><a href="dataviz.html#the-nhanes-data-collecting-a-sample"><i class="fa fa-check"></i><b>3.1</b> The NHANES data: Collecting a Sample</a></li>
+<li class="chapter" data-level="3.2" data-path="dataviz.html"><a href="dataviz.html#age-and-height"><i class="fa fa-check"></i><b>3.2</b> Age and Height</a></li>
+<li class="chapter" data-level="3.3" data-path="dataviz.html"><a href="dataviz.html#subset-of-subjects-with-known-age-and-height"><i class="fa fa-check"></i><b>3.3</b> Subset of Subjects with Known Age and Height</a></li>
+<li class="chapter" data-level="3.4" data-path="dataviz.html"><a href="dataviz.html#age-height-and-gender"><i class="fa fa-check"></i><b>3.4</b> Age-Height and Gender?</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="dataviz.html"><a href="dataviz.html#can-we-show-the-female-and-male-relationships-in-separate-panels"><i class="fa fa-check"></i><b>3.4.1</b> Can we show the Female and Male relationships in separate panels?</a></li>
+<li class="chapter" data-level="3.4.2" data-path="dataviz.html"><a href="dataviz.html#can-we-add-a-smooth-curve-to-show-the-relationship-in-each-plot"><i class="fa fa-check"></i><b>3.4.2</b> Can we add a smooth curve to show the relationship in each plot?</a></li>
+<li class="chapter" data-level="3.4.3" data-path="dataviz.html"><a href="dataviz.html#what-if-we-want-to-assume-straight-line-relationships"><i class="fa fa-check"></i><b>3.4.3</b> What if we want to assume straight line relationships?</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="dataviz.html"><a href="dataviz.html#a-subset-ages-21-79"><i class="fa fa-check"></i><b>3.5</b> A Subset: Ages 21-79</a></li>
+<li class="chapter" data-level="3.6" data-path="dataviz.html"><a href="dataviz.html#distribution-of-heights"><i class="fa fa-check"></i><b>3.6</b> Distribution of Heights</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="dataviz.html"><a href="dataviz.html#changing-a-histograms-fill-and-color"><i class="fa fa-check"></i><b>3.6.1</b> Changing a Histogram’s Fill and Color</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="dataviz.html"><a href="dataviz.html#height-and-gender"><i class="fa fa-check"></i><b>3.7</b> Height and Gender</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="dataviz.html"><a href="dataviz.html#a-boxplot-of-height-by-gender"><i class="fa fa-check"></i><b>3.7.1</b> A Boxplot of Height by Gender</a></li>
+<li class="chapter" data-level="3.7.2" data-path="dataviz.html"><a href="dataviz.html#histograms-of-height-by-gender"><i class="fa fa-check"></i><b>3.7.2</b> Histograms of Height by Gender</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="dataviz.html"><a href="dataviz.html#a-look-at-body-mass-index"><i class="fa fa-check"></i><b>3.8</b> A Look at Body-Mass Index</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="dataviz.html"><a href="dataviz.html#bmi-by-gender"><i class="fa fa-check"></i><b>3.8.1</b> BMI by Gender</a></li>
+<li class="chapter" data-level="3.8.2" data-path="dataviz.html"><a href="dataviz.html#bmi-and-diabetes"><i class="fa fa-check"></i><b>3.8.2</b> BMI and Diabetes</a></li>
+<li class="chapter" data-level="3.8.3" data-path="dataviz.html"><a href="dataviz.html#bmi-and-race"><i class="fa fa-check"></i><b>3.8.3</b> BMI and Race</a></li>
+<li class="chapter" data-level="3.8.4" data-path="dataviz.html"><a href="dataviz.html#bmi-and-pulse-rate"><i class="fa fa-check"></i><b>3.8.4</b> BMI and Pulse Rate</a></li>
+<li class="chapter" data-level="3.8.5" data-path="dataviz.html"><a href="dataviz.html#diabetes-vs.no-diabetes"><i class="fa fa-check"></i><b>3.8.5</b> Diabetes vs. No Diabetes</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="dataviz.html"><a href="dataviz.html#general-health-status"><i class="fa fa-check"></i><b>3.9</b> General Health Status</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="dataviz.html"><a href="dataviz.html#bar-chart-for-categorical-data"><i class="fa fa-check"></i><b>3.9.1</b> Bar Chart for Categorical Data</a></li>
+<li class="chapter" data-level="3.9.2" data-path="dataviz.html"><a href="dataviz.html#working-with-tables"><i class="fa fa-check"></i><b>3.9.2</b> Working with Tables</a></li>
+<li class="chapter" data-level="3.9.3" data-path="dataviz.html"><a href="dataviz.html#bmi-by-general-health-status"><i class="fa fa-check"></i><b>3.9.3</b> BMI by General Health Status</a></li>
+<li class="chapter" data-level="3.9.4" data-path="dataviz.html"><a href="dataviz.html#bmi-by-gender-and-general-health-status"><i class="fa fa-check"></i><b>3.9.4</b> BMI by Gender and General Health Status</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="dataviz.html"><a href="dataviz.html#conclusions"><i class="fa fa-check"></i><b>3.10</b> Conclusions</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-structures-and-types-of-variables.html"><a href="data-structures-and-types-of-variables.html"><i class="fa fa-check"></i><b>4</b> Data Structures and Types of Variables</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-structures-and-types-of-variables.html"><a href="data-structures-and-types-of-variables.html#data-require-structure-and-context"><i class="fa fa-check"></i><b>4.1</b> Data require structure and context</a></li>
+<li class="chapter" data-level="4.2" data-path="data-structures-and-types-of-variables.html"><a href="data-structures-and-types-of-variables.html#a-new-nhanes-adult-sample"><i class="fa fa-check"></i><b>4.2</b> A New NHANES Adult Sample</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="data-structures-and-types-of-variables.html"><a href="data-structures-and-types-of-variables.html#summarizing-the-datas-structure"><i class="fa fa-check"></i><b>4.2.1</b> Summarizing the Data’s Structure</a></li>
+<li class="chapter" data-level="4.2.2" data-path="data-structures-and-types-of-variables.html"><a href="data-structures-and-types-of-variables.html#what-are-the-variables"><i class="fa fa-check"></i><b>4.2.2</b> What are the variables?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="data-structures-and-types-of-variables.html"><a href="data-structures-and-types-of-variables.html#types-of-variables"><i class="fa fa-check"></i><b>4.3</b> Types of Variables</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="data-structures-and-types-of-variables.html"><a href="data-structures-and-types-of-variables.html#quantitative-variables"><i class="fa fa-check"></i><b>4.3.1</b> Quantitative Variables</a></li>
+<li class="chapter" data-level="4.3.2" data-path="data-structures-and-types-of-variables.html"><a href="data-structures-and-types-of-variables.html#qualitative-categorical-variables"><i class="fa fa-check"></i><b>4.3.2</b> Qualitative (Categorical) Variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html"><i class="fa fa-check"></i><b>5</b> Summarizing Quantitative Variables</a><ul>
+<li class="chapter" data-level="5.1" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#the-summary-function-for-quantitative-data"><i class="fa fa-check"></i><b>5.1</b> The <code>summary</code> function for Quantitative data</a></li>
+<li class="chapter" data-level="5.2" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#measuring-the-center-of-a-distribution"><i class="fa fa-check"></i><b>5.2</b> Measuring the Center of a Distribution</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#the-mean-and-the-median"><i class="fa fa-check"></i><b>5.2.1</b> The Mean and The Median</a></li>
+<li class="chapter" data-level="5.2.2" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#dealing-with-missingness"><i class="fa fa-check"></i><b>5.2.2</b> Dealing with Missingness</a></li>
+<li class="chapter" data-level="5.2.3" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#the-mode-of-a-quantitative-variable"><i class="fa fa-check"></i><b>5.2.3</b> The Mode of a Quantitative Variable</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#measuring-the-spread-of-a-distribution"><i class="fa fa-check"></i><b>5.3</b> Measuring the Spread of a Distribution</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#rangeandiqr"><i class="fa fa-check"></i><b>5.3.1</b> The Range and the Interquartile Range (IQR)</a></li>
+<li class="chapter" data-level="5.3.2" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#the-variance-and-the-standard-deviation"><i class="fa fa-check"></i><b>5.3.2</b> The Variance and the Standard Deviation</a></li>
+<li class="chapter" data-level="5.3.3" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#obtaining-the-variance-and-standard-deviation-in-r"><i class="fa fa-check"></i><b>5.3.3</b> Obtaining the Variance and Standard Deviation in R</a></li>
+<li class="chapter" data-level="5.3.4" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#defining-the-variance-and-standard-deviation"><i class="fa fa-check"></i><b>5.3.4</b> Defining the Variance and Standard Deviation</a></li>
+<li class="chapter" data-level="5.3.5" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#empirical-rule-interpretation-of-the-standard-deviation"><i class="fa fa-check"></i><b>5.3.5</b> Empirical Rule Interpretation of the Standard Deviation</a></li>
+<li class="chapter" data-level="5.3.6" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#chebyshevs-inequality-one-interpretation-of-the-standard-deviation"><i class="fa fa-check"></i><b>5.3.6</b> Chebyshev’s Inequality: One Interpretation of the Standard Deviation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#measuring-the-shape-of-a-distribution"><i class="fa fa-check"></i><b>5.4</b> Measuring the Shape of a Distribution</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#multimodal-vs.unimodal-distributions"><i class="fa fa-check"></i><b>5.4.1</b> Multimodal vs. Unimodal distributions</a></li>
+<li class="chapter" data-level="5.4.2" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#skew"><i class="fa fa-check"></i><b>5.4.2</b> Skew</a></li>
+<li class="chapter" data-level="5.4.3" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#kurtosis"><i class="fa fa-check"></i><b>5.4.3</b> Kurtosis</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#more-detailed-numerical-summaries-for-quantitative-variables"><i class="fa fa-check"></i><b>5.5</b> More Detailed Numerical Summaries for Quantitative Variables</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#favstats-in-the-mosaic-package"><i class="fa fa-check"></i><b>5.5.1</b> <code>favstats</code> in the <code>mosaic</code> package</a></li>
+<li class="chapter" data-level="5.5.2" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#describe-in-the-psych-package"><i class="fa fa-check"></i><b>5.5.2</b> <code>describe</code> in the <code>psych</code> package</a></li>
+<li class="chapter" data-level="5.5.3" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#describe-in-the-hmisc-package"><i class="fa fa-check"></i><b>5.5.3</b> <code>describe</code> in the <code>Hmisc</code> package</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="summarizing-categorical-variables.html"><a href="summarizing-categorical-variables.html"><i class="fa fa-check"></i><b>6</b> Summarizing Categorical Variables</a><ul>
+<li class="chapter" data-level="6.1" data-path="summarizing-categorical-variables.html"><a href="summarizing-categorical-variables.html#the-summary-function-for-categorical-data"><i class="fa fa-check"></i><b>6.1</b> The <code>summary</code> function for Categorical data</a></li>
+<li class="chapter" data-level="6.2" data-path="summarizing-categorical-variables.html"><a href="summarizing-categorical-variables.html#tables-to-describe-one-categorical-variable"><i class="fa fa-check"></i><b>6.2</b> Tables to describe One Categorical Variable</a></li>
+<li class="chapter" data-level="6.3" data-path="summarizing-categorical-variables.html"><a href="summarizing-categorical-variables.html#the-mode-of-a-categorical-variable"><i class="fa fa-check"></i><b>6.3</b> The Mode of a Categorical Variable</a></li>
+<li class="chapter" data-level="6.4" data-path="summarizing-categorical-variables.html"><a href="summarizing-categorical-variables.html#describe-in-the-hmisc-package-1"><i class="fa fa-check"></i><b>6.4</b> <code>describe</code> in the <code>Hmisc</code> package</a></li>
+<li class="chapter" data-level="6.5" data-path="summarizing-categorical-variables.html"><a href="summarizing-categorical-variables.html#cross-tabulations"><i class="fa fa-check"></i><b>6.5</b> Cross-Tabulations</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="summarizing-categorical-variables.html"><a href="summarizing-categorical-variables.html#cross-classifying-three-categorical-variables"><i class="fa fa-check"></i><b>6.5.1</b> Cross-Classifying Three Categorical Variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html"><i class="fa fa-check"></i><b>7</b> The National Youth Fitness Survey (<code>nyfs1</code>)</a><ul>
+<li class="chapter" data-level="7.1" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#looking-over-the-data-set"><i class="fa fa-check"></i><b>7.1</b> Looking over the Data Set</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#subject.id"><i class="fa fa-check"></i><b>7.1.1</b> subject.id</a></li>
+<li class="chapter" data-level="7.1.2" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#sex"><i class="fa fa-check"></i><b>7.1.2</b> sex</a></li>
+<li class="chapter" data-level="7.1.3" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#age.exam"><i class="fa fa-check"></i><b>7.1.3</b> age.exam</a></li>
+<li class="chapter" data-level="7.1.4" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#bmi"><i class="fa fa-check"></i><b>7.1.4</b> bmi</a></li>
+<li class="chapter" data-level="7.1.5" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#bmi.cat"><i class="fa fa-check"></i><b>7.1.5</b> bmi.cat</a></li>
+<li class="chapter" data-level="7.1.6" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#waist.circ"><i class="fa fa-check"></i><b>7.1.6</b> waist.circ</a></li>
+<li class="chapter" data-level="7.1.7" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#triceps.skinfold"><i class="fa fa-check"></i><b>7.1.7</b> triceps.skinfold</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#summarizing-the-data-set"><i class="fa fa-check"></i><b>7.2</b> Summarizing the Data Set</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#the-five-number-summary-quantiles-and-iqr"><i class="fa fa-check"></i><b>7.2.1</b> The Five Number Summary, Quantiles and IQR</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#additional-summaries-from-favstats"><i class="fa fa-check"></i><b>7.3</b> Additional Summaries from <code>favstats</code></a></li>
+<li class="chapter" data-level="7.4" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#the-histogram"><i class="fa fa-check"></i><b>7.4</b> The Histogram</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#freedman-diaconis-rule-to-select-bin-width"><i class="fa fa-check"></i><b>7.4.1</b> Freedman-Diaconis Rule to select bin width</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#a-note-on-colors"><i class="fa fa-check"></i><b>7.5</b> A Note on Colors</a></li>
+<li class="chapter" data-level="7.6" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#the-stem-and-leaf"><i class="fa fa-check"></i><b>7.6</b> The Stem-and-Leaf</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#a-fancier-stem-and-leaf-display"><i class="fa fa-check"></i><b>7.6.1</b> A Fancier Stem-and-Leaf Display</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#the-dot-plot-to-display-a-distribution"><i class="fa fa-check"></i><b>7.7</b> The Dot Plot to display a distribution</a></li>
+<li class="chapter" data-level="7.8" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#the-frequency-polygon"><i class="fa fa-check"></i><b>7.8</b> The Frequency Polygon</a></li>
+<li class="chapter" data-level="7.9" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#plotting-the-probability-density-function"><i class="fa fa-check"></i><b>7.9</b> Plotting the Probability Density Function</a></li>
+<li class="chapter" data-level="7.10" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#the-boxplot"><i class="fa fa-check"></i><b>7.10</b> The Boxplot</a><ul>
+<li class="chapter" data-level="7.10.1" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#drawing-a-boxplot-for-one-variable-in-ggplot2"><i class="fa fa-check"></i><b>7.10.1</b> Drawing a Boxplot for One Variable in <code>ggplot2</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.11" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#a-simple-comparison-boxplot"><i class="fa fa-check"></i><b>7.11</b> A Simple Comparison Boxplot</a></li>
+<li class="chapter" data-level="7.12" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#using-describe-in-the-psych-library"><i class="fa fa-check"></i><b>7.12</b> Using <code>describe</code> in the <code>psych</code> library</a><ul>
+<li class="chapter" data-level="7.12.1" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#the-trimmed-mean"><i class="fa fa-check"></i><b>7.12.1</b> The Trimmed Mean</a></li>
+<li class="chapter" data-level="7.12.2" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#the-median-absolute-deviation"><i class="fa fa-check"></i><b>7.12.2</b> The Median Absolute Deviation</a></li>
+</ul></li>
+<li class="chapter" data-level="7.13" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#assessing-skew"><i class="fa fa-check"></i><b>7.13</b> Assessing Skew</a><ul>
+<li class="chapter" data-level="7.13.1" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#non-parametric-skew-via-skew1"><i class="fa fa-check"></i><b>7.13.1</b> Non-parametric Skew via skew<sub>1</sub></a></li>
+</ul></li>
+<li class="chapter" data-level="7.14" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#assessing-kurtosis-heavy-tailedness"><i class="fa fa-check"></i><b>7.14</b> Assessing Kurtosis (Heavy-Tailedness)</a><ul>
+<li class="chapter" data-level="7.14.1" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#the-standard-error-of-the-sample-mean"><i class="fa fa-check"></i><b>7.14.1</b> The Standard Error of the Sample Mean</a></li>
+</ul></li>
+<li class="chapter" data-level="7.15" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#the-describe-function-in-the-hmisc-library"><i class="fa fa-check"></i><b>7.15</b> The <code>describe</code> function in the <code>Hmisc</code> library</a></li>
+<li class="chapter" data-level="7.16" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#xda-from-github-for-numerical-summaries-for-exploratory-data-analysis"><i class="fa fa-check"></i><b>7.16</b> <code>xda</code> from GitHub for numerical summaries for exploratory data analysis</a></li>
+<li class="chapter" data-level="7.17" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#what-summaries-to-report"><i class="fa fa-check"></i><b>7.17</b> What Summaries to Report</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="assessing-normality.html"><a href="assessing-normality.html"><i class="fa fa-check"></i><b>8</b> Assessing Normality</a><ul>
+<li class="chapter" data-level="8.1" data-path="assessing-normality.html"><a href="assessing-normality.html#empirical-rule-interpretation-of-the-standard-deviation-1"><i class="fa fa-check"></i><b>8.1</b> Empirical Rule Interpretation of the Standard Deviation</a></li>
+<li class="chapter" data-level="8.2" data-path="assessing-normality.html"><a href="assessing-normality.html#describing-outlying-values-with-z-scores"><i class="fa fa-check"></i><b>8.2</b> Describing Outlying Values with Z Scores</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="assessing-normality.html"><a href="assessing-normality.html#fences-and-z-scores"><i class="fa fa-check"></i><b>8.2.1</b> Fences and Z Scores</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="assessing-normality.html"><a href="assessing-normality.html#comparing-a-histogram-to-a-normal-distribution"><i class="fa fa-check"></i><b>8.3</b> Comparing a Histogram to a Normal Distribution</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="assessing-normality.html"><a href="assessing-normality.html#histogram-of-bmi-with-normal-model-with-counts"><i class="fa fa-check"></i><b>8.3.1</b> Histogram of BMI with Normal model (with Counts)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="assessing-normality.html"><a href="assessing-normality.html#does-a-normal-model-work-well-for-the-ages"><i class="fa fa-check"></i><b>8.4</b> Does a Normal model work well for the Ages?</a></li>
+<li class="chapter" data-level="8.5" data-path="assessing-normality.html"><a href="assessing-normality.html#the-normal-q-q-plot"><i class="fa fa-check"></i><b>8.5</b> The Normal Q-Q Plot</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="assessing-normality.html"><a href="assessing-normality.html#a-fancy-ggplot2-function---gg_qq"><i class="fa fa-check"></i><b>8.5.1</b> A Fancy ggplot2 function - gg_qq</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="assessing-normality.html"><a href="assessing-normality.html#interpreting-the-normal-q-q-plot"><i class="fa fa-check"></i><b>8.6</b> Interpreting the Normal Q-Q Plot</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="assessing-normality.html"><a href="assessing-normality.html#data-from-a-normal-distribution-shows-up-as-a-straight-line-in-a-normal-q-q-plot"><i class="fa fa-check"></i><b>8.6.1</b> Data from a Normal distribution shows up as a straight line in a Normal Q-Q plot</a></li>
+<li class="chapter" data-level="8.6.2" data-path="assessing-normality.html"><a href="assessing-normality.html#skew-is-indicated-by-monotonic-curves-in-the-normal-q-q-plot"><i class="fa fa-check"></i><b>8.6.2</b> Skew is indicated by monotonic curves in the Normal Q-Q plot</a></li>
+<li class="chapter" data-level="8.6.3" data-path="assessing-normality.html"><a href="assessing-normality.html#direction-of-skew"><i class="fa fa-check"></i><b>8.6.3</b> Direction of Skew</a></li>
+<li class="chapter" data-level="8.6.4" data-path="assessing-normality.html"><a href="assessing-normality.html#outlier-proneness-is-indicated-by-s-shaped-curves-in-a-normal-q-q-plot"><i class="fa fa-check"></i><b>8.6.4</b> Outlier-proneness is indicated by “s-shaped” curves in a Normal Q-Q plot</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="assessing-normality.html"><a href="assessing-normality.html#does-a-normal-distribution-fit-the-nyfs1-data-well"><i class="fa fa-check"></i><b>8.7</b> Does a Normal Distribution Fit the <code>nyfs1</code> Data Well?</a></li>
+<li class="chapter" data-level="8.8" data-path="assessing-normality.html"><a href="assessing-normality.html#are-the-waist-circumferences-normally-distributed"><i class="fa fa-check"></i><b>8.8</b> Are the Waist Circumferences Normally Distributed?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Science for Biological, Medical and Health Research: Notes for 431</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="assessing-normality" class="section level1">
+<h1><span class="header-section-number">Chapter 8</span> Assessing Normality</h1>
+<p>Data are well approximated by a Normal distribution if the shape of the data’s distribution is a good match for a Normal distribution with mean and standard deviation equal to the sample statistics.</p>
+<ul>
+<li>the data are symmetrically distributed about a single peak, located at the sample mean</li>
+<li>the spread of the distribution is well characterized by a Normal distribution with standard deviation equal to the sample standard deviation</li>
+<li>the data show outlying values (both in number of candidate outliers, and size of the distance between the outliers and the center of the distribution) that are similar to what would be predicted by a Normal model.</li>
+</ul>
+<p>We have several tools for assessing Normality of a single batch of data, including:</p>
+<ul>
+<li>a histogram with superimposed Normal distribution</li>
+<li>histogram variants (like the boxplot) which provide information on the center, spread and shape of a distribution</li>
+<li>the Empirical Rule for interpretation of a standard deviation</li>
+<li>a specialized <em>normal Q-Q plot</em> (also called a normal probability plot or normal quantile-quantile plot) designed to reveal differences between a sample distribution and what we might expect from a normal distribution of a similar number of values with the same mean and standard deviation</li>
+</ul>
+<div id="empirical-rule-interpretation-of-the-standard-deviation-1" class="section level2">
+<h2><span class="header-section-number">8.1</span> Empirical Rule Interpretation of the Standard Deviation</h2>
+<p>For a set of measurements that follows a Normal distribution, the interval:</p>
+<ul>
+<li>Mean <span class="math inline">\(\pm\)</span> Standard Deviation contains approximately 68% of the measurements;</li>
+<li>Mean <span class="math inline">\(\pm\)</span> 2(Standard Deviation) contains approximately 95% of the measurements;</li>
+<li>Mean <span class="math inline">\(\pm\)</span> 3(Standard Deviation) contains approximately all (99.7%) of the measurements.</li>
+</ul>
+<p>Again, most data sets do not follow a Normal distribution. We will occasionally think about transforming or re-expressing our data to obtain results which are better approximated by a Normal distribution, in part so that a standard deviation can be more meaningful.</p>
+<p>For the BMI data we have been studying, here again are some summary statistics…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mosaic<span class="op">::</span><span class="kw">favstats</span>(nyfs1<span class="op">$</span>bmi)</code></pre></div>
+<pre><code>  min   Q1 median   Q3  max mean   sd    n missing
+ 11.9 15.8   17.7 20.9 38.8 18.8 4.08 1416       0</code></pre>
+<p>The mean is 18.8 and the standard deviation is 4.08, so if the data really were Normally distributed, we’d expect to see:</p>
+<ul>
+<li>About 68% of the data in the range (14.72, 22.88). In fact, 1074 of the 1416 BMI values are in this range, or 75.8%.</li>
+<li>About 95% of the data in the range (10.64, 26.96). In fact, 1344 of the 1416 BMI values are in this range, or 94.9%.</li>
+<li>About 99.7% of the data in the range (6.56, 31.04). In fact, 1393 of the 1416 BMI values are in this range, or 98.4%.</li>
+</ul>
+<p>So, based on this Empirical Rule approximation, do the BMI data seem to be well approximated by a Normal distribution?</p>
+</div>
+<div id="describing-outlying-values-with-z-scores" class="section level2">
+<h2><span class="header-section-number">8.2</span> Describing Outlying Values with Z Scores</h2>
+<p>The maximum body-mass index value here is 38.8. One way to gauge how extreme this is (or how much of an outlier it is) uses that observation’s <strong>Z score</strong>, the number of standard deviations away from the mean that the observation falls.</p>
+<p>Here, the maximum value, 38.8 is 4.9 standard deviations above the mean, and thus has a Z score of 4.9.</p>
+<p>A negative Z score would indicate a point below the mean, while a positive Z score indicates, as we’ve seen, a point above the mean. The minimum body-mass index, 11.9 is 1.69 standard deviations <em>below</em> the mean, so it has a Z score of -1.7.</p>
+<p>Recall that the Empirical Rule suggests that if a variable follows a Normal distribution, it would have approximately 95% of its observations falling inside a Z score of (-2, 2), and 99.74% falling inside a Z score range of (-3, 3).</p>
+<div id="fences-and-z-scores" class="section level3">
+<h3><span class="header-section-number">8.2.1</span> Fences and Z Scores</h3>
+<p>Note the relationship between the fences (Tukey’s approach to identifying points which fall within the whiskers of a boxplot, as compared to candidate outliers) and the Z scores.</p>
+<p>The upper inner fence in this case falls at 28.55, which indicates a Z score of 2.4, while the lower inner fence falls at 8.15, which indicates a Z score of -2.6. It is neither unusual nor inevitable for the inner fences to fall at Z scores near -2.0 and +2.0.</p>
+</div>
+</div>
+<div id="comparing-a-histogram-to-a-normal-distribution" class="section level2">
+<h2><span class="header-section-number">8.3</span> Comparing a Histogram to a Normal Distribution</h2>
+<p>Most of the time, when we want to understand whether our data are well approximated by a Normal distribution, we will use a graph to aid in the decision.</p>
+<p>One option is to build a histogram with a Normal density function (with the same mean and standard deviation as our data) superimposed. This is one way to help visualize deviations between our data and what might be expected from a Normal distribution.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">x=</span>bmi)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">y =</span> ..density..), <span class="dt">bins=</span><span class="dv">25</span>, <span class="dt">fill =</span> <span class="st">&quot;papayawhip&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;seagreen&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, 
+                  <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(nyfs1<span class="op">$</span>bmi), <span class="dt">sd =</span> <span class="kw">sd</span>(nyfs1<span class="op">$</span>bmi)), 
+                  <span class="dt">lwd =</span> <span class="fl">1.5</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> <span class="kw">paste</span>(<span class="st">&quot;Mean&quot;</span>, <span class="kw">round</span>(<span class="kw">mean</span>(nyfs1<span class="op">$</span>bmi),<span class="dv">1</span>), 
+                                <span class="st">&quot;, SD&quot;</span>, <span class="kw">round</span>(<span class="kw">sd</span>(nyfs1<span class="op">$</span>bmi),<span class="dv">1</span>))),
+              <span class="dt">x =</span> <span class="dv">35</span>, <span class="dt">y =</span> <span class="fl">0.02</span>, <span class="dt">color=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">fontface =</span> <span class="st">&quot;italic&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;nyfs1 BMI values with Normal Distribution Superimposed&quot;</span>, 
+         <span class="dt">x =</span> <span class="st">&quot;Body-Mass Index&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Probability Density Function&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/nyfs1_bmihistvsNormal-fig-1.png" width="672" /></p>
+<p>Does it seem as though the Normal model (as shown in the blue density curve) is an effective approximation to the observed distribution shown in the bars of the histogram?</p>
+<p>We’ll return shortly to the questions:</p>
+<ul>
+<li>Does a Normal distribution model fit our data well? <em>and</em></li>
+<li>If the data aren’t Normal, but we want to use a Normal model anyway, what should we do?</li>
+</ul>
+<div id="histogram-of-bmi-with-normal-model-with-counts" class="section level3">
+<h3><span class="header-section-number">8.3.1</span> Histogram of BMI with Normal model (with Counts)</h3>
+<p>But first, we’ll demonstrate an approach to building a histogram of counts (rather than a probability density) and then superimposing a Normal model.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## ggplot of counts of bmi with Normal model superimposed
+## Source: https://stat.ethz.ch/pipermail/r-help//2009-September/403220.html
+
+<span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">x =</span> bmi)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">30</span>, <span class="dt">fill =</span> <span class="st">&quot;papayawhip&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> <span class="cf">function</span>(x, mean, sd, n) 
+        n <span class="op">*</span><span class="st"> </span><span class="kw">dnorm</span>(<span class="dt">x =</span> x, <span class="dt">mean =</span> mean, <span class="dt">sd =</span> sd), 
+        <span class="dt">args =</span> <span class="kw">with</span>(nyfs1, 
+                    <span class="kw">c</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(bmi), <span class="dt">sd =</span> <span class="kw">sd</span>(bmi), <span class="dt">n =</span> <span class="kw">length</span>(bmi))),
+        <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">lwd =</span> <span class="fl">1.5</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> <span class="kw">paste</span>(<span class="st">&quot;Mean&quot;</span>, <span class="kw">round</span>(<span class="kw">mean</span>(nyfs1<span class="op">$</span>bmi),<span class="dv">1</span>), 
+                                <span class="st">&quot;, SD&quot;</span>, <span class="kw">round</span>(<span class="kw">sd</span>(nyfs1<span class="op">$</span>bmi),<span class="dv">1</span>))),
+              <span class="dt">x =</span> <span class="dv">30</span>, <span class="dt">y =</span> <span class="dv">50</span>, <span class="dt">color=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">fontface =</span> <span class="st">&quot;italic&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Histogram of BMI, with Normal Model&quot;</span>, 
+         <span class="dt">x =</span> <span class="st">&quot;Body-Mass Index&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Counts of BMI values&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/nyfs1_bmihistofcounts-fig-1.png" width="672" /></p>
+</div>
+</div>
+<div id="does-a-normal-model-work-well-for-the-ages" class="section level2">
+<h2><span class="header-section-number">8.4</span> Does a Normal model work well for the Ages?</h2>
+<p>Now, suppose we instead look at the <code>age.exam</code> data. Do these data appear to follow a Normal distribution?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">x=</span>age.exam)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">y =</span> ..density..), <span class="dt">binwidth=</span><span class="dv">1</span>, 
+                   <span class="dt">fill =</span> <span class="st">&quot;papayawhip&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;seagreen&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, 
+                  <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(nyfs1<span class="op">$</span>age.exam), 
+                              <span class="dt">sd =</span> <span class="kw">sd</span>(nyfs1<span class="op">$</span>age.exam)),
+                  <span class="dt">lwd =</span> <span class="fl">1.5</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> <span class="kw">paste</span>(<span class="st">&quot;Mean&quot;</span>, <span class="kw">round</span>(<span class="kw">mean</span>(nyfs1<span class="op">$</span>age.exam),<span class="dv">1</span>),
+                                <span class="st">&quot;, SD&quot;</span>, <span class="kw">round</span>(<span class="kw">sd</span>(nyfs1<span class="op">$</span>age.exam),<span class="dv">1</span>))),
+              <span class="dt">x =</span> <span class="dv">13</span>, <span class="dt">y =</span> <span class="fl">0.1</span>, <span class="dt">color=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">fontface =</span> <span class="st">&quot;italic&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;nyfs1 Age values with Normal Distribution Superimposed&quot;</span>, 
+         <span class="dt">x =</span> <span class="st">&quot;Age at Exam (years)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Probability Density Function&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/nyfs1_histage-fig-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mosaic<span class="op">::</span><span class="kw">favstats</span>(nyfs1<span class="op">$</span>age.exam)</code></pre></div>
+<pre><code> min Q1 median Q3 max mean   sd    n missing
+   3  6      9 12  16 8.86 3.68 1416       0</code></pre>
+<p>The mean is 8.86 and the standard deviation is 3.68 so if the <code>age.exam</code> data really were Normally distributed, we’d expect to see: - About 68% of the data in the range (5.17, 12.54). In fact, 781 of the 1416 Age values are in this range, or 55.2%. - About 95% of the data in the range (1.49, 16.22). In fact, 1416 of the 1416 Age values are in this range, or 100%. - About 99.7% of the data in the range (-2.19, 19.9). In fact, 1416 of the 1416 Age values are in this range, or 100%.</p>
+<p>How does the Normal approximation work for age, according to the Empirical Rule?</p>
+<p>There is a function in the <code>Love-boost.R</code> script called <code>Emp_Rule</code> that can be used to do these calculations, so long as the variable has no missing data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Emp_Rule</span>(nyfs1<span class="op">$</span>bmi)</code></pre></div>
+<table style="width:58%;">
+<colgroup>
+<col width="30%" />
+<col width="11%" />
+<col width="16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">count</th>
+<th align="center">proportion</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Mean +/- 1 SD</strong></td>
+<td align="center">1074</td>
+<td align="center">0.7585</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Mean +/- 2 SD</strong></td>
+<td align="center">1344</td>
+<td align="center">0.9492</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Mean +/- 3 SD</strong></td>
+<td align="center">1393</td>
+<td align="center">0.9838</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Entire Data Set</strong></td>
+<td align="center">1416</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="the-normal-q-q-plot" class="section level2">
+<h2><span class="header-section-number">8.5</span> The Normal Q-Q Plot</h2>
+<p>A normal probability plot (or normal quantile-quantile plot) of the BMI results from the <code>nyfs1</code> data, developed using <code>ggplot2</code> is shown below. In this case, this is a picture of 1416 BMI results. The idea of a normal Q-Q plot is that it plots the observed sample values (on the vertical axis) and then, on the horizontal, the expected or theoretical quantiles that would be observed in a standard normal distribution (a Normal distribution with mean 0 and standard deviation 1) with the same number of observations.</p>
+<p>A Normal Q-Q plot will follow a straight line when the data are (approximately) Normally distributed. When the data have a different shape, the plot will reflect that.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">sample =</span> bmi)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">stat=</span><span class="st">&quot;qq&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">theme_bw</span>() <span class="co"># eliminate the gray background</span></code></pre></div>
+<p><img src="431-notes_files/figure-html/nyfs1_qqbmi-fig-1.png" width="672" /></p>
+<div id="a-fancy-ggplot2-function---gg_qq" class="section level3">
+<h3><span class="header-section-number">8.5.1</span> A Fancy ggplot2 function - gg_qq</h3>
+<p>The lengthy function below (which is also part of the Love-boost.R script) produces a normal Q-Q plot with some appealing features, including a Q-Q line, and confidence interval estimates - <a href="https://gist.github.com/rentrop/d39a8406ad8af2a1066c">original source here</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Code from https://gist.github.com/rentrop/d39a8406ad8af2a1066c
+## Slightly modified by T. Love
+                                          
+gg_qq &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">distribution =</span> <span class="st">&quot;norm&quot;</span>, ..., <span class="dt">line.estimate =</span> <span class="ot">NULL</span>, <span class="dt">conf =</span> <span class="fl">0.95</span>,
+                  <span class="dt">labels =</span> <span class="kw">names</span>(x)){
+    q.function &lt;-<span class="st"> </span><span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> <span class="kw">paste0</span>(<span class="st">&quot;q&quot;</span>, distribution)))
+    d.function &lt;-<span class="st"> </span><span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text =</span> <span class="kw">paste0</span>(<span class="st">&quot;d&quot;</span>, distribution)))
+    x &lt;-<span class="st"> </span><span class="kw">na.omit</span>(x)
+    ord &lt;-<span class="st"> </span><span class="kw">order</span>(x)
+    n &lt;-<span class="st"> </span><span class="kw">length</span>(x)
+    P &lt;-<span class="st"> </span><span class="kw">ppoints</span>(<span class="kw">length</span>(x))
+    df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">ord.x =</span> x[ord], <span class="dt">z =</span> <span class="kw">q.function</span>(P, ...))
+    
+    <span class="cf">if</span>(<span class="kw">is.null</span>(line.estimate)){
+        Q.x &lt;-<span class="st"> </span><span class="kw">quantile</span>(df<span class="op">$</span>ord.x, <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>))
+        Q.z &lt;-<span class="st"> </span><span class="kw">q.function</span>(<span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>), ...)
+        b &lt;-<span class="st"> </span><span class="kw">diff</span>(Q.x)<span class="op">/</span><span class="kw">diff</span>(Q.z)
+        coef &lt;-<span class="st"> </span><span class="kw">c</span>(Q.x[<span class="dv">1</span>] <span class="op">-</span><span class="st"> </span>b <span class="op">*</span><span class="st"> </span>Q.z[<span class="dv">1</span>], b)
+        } <span class="cf">else</span> {
+            coef &lt;-<span class="st"> </span><span class="kw">coef</span>(<span class="kw">line.estimate</span>(ord.x <span class="op">~</span><span class="st"> </span>z))
+            }
+    zz &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>conf)<span class="op">/</span><span class="dv">2</span>)
+    SE &lt;-<span class="st"> </span>(coef[<span class="dv">2</span>]<span class="op">/</span><span class="kw">d.function</span>(df<span class="op">$</span>z)) <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(P <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>P)<span class="op">/</span>n)
+    fit.value &lt;-<span class="st"> </span>coef[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>coef[<span class="dv">2</span>] <span class="op">*</span><span class="st"> </span>df<span class="op">$</span>z
+    df<span class="op">$</span>upper &lt;-<span class="st"> </span>fit.value <span class="op">+</span><span class="st"> </span>zz <span class="op">*</span><span class="st"> </span>SE
+    df<span class="op">$</span>lower &lt;-<span class="st"> </span>fit.value <span class="op">-</span><span class="st"> </span>zz <span class="op">*</span><span class="st"> </span>SE
+                                              
+    <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.null</span>(labels)){
+        df<span class="op">$</span>label &lt;-<span class="st"> </span><span class="kw">ifelse</span>(df<span class="op">$</span>ord.x <span class="op">&gt;</span><span class="st"> </span>df<span class="op">$</span>upper <span class="op">|</span><span class="st"> </span>df<span class="op">$</span>ord.x <span class="op">&lt;</span><span class="st"> </span>df<span class="op">$</span>lower, labels[ord],<span class="st">&quot;&quot;</span>)
+        }
+    
+    p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x=</span>z, <span class="dt">y=</span>ord.x)) <span class="op">+</span>
+<span class="st">        </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">        </span><span class="kw">geom_abline</span>(<span class="dt">intercept =</span> coef[<span class="dv">1</span>], <span class="dt">slope =</span> coef[<span class="dv">2</span>], <span class="dt">color=</span><span class="st">&quot;red&quot;</span>) <span class="op">+</span>
+<span class="st">        </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> lower, <span class="dt">ymax =</span> upper), <span class="dt">alpha=</span><span class="fl">0.2</span>) <span class="op">+</span>
+<span class="st">        </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;Ordered Sample Data&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;Standard Normal Quantiles&quot;</span>)
+    
+    <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.null</span>(labels)) p &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_text</span>( <span class="kw">aes</span>(<span class="dt">label =</span> label))
+    <span class="kw">print</span>(p)
+    ## can print 25th and 75th percentiles if desired by removing the 
+    ## single # in the following line
+    <span class="co"># coef </span>
+  }</code></pre></div>
+<p>Having set up the function, we can now use it to look at the BMI data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">gg_qq</span>(nyfs1<span class="op">$</span>bmi)</code></pre></div>
+<p><img src="431-notes_files/figure-html/nyfs1_qq2bmi-fig-1.png" width="672" /></p>
+</div>
+</div>
+<div id="interpreting-the-normal-q-q-plot" class="section level2">
+<h2><span class="header-section-number">8.6</span> Interpreting the Normal Q-Q Plot</h2>
+<p>The purpose of a Normal Q-Q plot is to help point out distinctions from a Normal distribution. A Normal distribution is symmetric and has certain expectations regarding its tails. The Normal Q-Q plot can help us identify data as - well approximated by a Normal distribution, or not because of - skew (including distinguishing between right skew and left skew) - behavior in the tails (which could be heavy-tailed [more outliers than expected] or light-tailed)</p>
+<div id="data-from-a-normal-distribution-shows-up-as-a-straight-line-in-a-normal-q-q-plot" class="section level3">
+<h3><span class="header-section-number">8.6.1</span> Data from a Normal distribution shows up as a straight line in a Normal Q-Q plot</h3>
+<p>We’ll demonstrate the looks that we can obtain from a Normal Q-Q plot in some simulations. First, here is an example of a Normal Q-Q plot, and its associated histogram, for a sample of 200 observations simulated from a Normal distribution.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">123431</span>) <span class="co"># so the results can be replicated</span>
+                                          
+<span class="co"># simulate 200 observations from a Normal(20, 5) distribution and place them </span>
+<span class="co"># in the d variable within the temp.1 data frame</span>
+temp.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">d =</span> <span class="kw">rnorm</span>(<span class="dv">200</span>, <span class="dt">mean =</span> <span class="dv">20</span>, <span class="dt">sd =</span> <span class="dv">5</span>)) 
+                                          
+<span class="co"># left plot - basic Normal Q-Q plot of simulated data</span>
+p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(temp.<span class="dv">1</span>, <span class="kw">aes</span>(<span class="dt">sample =</span> d)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">stat=</span><span class="st">&quot;qq&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;Ordered Simulated Sample Data&quot;</span>)
+                                          
+<span class="co"># right plot - histogram with superimposed normal distribution</span>
+p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(temp.<span class="dv">1</span>, <span class="kw">aes</span>(<span class="dt">x =</span> d)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">y =</span> ..density..), 
+                   <span class="dt">bins=</span><span class="dv">25</span>, <span class="dt">fill =</span> <span class="st">&quot;papayawhip&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;seagreen&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, 
+                  <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(temp.<span class="dv">1</span><span class="op">$</span>d), 
+                              <span class="dt">sd =</span> <span class="kw">sd</span>(temp.<span class="dv">1</span><span class="op">$</span>d)),
+                  <span class="dt">lwd =</span> <span class="fl">1.5</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Simulated Sample Data&quot;</span>)
+                                          
+gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(p1, p2, <span class="dt">ncol=</span><span class="dv">2</span>, 
+             <span class="dt">top =</span><span class="st">&quot;200 observations from a simulated Normal distribution&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/simnormal1plots-fig-1.png" width="672" /></p>
+<p>And here is another look at that same simulated data…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">gg_qq</span>(temp.<span class="dv">1</span><span class="op">$</span>d)</code></pre></div>
+<p><img src="431-notes_files/figure-html/sim1fancyqq-fig-1.png" width="672" /></p>
+<p>So, what are the characteristics of this simulation? The data appear to be well-modeled by the Normal distribution, because: - the points on the Normal Q-Q plot follow a straight line, in particular - there is no substantial curve (such as we’d see with data that were skewed) - there is no particularly surprising behavior (curves away from the line) at either tail, so there’s no obvious problem with outliers</p>
+</div>
+<div id="skew-is-indicated-by-monotonic-curves-in-the-normal-q-q-plot" class="section level3">
+<h3><span class="header-section-number">8.6.2</span> Skew is indicated by monotonic curves in the Normal Q-Q plot</h3>
+<p>Data that come from a skewed distribution appear to curve away from a straight line in the Q-Q plot.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">123431</span>) <span class="co"># so the results can be replicated</span>
+
+<span class="co"># simulate 200 observations from a beta(5, 2) distribution into the e1 variable</span>
+<span class="co"># simulate 200 observations from a beta(1, 5) distribution into the e2 variable</span>
+temp.<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">e1 =</span> <span class="kw">rbeta</span>(<span class="dv">200</span>, <span class="dv">5</span>, <span class="dv">2</span>), <span class="dt">e2 =</span> <span class="kw">rbeta</span>(<span class="dv">200</span>, <span class="dv">1</span>, <span class="dv">5</span>)) 
+
+p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(temp.<span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">sample =</span> e1)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">stat=</span><span class="st">&quot;qq&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;orchid&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;Ordered Sample e1&quot;</span>, <span class="dt">title =</span> <span class="st">&quot;Beta(5,2) sample&quot;</span>)
+
+p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(temp.<span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">sample =</span> e2)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">stat=</span><span class="st">&quot;qq&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;orange&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;Ordered Sample e2&quot;</span>, <span class="dt">title =</span> <span class="st">&quot;Beta(1,5) sample&quot;</span>)
+
+gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(p1, p2, <span class="dt">ncol=</span><span class="dv">2</span>, <span class="dt">top =</span><span class="st">&quot;200 observations from simulated Beta distributions&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/sim2plot1-fig-1.png" width="672" /></p>
+<p>Note the bends away from a straight line in each sample. The non-Normality may be easier to see in a histogram.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(temp.<span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">x =</span> e1)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">y =</span> ..density..), 
+                   <span class="dt">binwidth=</span><span class="fl">0.1</span>, <span class="dt">fill =</span> <span class="st">&quot;orchid1&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, 
+                  <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(temp.<span class="dv">2</span><span class="op">$</span>e1), 
+                              <span class="dt">sd =</span> <span class="kw">sd</span>(temp.<span class="dv">2</span><span class="op">$</span>e1)), 
+                  <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span>
+<span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Sample e1&quot;</span>, <span class="dt">title =</span> <span class="st">&quot;Beta(5,2) sample: Left Skew&quot;</span>)
+
+p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(temp.<span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">x =</span> e2)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">y =</span> ..density..), 
+                   <span class="dt">binwidth=</span><span class="fl">0.1</span>, <span class="dt">fill =</span> <span class="st">&quot;orange1&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, 
+                  <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(temp.<span class="dv">2</span><span class="op">$</span>e2),
+                              <span class="dt">sd =</span> <span class="kw">sd</span>(temp.<span class="dv">2</span><span class="op">$</span>e2)), 
+                  <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Sample e2&quot;</span>, <span class="dt">title =</span> <span class="st">&quot;Beta(1,5) sample: Right Skew&quot;</span>)
+
+gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(p1, p2, <span class="dt">ncol=</span><span class="dv">2</span>, 
+<span class="dt">bottom =</span><span class="st">&quot;Histograms with Normal curve superimposed&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/sim2hist-fig-1.png" width="672" /></p>
+</div>
+<div id="direction-of-skew" class="section level3">
+<h3><span class="header-section-number">8.6.3</span> Direction of Skew</h3>
+<p>In each of these pairs of plots, we see the same basic result.</p>
+<ul>
+<li>The left plot (for data e1) shows left skew, with a longer tail on the left hand side and more clustered data at the right end of the distribution.</li>
+<li>The right plot (for data e2) shows right skew, with a longer tail on the right hand side, the mean larger than the median, and more clustered data at the left end of the distribution.</li>
+</ul>
+<p>You may want to see the lines to help you see what’s happening in the Q-Q plots. You can do this with our fancy approach, or with the qqnorm-qqline combination from base R.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))
+<span class="kw">qqnorm</span>(temp.<span class="dv">2</span><span class="op">$</span>e1, <span class="dt">col=</span><span class="st">&quot;orchid&quot;</span>, <span class="dt">main=</span><span class="st">&quot;Beta(5,2): Left Skew&quot;</span>, 
+       <span class="dt">ylab=</span><span class="st">&quot;Sample Quantiles for e1&quot;</span>)
+<span class="kw">qqline</span>(temp.<span class="dv">2</span><span class="op">$</span>e1)
+<span class="kw">boxplot</span>(temp.<span class="dv">2</span><span class="op">$</span>e1, temp.<span class="dv">2</span><span class="op">$</span>e2, <span class="dt">names=</span><span class="kw">c</span>(<span class="st">&quot;Beta(5,2)&quot;</span>, <span class="st">&quot;Beta(1,5)&quot;</span>), 
+        <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;orchid&quot;</span>, <span class="st">&quot;orange&quot;</span>), <span class="dt">main=</span><span class="st">&quot;Boxplots for e1, e2&quot;</span>)
+<span class="kw">qqnorm</span>(temp.<span class="dv">2</span><span class="op">$</span>e2, <span class="dt">col=</span><span class="st">&quot;orange&quot;</span>, <span class="dt">main=</span><span class="st">&quot;Beta(1,5): Right Skew&quot;</span>, 
+       <span class="dt">ylab=</span><span class="st">&quot;Sample Quantiles for e2&quot;</span>)
+<span class="kw">qqline</span>(temp.<span class="dv">2</span><span class="op">$</span>e2)</code></pre></div>
+<p><img src="431-notes_files/figure-html/sim2augmentqq-fig-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</code></pre></div>
+</div>
+<div id="outlier-proneness-is-indicated-by-s-shaped-curves-in-a-normal-q-q-plot" class="section level3">
+<h3><span class="header-section-number">8.6.4</span> Outlier-proneness is indicated by “s-shaped” curves in a Normal Q-Q plot</h3>
+<ul>
+<li>Heavy-tailed but symmetric distributions are indicated by reverse “S”-shapes, as shown on the left below.</li>
+<li>Light-tailed but symmetric distributions are indicated by “S” shapes in the plot, as shown on the right below.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">4311</span>)
+<span class="co"># sample 200 observations from each of two probability distributions</span>
+samp1 &lt;-<span class="st"> </span><span class="kw">rcauchy</span>(<span class="dv">200</span>, <span class="dt">location=</span><span class="dv">10</span>, <span class="dt">scale =</span> <span class="dv">1</span>) <span class="co"># use a Cauchy distribution</span>
+samp2 &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">200</span>, <span class="op">-</span><span class="dv">30</span>, <span class="dv">30</span>) <span class="co"># a uniform distribution on (-30, 30)</span>
+
+<span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))  ## set up plot window for one row, three columns
+<span class="kw">qqnorm</span>(samp1, <span class="dt">col=</span><span class="st">&quot;royalblue&quot;</span>, <span class="dt">main=</span><span class="st">&quot;Heavy-Tailed sample&quot;</span>)
+<span class="kw">qqline</span>(samp1)
+<span class="kw">boxplot</span>(samp1, samp2, <span class="dt">names=</span><span class="kw">c</span>(<span class="st">&quot;Heavy&quot;</span>, <span class="st">&quot;Light&quot;</span>), <span class="dt">cex=</span><span class="fl">1.5</span>,
+        <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;royalblue&quot;</span>, <span class="st">&quot;salmon&quot;</span>), <span class="dt">main=</span><span class="st">&quot;Boxplots&quot;</span>,
+        <span class="dt">xlab=</span><span class="st">&quot;Tails vs. Normal&quot;</span>)
+<span class="kw">qqnorm</span>(samp2, <span class="dt">col=</span><span class="st">&quot;salmon&quot;</span>, <span class="dt">main=</span><span class="st">&quot;Light-Tailed sample&quot;</span>)
+<span class="kw">qqline</span>(samp2)</code></pre></div>
+<p><img src="431-notes_files/figure-html/sim1outlier-fig-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))  ## return to usual plot window </code></pre></div>
+<p>And, we can verify these initial conclusions with histograms.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">temp.<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">data.frame</span>(samp1, samp2)
+p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(temp.<span class="dv">3</span>, <span class="kw">aes</span>(<span class="dt">x =</span> samp1)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">y =</span> ..density..), 
+                   <span class="dt">binwidth=</span><span class="dv">10</span>, <span class="dt">fill =</span> <span class="st">&quot;royalblue&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(temp.<span class="dv">3</span><span class="op">$</span>samp1), 
+                                           <span class="dt">sd =</span> <span class="kw">sd</span>(temp.<span class="dv">3</span><span class="op">$</span>samp1))) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;samp1&quot;</span>, <span class="dt">title =</span> <span class="st">&quot;Heavy-Tailed Sample&quot;</span>)
+
+p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(temp.<span class="dv">3</span>, <span class="kw">aes</span>(<span class="dt">x =</span> samp2)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">y =</span> ..density..), 
+                   <span class="dt">binwidth=</span><span class="dv">10</span>, <span class="dt">fill =</span> <span class="st">&quot;salmon&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(temp.<span class="dv">3</span><span class="op">$</span>samp2), 
+                                           <span class="dt">sd =</span> <span class="kw">sd</span>(temp.<span class="dv">3</span><span class="op">$</span>samp2))) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;samp2&quot;</span>, <span class="dt">title =</span> <span class="st">&quot;Light-Tailed Sample&quot;</span>)
+
+gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(p1, p2, <span class="dt">ncol=</span><span class="dv">2</span>, 
+             <span class="dt">bottom =</span><span class="st">&quot;Heavy- and light-tailed distributions </span>
+<span class="st">             with superimposed Normal models&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/histogramssim3-fig-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(samp1, samp2, temp.<span class="dv">1</span>, temp.<span class="dv">2</span>, temp.<span class="dv">3</span>, p1, p2) <span class="co"># cleaning up</span></code></pre></div>
+</div>
+</div>
+<div id="does-a-normal-distribution-fit-the-nyfs1-data-well" class="section level2">
+<h2><span class="header-section-number">8.7</span> Does a Normal Distribution Fit the <code>nyfs1</code> Data Well?</h2>
+<ul>
+<li>Skewness is indicated by curves in the Normal Q-Q plot. Compare these two plots - the left is the original BMI data from the NYFS data frame, and the right plot shows the inverse of those values.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))  ## set up plot window for one row, two columns
+<span class="kw">qqnorm</span>(nyfs1<span class="op">$</span>bmi, <span class="dt">main=</span><span class="st">&quot;Body-Mass Index&quot;</span>, <span class="dt">col=</span><span class="st">&quot;coral&quot;</span>)
+<span class="kw">qqline</span>(nyfs1<span class="op">$</span>bmi)
+<span class="kw">qqnorm</span>(<span class="dv">1</span><span class="op">/</span>(nyfs1<span class="op">$</span>bmi), <span class="dt">main=</span><span class="st">&quot;1/BMI&quot;</span>, <span class="dt">col=</span><span class="st">&quot;darkcyan&quot;</span>)
+<span class="kw">qqline</span>(<span class="dv">1</span><span class="op">/</span>nyfs1<span class="op">$</span>bmi)</code></pre></div>
+<p><img src="431-notes_files/figure-html/nyfs1skewdemo-fig-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))  ## return to usual plot window </code></pre></div>
+<ul>
+<li>The left plot shows fairly substantial <strong>right</strong> or <em>positive</em> skew</li>
+<li>The right plot shows there’s much less skew after the inverse has been taken.</li>
+<li>Our conclusion is that a Normal model is a far better fit to 1/BMI than it is to BMI.</li>
+</ul>
+<p>The effect of taking the inverse here may be clearer from the histograms below, with Normal density functions superimposed.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">x =</span> bmi)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">y =</span> ..density..), 
+                   <span class="dt">binwidth=</span><span class="dv">2</span>, <span class="dt">fill =</span> <span class="st">&quot;coral&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, 
+                  <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(nyfs1<span class="op">$</span>bmi), <span class="dt">sd =</span> <span class="kw">sd</span>(nyfs1<span class="op">$</span>bmi))) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Body-Mass Index&quot;</span>, <span class="dt">title =</span> <span class="st">&quot;raw (untransformed) BMI&quot;</span>)
+
+p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">/</span>bmi)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">y =</span> ..density..), 
+                   <span class="dt">binwidth=</span><span class="fl">0.005</span>, <span class="dt">fill =</span> <span class="st">&quot;darkcyan&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, 
+                  <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(<span class="dv">1</span><span class="op">/</span>nyfs1<span class="op">$</span>bmi), 
+                              <span class="dt">sd =</span> <span class="kw">sd</span>(<span class="dv">1</span><span class="op">/</span>nyfs1<span class="op">$</span>bmi))) <span class="op">+</span><span class="st"> </span>
+<span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;1 / Body-Mass Index&quot;</span>, 
+     <span class="dt">title =</span> <span class="st">&quot;Inverse of BMI (1/BMI)&quot;</span>)
+
+gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(p1, p2, <span class="dt">ncol=</span><span class="dv">2</span>, 
+<span class="dt">top =</span> <span class="kw">textGrob</span>(<span class="st">&quot;Comparing BMI to 1/BMI&quot;</span>, <span class="dt">gp=</span><span class="kw">gpar</span>(<span class="dt">fontsize=</span><span class="dv">15</span>)))</code></pre></div>
+<p><img src="431-notes_files/figure-html/nyfs1bmihistwithtransformations-fig-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># this approach to top label lets us adjust the size of type used </span>
+<span class="co"># in the main title</span>
+<span class="co"># note that you&#39;ll need to have called library(grid) or </span>
+<span class="co"># require(grid) for this to work properly</span></code></pre></div>
+</div>
+<div id="are-the-waist-circumferences-normally-distributed" class="section level2">
+<h2><span class="header-section-number">8.8</span> Are the Waist Circumferences Normally Distributed?</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">x =</span> waist.circ)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">y =</span> ..density..), 
+                   <span class="dt">binwidth=</span><span class="dv">2</span>, <span class="dt">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;yellow&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(nyfs1<span class="op">$</span>waist.circ), 
+                                           <span class="dt">sd =</span> <span class="kw">sd</span>(nyfs1<span class="op">$</span>waist.circ))) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Waist Circumference&quot;</span>, <span class="dt">title=</span><span class="st">&quot;Histogram + Normal Model&quot;</span>)
+
+p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">sample =</span> waist.circ)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">stat=</span><span class="st">&quot;qq&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;purple&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;Ordered Waist Circumferences&quot;</span>, <span class="dt">title=</span><span class="st">&quot;Normal Q-Q plot&quot;</span>)
+
+<span class="co"># this approach to top label lets us adjust </span>
+<span class="co"># the size and font (here bold) used in the main title</span>
+gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(p1, p2, <span class="dt">ncol=</span><span class="dv">2</span>, 
+             <span class="dt">top =</span> <span class="kw">textGrob</span>(<span class="st">&quot;Waist Circumference in the nyfs1 data&quot;</span>, 
+                            <span class="dt">gp=</span><span class="kw">gpar</span>(<span class="dt">fontsize=</span><span class="dv">15</span>,<span class="dt">font=</span><span class="dv">2</span>)))</code></pre></div>
+<p><img src="431-notes_files/figure-html/nyfs1waistnormalchecks-fig-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## clean up
+<span class="kw">rm</span>(p1, p2)</code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="the-national-youth-fitness-survey-nyfs1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["431-notes.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

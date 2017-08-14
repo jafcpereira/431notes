@@ -33,6 +33,8 @@ library(boot); library(devtools); library(forcats)
 library(grid); library(knitr); library(pander)
 library(pwr); library(viridis); library(NHANES)
 library(tidyverse)
+
+source("data/Love-boost.R")
 ```
 
 I have deliberately set up this list of loaded packages/libraries to be relatively small, and will add some other packages later, as needed. You only need to install a package once, but you need to reload it every time you start a new session.

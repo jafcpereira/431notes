@@ -1,6 +1,6 @@
 # (PART\*) Part A. Exploring Data {-}
 
-# Visualizing Data
+# Visualizing Data {#dataviz}
 
 Part A of these Notes is designed to ease your transition into working effectively with data, so that you can better understand it. We'll start by visualizing some data from the US National Health and Nutrition Examination Survey, or NHANES. We'll display R code as we go, but we'll return to all of the key coding ideas involved later in the Notes.
 

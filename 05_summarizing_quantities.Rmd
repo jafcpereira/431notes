@@ -1,4 +1,4 @@
-# Summarizing Quantitative Variables
+# Summarizing Quantitative Variables {#summarizing_quantities}
 
 Most numerical summaries that might be new to you are applied most appropriately to quantitative variables. The measures that will interest us relate to:
 
@@ -108,7 +108,7 @@ As an alternative, the `modeest` package's `mfv` function calculates the sample 
 
 Statistics is all about variation, so spread or dispersion is an important fundamental concept in statistics. Measures of spread like the inter-quartile range and range (maximum - minimum) can help us understand and compare data sets. If the values in the data are close to the center, the spread will be small. If many of the values in the data are scattered far away from the center, the spread will be large.
 
-### The Range and the Interquartile Range (IQR)
+### The Range and the Interquartile Range (IQR) {#rangeandiqr}
 
 The **range** of a quantitative variable is sometimes interpreted as the difference between the maximum and the minimum, even though R presents the actual minimum and maximum values when you ask for a range...
 
