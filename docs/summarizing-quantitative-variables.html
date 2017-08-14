@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Data Science for Biological, Medical and Health Research: Notes for 431</title>
+  <meta name="description" content="Data Science for Biological, Medical and Health Research: Notes for 431">
+  <meta name="generator" content="bookdown 0.4.1 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Data Science for Biological, Medical and Health Research: Notes for 431" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Data Science for Biological, Medical and Health Research: Notes for 431" />
+  
+  
+  
+
+<meta name="author" content="Thomas E. Love, Ph.D.">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="data-structures-and-types-of-variables.html">
+<link rel="next" href="summarizing-categorical-variables.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#structure"><i class="fa fa-check"></i>Structure</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-philosophy"><i class="fa fa-check"></i>Course Philosophy</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="data-science.html"><a href="data-science.html"><i class="fa fa-check"></i><b>1</b> Data Science</a><ul>
+<li class="chapter" data-level="1.1" data-path="data-science.html"><a href="data-science.html#why-a-unicorn"><i class="fa fa-check"></i><b>1.1</b> Why a unicorn?</a></li>
+<li class="chapter" data-level="1.2" data-path="data-science.html"><a href="data-science.html#data-science-project-cycle"><i class="fa fa-check"></i><b>1.2</b> Data Science Project Cycle</a></li>
+<li class="chapter" data-level="1.3" data-path="data-science.html"><a href="data-science.html#what-will-we-discuss-in-431"><i class="fa fa-check"></i><b>1.3</b> What Will We Discuss in 431?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="setting-up-r.html"><a href="setting-up-r.html"><i class="fa fa-check"></i><b>2</b> Setting Up R</a><ul>
+<li class="chapter" data-level="2.1" data-path="setting-up-r.html"><a href="setting-up-r.html#r-markdown"><i class="fa fa-check"></i><b>2.1</b> R Markdown</a></li>
+<li class="chapter" data-level="2.2" data-path="setting-up-r.html"><a href="setting-up-r.html#r-packages"><i class="fa fa-check"></i><b>2.2</b> R Packages</a></li>
+<li class="chapter" data-level="2.3" data-path="setting-up-r.html"><a href="setting-up-r.html#other-packages"><i class="fa fa-check"></i><b>2.3</b> Other Packages</a></li>
+</ul></li>
+<li class="part"><span><b>Part A. Exploring Data</b></span></li>
+<li class="chapter" data-level="3" data-path="visualizing-data.html"><a href="visualizing-data.html"><i class="fa fa-check"></i><b>3</b> Visualizing Data</a><ul>
+<li class="chapter" data-level="3.1" data-path="visualizing-data.html"><a href="visualizing-data.html#the-nhanes-data-collecting-a-sample"><i class="fa fa-check"></i><b>3.1</b> The NHANES data: Collecting a Sample</a></li>
+<li class="chapter" data-level="3.2" data-path="visualizing-data.html"><a href="visualizing-data.html#age-and-height"><i class="fa fa-check"></i><b>3.2</b> Age and Height</a></li>
+<li class="chapter" data-level="3.3" data-path="visualizing-data.html"><a href="visualizing-data.html#subset-of-subjects-with-known-age-and-height"><i class="fa fa-check"></i><b>3.3</b> Subset of Subjects with Known Age and Height</a></li>
+<li class="chapter" data-level="3.4" data-path="visualizing-data.html"><a href="visualizing-data.html#age-height-and-gender"><i class="fa fa-check"></i><b>3.4</b> Age-Height and Gender?</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="visualizing-data.html"><a href="visualizing-data.html#can-we-show-the-female-and-male-relationships-in-separate-panels"><i class="fa fa-check"></i><b>3.4.1</b> Can we show the Female and Male relationships in separate panels?</a></li>
+<li class="chapter" data-level="3.4.2" data-path="visualizing-data.html"><a href="visualizing-data.html#can-we-add-a-smooth-curve-to-show-the-relationship-in-each-plot"><i class="fa fa-check"></i><b>3.4.2</b> Can we add a smooth curve to show the relationship in each plot?</a></li>
+<li class="chapter" data-level="3.4.3" data-path="visualizing-data.html"><a href="visualizing-data.html#what-if-we-want-to-assume-straight-line-relationships"><i class="fa fa-check"></i><b>3.4.3</b> What if we want to assume straight line relationships?</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="visualizing-data.html"><a href="visualizing-data.html#a-subset-ages-21-79"><i class="fa fa-check"></i><b>3.5</b> A Subset: Ages 21-79</a></li>
+<li class="chapter" data-level="3.6" data-path="visualizing-data.html"><a href="visualizing-data.html#distribution-of-heights"><i class="fa fa-check"></i><b>3.6</b> Distribution of Heights</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="visualizing-data.html"><a href="visualizing-data.html#changing-a-histograms-fill-and-color"><i class="fa fa-check"></i><b>3.6.1</b> Changing a Histogram’s Fill and Color</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="visualizing-data.html"><a href="visualizing-data.html#height-and-gender"><i class="fa fa-check"></i><b>3.7</b> Height and Gender</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="visualizing-data.html"><a href="visualizing-data.html#a-boxplot-of-height-by-gender"><i class="fa fa-check"></i><b>3.7.1</b> A Boxplot of Height by Gender</a></li>
+<li class="chapter" data-level="3.7.2" data-path="visualizing-data.html"><a href="visualizing-data.html#histograms-of-height-by-gender"><i class="fa fa-check"></i><b>3.7.2</b> Histograms of Height by Gender</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="visualizing-data.html"><a href="visualizing-data.html#a-look-at-body-mass-index"><i class="fa fa-check"></i><b>3.8</b> A Look at Body-Mass Index</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="visualizing-data.html"><a href="visualizing-data.html#bmi-by-gender"><i class="fa fa-check"></i><b>3.8.1</b> BMI by Gender</a></li>
+<li class="chapter" data-level="3.8.2" data-path="visualizing-data.html"><a href="visualizing-data.html#bmi-and-diabetes"><i class="fa fa-check"></i><b>3.8.2</b> BMI and Diabetes</a></li>
+<li class="chapter" data-level="3.8.3" data-path="visualizing-data.html"><a href="visualizing-data.html#bmi-and-race"><i class="fa fa-check"></i><b>3.8.3</b> BMI and Race</a></li>
+<li class="chapter" data-level="3.8.4" data-path="visualizing-data.html"><a href="visualizing-data.html#bmi-and-pulse-rate"><i class="fa fa-check"></i><b>3.8.4</b> BMI and Pulse Rate</a></li>
+<li class="chapter" data-level="3.8.5" data-path="visualizing-data.html"><a href="visualizing-data.html#diabetes-vs.no-diabetes"><i class="fa fa-check"></i><b>3.8.5</b> Diabetes vs. No Diabetes</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="visualizing-data.html"><a href="visualizing-data.html#general-health-status"><i class="fa fa-check"></i><b>3.9</b> General Health Status</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="visualizing-data.html"><a href="visualizing-data.html#bar-chart-for-categorical-data"><i class="fa fa-check"></i><b>3.9.1</b> Bar Chart for Categorical Data</a></li>
+<li class="chapter" data-level="3.9.2" data-path="visualizing-data.html"><a href="visualizing-data.html#working-with-tables"><i class="fa fa-check"></i><b>3.9.2</b> Working with Tables</a></li>
+<li class="chapter" data-level="3.9.3" data-path="visualizing-data.html"><a href="visualizing-data.html#bmi-by-general-health-status"><i class="fa fa-check"></i><b>3.9.3</b> BMI by General Health Status</a></li>
+<li class="chapter" data-level="3.9.4" data-path="visualizing-data.html"><a href="visualizing-data.html#bmi-by-gender-and-general-health-status"><i class="fa fa-check"></i><b>3.9.4</b> BMI by Gender and General Health Status</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="visualizing-data.html"><a href="visualizing-data.html#conclusions"><i class="fa fa-check"></i><b>3.10</b> Conclusions</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-structures-and-types-of-variables.html"><a href="data-structures-and-types-of-variables.html"><i class="fa fa-check"></i><b>4</b> Data Structures and Types of Variables</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-structures-and-types-of-variables.html"><a href="data-structures-and-types-of-variables.html#data-require-structure-and-context"><i class="fa fa-check"></i><b>4.1</b> Data require structure and context</a></li>
+<li class="chapter" data-level="4.2" data-path="data-structures-and-types-of-variables.html"><a href="data-structures-and-types-of-variables.html#a-new-nhanes-adult-sample"><i class="fa fa-check"></i><b>4.2</b> A New NHANES Adult Sample</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="data-structures-and-types-of-variables.html"><a href="data-structures-and-types-of-variables.html#summarizing-the-datas-structure"><i class="fa fa-check"></i><b>4.2.1</b> Summarizing the Data’s Structure</a></li>
+<li class="chapter" data-level="4.2.2" data-path="data-structures-and-types-of-variables.html"><a href="data-structures-and-types-of-variables.html#what-are-the-variables"><i class="fa fa-check"></i><b>4.2.2</b> What are the variables?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="data-structures-and-types-of-variables.html"><a href="data-structures-and-types-of-variables.html#types-of-variables"><i class="fa fa-check"></i><b>4.3</b> Types of Variables</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="data-structures-and-types-of-variables.html"><a href="data-structures-and-types-of-variables.html#quantitative-variables"><i class="fa fa-check"></i><b>4.3.1</b> Quantitative Variables</a></li>
+<li class="chapter" data-level="4.3.2" data-path="data-structures-and-types-of-variables.html"><a href="data-structures-and-types-of-variables.html#qualitative-categorical-variables"><i class="fa fa-check"></i><b>4.3.2</b> Qualitative (Categorical) Variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="summarizing-quantitative-variables.html"><a href="summarizing-quantitative-variables.html"><i class="fa fa-check"></i><b>5</b> Summarizing Quantitative Variables</a><ul>
+<li class="chapter" data-level="5.1" data-path="summarizing-quantitative-variables.html"><a href="summarizing-quantitative-variables.html#the-summary-function-for-quantitative-data"><i class="fa fa-check"></i><b>5.1</b> The <code>summary</code> function for Quantitative data</a></li>
+<li class="chapter" data-level="5.2" data-path="summarizing-quantitative-variables.html"><a href="summarizing-quantitative-variables.html#measuring-the-center-of-a-distribution"><i class="fa fa-check"></i><b>5.2</b> Measuring the Center of a Distribution</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="summarizing-quantitative-variables.html"><a href="summarizing-quantitative-variables.html#the-mean-and-the-median"><i class="fa fa-check"></i><b>5.2.1</b> The Mean and The Median</a></li>
+<li class="chapter" data-level="5.2.2" data-path="summarizing-quantitative-variables.html"><a href="summarizing-quantitative-variables.html#dealing-with-missingness"><i class="fa fa-check"></i><b>5.2.2</b> Dealing with Missingness</a></li>
+<li class="chapter" data-level="5.2.3" data-path="summarizing-quantitative-variables.html"><a href="summarizing-quantitative-variables.html#the-mode-of-a-quantitative-variable"><i class="fa fa-check"></i><b>5.2.3</b> The Mode of a Quantitative Variable</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="summarizing-quantitative-variables.html"><a href="summarizing-quantitative-variables.html#measuring-the-spread-of-a-distribution"><i class="fa fa-check"></i><b>5.3</b> Measuring the Spread of a Distribution</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="summarizing-quantitative-variables.html"><a href="summarizing-quantitative-variables.html#the-range-and-the-interquartile-range-iqr"><i class="fa fa-check"></i><b>5.3.1</b> The Range and the Interquartile Range (IQR)</a></li>
+<li class="chapter" data-level="5.3.2" data-path="summarizing-quantitative-variables.html"><a href="summarizing-quantitative-variables.html#the-variance-and-the-standard-deviation"><i class="fa fa-check"></i><b>5.3.2</b> The Variance and the Standard Deviation</a></li>
+<li class="chapter" data-level="5.3.3" data-path="summarizing-quantitative-variables.html"><a href="summarizing-quantitative-variables.html#obtaining-the-variance-and-standard-deviation-in-r"><i class="fa fa-check"></i><b>5.3.3</b> Obtaining the Variance and Standard Deviation in R</a></li>
+<li class="chapter" data-level="5.3.4" data-path="summarizing-quantitative-variables.html"><a href="summarizing-quantitative-variables.html#defining-the-variance-and-standard-deviation"><i class="fa fa-check"></i><b>5.3.4</b> Defining the Variance and Standard Deviation</a></li>
+<li class="chapter" data-level="5.3.5" data-path="summarizing-quantitative-variables.html"><a href="summarizing-quantitative-variables.html#empirical-rule-interpretation-of-the-standard-deviation"><i class="fa fa-check"></i><b>5.3.5</b> Empirical Rule Interpretation of the Standard Deviation</a></li>
+<li class="chapter" data-level="5.3.6" data-path="summarizing-quantitative-variables.html"><a href="summarizing-quantitative-variables.html#chebyshevs-inequality-one-interpretation-of-the-standard-deviation"><i class="fa fa-check"></i><b>5.3.6</b> Chebyshev’s Inequality: One Interpretation of the Standard Deviation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="summarizing-quantitative-variables.html"><a href="summarizing-quantitative-variables.html#measuring-the-shape-of-a-distribution"><i class="fa fa-check"></i><b>5.4</b> Measuring the Shape of a Distribution</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="summarizing-quantitative-variables.html"><a href="summarizing-quantitative-variables.html#multimodal-vs.unimodal-distributions"><i class="fa fa-check"></i><b>5.4.1</b> Multimodal vs. Unimodal distributions</a></li>
+<li class="chapter" data-level="5.4.2" data-path="summarizing-quantitative-variables.html"><a href="summarizing-quantitative-variables.html#skew"><i class="fa fa-check"></i><b>5.4.2</b> Skew</a></li>
+<li class="chapter" data-level="5.4.3" data-path="summarizing-quantitative-variables.html"><a href="summarizing-quantitative-variables.html#kurtosis"><i class="fa fa-check"></i><b>5.4.3</b> Kurtosis</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="summarizing-quantitative-variables.html"><a href="summarizing-quantitative-variables.html#more-detailed-numerical-summaries-for-quantitative-variables"><i class="fa fa-check"></i><b>5.5</b> More Detailed Numerical Summaries for Quantitative Variables</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="summarizing-quantitative-variables.html"><a href="summarizing-quantitative-variables.html#favstats-in-the-mosaic-package"><i class="fa fa-check"></i><b>5.5.1</b> <code>favstats</code> in the <code>mosaic</code> package</a></li>
+<li class="chapter" data-level="5.5.2" data-path="summarizing-quantitative-variables.html"><a href="summarizing-quantitative-variables.html#describe-in-the-psych-package"><i class="fa fa-check"></i><b>5.5.2</b> <code>describe</code> in the <code>psych</code> package</a></li>
+<li class="chapter" data-level="5.5.3" data-path="summarizing-quantitative-variables.html"><a href="summarizing-quantitative-variables.html#describe-in-the-hmisc-package"><i class="fa fa-check"></i><b>5.5.3</b> <code>describe</code> in the <code>Hmisc</code> package</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="summarizing-categorical-variables.html"><a href="summarizing-categorical-variables.html"><i class="fa fa-check"></i><b>6</b> Summarizing Categorical Variables</a><ul>
+<li class="chapter" data-level="6.1" data-path="summarizing-categorical-variables.html"><a href="summarizing-categorical-variables.html#the-summary-function-for-categorical-data"><i class="fa fa-check"></i><b>6.1</b> The <code>summary</code> function for Categorical data</a></li>
+<li class="chapter" data-level="6.2" data-path="summarizing-categorical-variables.html"><a href="summarizing-categorical-variables.html#tables-to-describe-one-categorical-variable"><i class="fa fa-check"></i><b>6.2</b> Tables to describe One Categorical Variable</a></li>
+<li class="chapter" data-level="6.3" data-path="summarizing-categorical-variables.html"><a href="summarizing-categorical-variables.html#the-mode-of-a-categorical-variable"><i class="fa fa-check"></i><b>6.3</b> The Mode of a Categorical Variable</a></li>
+<li class="chapter" data-level="6.4" data-path="summarizing-categorical-variables.html"><a href="summarizing-categorical-variables.html#describe-in-the-hmisc-package-1"><i class="fa fa-check"></i><b>6.4</b> <code>describe</code> in the <code>Hmisc</code> package</a></li>
+<li class="chapter" data-level="6.5" data-path="summarizing-categorical-variables.html"><a href="summarizing-categorical-variables.html#cross-tabulations"><i class="fa fa-check"></i><b>6.5</b> Cross-Tabulations</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="summarizing-categorical-variables.html"><a href="summarizing-categorical-variables.html#cross-classifying-three-categorical-variables"><i class="fa fa-check"></i><b>6.5.1</b> Cross-Classifying Three Categorical Variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Science for Biological, Medical and Health Research: Notes for 431</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="summarizing-quantitative-variables" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Summarizing Quantitative Variables</h1>
+<p>Most numerical summaries that might be new to you are applied most appropriately to quantitative variables. The measures that will interest us relate to:</p>
+<ul>
+<li>the <strong>center</strong> of our distribution,</li>
+<li>the <strong>spread</strong> of our distribution, and</li>
+<li>the <strong>shape</strong> of our distribution.</li>
+</ul>
+<div id="the-summary-function-for-quantitative-data" class="section level2">
+<h2><span class="header-section-number">5.1</span> The <code>summary</code> function for Quantitative data</h2>
+<p>R provides a small sampling of numerical summaries with the <code>summary</code> function, for instance.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(Age, BMI, SBP, DBP, Pulse) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summary</span>()</code></pre></div>
+<pre><code>      Age            BMI             SBP             DBP        
+ Min.   :21.0   Min.   :17.80   Min.   : 84.0   Min.   : 19.00  
+ 1st Qu.:31.0   1st Qu.:24.20   1st Qu.:109.0   1st Qu.: 65.00  
+ Median :42.0   Median :27.70   Median :118.0   Median : 72.00  
+ Mean   :42.1   Mean   :28.73   Mean   :118.6   Mean   : 72.25  
+ 3rd Qu.:53.0   3rd Qu.:32.10   3rd Qu.:127.0   3rd Qu.: 79.00  
+ Max.   :64.0   Max.   :69.00   Max.   :202.0   Max.   :105.00  
+                NA&#39;s   :3       NA&#39;s   :15      NA&#39;s   :15      
+     Pulse       
+ Min.   : 46.00  
+ 1st Qu.: 64.00  
+ Median : 72.00  
+ Mean   : 72.96  
+ 3rd Qu.: 80.00  
+ Max.   :120.00  
+ NA&#39;s   :15      </code></pre>
+<p>This basic summary includes a set of five <strong>quantiles</strong><a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>, plus the sample’s <strong>mean</strong>.</p>
+<ul>
+<li><code>Min.</code> = the <strong>minimum</strong> value for each variable, so, for example, the youngest subject’s Age was 21.</li>
+<li><code>1st Qu.</code> = the <strong>first quartile</strong> (25<sup>th</sup> percentile) for each variable - for example, 25% of the subjects were Age 31 or younger.</li>
+<li><code>Median</code> = the <strong>median</strong> (50<sup>th</sup> percentile) - half of the subjects were Age 42 or younger.</li>
+<li><code>Mean</code> = the <strong>mean</strong>, usually what one means by an <em>average</em> - the sum of the Ages divided by 500 is 42.1,</li>
+<li><code>3rd Qu.</code> = the <strong>third quartile</strong> (75<sup>th</sup> percentile) - 25% of the subjects were Age 53 or older.</li>
+<li><code>Max.</code> = the <strong>maximum</strong> value for each variable, so the oldest subject was Age 64.</li>
+</ul>
+<p>The summary also specifies the number of missing values for each variable. Here, we are missing 3 of the BMI values, for example.</p>
+</div>
+<div id="measuring-the-center-of-a-distribution" class="section level2">
+<h2><span class="header-section-number">5.2</span> Measuring the Center of a Distribution</h2>
+<div id="the-mean-and-the-median" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> The Mean and The Median</h3>
+<p>The <strong>mean</strong> and <strong>median</strong> are the most commonly used measures of the center of a distribution for a quantitative variable. The median is the more generally useful value, as it is relevant even if the data have a shape that is not symmetric. We might also collect the <strong>sum</strong> of the observations, and the <strong>count</strong> of the number of observations, usually symbolized with <em>n</em>.</p>
+<p>For variables without missing values, like <code>Age</code>, this is pretty straightforward.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">n =</span> <span class="kw">n</span>(), <span class="dt">Mean =</span> <span class="kw">mean</span>(Age), <span class="dt">Median =</span> <span class="kw">median</span>(Age), <span class="dt">Sum =</span> <span class="kw">sum</span>(Age))</code></pre></div>
+<pre><code># A tibble: 1 x 4
+      n   Mean Median   Sum
+  &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;
+1   500 42.102     42 21051</code></pre>
+<p>And again, the Mean is just the Sum (21051), divided by the number of non-missing values of Age (500), or 42.102.</p>
+<p>The Median is the middle value when the data are sorted in order. When we have an odd number of values, this is sufficient. When we have an even number, as in this case, we take the mean of the two middle values. We could sort and list all 500 Ages, if we wanted to do so.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(Age) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">arrange</span>(Age)</code></pre></div>
+<pre><code># A tibble: 500 x 1
+     Age
+   &lt;int&gt;
+ 1    21
+ 2    21
+ 3    21
+ 4    21
+ 5    21
+ 6    21
+ 7    21
+ 8    21
+ 9    21
+10    21
+# ... with 490 more rows</code></pre>
+<p>But this data set figures we don’t want to output more than 10 observations to a table like this.</p>
+<p>If we really want to see all of the data, we can use <code>View(nh_adults)</code> to get a spreadsheet-style presentation, or use the <code>sort</code> command…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sort</span>(nh_adults<span class="op">$</span>Age)</code></pre></div>
+<pre><code>  [1] 21 21 21 21 21 21 21 21 21 21 21 21 22 22 22 22 22 22 22 22 22 22 23
+ [24] 23 23 23 23 23 23 23 23 23 23 23 24 24 24 24 24 24 24 24 24 24 24 24
+ [47] 24 25 25 25 25 25 25 25 25 25 25 25 25 26 26 26 26 26 26 26 26 26 26
+ [70] 26 26 27 27 27 27 27 27 27 27 27 27 27 27 27 28 28 28 28 28 28 28 28
+ [93] 28 28 28 28 28 28 28 28 29 29 29 29 29 29 29 29 29 29 29 30 30 30 30
+[116] 30 30 30 30 30 30 30 30 31 31 31 31 31 31 31 31 31 31 31 31 32 32 32
+[139] 32 32 32 32 32 32 32 32 33 33 33 33 33 33 33 33 33 33 33 34 34 34 34
+[162] 34 34 34 34 35 35 35 35 36 36 36 36 36 36 36 36 36 37 37 37 37 37 37
+[185] 37 37 37 37 37 37 37 37 37 37 38 38 38 38 38 38 38 38 38 38 39 39 39
+[208] 39 39 39 39 39 39 39 39 39 39 40 40 40 40 40 40 40 40 40 40 41 41 41
+[231] 41 41 41 41 41 41 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 43
+[254] 43 43 43 43 43 43 43 43 43 43 43 44 44 44 44 44 44 44 44 44 44 44 45
+[277] 45 45 45 45 45 45 45 46 46 46 46 46 46 46 46 46 46 46 46 46 47 47 47
+[300] 47 47 47 47 47 47 48 48 48 48 48 48 48 48 48 48 48 49 49 49 49 49 49
+[323] 49 49 49 49 49 49 49 49 49 50 50 50 50 50 50 50 50 50 50 50 50 50 50
+[346] 50 50 50 50 51 51 51 51 51 51 51 51 51 51 51 51 52 52 52 52 52 52 52
+[369] 52 52 52 53 53 53 53 53 53 53 53 53 53 53 53 53 54 54 54 54 54 54 54
+[392] 54 54 54 54 55 55 55 55 55 55 56 56 56 56 56 56 56 56 56 56 56 56 56
+[415] 56 56 56 56 56 56 57 57 57 57 57 57 57 57 57 57 57 57 57 58 58 58 58
+[438] 58 58 58 58 58 58 58 59 59 59 59 59 59 59 59 59 59 59 60 60 60 60 60
+[461] 60 60 60 60 60 60 60 61 61 61 61 61 61 61 61 61 61 61 61 62 62 62 62
+[484] 62 62 62 63 63 63 63 63 64 64 64 64 64 64 64 64 64</code></pre>
+<p>Again, to find the median, we would take the mean of the middle two observations in this sorted data set. That would be the 250<sup>th</sup> and 251<sup>st</sup> largest Ages.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sort</span>(nh_adults<span class="op">$</span>Age)[<span class="dv">250</span><span class="op">:</span><span class="dv">251</span>]</code></pre></div>
+<pre><code>[1] 42 42</code></pre>
+</div>
+<div id="dealing-with-missingness" class="section level3">
+<h3><span class="header-section-number">5.2.2</span> Dealing with Missingness</h3>
+<p>When calculating a mean, you may be tempted to try something like this…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarize</span>(<span class="kw">mean</span>(Pulse), <span class="kw">median</span>(Pulse))</code></pre></div>
+<pre><code># A tibble: 1 x 2
+  `mean(Pulse)` `median(Pulse)`
+          &lt;dbl&gt;           &lt;int&gt;
+1            NA              NA</code></pre>
+<p>This fails because we have some missing values in the Pulse data. We can address this by either omitting the data with missing values before we run the summarize function, or tell the mean and median summary functions to remove missing values<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">filter</span>(<span class="kw">complete.cases</span>(Pulse)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">count =</span> <span class="kw">n</span>(), <span class="kw">mean</span>(Pulse), <span class="kw">median</span>(Pulse))</code></pre></div>
+<pre><code># A tibble: 1 x 3
+  count `mean(Pulse)` `median(Pulse)`
+  &lt;int&gt;         &lt;dbl&gt;           &lt;int&gt;
+1   485       72.9567              72</code></pre>
+<p>Or, we could tell the summary functions themselves to remove NA values.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarize</span>(<span class="kw">mean</span>(Pulse, <span class="dt">na.rm=</span><span class="ot">TRUE</span>), <span class="kw">median</span>(Pulse, <span class="dt">na.rm=</span><span class="ot">TRUE</span>))</code></pre></div>
+<pre><code># A tibble: 1 x 2
+  `mean(Pulse, na.rm = TRUE)` `median(Pulse, na.rm = TRUE)`
+                        &lt;dbl&gt;                         &lt;int&gt;
+1                     72.9567                            72</code></pre>
+<p>While we eventually discuss the importance of <strong>imputation</strong> when dealing with missing data, this doesn’t apply to providing descriptive summaries of actual, observed values.</p>
+</div>
+<div id="the-mode-of-a-quantitative-variable" class="section level3">
+<h3><span class="header-section-number">5.2.3</span> The Mode of a Quantitative Variable</h3>
+<p>One other less common measure of the center of a quantitative variable’s distribution is its most frequently observed value, referred to as the <strong>mode</strong>. This measure is only appropriate for discrete variables, be they quantitative or categorical. To find the mode, we usually tabulate the data, and then sort by the counts of the numbers of observations.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(Age) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">count =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">arrange</span>(<span class="kw">desc</span>(count)) </code></pre></div>
+<pre><code># A tibble: 44 x 2
+     Age count
+   &lt;int&gt; &lt;int&gt;
+ 1    56    19
+ 2    50    18
+ 3    28    16
+ 4    37    16
+ 5    42    16
+ 6    49    15
+ 7    24    13
+ 8    27    13
+ 9    39    13
+10    46    13
+# ... with 34 more rows</code></pre>
+<p>Note the use of three different “verbs” in our function there - for more explanation of this strategy, visit <span class="citation">Grolemund and Wickham (<a href="#ref-R4DS">2017</a>)</span>.</p>
+<p>As an alternative, the <code>modeest</code> package’s <code>mfv</code> function calculates the sample mode (or most frequent value).<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a></p>
+</div>
+</div>
+<div id="measuring-the-spread-of-a-distribution" class="section level2">
+<h2><span class="header-section-number">5.3</span> Measuring the Spread of a Distribution</h2>
+<p>Statistics is all about variation, so spread or dispersion is an important fundamental concept in statistics. Measures of spread like the inter-quartile range and range (maximum - minimum) can help us understand and compare data sets. If the values in the data are close to the center, the spread will be small. If many of the values in the data are scattered far away from the center, the spread will be large.</p>
+<div id="the-range-and-the-interquartile-range-iqr" class="section level3">
+<h3><span class="header-section-number">5.3.1</span> The Range and the Interquartile Range (IQR)</h3>
+<p>The <strong>range</strong> of a quantitative variable is sometimes interpreted as the difference between the maximum and the minimum, even though R presents the actual minimum and maximum values when you ask for a range…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">select</span>(Age) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">range</span>()</code></pre></div>
+<pre><code>[1] 21 64</code></pre>
+<p>And, for a variable with missing values, we can use…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">select</span>(BMI) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">range</span>(., <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>[1] 17.8 69.0</code></pre>
+<p>A more interesting and useful statistic is the <strong>inter-quartile range</strong>, or IQR, which is the range of the middle half of the distribution, calculated by subtracting the 25<sup>th</sup> percentile value from the 75<sup>th</sup> percentile value.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarize</span>(<span class="kw">IQR</span>(Age), <span class="kw">quantile</span>(Age, <span class="fl">0.25</span>), <span class="kw">quantile</span>(Age, <span class="fl">0.75</span>))</code></pre></div>
+<pre><code># A tibble: 1 x 3
+  `IQR(Age)` `quantile(Age, 0.25)` `quantile(Age, 0.75)`
+       &lt;dbl&gt;                 &lt;dbl&gt;                 &lt;dbl&gt;
+1         22                    31                    53</code></pre>
+<p>We can calculate the range and IQR nicely from the summary information on quantiles, of course:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(Age, BMI, SBP, DBP, Pulse) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summary</span>()</code></pre></div>
+<pre><code>      Age            BMI             SBP             DBP        
+ Min.   :21.0   Min.   :17.80   Min.   : 84.0   Min.   : 19.00  
+ 1st Qu.:31.0   1st Qu.:24.20   1st Qu.:109.0   1st Qu.: 65.00  
+ Median :42.0   Median :27.70   Median :118.0   Median : 72.00  
+ Mean   :42.1   Mean   :28.73   Mean   :118.6   Mean   : 72.25  
+ 3rd Qu.:53.0   3rd Qu.:32.10   3rd Qu.:127.0   3rd Qu.: 79.00  
+ Max.   :64.0   Max.   :69.00   Max.   :202.0   Max.   :105.00  
+                NA&#39;s   :3       NA&#39;s   :15      NA&#39;s   :15      
+     Pulse       
+ Min.   : 46.00  
+ 1st Qu.: 64.00  
+ Median : 72.00  
+ Mean   : 72.96  
+ 3rd Qu.: 80.00  
+ Max.   :120.00  
+ NA&#39;s   :15      </code></pre>
+</div>
+<div id="the-variance-and-the-standard-deviation" class="section level3">
+<h3><span class="header-section-number">5.3.2</span> The Variance and the Standard Deviation</h3>
+<p>The IQR is always a reasonable summary of spread, just as the median is always a reasonable summary of the center of a distribution. Yet, most people are inclined to summarize a batch of data using two numbers: the <strong>mean</strong> and the <strong>standard deviation</strong>. This is really only a sensible thing to do if you are willing to assume the data follow a Normal distribution: a bell-shaped, symmetric distribution without substantial outliers.</p>
+<p>But <strong>most data do not (even approximately) follow a Normal distribution</strong>. Summarizing by the median and quartiles (25th and 75th percentiles) is much more robust, explaining R’s emphasis on them.</p>
+</div>
+<div id="obtaining-the-variance-and-standard-deviation-in-r" class="section level3">
+<h3><span class="header-section-number">5.3.3</span> Obtaining the Variance and Standard Deviation in R</h3>
+<p>Here are the variances of the quantitative variables in the <code>nh_adults</code> data. Note the need to include <code>na.rm = TRUE</code> to deal with the missing values in some variables.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(Age, BMI, SBP, DBP, Pulse) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarize_all</span>(var, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code># A tibble: 1 x 5
+      Age      BMI      SBP      DBP    Pulse
+    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+1 157.178 42.09176 234.1718 117.3219 131.6613</code></pre>
+<p>And here are the standard deviations of those same variables.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(Age, BMI, SBP, DBP, Pulse) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarize_all</span>(sd, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code># A tibble: 1 x 5
+       Age      BMI      SBP      DBP    Pulse
+     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+1 12.53706 6.487816 15.30267 10.83152 11.47438</code></pre>
+</div>
+<div id="defining-the-variance-and-standard-deviation" class="section level3">
+<h3><span class="header-section-number">5.3.4</span> Defining the Variance and Standard Deviation</h3>
+<p><span class="citation">Bock, Velleman, and De Veaux (<a href="#ref-BockVD">2004</a>)</span> have lots of useful thoughts here, which are lightly edited here.</p>
+<p>In thinking about spread, we might consider how far each data value is from the mean. Such a difference is called a <em>deviation</em>. We could just average the deviations, but the positive and negative differences always cancel out, leaving an average deviation of zero, so that’s not helpful. Instead, we <em>square</em> each deviation to obtain non-negative values, and to emphasize larger differences. When we add up these squared deviations and find their mean (almost), this yields the <strong>variance</strong>.</p>
+<p><span class="math display">\[
+\mbox{Variance} = s^2 = \frac{\Sigma (y - \bar{y})^2}{n-1}
+\]</span></p>
+<p>Why almost? It would be the mean of the squared deviations only if we divided the sum by <span class="math inline">\(n\)</span>, but instead we divide by <span class="math inline">\(n-1\)</span> because doing so produces an estimate of the true (population) variance that is <em>unbiased</em><a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a>. If you’re looking for a more intuitive explanation, <a href="http://stats.stackexchange.com/questions/3931/intuitive-explanation-for-dividing-by-n-1-when-calculating-standard-deviation">this Stack Exchange link</a> awaits your attention.</p>
+<ul>
+<li>To return to the original units of measurement, we take the square root of <span class="math inline">\(s^2\)</span>, and instead work with <span class="math inline">\(s\)</span>, the <strong>standard deviation</strong>.</li>
+</ul>
+<p><span class="math display">\[
+\mbox{Standard Deviation} = s = \sqrt{\frac{\Sigma (y - \bar{y})^2}{n-1}}
+\]</span></p>
+</div>
+<div id="empirical-rule-interpretation-of-the-standard-deviation" class="section level3">
+<h3><span class="header-section-number">5.3.5</span> Empirical Rule Interpretation of the Standard Deviation</h3>
+<p>For a set of measurements that follow a Normal distribution, the interval:</p>
+<ul>
+<li>Mean <span class="math inline">\(\pm\)</span> Standard Deviation contains approximately 68% of the measurements;</li>
+<li>Mean <span class="math inline">\(\pm\)</span> 2(Standard Deviation) contains approximately 95% of the measurements;</li>
+<li>Mean <span class="math inline">\(\pm\)</span> 3(Standard Deviation) contains approximately all (99.7%) of the measurements.</li>
+</ul>
+<p>We often refer to the population or process mean of a distribution with <span class="math inline">\(\mu\)</span> and the standard deviation with <span class="math inline">\(\sigma\)</span>, leading to the Figure below.</p>
+<div class="figure"><span id="fig:EmpRule-fig"></span>
+<img src="figures/Empirical_Rule.PNG" alt="The Normal Distribution and the Empirical Rule" width="90%" />
+<p class="caption">
+Figure 5.1: The Normal Distribution and the Empirical Rule
+</p>
+</div>
+<p>But if the data are not from an approximately Normal distribution, then this Empirical Rule is less helpful.</p>
+</div>
+<div id="chebyshevs-inequality-one-interpretation-of-the-standard-deviation" class="section level3">
+<h3><span class="header-section-number">5.3.6</span> Chebyshev’s Inequality: One Interpretation of the Standard Deviation</h3>
+<p>Chebyshev’s Inequality tells us that for any distribution, regardless of its relationship to a Normal distribution, no more than 1/k<sup>2</sup> of the distribution’s values can lie more than k standard deviations from the mean. This implies, for instance, that for <strong>any</strong> distribution, at least 75% of the values must lie within two standard deviations of the mean, and at least 89% must lie within three standard deviations of the mean.</p>
+<p>Again, most data sets do not follow a Normal distribution. We’ll return to this notion soon. But first, let’s try to draw some pictures that let us get a better understanding of the distribution of our data.</p>
+</div>
+</div>
+<div id="measuring-the-shape-of-a-distribution" class="section level2">
+<h2><span class="header-section-number">5.4</span> Measuring the Shape of a Distribution</h2>
+<p>When considering the shape of a distribution, one is often interested in three key points.</p>
+<ul>
+<li>The number of modes in the distribution, which I always assess through plotting the data.</li>
+<li>The <strong>skewness</strong>, or symmetry that is present, which I typically assess by looking at a plot of the distribution of the data, but if required to, will summarize with a non-parametric measure of <strong>skewness</strong>.</li>
+<li>The <strong>kurtosis</strong>, or heavy-tailedness (outlier-proneness) that is present, usually in comparison to a Normal distribution. Again, this is something I nearly inevitably assess graphically, but there are measures.</li>
+</ul>
+<p>A Normal distribution has a single mode, is symmetric and, naturally, is neither heavy-tailed or light-tailed as compared to a Normal distribution (we call this mesokurtic).</p>
+<div id="multimodal-vs.unimodal-distributions" class="section level3">
+<h3><span class="header-section-number">5.4.1</span> Multimodal vs. Unimodal distributions</h3>
+<p>A unimodal distribution, on some level, is straightforward. It is a distribution with a single mode, or “peak” in the distribution. Such a distribution may be skewed or symmetric, light-tailed or heavy-tailed. We usually describe as multimodal distributions like the two on the right below, which have multiple local maxima, even though they have just a single global maximum peak.</p>
+<div class="figure"><span id="fig:modality-fig"></span>
+<img src="figures/modality.PNG" alt="Unimodal and Multimodal Sketches" width="90%" />
+<p class="caption">
+Figure 5.2: Unimodal and Multimodal Sketches
+</p>
+</div>
+<p>Truly multimodal distributions are usually described that way in terms of shape. For unimodal distributions, skewness and kurtosis become useful ideas.</p>
+</div>
+<div id="skew" class="section level3">
+<h3><span class="header-section-number">5.4.2</span> Skew</h3>
+<p>Whether or not a distribution is approximately symmetric is an important consideration in describing its shape. Graphical assessments are always most useful in this setting, particularly for unimodal data. My favorite measure of skew, or skewness if the data have a single mode, is:</p>
+<p><span class="math display">\[
+skew_1 = \frac{\mbox{mean} - \mbox{median}}{\mbox{standard deviation}}
+\]</span></p>
+<ul>
+<li>Symmetric distributions generally show values of <span class="math inline">\(skew_1\)</span> near zero. If the distribution is actually symmetric, the mean should be equal to the median.</li>
+<li>Distributions with <span class="math inline">\(skew_1\)</span> values above 0.2 in absolute value generally indicate meaningful skew.</li>
+<li>Positive skew (mean &gt; median if the data are unimodal) is also referred to as <em>right skew</em>.</li>
+<li>Negative skew (mean &lt; median if the data are unimodal) is referred to as <em>left skew</em>.</li>
+</ul>
+<div class="figure"><span id="fig:negandposskew-fig"></span>
+<img src="figures/negandposskew.PNG" alt="Negative (Left) Skew and Positive (Right) Skew" width="90%" />
+<p class="caption">
+Figure 5.3: Negative (Left) Skew and Positive (Right) Skew
+</p>
+</div>
+</div>
+<div id="kurtosis" class="section level3">
+<h3><span class="header-section-number">5.4.3</span> Kurtosis</h3>
+<p>When we have a unimodal distribution that is symmetric, we will often be interested in the behavior of the tails of the distribution, as compared to a Normal distribution with the same mean and standard deviation. High values of kurtosis measures (and there are several) indicate data which has extreme outliers, or is heavy-tailed.</p>
+<ul>
+<li>A mesokurtic distribution has similar tail behavior to what we would expect from a Normal distribution.</li>
+<li>A leptokurtic distribution is a thinner distribution, with lighter tails (fewer observations far from the center) than we’d expect from a Normal distribution.</li>
+<li>A platykurtic distribution is a flatter distribution, with heavier tails (more observations far from the center) than we’d expect from a Normal distribution.</li>
+</ul>
+<div class="figure"><span id="fig:kurtosis-fig"></span>
+<img src="figures/kurtosis.PNG" alt="The Impact of Kurtosis" width="90%" />
+<p class="caption">
+Figure 5.4: The Impact of Kurtosis
+</p>
+</div>
+<p>Graphical tools are in most cases the best way to identify issues related to kurtosis.</p>
+</div>
+</div>
+<div id="more-detailed-numerical-summaries-for-quantitative-variables" class="section level2">
+<h2><span class="header-section-number">5.5</span> More Detailed Numerical Summaries for Quantitative Variables</h2>
+<div id="favstats-in-the-mosaic-package" class="section level3">
+<h3><span class="header-section-number">5.5.1</span> <code>favstats</code> in the <code>mosaic</code> package</h3>
+<p>The <code>favstats</code> function adds the standard deviation, and counts of overall and missing observations to our usual <code>summary</code> for a continuous variable. Let’s look at systolic blood pressure, because we haven’t yet.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mosaic<span class="op">::</span><span class="kw">favstats</span>(<span class="op">~</span><span class="st"> </span>SBP, <span class="dt">data =</span> nh_adults)</code></pre></div>
+<pre><code> min  Q1 median  Q3 max     mean       sd   n missing
+  84 109    118 127 202 118.5918 15.30267 485      15</code></pre>
+<p>We could, of course, duplicate these results with a rather lengthy set of <code>summarize</code> pieces…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">filter</span>(<span class="kw">complete.cases</span>(SBP)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">min =</span> <span class="kw">min</span>(SBP), <span class="dt">Q1 =</span> <span class="kw">quantile</span>(SBP, <span class="fl">0.25</span>), <span class="dt">median =</span> <span class="kw">median</span>(SBP), 
+              <span class="dt">Q3 =</span> <span class="kw">quantile</span>(SBP, <span class="fl">0.75</span>), <span class="dt">max =</span> <span class="kw">max</span>(SBP),  
+              <span class="dt">mean =</span> <span class="kw">mean</span>(SBP), <span class="dt">sd =</span> <span class="kw">sd</span>(SBP), <span class="dt">n =</span> <span class="kw">n</span>(), <span class="dt">missing =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(SBP)))</code></pre></div>
+<pre><code># A tibble: 1 x 9
+    min    Q1 median    Q3   max     mean       sd     n missing
+  &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;int&gt;   &lt;int&gt;
+1    84   109    118   127   202 118.5918 15.30267   485       0</code></pre>
+<p>The somewhat unusual structure of <code>favstats</code> (complete with an easy to forget <code>~</code>) is actually helpful. It allows you to look at some interesting grouping approaches, like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mosaic<span class="op">::</span><span class="kw">favstats</span>(SBP <span class="op">~</span><span class="st"> </span>Education, <span class="dt">data =</span> nh_adults)</code></pre></div>
+<pre><code>       Education min  Q1 median     Q3 max     mean       sd   n missing
+1      8th Grade  95 109    122 126.00 147 119.0952 14.06735  21       3
+2 9 - 11th Grade 100 111    115 126.00 152 118.4386 11.96277  57       0
+3    High School  89 109    120 128.75 202 121.3077 19.71835  78       3
+4   Some College  85 110    118 128.00 163 119.0268 14.60514 149       4
+5   College Grad  84 108    116 124.00 172 117.0444 14.72611 180       5</code></pre>
+<p>Of course, we could accomplish the same comparison with <code>dplyr</code> commands, too, but the <code>favstats</code> approach has much to offer.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">filter</span>(<span class="kw">complete.cases</span>(SBP, Education)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(Education) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">min =</span> <span class="kw">min</span>(SBP), <span class="dt">Q1 =</span> <span class="kw">quantile</span>(SBP, <span class="fl">0.25</span>), <span class="dt">median =</span> <span class="kw">median</span>(SBP), 
+              <span class="dt">Q3 =</span> <span class="kw">quantile</span>(SBP, <span class="fl">0.75</span>), <span class="dt">max =</span> <span class="kw">max</span>(SBP),  
+              <span class="dt">mean =</span> <span class="kw">mean</span>(SBP), <span class="dt">sd =</span> <span class="kw">sd</span>(SBP), <span class="dt">n =</span> <span class="kw">n</span>(), <span class="dt">missing =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(SBP)))</code></pre></div>
+<pre><code># A tibble: 5 x 10
+       Education   min    Q1 median     Q3   max     mean       sd     n
+          &lt;fctr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;int&gt;
+1      8th Grade    95   109    122 126.00   147 119.0952 14.06735    21
+2 9 - 11th Grade   100   111    115 126.00   152 118.4386 11.96277    57
+3    High School    89   109    120 128.75   202 121.3077 19.71835    78
+4   Some College    85   110    118 128.00   163 119.0268 14.60514   149
+5   College Grad    84   108    116 124.00   172 117.0444 14.72611   180
+# ... with 1 more variables: missing &lt;int&gt;</code></pre>
+</div>
+<div id="describe-in-the-psych-package" class="section level3">
+<h3><span class="header-section-number">5.5.2</span> <code>describe</code> in the <code>psych</code> package</h3>
+<p>The <code>psych</code> package has a more detailed list of numerical summaries for quantitative variables that looks us look at a group of observations at once.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">psych<span class="op">::</span><span class="kw">describe</span>(nh_adults <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(Age, BMI, SBP, DBP, Pulse))</code></pre></div>
+<pre><code>      vars   n   mean    sd median trimmed   mad  min max range  skew
+Age      1 500  42.10 12.54   42.0   42.11 16.31 21.0  64  43.0 -0.03
+BMI      2 497  28.73  6.49   27.7   28.15  5.78 17.8  69  51.2  1.33
+SBP      3 485 118.59 15.30  118.0  117.79 13.34 84.0 202 118.0  1.00
+DBP      4 485  72.25 10.83   72.0   72.11 10.38 19.0 105  86.0 -0.05
+Pulse    5 485  72.96 11.47   72.0   72.52 11.86 46.0 120  74.0  0.46
+      kurtosis   se
+Age      -1.23 0.56
+BMI       4.15 0.29
+SBP       3.44 0.69
+DBP       1.07 0.49
+Pulse     0.45 0.52</code></pre>
+<p>The additional statistics presented here are:</p>
+<ul>
+<li><code>trimmed</code> = a trimmed mean (by default in this function, this removes the top and bottom 10% from the data, then computes the mean of the remaining values - the middle 80% of the full data set.)</li>
+<li><code>mad</code> = the median absolute deviation (from the median), which can be used in a manner similar to the standard deviation or IQR to measure spread.
+<ul>
+<li>If the data are <span class="math inline">\(Y_1, Y_2, ..., Y_n\)</span>, then the <code>mad</code> is defined as <span class="math inline">\(median(|Y_i - median(Y_i)|)\)</span>.</li>
+<li>To find the <code>mad</code> for a set of numbers, find the median, subtract the median from each value and find the absolute value of that difference, and then find the median of those absolute differences.</li>
+<li>For non-normal data with a skewed shape but tails well approximated by the Normal, the <code>mad</code> is likely to be a better (more robust) estimate of the spread than is the standard deviation.</li>
+</ul></li>
+<li>a measure of <code>skew</code>, which refers to how much asymmetry is present in the shape of the distribution. The measure is not the same as the <em>nonparametric skew</em> measure that we will usually prefer. The [Wikipedia page on skewness][<a href="https://en.wikipedia.org/wiki/Skewness" class="uri">https://en.wikipedia.org/wiki/Skewness</a>] is very detailed.</li>
+<li>a measure of <code>kurtosis</code>, which refers to how outlier-prone, or heavy-tailed the the shape of the distribution is, mainly as compared to a Normal distribution.</li>
+<li><code>se</code> = the standard error of the sample mean, equal to the sample sd divided by the square root of the sample size.</li>
+</ul>
+</div>
+<div id="describe-in-the-hmisc-package" class="section level3">
+<h3><span class="header-section-number">5.5.3</span> <code>describe</code> in the <code>Hmisc</code> package</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Hmisc<span class="op">::</span><span class="kw">describe</span>(nh_adults <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(Age, BMI, SBP, DBP, Pulse))</code></pre></div>
+<pre><code>nh_adults %&gt;% select(Age, BMI, SBP, DBP, Pulse) 
+
+ 5  Variables      500  Observations
+---------------------------------------------------------------------------
+Age 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     500        0       44    0.999     42.1    14.48       23       25 
+     .25      .50      .75      .90      .95 
+      31       42       53       59       61 
+
+lowest : 21 22 23 24 25, highest: 60 61 62 63 64
+---------------------------------------------------------------------------
+BMI 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     497        3      203        1    28.73    6.947    19.90    22.00 
+     .25      .50      .75      .90      .95 
+   24.20    27.70    32.10    36.54    40.82 
+
+lowest : 17.8 18.0 18.1 18.2 18.4, highest: 47.6 48.6 48.8 62.8 69.0
+---------------------------------------------------------------------------
+SBP 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     485       15       71    0.999    118.6    16.51       96      101 
+     .25      .50      .75      .90      .95 
+     109      118      127      137      143 
+
+lowest :  84  85  86  89  91, highest: 163 167 168 172 202
+---------------------------------------------------------------------------
+DBP 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     485       15       57    0.999    72.25    12.04       56       59 
+     .25      .50      .75      .90      .95 
+      65       72       79       86       90 
+
+lowest :  19  41  45  47  49, highest: 100 101 102 103 105
+---------------------------------------------------------------------------
+Pulse 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     485       15       31    0.997    72.96    12.81       56       60 
+     .25      .50      .75      .90      .95 
+      64       72       80       88       92 
+
+lowest :  46  48  50  52  54, highest:  98 100 102 108 120
+---------------------------------------------------------------------------</code></pre>
+<p>The <code>Hmisc</code> package’s version of <code>describe</code> for a distribution of data presents three new ideas, in addition to a more comprehensive list of quartiles (the 5<sup>th</sup>, 10<sup>th</sup>, 25<sup>th</sup>, 50<sup>th</sup>, 75<sup>th</sup>, 90<sup>th</sup> and 95^th are shown) and the lowest and highest few observations. These are:</p>
+<ul>
+<li><code>distinct</code> - the number of different values observed in the data.</li>
+<li><code>Info</code> - a measure of how “continuous” the variable is, related to how many “ties” there are in the data, with Info taking a higher value (closer to its maximum of one) if the data are more continuous.</li>
+<li><code>Gmd</code> - the Gini mean disfference - a robust measure of spread that is calculated as the mean absolute difference between any pairs of observations. Larger values of Gmd indicate more spread-out distributions.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-R4DS">
+<p>Grolemund, Garrett, and Hadley Wickham. 2017. <em>R for Data Science</em>. O’Reilly. <a href="http://r4ds.had.co.nz/" class="uri">http://r4ds.had.co.nz/</a>.</p>
+</div>
+<div id="ref-BockVD">
+<p>Bock, David E., Paul F. Velleman, and Richard D. De Veaux. 2004. <em>Stats: Modelling the World</em>. Boston MA: Pearson Addison-Wesley.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="4">
+<li id="fn4"><p>The quantiles (sometimes referred to as percentiles) can also be summarized with a boxplot.<a href="summarizing-quantitative-variables.html#fnref4">↩</a></p></li>
+<li id="fn5"><p>We could also use <code>!is.na</code> in place of <code>complete.cases</code> to accomplish the same thing.<a href="summarizing-quantitative-variables.html#fnref5">↩</a></p></li>
+<li id="fn6"><p>See the documentation for the <code>modeest</code> package’s <code>mlv</code> function to look at other definitions of the mode.<a href="summarizing-quantitative-variables.html#fnref6">↩</a></p></li>
+<li id="fn7"><p>When we divide by n-1 as we calculate the sample variance, the average of the sample variances for all possible samples is equal to the population variance. If we instead divided by n, the average sample variance across all possible samples would be a little smaller than the population variance.<a href="summarizing-quantitative-variables.html#fnref7">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-structures-and-types-of-variables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="summarizing-categorical-variables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["431-notes.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

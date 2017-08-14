@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="data-science.html">
-<link rel="next" href="visualizing-data.html">
+<link rel="prev" href="summarizing-quantitative-variables.html">
+<link rel="next" href="references.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -209,80 +209,310 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="setting-up-r" class="section level1">
-<h1><span class="header-section-number">Chapter 2</span> Setting Up R</h1>
-<p>These Notes make extensive use of</p>
-<ul>
-<li>the statistical software language R, and</li>
-<li>the development environment R Studio</li>
-</ul>
-<p>both of which are free, and you’ll need to install them on your machine. Instructions for doing so are in found in the course syllabus.</p>
-<p>If you need an even gentler introduction, or if you’re just new to R and RStudio and need to learn about them, we encourage you to take a look at <a href="http://moderndive.com/" class="uri">http://moderndive.com/</a>, which provides an introduction to statistical and data sciences via R at <span class="citation">Ismay and Kim (<a href="#ref-ModernDive">2017</a>)</span>.</p>
-<div id="r-markdown" class="section level2">
-<h2><span class="header-section-number">2.1</span> R Markdown</h2>
-<p>These notes were written using R Markdown. R Markdown, like R and R Studio, is free and open source.</p>
-<p>R Markdown is described as an <em>authoring framework</em> for data science, which lets you</p>
-<ul>
-<li>save and execute R code</li>
-<li>generate high-quality reports that can be shared with an audience</li>
-</ul>
-<p>This description comes from <a href="http://rmarkdown.rstudio.com/lesson-1.html" class="uri">http://rmarkdown.rstudio.com/lesson-1.html</a> which you can visit to get an overview and quick tour of what’s possible with R Markdown.</p>
-<p>Another excellent resource to learn more about R Markdown tools is the Communicate section (especially the R Markdown chapter) of <span class="citation">Grolemund and Wickham (<a href="#ref-R4DS">2017</a>)</span>.</p>
+<div id="summarizing-categorical-variables" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> Summarizing Categorical Variables</h1>
+<p>Summarizing categorical variables numerically is mostly about building tables, and calculating percentages or proportions. We’ll save our discussion of modeling categorical data for later. Recall that in the <code>nh_adults</code> data set we built previously, we had the following categorical variables. The number of levels indicates the number of possible categories for each categorical variable.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Variable</th>
+<th>Description</th>
+<th>Levels</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">Sex</td>
+<td>sex of subject</td>
+<td>2</td>
+<td>binary</td>
+</tr>
+<tr class="even">
+<td align="right">Race</td>
+<td>subject’s race</td>
+<td>6</td>
+<td>nominal</td>
+</tr>
+<tr class="odd">
+<td align="right">Education</td>
+<td>subject’s educational level</td>
+<td>5</td>
+<td>ordinal</td>
+</tr>
+<tr class="even">
+<td align="right">PhysActive</td>
+<td>Participates in sports?</td>
+<td>2</td>
+<td>binary</td>
+</tr>
+<tr class="odd">
+<td align="right">Smoke100</td>
+<td>Smoked 100+ cigarettes?</td>
+<td>2</td>
+<td>binary</td>
+</tr>
+<tr class="even">
+<td align="right">SleepTrouble</td>
+<td>Trouble sleeping?</td>
+<td>2</td>
+<td>binary</td>
+</tr>
+<tr class="odd">
+<td align="right">HealthGen</td>
+<td>Self-report health</td>
+<td>5</td>
+<td>ordinal</td>
+</tr>
+</tbody>
+</table>
+<div id="the-summary-function-for-categorical-data" class="section level2">
+<h2><span class="header-section-number">6.1</span> The <code>summary</code> function for Categorical data</h2>
+<p>When R recognizes a variable as categorical, it stores it as a <em>factor</em>. Such variables get special treatment from the <code>summary</code> function, in particular a table of available values (so long as there aren’t too many.)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(Sex, Race, Education, PhysActive, Smoke100, SleepTrouble, HealthGen) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summary</span>()</code></pre></div>
+<pre><code>     Sex            Race              Education   PhysActive Smoke100 
+ female:253   Asian   : 29   8th Grade     : 24   No :225    No :289  
+ male  :247   Black   : 57   9 - 11th Grade: 57   Yes:275    Yes:211  
+              Hispanic: 39   High School   : 81                       
+              Mexican : 43   Some College  :153                       
+              White   :322   College Grad  :185                       
+              Other   : 10                                            
+ SleepTrouble     HealthGen  
+ No :362      Excellent: 51  
+ Yes:138      Vgood    :153  
+              Good     :172  
+              Fair     : 71  
+              Poor     :  7  
+              NA&#39;s     : 46  </code></pre>
 </div>
-<div id="r-packages" class="section level2">
-<h2><span class="header-section-number">2.2</span> R Packages</h2>
-<p>To start, I’ll present a series of commands I run at the beginning of these Notes. These particular commands set up the output so it will look nice as either an HTML or PDF file, and also set up R to use several packages (libraries) of functions that expand its capabilities. A chunk of code like this will occur near the top of any R Markdown work.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">comment =</span> <span class="ot">NA</span>)
+<div id="tables-to-describe-one-categorical-variable" class="section level2">
+<h2><span class="header-section-number">6.2</span> Tables to describe One Categorical Variable</h2>
+<p>Suppose we build a table to describe the <code>HealthGen</code> distribution.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(HealthGen) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">table</span>(., <span class="dt">useNA =</span> <span class="st">&quot;ifany&quot;</span>)</code></pre></div>
+<pre><code>.
+Excellent     Vgood      Good      Fair      Poor      &lt;NA&gt; 
+       51       153       172        71         7        46 </code></pre>
+<p>What if we want to add a total count?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(HealthGen) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">table</span>(., <span class="dt">useNA =</span> <span class="st">&quot;ifany&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">addmargins</span>()</code></pre></div>
+<pre><code>.
+Excellent     Vgood      Good      Fair      Poor      &lt;NA&gt;       Sum 
+       51       153       172        71         7        46       500 </code></pre>
+<p>What if we want to leave out the missing responses?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(HealthGen) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">table</span>(., <span class="dt">useNA =</span> <span class="st">&quot;no&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">addmargins</span>()</code></pre></div>
+<pre><code>.
+Excellent     Vgood      Good      Fair      Poor       Sum 
+       51       153       172        71         7       454 </code></pre>
+<p>Let’s put the missing values back in, but now calculate proportions instead. Since the total will just be 1.0, we’ll leave that out.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(HealthGen) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">table</span>(., <span class="dt">useNA =</span> <span class="st">&quot;ifany&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">prop.table</span>()</code></pre></div>
+<pre><code>.
+Excellent     Vgood      Good      Fair      Poor      &lt;NA&gt; 
+    0.102     0.306     0.344     0.142     0.014     0.092 </code></pre>
+<p>Now, we’ll calculate percentages by multiplying the proportions by 100.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(HealthGen) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">table</span>(., <span class="dt">useNA =</span> <span class="st">&quot;ifany&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">prop.table</span>() <span class="op">%&gt;%</span>
+<span class="st">    &quot;*&quot;</span>(<span class="dv">100</span>) </code></pre></div>
+<pre><code>.
+Excellent     Vgood      Good      Fair      Poor      &lt;NA&gt; 
+     10.2      30.6      34.4      14.2       1.4       9.2 </code></pre>
+</div>
+<div id="the-mode-of-a-categorical-variable" class="section level2">
+<h2><span class="header-section-number">6.3</span> The Mode of a Categorical Variable</h2>
+<p>A common measure applied to a categorical variable is to identify the mode, the most frequently observed value. To find the mode for variables with lots of categories (so that the <code>summary</code> may not be sufficient), we usually tabulate the data, and then sort by the counts of the numbers of observations, as we did with discrete quantitative variables.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(HealthGen) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">count =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">arrange</span>(<span class="kw">desc</span>(count)) </code></pre></div>
+<pre><code># A tibble: 6 x 2
+  HealthGen count
+     &lt;fctr&gt; &lt;int&gt;
+1      Good   172
+2     Vgood   153
+3      Fair    71
+4 Excellent    51
+5        NA    46
+6      Poor     7</code></pre>
+</div>
+<div id="describe-in-the-hmisc-package-1" class="section level2">
+<h2><span class="header-section-number">6.4</span> <code>describe</code> in the <code>Hmisc</code> package</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Hmisc<span class="op">::</span><span class="kw">describe</span>(nh_adults <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">                    </span><span class="kw">select</span>(Sex, Race, Education, PhysActive, 
+                           Smoke100, SleepTrouble, HealthGen))</code></pre></div>
+<pre><code>nh_adults %&gt;% select(Sex, Race, Education, PhysActive, Smoke100, SleepTrouble, HealthGen) 
 
-<span class="kw">library</span>(boot); <span class="kw">library</span>(devtools); <span class="kw">library</span>(forcats)
-<span class="kw">library</span>(grid); <span class="kw">library</span>(knitr); <span class="kw">library</span>(pander)
-<span class="kw">library</span>(pwr); <span class="kw">library</span>(viridis); <span class="kw">library</span>(NHANES)
-<span class="kw">library</span>(tidyverse)</code></pre></div>
-<p>I have deliberately set up this list of loaded packages/libraries to be relatively small, and will add some other packages later, as needed. You only need to install a package once, but you need to reload it every time you start a new session.</p>
+ 7  Variables      500  Observations
+---------------------------------------------------------------------------
+Sex 
+       n  missing distinct 
+     500        0        2 
+                        
+Value      female   male
+Frequency     253    247
+Proportion  0.506  0.494
+---------------------------------------------------------------------------
+Race 
+       n  missing distinct 
+     500        0        6 
+                                                                
+Value         Asian    Black Hispanic  Mexican    White    Other
+Frequency        29       57       39       43      322       10
+Proportion    0.058    0.114    0.078    0.086    0.644    0.020
+---------------------------------------------------------------------------
+Education 
+       n  missing distinct 
+     500        0        5 
+                                                                      
+Value           8th Grade 9 - 11th Grade    High School   Some College
+Frequency              24             57             81            153
+Proportion          0.048          0.114          0.162          0.306
+                         
+Value        College Grad
+Frequency             185
+Proportion          0.370
+---------------------------------------------------------------------------
+PhysActive 
+       n  missing distinct 
+     500        0        2 
+                    
+Value        No  Yes
+Frequency   225  275
+Proportion 0.45 0.55
+---------------------------------------------------------------------------
+Smoke100 
+       n  missing distinct 
+     500        0        2 
+                      
+Value         No   Yes
+Frequency    289   211
+Proportion 0.578 0.422
+---------------------------------------------------------------------------
+SleepTrouble 
+       n  missing distinct 
+     500        0        2 
+                      
+Value         No   Yes
+Frequency    362   138
+Proportion 0.724 0.276
+---------------------------------------------------------------------------
+HealthGen 
+       n  missing distinct 
+     454       46        5 
+                                                            
+Value      Excellent     Vgood      Good      Fair      Poor
+Frequency         51       153       172        71         7
+Proportion     0.112     0.337     0.379     0.156     0.015
+---------------------------------------------------------------------------</code></pre>
 </div>
-<div id="other-packages" class="section level2">
-<h2><span class="header-section-number">2.3</span> Other Packages</h2>
-<p>I will also make use of functions in the following packages/libraries, but when I do so, I will explicitly specify the package name, using a command like <code>Hmisc::describe(x)</code>, rather than just <code>describe(x)</code>, so as to specify that I want the Hmisc package’s version of <code>describe</code> applied to whatever <code>x</code> is. Those packages are:</p>
-<ul>
-<li><code>aplpack</code> which provides <code>stem.leaf</code> and <code>stem.leaf.backback</code> for building fancier stem-and-leaf displays</li>
-<li><code>arm</code> which provides a set of functions for model building and checking that are used in <span class="citation">Gelman and Hill (<a href="#ref-Gelman-Hill">2007</a>)</span></li>
-<li><code>car</code> which provides some tools for building scatterplot matrices, but also many other functions described in <span class="citation">Fox and Weisberg (<a href="#ref-Fox-Weisberg">2011</a>)</span></li>
-<li><code>Epi</code> for 2x2 table analyses and materials for classical epidemiology: <a href="http://BendixCarstensen.com/Epi/" class="uri">http://BendixCarstensen.com/Epi/</a></li>
-<li><code>GGally</code> for scatterplot and correlation matrix visualizations: <a href="http://ggobi.github.io/ggally/" class="uri">http://ggobi.github.io/ggally/</a></li>
-<li><code>gridExtra</code> which includes a variety of functions for manipulating graphs: <a href="https://github.com/baptiste/gridextra" class="uri">https://github.com/baptiste/gridextra</a></li>
-<li><code>Hmisc</code> from Frank Harrell at Vanderbilt U., for its version of <code>describe</code> and for many regression modeling functions we’ll use in 432. Details on Hmisc are at <a href="http://biostat.mc.vanderbilt.edu/wiki/Main/Hmisc" class="uri">http://biostat.mc.vanderbilt.edu/wiki/Main/Hmisc</a>. Frank has written several books - the most useful of which for 431 students is probably <span class="citation">Harrell and Slaughter (<a href="#ref-HarrellBBR">2017</a>)</span></li>
-<li><code>mice</code>, which we’ll use (a little) in 431 for multiple imputation to deal with missing data: <a href="http://www.stefvanbuuren.nl/mi/" class="uri">http://www.stefvanbuuren.nl/mi/</a></li>
-<li><code>mosaic</code>, mostly for its <code>favstats</code> summary, but Project MOSAIC is a community of educators you might be interested in: <a href="http://mosaic-web.org/" class="uri">http://mosaic-web.org/</a></li>
-<li><code>psych</code> for its own version of <code>describe</code>, but other features are described at <a href="http://personality-project.org/r/psych/" class="uri">http://personality-project.org/r/psych/</a></li>
-</ul>
-<p>We also will use a package called <code>xda</code> for two functions called <code>numSummary</code> and <code>charSummary</code>, but that package gets loaded via <code>devtools</code> and GitHub by the code in these Notes.</p>
-<p>When compiling the Notes from the original code files, these packages will need to be installed (but not loaded) in R, or an error will be thrown when compiling this document. To install all of the packages used within these Notes, type in (or copy and paste) the following commands and run them in the R Console. Again, you only need to install a package once, but you need to reload it every time you start a new session.</p>
-<pre><code>pkgs &lt;- c(&quot;aplpack&quot;, &quot;arm&quot;, &quot;boot&quot;, &quot;car&quot;, &quot;devtools&quot;, &quot;Epi&quot;, &quot;forcats&quot;, &quot;GGally&quot;,
-          &quot;gridExtra&quot;, &quot;Hmisc&quot;, &quot;knitr&quot;, &quot;mice&quot;, &quot;mosaic&quot;, &quot;NHANES&quot;, &quot;pander&quot;, 
-          &quot;psych&quot;, &quot;pwr&quot;, &quot;tidyverse&quot;, &quot;viridis&quot;)
-install.packages(pkgs)</code></pre>
+<div id="cross-tabulations" class="section level2">
+<h2><span class="header-section-number">6.5</span> Cross-Tabulations</h2>
+<p>It is very common for us to want to describe the association of one categorical variable with another. For instance, is there a relationship between Education and SleepTrouble in these data?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(Education, SleepTrouble) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">table</span>() <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">addmargins</span>()</code></pre></div>
+<pre><code>                SleepTrouble
+Education         No Yes Sum
+  8th Grade       15   9  24
+  9 - 11th Grade  40  17  57
+  High School     67  14  81
+  Some College   107  46 153
+  College Grad   133  52 185
+  Sum            362 138 500</code></pre>
+<p>To get row percentages, we can use:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(Education, SleepTrouble) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">table</span>() <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">prop.table</span>(., <span class="dv">1</span>) <span class="op">%&gt;%</span>
+<span class="st">    &quot;*&quot;</span>(<span class="dv">100</span>) </code></pre></div>
+<pre><code>                SleepTrouble
+Education              No      Yes
+  8th Grade      62.50000 37.50000
+  9 - 11th Grade 70.17544 29.82456
+  High School    82.71605 17.28395
+  Some College   69.93464 30.06536
+  College Grad   71.89189 28.10811</code></pre>
+<p>For column percentages, we use 2 instead of 1 in the <code>prop.table</code> function. Here, we’ll also round off to two decimal places:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(Education, SleepTrouble) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">table</span>() <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">prop.table</span>(., <span class="dv">2</span>) <span class="op">%&gt;%</span>
+<span class="st">    &quot;*&quot;</span>(<span class="dv">100</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">round</span>(.,<span class="dv">2</span>) </code></pre></div>
+<pre><code>                SleepTrouble
+Education           No   Yes
+  8th Grade       4.14  6.52
+  9 - 11th Grade 11.05 12.32
+  High School    18.51 10.14
+  Some College   29.56 33.33
+  College Grad   36.74 37.68</code></pre>
+<p>Here’s another approach, to look at the cross-classification of Race and HealthGen:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">xtabs</span>(<span class="op">~</span><span class="st"> </span>Race <span class="op">+</span><span class="st"> </span>HealthGen, <span class="dt">data =</span> nh_adults)</code></pre></div>
+<pre><code>          HealthGen
+Race       Excellent Vgood Good Fair Poor
+  Asian            4     7    9    2    1
+  Black            7    11   16   11    2
+  Hispanic         1     9   18    8    0
+  Mexican          5     6   12   16    1
+  White           34   115  115   32    3
+  Other            0     5    2    2    0</code></pre>
+<div id="cross-classifying-three-categorical-variables" class="section level3">
+<h3><span class="header-section-number">6.5.1</span> Cross-Classifying Three Categorical Variables</h3>
+<p>Suppose we are interested in <code>Smoke100</code> and its relationship to <code>PhysActive</code> and <code>SleepTrouble</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">xtabs</span>(<span class="op">~</span><span class="st"> </span>Smoke100 <span class="op">+</span><span class="st"> </span>PhysActive <span class="op">+</span><span class="st"> </span>SleepTrouble, <span class="dt">data =</span> nh_adults)</code></pre></div>
+<pre><code>, , SleepTrouble = No
+
+        PhysActive
+Smoke100  No Yes
+     No   99 135
+     Yes  62  66
+
+, , SleepTrouble = Yes
+
+        PhysActive
+Smoke100  No Yes
+     No   26  29
+     Yes  38  45</code></pre>
+<p>We can also build a <strong>flat</strong> version of this table, as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ftable</span>(Smoke100 <span class="op">~</span><span class="st"> </span>PhysActive <span class="op">+</span><span class="st"> </span>SleepTrouble, <span class="dt">data =</span> nh_adults)</code></pre></div>
+<pre><code>                        Smoke100  No Yes
+PhysActive SleepTrouble                 
+No         No                     99  62
+           Yes                    26  38
+Yes        No                    135  66
+           Yes                    29  45</code></pre>
+<p>And we can do this with <code>dplyr</code> functions, as well, for example…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(Smoke100, PhysActive, SleepTrouble) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">table</span>() </code></pre></div>
+<pre><code>, , SleepTrouble = No
+
+        PhysActive
+Smoke100  No Yes
+     No   99 135
+     Yes  62  66
+
+, , SleepTrouble = Yes
+
+        PhysActive
+Smoke100  No Yes
+     No   26  29
+     Yes  38  45</code></pre>
 
 </div>
-</div>
-
-
-
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-ModernDive">
-<p>Ismay, Chester, and Albert Y. Kim. 2017. <em>ModernDive: An Introduction to Statistical and Data Sciences via R</em>. <a href="http://moderndive.com/" class="uri">http://moderndive.com/</a>.</p>
-</div>
-<div id="ref-R4DS">
-<p>Grolemund, Garrett, and Hadley Wickham. 2017. <em>R for Data Science</em>. O’Reilly. <a href="http://r4ds.had.co.nz/" class="uri">http://r4ds.had.co.nz/</a>.</p>
-</div>
-<div id="ref-Gelman-Hill">
-<p>Gelman, Andrew, and Jennifer Hill. 2007. <em>Data Analysis Using Regression and Multilevel-Hierarchical Models</em>. New York: Cambridge University Press. <a href="http://www.stat.columbia.edu/~gelman/arm/" class="uri">http://www.stat.columbia.edu/~gelman/arm/</a>.</p>
-</div>
-<div id="ref-Fox-Weisberg">
-<p>Fox, John, and Sanford Weisberg. 2011. <em>An R Companion to Applied Regression</em>. Second. Thousand Oaks CA: Sage. <a href="http://socserv.socsci.mcmaster.ca/jfox/Books/Companion" class="uri">http://socserv.socsci.mcmaster.ca/jfox/Books/Companion</a>.</p>
-</div>
-<div id="ref-HarrellBBR">
-<p>Harrell, Frank E., and James C. Slaughter. 2017. <em>Biostatistics for Biomedical Research</em>. Vanderbilt University School of Medicine. <a href="biostat.mc.vanderbilt.edu/ClinStat" class="uri">biostat.mc.vanderbilt.edu/ClinStat</a>.</p>
 </div>
 </div>
             </section>
@@ -290,8 +520,8 @@ install.packages(pkgs)</code></pre>
           </div>
         </div>
       </div>
-<a href="data-science.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="visualizing-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="summarizing-quantitative-variables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

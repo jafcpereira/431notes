@@ -1,0 +1,150 @@
+# Summarizing Categorical Variables
+
+Summarizing categorical variables numerically is mostly about building tables, and calculating percentages or proportions. We'll save our discussion of modeling categorical data for later. Recall that in the `nh_adults` data set we built previously, we had the following categorical variables. The number of levels indicates the number of possible categories for each categorical variable.
+
+Variable     | Description                  | Levels | Type
+----------:  | ---------------------------- | - | ---------
+Sex          | sex of subject               | 2 | binary
+Race         | subject's race               | 6 | nominal
+Education    | subject's educational level  | 5 | ordinal
+PhysActive   | Participates in sports?      | 2 | binary
+Smoke100     | Smoked 100+ cigarettes?      | 2 | binary
+SleepTrouble | Trouble sleeping?            | 2 | binary
+HealthGen    | Self-report health           | 5 | ordinal
+
+## The `summary` function for Categorical data
+
+When R recognizes a variable as categorical, it stores it as a *factor*. Such variables get special treatment from the `summary` function, in particular a table of available values (so long as there aren't too many.)
+
+```{r nh-adultscategorical-summ1}
+nh_adults %>%
+  select(Sex, Race, Education, PhysActive, Smoke100, SleepTrouble, HealthGen) %>%
+  summary()
+```
+
+## Tables to describe One Categorical Variable
+
+Suppose we build a table to describe the `HealthGen` distribution.
+
+```{r nh_adults_HealthGen_counts}
+nh_adults %>%
+    select(HealthGen) %>%
+    table(., useNA = "ifany")
+```
+
+What if we want to add a total count?
+
+```{r nh_adults_HealthGen_countsandmargins}
+nh_adults %>%
+    select(HealthGen) %>%
+    table(., useNA = "ifany") %>%
+    addmargins()
+```
+
+What if we want to leave out the missing responses?
+
+```{r nh_adults_HealthGen_countsandmarginsnoNA}
+nh_adults %>%
+    select(HealthGen) %>%
+    table(., useNA = "no") %>%
+    addmargins()
+```
+
+Let's put the missing values back in, but now calculate proportions instead. Since the total will just be 1.0, we'll leave that out.
+
+```{r nh_adults_HealthGen_proportions}
+nh_adults %>%
+    select(HealthGen) %>%
+    table(., useNA = "ifany") %>%
+    prop.table()
+```
+
+Now, we'll calculate percentages by multiplying the proportions by 100.
+
+```{r nh_adults_HealthGen_percentages}
+nh_adults %>%
+    select(HealthGen) %>%
+    table(., useNA = "ifany") %>%
+    prop.table() %>%
+    "*"(100) 
+```
+
+## The Mode of a Categorical Variable
+
+A common measure applied to a categorical variable is to identify the mode, the most frequently observed value. To find the mode for variables with lots of categories (so that the `summary` may not be sufficient), we usually tabulate the data, and then sort by the counts of the numbers of observations, as we did with discrete quantitative variables.
+
+```{r mode_nh_adults_HealthGen}
+nh_adults %>%
+    group_by(HealthGen) %>%
+    summarize(count = n()) %>%
+    arrange(desc(count)) 
+```
+
+## `describe` in the `Hmisc` package
+
+```{r Hmisc-describe-nh_adults_categorical}
+Hmisc::describe(nh_adults %>% 
+                    select(Sex, Race, Education, PhysActive, 
+                           Smoke100, SleepTrouble, HealthGen))
+```
+
+## Cross-Tabulations 
+
+It is very common for us to want to describe the association of one categorical variable with another. For instance, is there a relationship between Education and SleepTrouble in these data?
+
+```{r crosstab1-nh_adults_education_sleep}
+nh_adults %>%
+    select(Education, SleepTrouble) %>%
+    table() %>%
+    addmargins()
+```
+
+To get row percentages, we can use:
+
+```{r crosstab1-nh_adults_education_sleep2}
+nh_adults %>%
+    select(Education, SleepTrouble) %>%
+    table() %>%
+    prop.table(., 1) %>%
+    "*"(100) 
+```
+
+For column percentages, we use 2 instead of 1 in the `prop.table` function. Here, we'll also round off to two decimal places:
+
+```{r crosstab1-nh_adults_education_sleep3}
+nh_adults %>%
+    select(Education, SleepTrouble) %>%
+    table() %>%
+    prop.table(., 2) %>%
+    "*"(100) %>%
+    round(.,2) 
+```
+
+Here's another approach, to look at the cross-classification of Race and HealthGen:
+
+```{r crosstab2-nh_adults_race_healthgen}
+xtabs(~ Race + HealthGen, data = nh_adults)
+```
+
+### Cross-Classifying Three Categorical Variables
+
+Suppose we are interested in `Smoke100` and its relationship to `PhysActive` and `SleepTrouble`.
+
+```{r nh_adults_crosstab-3ways1}
+xtabs(~ Smoke100 + PhysActive + SleepTrouble, data = nh_adults)
+```
+
+We can also build a **flat** version of this table, as follows:
+
+```{r nh_adults_crosstab-3ways2}
+ftable(Smoke100 ~ PhysActive + SleepTrouble, data = nh_adults)
+```
+
+
+And we can do this with `dplyr` functions, as well, for example...
+
+```{r nh_adults_crosstab-3ways3}
+nh_adults %>%
+    select(Smoke100, PhysActive, SleepTrouble) %>%
+    table() 
+```
