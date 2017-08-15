@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="summarizing-quantities.html">
-<link rel="next" href="the-national-youth-fitness-survey-nyfs1.html">
+<link rel="prev" href="using-transformations-to-normalize-distributions.html">
+<link rel="next" href="straight-line-models-and-correlation.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -336,310 +336,196 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="summarizing-categorical-variables" class="section level1">
-<h1><span class="header-section-number">Chapter 6</span> Summarizing Categorical Variables</h1>
-<p>Summarizing categorical variables numerically is mostly about building tables, and calculating percentages or proportions. We’ll save our discussion of modeling categorical data for later. Recall that in the <code>nh_adults</code> data set we built previously, we had the following categorical variables. The number of levels indicates the number of possible categories for each categorical variable.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="right">Variable</th>
-<th>Description</th>
-<th>Levels</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">Sex</td>
-<td>sex of subject</td>
-<td>2</td>
-<td>binary</td>
-</tr>
-<tr class="even">
-<td align="right">Race</td>
-<td>subject’s race</td>
-<td>6</td>
-<td>nominal</td>
-</tr>
-<tr class="odd">
-<td align="right">Education</td>
-<td>subject’s educational level</td>
-<td>5</td>
-<td>ordinal</td>
-</tr>
-<tr class="even">
-<td align="right">PhysActive</td>
-<td>Participates in sports?</td>
-<td>2</td>
-<td>binary</td>
-</tr>
-<tr class="odd">
-<td align="right">Smoke100</td>
-<td>Smoked 100+ cigarettes?</td>
-<td>2</td>
-<td>binary</td>
-</tr>
-<tr class="even">
-<td align="right">SleepTrouble</td>
-<td>Trouble sleeping?</td>
-<td>2</td>
-<td>binary</td>
-</tr>
-<tr class="odd">
-<td align="right">HealthGen</td>
-<td>Self-report health</td>
-<td>5</td>
-<td>ordinal</td>
-</tr>
-</tbody>
-</table>
-<div id="the-summary-function-for-categorical-data" class="section level2">
-<h2><span class="header-section-number">6.1</span> The <code>summary</code> function for Categorical data</h2>
-<p>When R recognizes a variable as categorical, it stores it as a <em>factor</em>. Such variables get special treatment from the <code>summary</code> function, in particular a table of available values (so long as there aren’t too many.)</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">select</span>(Sex, Race, Education, PhysActive, Smoke100, SleepTrouble, HealthGen) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">summary</span>()</code></pre></div>
-<pre><code>     Sex            Race              Education   PhysActive Smoke100 
- female:253   Asian   : 29   8th Grade     : 24   No :225    No :289  
- male  :247   Black   : 57   9 - 11th Grade: 57   Yes:275    Yes:211  
-              Hispanic: 39   High School   : 81                       
-              Mexican : 43   Some College  :153                       
-              White   :322   College Grad  :185                       
-              Other   : 10                                            
- SleepTrouble     HealthGen  
- No :362      Excellent: 51  
- Yes:138      Vgood    :153  
-              Good     :172  
-              Fair     : 71  
-              Poor     :  7  
-              NA&#39;s     : 46  </code></pre>
+<div id="summarizing-data-within-subgroups" class="section level1">
+<h1><span class="header-section-number">Chapter 10</span> Summarizing data within subgroups</h1>
+<div id="using-dplyr-and-summarize-to-build-a-tibble-of-summary-information" class="section level2">
+<h2><span class="header-section-number">10.1</span> Using dplyr and summarize to build a tibble of summary information</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nyfs1 <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(sex) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(bmi, waist.circ, sex) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarise_all</span>(<span class="kw">funs</span>(median))</code></pre></div>
+<pre><code># A tibble: 2 x 3
+     sex   bmi waist.circ
+  &lt;fctr&gt; &lt;dbl&gt;      &lt;dbl&gt;
+1 Female  17.6       63.6
+2   Male  17.7       62.5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nyfs1 <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(bmi.cat) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(waist.circ), <span class="dt">sd =</span> <span class="kw">sd</span>(waist.circ), <span class="dt">median =</span> <span class="kw">median</span>(waist.circ), 
+              <span class="dt">skew_1 =</span> <span class="kw">round</span>((<span class="kw">mean</span>(waist.circ) <span class="op">-</span><span class="st"> </span><span class="kw">median</span>(waist.circ)) <span class="op">/</span><span class="st"> </span><span class="kw">sd</span>(waist.circ),<span class="dv">3</span>))</code></pre></div>
+<pre><code># A tibble: 4 x 5
+          bmi.cat  mean    sd median skew_1
+           &lt;fctr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+1   1 Underweight  54.9  7.63   53.9  0.136
+2 2 Normal weight  61.0  9.10   59.2  0.193
+3    3 Overweight  71.1 11.80   72.0 -0.075
+4         4 Obese  79.9 15.01   79.9 -0.003</code></pre>
+<p>While patients in the heavier groups generally had higher waist circumferences, this is not inevitably the case.</p>
+<p>The data transformation with dplyr cheat sheet found under the Help menu in R Studio is a great resource. And, of course, for more details, visit <span class="citation">Grolemund and Wickham (<a href="#ref-R4DS">2017</a>)</span>.</p>
 </div>
-<div id="tables-to-describe-one-categorical-variable" class="section level2">
-<h2><span class="header-section-number">6.2</span> Tables to describe One Categorical Variable</h2>
-<p>Suppose we build a table to describe the <code>HealthGen</code> distribution.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(HealthGen) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>(., <span class="dt">useNA =</span> <span class="st">&quot;ifany&quot;</span>)</code></pre></div>
-<pre><code>.
-Excellent     Vgood      Good      Fair      Poor      &lt;NA&gt; 
-       51       153       172        71         7        46 </code></pre>
-<p>What if we want to add a total count?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(HealthGen) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>(., <span class="dt">useNA =</span> <span class="st">&quot;ifany&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">addmargins</span>()</code></pre></div>
-<pre><code>.
-Excellent     Vgood      Good      Fair      Poor      &lt;NA&gt;       Sum 
-       51       153       172        71         7        46       500 </code></pre>
-<p>What if we want to leave out the missing responses?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(HealthGen) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>(., <span class="dt">useNA =</span> <span class="st">&quot;no&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">addmargins</span>()</code></pre></div>
-<pre><code>.
-Excellent     Vgood      Good      Fair      Poor       Sum 
-       51       153       172        71         7       454 </code></pre>
-<p>Let’s put the missing values back in, but now calculate proportions instead. Since the total will just be 1.0, we’ll leave that out.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(HealthGen) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>(., <span class="dt">useNA =</span> <span class="st">&quot;ifany&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">prop.table</span>()</code></pre></div>
-<pre><code>.
-Excellent     Vgood      Good      Fair      Poor      &lt;NA&gt; 
-    0.102     0.306     0.344     0.142     0.014     0.092 </code></pre>
-<p>Now, we’ll calculate percentages by multiplying the proportions by 100.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(HealthGen) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>(., <span class="dt">useNA =</span> <span class="st">&quot;ifany&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">prop.table</span>() <span class="op">%&gt;%</span>
-<span class="st">    &quot;*&quot;</span>(<span class="dv">100</span>) </code></pre></div>
-<pre><code>.
-Excellent     Vgood      Good      Fair      Poor      &lt;NA&gt; 
-     10.2      30.6      34.4      14.2       1.4       9.2 </code></pre>
+<div id="using-the-by-function-to-summarize-groups-numerically" class="section level2">
+<h2><span class="header-section-number">10.2</span> Using the by function to summarize groups numerically</h2>
+<p>We can summarize our data numerically in multiple ways, but to use the <code>favstats</code> or <code>Hmisc::describe</code> tools to each individual BMI subgroup separately, we might consider applying the <code>by</code> function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">by</span>(nyfs1<span class="op">$</span>waist.circ, nyfs1<span class="op">$</span>bmi.cat, mosaic<span class="op">::</span>favstats)</code></pre></div>
+<pre><code>nyfs1$bmi.cat: 1 Underweight
+  min   Q1 median   Q3  max mean   sd  n missing
+ 42.5 49.2   53.9 62.4 68.5 54.9 7.63 42       0
+-------------------------------------------------------- 
+nyfs1$bmi.cat: 2 Normal weight
+  min   Q1 median Q3  max mean  sd   n missing
+ 44.1 53.8   59.2 68 85.5   61 9.1 926       0
+-------------------------------------------------------- 
+nyfs1$bmi.cat: 3 Overweight
+  min   Q1 median   Q3  max mean   sd   n missing
+ 49.3 60.8     72 80.6 98.3 71.1 11.8 237       0
+-------------------------------------------------------- 
+nyfs1$bmi.cat: 4 Obese
+  min   Q1 median   Q3 max mean sd   n missing
+ 52.1 66.7   79.9 91.6 112 79.9 15 211       0</code></pre>
+<p>As shown below, we could do this in pieces with <code>dplyr</code>, but the <code>by</code> approach can be faster for this sort of thing.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nyfs1 <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(bmi.cat) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">min =</span> <span class="kw">min</span>(waist.circ), <span class="dt">Q1 =</span> <span class="kw">quantile</span>(waist.circ, <span class="fl">0.25</span>),
+              <span class="dt">median =</span> <span class="kw">median</span>(waist.circ), <span class="dt">Q3 =</span> <span class="kw">quantile</span>(waist.circ, <span class="fl">0.75</span>),
+              <span class="dt">max =</span> <span class="kw">max</span>(waist.circ), <span class="dt">mean =</span> <span class="kw">mean</span>(waist.circ), 
+              <span class="dt">sd =</span> <span class="kw">sd</span>(waist.circ), <span class="dt">n =</span> <span class="kw">length</span>(waist.circ), 
+              <span class="dt">missing =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(waist.circ)))</code></pre></div>
+<pre><code># A tibble: 4 x 10
+          bmi.cat   min    Q1 median    Q3   max  mean    sd     n missing
+           &lt;fctr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;   &lt;int&gt;
+1   1 Underweight  42.5  49.2   53.9  62.4  68.5  54.9  7.63    42       0
+2 2 Normal weight  44.1  53.8   59.2  68.0  85.5  61.0  9.10   926       0
+3    3 Overweight  49.3  60.8   72.0  80.6  98.3  71.1 11.80   237       0
+4         4 Obese  52.1  66.7   79.9  91.6 112.4  79.9 15.01   211       0</code></pre>
 </div>
-<div id="the-mode-of-a-categorical-variable" class="section level2">
-<h2><span class="header-section-number">6.3</span> The Mode of a Categorical Variable</h2>
-<p>A common measure applied to a categorical variable is to identify the mode, the most frequently observed value. To find the mode for variables with lots of categories (so that the <code>summary</code> may not be sufficient), we usually tabulate the data, and then sort by the counts of the numbers of observations, as we did with discrete quantitative variables.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(HealthGen) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">count =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">arrange</span>(<span class="kw">desc</span>(count)) </code></pre></div>
-<pre><code># A tibble: 6 x 2
-  HealthGen count
-     &lt;fctr&gt; &lt;int&gt;
-1      Good   172
-2     Vgood   153
-3      Fair    71
-4 Excellent    51
-5        NA    46
-6      Poor     7</code></pre>
+<div id="boxplots-to-relate-an-outcome-to-a-categorical-predictor" class="section level2">
+<h2><span class="header-section-number">10.3</span> Boxplots to Relate an Outcome to a Categorical Predictor</h2>
+<p>Boxplots are much more useful when comparing samples of data. For instance, consider this comparison boxplot describing the triceps skinfold results across the four levels of BMI category.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">x=</span>bmi.cat, <span class="dt">y=</span>triceps.skinfold)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="431-notes_files/figure-html/nyfs1_triceps_gg-boxplot-a-fig-1.png" width="672" /></p>
+<p>As always, the boxplot shows the five-number summary (minimum, 25th percentile, median, 75th percentile and maximum) in addition to highlighting candidate outliers.</p>
+<div id="augmenting-the-boxplot-with-the-sample-mean" class="section level3">
+<h3><span class="header-section-number">10.3.1</span> Augmenting the Boxplot with the Sample Mean</h3>
+<p>Often, we want to augment such a plot, perhaps with the <strong>sample mean</strong> within each category, so as to highlight skew (in terms of whether the mean is meaningfully different from the median.)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">x=</span>bmi.cat, <span class="dt">y=</span>triceps.skinfold)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">stat_summary</span>(<span class="dt">fun.y=</span><span class="st">&quot;mean&quot;</span>, <span class="dt">geom=</span><span class="st">&quot;point&quot;</span>, <span class="dt">shape=</span><span class="dv">23</span>, <span class="dt">size=</span><span class="dv">3</span>, <span class="dt">fill=</span><span class="st">&quot;dodgerblue&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/nyfs1_triceps_gg-boxplot-b-fig-1.png" width="672" /></p>
 </div>
-<div id="describe-in-the-hmisc-package-1" class="section level2">
-<h2><span class="header-section-number">6.4</span> <code>describe</code> in the <code>Hmisc</code> package</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Hmisc<span class="op">::</span><span class="kw">describe</span>(nh_adults <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">                    </span><span class="kw">select</span>(Sex, Race, Education, PhysActive, 
-                           Smoke100, SleepTrouble, HealthGen))</code></pre></div>
-<pre><code>nh_adults %&gt;% select(Sex, Race, Education, PhysActive, Smoke100, SleepTrouble, HealthGen) 
-
- 7  Variables      500  Observations
----------------------------------------------------------------------------
-Sex 
-       n  missing distinct 
-     500        0        2 
-                        
-Value      female   male
-Frequency     253    247
-Proportion  0.506  0.494
----------------------------------------------------------------------------
-Race 
-       n  missing distinct 
-     500        0        6 
-                                                                
-Value         Asian    Black Hispanic  Mexican    White    Other
-Frequency        29       57       39       43      322       10
-Proportion    0.058    0.114    0.078    0.086    0.644    0.020
----------------------------------------------------------------------------
-Education 
-       n  missing distinct 
-     500        0        5 
-                                                                      
-Value           8th Grade 9 - 11th Grade    High School   Some College
-Frequency              24             57             81            153
-Proportion          0.048          0.114          0.162          0.306
-                         
-Value        College Grad
-Frequency             185
-Proportion          0.370
----------------------------------------------------------------------------
-PhysActive 
-       n  missing distinct 
-     500        0        2 
-                    
-Value        No  Yes
-Frequency   225  275
-Proportion 0.45 0.55
----------------------------------------------------------------------------
-Smoke100 
-       n  missing distinct 
-     500        0        2 
-                      
-Value         No   Yes
-Frequency    289   211
-Proportion 0.578 0.422
----------------------------------------------------------------------------
-SleepTrouble 
-       n  missing distinct 
-     500        0        2 
-                      
-Value         No   Yes
-Frequency    362   138
-Proportion 0.724 0.276
----------------------------------------------------------------------------
-HealthGen 
-       n  missing distinct 
-     454       46        5 
-                                                            
-Value      Excellent     Vgood      Good      Fair      Poor
-Frequency         51       153       172        71         7
-Proportion     0.112     0.337     0.379     0.156     0.015
----------------------------------------------------------------------------</code></pre>
+<div id="adding-notches-to-a-boxplot" class="section level3">
+<h3><span class="header-section-number">10.3.2</span> Adding Notches to a Boxplot</h3>
+<p><strong>Notches</strong> are used in boxplots to help visually assess whether the medians of the distributions across the various groups actually differ to a statistically detectable extent Think of them as confidence regions around the medians. If the notches do not overlap, as in this situation, this provides some evidence that the medians in the populations represented by these samples may be different.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">x=</span>bmi.cat, <span class="dt">y=</span>triceps.skinfold, <span class="dt">fill =</span> bmi.cat)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_boxplot</span>(<span class="dt">notch=</span><span class="ot">TRUE</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">scale_fill_viridis</span>(<span class="dt">discrete=</span><span class="ot">TRUE</span>, <span class="dt">option=</span><span class="st">&quot;plasma&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Triceps Skinfold by BMI category&quot;</span>, 
+         <span class="dt">x =</span> <span class="st">&quot;BMI Percentile category&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Triceps Skinfold (mm)&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/nyfs1_triceps_gg-boxplot-c-fig-1.png" width="672" /></p>
+<p>There is no overlap between the notches for each of the four categories, so we might reasonably conclude that the true median tricep skinfold values across the four categories are statistically significantly different.</p>
+<p>For an example where the notches overlap, consider the comparison of ages across sex.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">x=</span>sex, <span class="dt">y=</span>age.exam, <span class="dt">fill=</span>sex)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_boxplot</span>(<span class="dt">notch=</span><span class="ot">TRUE</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span><span class="st"> </span>## drops the legend
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Age by Sex&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Age (in years)&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/nyfs1_triceps_gg-boxplot-d-fig-1.png" width="672" /></p>
+<p>In this case, the overlap in the notches suggests that the median ages in the population of interest don’t necessarily differ by sex.</p>
 </div>
-<div id="cross-tabulations" class="section level2">
-<h2><span class="header-section-number">6.5</span> Cross-Tabulations</h2>
-<p>It is very common for us to want to describe the association of one categorical variable with another. For instance, is there a relationship between Education and SleepTrouble in these data?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(Education, SleepTrouble) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>() <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">addmargins</span>()</code></pre></div>
-<pre><code>                SleepTrouble
-Education         No Yes Sum
-  8th Grade       15   9  24
-  9 - 11th Grade  40  17  57
-  High School     67  14  81
-  Some College   107  46 153
-  College Grad   133  52 185
-  Sum            362 138 500</code></pre>
-<p>To get row percentages, we can use:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(Education, SleepTrouble) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>() <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">prop.table</span>(., <span class="dv">1</span>) <span class="op">%&gt;%</span>
-<span class="st">    &quot;*&quot;</span>(<span class="dv">100</span>) </code></pre></div>
-<pre><code>                SleepTrouble
-Education              No      Yes
-  8th Grade      62.50000 37.50000
-  9 - 11th Grade 70.17544 29.82456
-  High School    82.71605 17.28395
-  Some College   69.93464 30.06536
-  College Grad   71.89189 28.10811</code></pre>
-<p>For column percentages, we use 2 instead of 1 in the <code>prop.table</code> function. Here, we’ll also round off to two decimal places:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(Education, SleepTrouble) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>() <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">prop.table</span>(., <span class="dv">2</span>) <span class="op">%&gt;%</span>
-<span class="st">    &quot;*&quot;</span>(<span class="dv">100</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">round</span>(.,<span class="dv">2</span>) </code></pre></div>
-<pre><code>                SleepTrouble
-Education           No   Yes
-  8th Grade       4.14  6.52
-  9 - 11th Grade 11.05 12.32
-  High School    18.51 10.14
-  Some College   29.56 33.33
-  College Grad   36.74 37.68</code></pre>
-<p>Here’s another approach, to look at the cross-classification of Race and HealthGen:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">xtabs</span>(<span class="op">~</span><span class="st"> </span>Race <span class="op">+</span><span class="st"> </span>HealthGen, <span class="dt">data =</span> nh_adults)</code></pre></div>
-<pre><code>          HealthGen
-Race       Excellent Vgood Good Fair Poor
-  Asian            4     7    9    2    1
-  Black            7    11   16   11    2
-  Hispanic         1     9   18    8    0
-  Mexican          5     6   12   16    1
-  White           34   115  115   32    3
-  Other            0     5    2    2    0</code></pre>
-<div id="cross-classifying-three-categorical-variables" class="section level3">
-<h3><span class="header-section-number">6.5.1</span> Cross-Classifying Three Categorical Variables</h3>
-<p>Suppose we are interested in <code>Smoke100</code> and its relationship to <code>PhysActive</code> and <code>SleepTrouble</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">xtabs</span>(<span class="op">~</span><span class="st"> </span>Smoke100 <span class="op">+</span><span class="st"> </span>PhysActive <span class="op">+</span><span class="st"> </span>SleepTrouble, <span class="dt">data =</span> nh_adults)</code></pre></div>
-<pre><code>, , SleepTrouble = No
-
-        PhysActive
-Smoke100  No Yes
-     No   99 135
-     Yes  62  66
-
-, , SleepTrouble = Yes
-
-        PhysActive
-Smoke100  No Yes
-     No   26  29
-     Yes  38  45</code></pre>
-<p>We can also build a <strong>flat</strong> version of this table, as follows:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ftable</span>(Smoke100 <span class="op">~</span><span class="st"> </span>PhysActive <span class="op">+</span><span class="st"> </span>SleepTrouble, <span class="dt">data =</span> nh_adults)</code></pre></div>
-<pre><code>                        Smoke100  No Yes
-PhysActive SleepTrouble                 
-No         No                     99  62
-           Yes                    26  38
-Yes        No                    135  66
-           Yes                    29  45</code></pre>
-<p>And we can do this with <code>dplyr</code> functions, as well, for example…</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(Smoke100, PhysActive, SleepTrouble) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>() </code></pre></div>
-<pre><code>, , SleepTrouble = No
-
-        PhysActive
-Smoke100  No Yes
-     No   99 135
-     Yes  62  66
-
-, , SleepTrouble = Yes
-
-        PhysActive
-Smoke100  No Yes
-     No   26  29
-     Yes  38  45</code></pre>
+</div>
+<div id="using-multiple-histograms-to-make-comparisons" class="section level2">
+<h2><span class="header-section-number">10.4</span> Using Multiple Histograms to Make Comparisons</h2>
+<p>We can make an array of histograms to describe multiple groups of data, using <code>ggplot2</code> and the notion of <strong>faceting</strong> our plot.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">x=</span>triceps.skinfold, <span class="dt">fill =</span> sex)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">2</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>sex) <span class="op">+</span>
+<span class="st">    </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Triceps Skinfold by Sex&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/nyfs1_triceps_gg-histgroups-a-fig-1.png" width="672" /></p>
+</div>
+<div id="using-multiple-density-plots-to-make-comparisons" class="section level2">
+<h2><span class="header-section-number">10.5</span> Using Multiple Density Plots to Make Comparisons</h2>
+<p>Or, we can make a series of density plots to describe multiple groups of data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">x=</span>waist.circ, <span class="dt">fill =</span> bmi.cat)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_density</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>bmi.cat) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">scale_fill_viridis</span>(<span class="dt">discrete=</span>T) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Waist Circumference by BMI Category&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/nyfs1_triceps_gg-density-a-fig-1.png" width="672" /></p>
+<p>Or, we can plot all of the densities on top of each other with semi-transparent fills.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">x=</span>waist.circ, <span class="dt">fill=</span>bmi.cat)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">alpha=</span><span class="fl">0.3</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">scale_fill_viridis</span>(<span class="dt">discrete=</span>T) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Waist Circumference by BMI Category&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/nyfs1_triceps_gg-density-b-fig-1.png" width="672" /></p>
+<p>This really works better when we are comparing only two groups, like females to males.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">x=</span>waist.circ, <span class="dt">fill=</span>sex)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">alpha=</span><span class="fl">0.5</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Waist Circumference by Sex&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/nyfs1_triceps_gg-density-c-fig-1.png" width="672" /></p>
+</div>
+<div id="building-a-violin-plot" class="section level2">
+<h2><span class="header-section-number">10.6</span> Building a Violin Plot</h2>
+<p>There are a number of other plots which compare distributions of data sets. An interesting one is called a <strong>violin plot</strong>. A violin plot is a kernel density estimate, mirrored to form a symmetrical shape.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">x=</span>sex, <span class="dt">y=</span>triceps.skinfold, <span class="dt">fill =</span> sex)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_violin</span>(<span class="dt">trim=</span><span class="ot">FALSE</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Triceps Skinfold by Sex&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/gg-violin1-fig-1.png" width="672" /></p>
+<p>Traditionally, these plots are shown with overlaid boxplots and a white dot at the median, like this.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">x=</span>bmi.cat, <span class="dt">y=</span>waist.circ, <span class="dt">fill =</span> bmi.cat)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_violin</span>(<span class="dt">trim=</span><span class="ot">FALSE</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_boxplot</span>(<span class="dt">width=</span>.<span class="dv">1</span>, <span class="dt">outlier.colour=</span><span class="ot">NA</span>, 
+                 <span class="dt">color =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;white&quot;</span>,<span class="dv">2</span>), <span class="kw">rep</span>(<span class="st">&quot;black&quot;</span>,<span class="dv">2</span>))) <span class="op">+</span>
+<span class="st">    </span><span class="kw">stat_summary</span>(<span class="dt">fun.y=</span>median, <span class="dt">geom=</span><span class="st">&quot;point&quot;</span>, 
+                 <span class="dt">fill=</span><span class="st">&quot;white&quot;</span>, <span class="dt">shape=</span><span class="dv">21</span>, <span class="dt">size=</span><span class="dv">3</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">scale_fill_viridis</span>(<span class="dt">discrete=</span>T) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Waist Circumference by BMI Category in nyfs1&quot;</span>, 
+         <span class="dt">x =</span> <span class="st">&quot;BMI category&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Waist Circumference&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/gg-violin2-fig-1.png" width="672" /></p>
+</div>
+<div id="a-joy-plot" class="section level2">
+<h2><span class="header-section-number">10.7</span> A Joy Plot</h2>
+<p>Some people don’t like violin plots - for example, see <a href="https://simplystatistics.org/2017/07/13/the-joy-of-no-more-violin-plots/" class="uri">https://simplystatistics.org/2017/07/13/the-joy-of-no-more-violin-plots/</a>. An very new and attractive alternative to show the distribution of several groups simultaneously, especially when you have lots of subgroup categories, is called a <strong>joy plot</strong>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nyfs1 <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> waist.circ, <span class="dt">y =</span> bmi.cat, <span class="dt">height =</span> ..density..)) <span class="op">+</span>
+<span class="st">    </span>ggjoy<span class="op">::</span><span class="kw">geom_joy</span>(<span class="dt">scale =</span> <span class="fl">0.85</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Joy Plot of Waist Circumference by BMI category (nyfs1)&quot;</span>,
+         <span class="dt">x =</span> <span class="st">&quot;Waist Circumference&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;BMI Category&quot;</span>)</code></pre></div>
+<pre><code>Picking joint bandwidth of 3.38</code></pre>
+<p><img src="431-notes_files/figure-html/nyfs1_joyplot_waistbybmicat-fig-1.png" width="672" /></p>
+<p>And here’s a joy plot for the triceps skinfold. We’ll start by sorting the subgroups by the median value of our outcome (triceps skinfold) in this case, though it turns out not to matter. We’ll also add some color.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nyfs1 <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">bmi.cat =</span> <span class="kw">reorder</span>(bmi.cat, triceps.skinfold, median)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> triceps.skinfold, <span class="dt">y =</span> bmi.cat, <span class="dt">fill =</span> bmi.cat, <span class="dt">height =</span> ..density..)) <span class="op">+</span>
+<span class="st">    </span>ggjoy<span class="op">::</span><span class="kw">geom_joy</span>(<span class="dt">scale =</span> <span class="fl">0.85</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">scale_fill_viridis</span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Joy Plot of Triceps Skinfold by BMI category (nyfs1)&quot;</span>,
+         <span class="dt">x =</span> <span class="st">&quot;Triceps Skinfold&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;BMI Category&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme_bw</span>()</code></pre></div>
+<pre><code>Picking joint bandwidth of 1.33</code></pre>
+<p><img src="431-notes_files/figure-html/nyfs1_joyplot_tricepsbybmicat-fig-1.png" width="672" /></p>
+<p>For one last example, we’ll look at age by BMI category, so that sorting the BMI subgroups by the median matters, and we’ll try an alternate color scheme, and a theme specially designed for the joy plot.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nyfs1 <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">bmi.cat =</span> <span class="kw">reorder</span>(bmi.cat, age.exam, median)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> triceps.skinfold, <span class="dt">y =</span> bmi.cat, <span class="dt">fill =</span> bmi.cat, <span class="dt">height =</span> ..density..)) <span class="op">+</span>
+<span class="st">    </span>ggjoy<span class="op">::</span><span class="kw">geom_joy</span>(<span class="dt">scale =</span> <span class="fl">0.85</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="dv">2</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Joy Plot of Age at Exam by BMI category (nyfs1)&quot;</span>,
+         <span class="dt">x =</span> <span class="st">&quot;Age at Exam&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;BMI Category&quot;</span>) <span class="op">+</span>
+<span class="st">    </span>ggjoy<span class="op">::</span><span class="kw">theme_joy</span>()</code></pre></div>
+<pre><code>Picking joint bandwidth of 1.33</code></pre>
+<p><img src="431-notes_files/figure-html/nyfs1_joyplot_agebybmicat-fig-1.png" width="672" /></p>
 
 </div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-R4DS">
+<p>Grolemund, Garrett, and Hadley Wickham. 2017. <em>R for Data Science</em>. O’Reilly. <a href="http://r4ds.had.co.nz/" class="uri">http://r4ds.had.co.nz/</a>.</p>
 </div>
 </div>
             </section>
@@ -647,8 +533,8 @@ Smoke100  No Yes
           </div>
         </div>
       </div>
-<a href="summarizing-quantities.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="the-national-youth-fitness-survey-nyfs1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="using-transformations-to-normalize-distributions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="straight-line-models-and-correlation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

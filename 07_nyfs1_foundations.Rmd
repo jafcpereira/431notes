@@ -332,7 +332,7 @@ Sometimes, it's helpful to picture the five-number summary of the data in such a
 
 ```{r nyfs1_boxplot1-fig}
 boxplot(nyfs1$bmi, col="yellow", horizontal=T, xlab="Body-Mass Index", 
-main="BMI for 1416 kids in the NYFS")
+        main="BMI for 1416 kids in the NYFS")
 ```
 
 The boxplot is another John Tukey invention. 

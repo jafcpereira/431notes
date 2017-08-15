@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="summarizing-quantities.html">
-<link rel="next" href="the-national-youth-fitness-survey-nyfs1.html">
+<link rel="prev" href="assessing-normality.html">
+<link rel="next" href="summarizing-data-within-subgroups.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -336,310 +336,225 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="summarizing-categorical-variables" class="section level1">
-<h1><span class="header-section-number">Chapter 6</span> Summarizing Categorical Variables</h1>
-<p>Summarizing categorical variables numerically is mostly about building tables, and calculating percentages or proportions. We’ll save our discussion of modeling categorical data for later. Recall that in the <code>nh_adults</code> data set we built previously, we had the following categorical variables. The number of levels indicates the number of possible categories for each categorical variable.</p>
+<div id="using-transformations-to-normalize-distributions" class="section level1">
+<h1><span class="header-section-number">Chapter 9</span> Using Transformations to “Normalize” Distributions</h1>
+<ul>
+<li>When we are confronted with a variable that is not Normally distributed but that we wish was Normally distributed, it is sometimes useful to consider whether working with a transformation of the data will yield a more helpful result.</li>
+<li>Many statistical methods, including t tests and analyses of variance, assume Normal distributions.</li>
+<li>We’ll discuss using R to assess a range of what are called Box-Cox power transformations, via plots, mainly.</li>
+</ul>
+<div id="the-ladder-of-power-transformations" class="section level2">
+<h2><span class="header-section-number">9.1</span> The Ladder of Power Transformations</h2>
+<p>The key notion in re-expression of a single variable to obtain a distribution better approximated by the Normal or re-expression of an outcome in a simple regression model is that of a <strong>ladder of power transformations</strong>, which applies to any unimodal data.</p>
 <table>
 <thead>
 <tr class="header">
-<th align="right">Variable</th>
-<th>Description</th>
-<th>Levels</th>
-<th>Type</th>
+<th align="center">Power</th>
+<th align="center">Transformation</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">Sex</td>
-<td>sex of subject</td>
-<td>2</td>
-<td>binary</td>
+<td align="center">3</td>
+<td align="center">x<sup>3</sup></td>
 </tr>
 <tr class="even">
-<td align="right">Race</td>
-<td>subject’s race</td>
-<td>6</td>
-<td>nominal</td>
+<td align="center">2</td>
+<td align="center">x<sup>2</sup></td>
 </tr>
 <tr class="odd">
-<td align="right">Education</td>
-<td>subject’s educational level</td>
-<td>5</td>
-<td>ordinal</td>
+<td align="center">1</td>
+<td align="center">x (unchanged)</td>
 </tr>
 <tr class="even">
-<td align="right">PhysActive</td>
-<td>Participates in sports?</td>
-<td>2</td>
-<td>binary</td>
+<td align="center">0.5</td>
+<td align="center">x<sup>0.5</sup> = <span class="math inline">\(\sqrt{x}\)</span></td>
 </tr>
 <tr class="odd">
-<td align="right">Smoke100</td>
-<td>Smoked 100+ cigarettes?</td>
-<td>2</td>
-<td>binary</td>
+<td align="center">0</td>
+<td align="center">ln x</td>
 </tr>
 <tr class="even">
-<td align="right">SleepTrouble</td>
-<td>Trouble sleeping?</td>
-<td>2</td>
-<td>binary</td>
+<td align="center">-0.5</td>
+<td align="center">x<sup>-0.5</sup> = 1/<span class="math inline">\(\sqrt{x}\)</span></td>
 </tr>
 <tr class="odd">
-<td align="right">HealthGen</td>
-<td>Self-report health</td>
-<td>5</td>
-<td>ordinal</td>
+<td align="center">-1</td>
+<td align="center">x<sup>-1</sup> = 1/x</td>
+</tr>
+<tr class="even">
+<td align="center">-2</td>
+<td align="center">x<sup>-2</sup> = 1/x<sup>2</sup></td>
 </tr>
 </tbody>
 </table>
-<div id="the-summary-function-for-categorical-data" class="section level2">
-<h2><span class="header-section-number">6.1</span> The <code>summary</code> function for Categorical data</h2>
-<p>When R recognizes a variable as categorical, it stores it as a <em>factor</em>. Such variables get special treatment from the <code>summary</code> function, in particular a table of available values (so long as there aren’t too many.)</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">select</span>(Sex, Race, Education, PhysActive, Smoke100, SleepTrouble, HealthGen) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">summary</span>()</code></pre></div>
-<pre><code>     Sex            Race              Education   PhysActive Smoke100 
- female:253   Asian   : 29   8th Grade     : 24   No :225    No :289  
- male  :247   Black   : 57   9 - 11th Grade: 57   Yes:275    Yes:211  
-              Hispanic: 39   High School   : 81                       
-              Mexican : 43   Some College  :153                       
-              White   :322   College Grad  :185                       
-              Other   : 10                                            
- SleepTrouble     HealthGen  
- No :362      Excellent: 51  
- Yes:138      Vgood    :153  
-              Good     :172  
-              Fair     : 71  
-              Poor     :  7  
-              NA&#39;s     : 46  </code></pre>
 </div>
-<div id="tables-to-describe-one-categorical-variable" class="section level2">
-<h2><span class="header-section-number">6.2</span> Tables to describe One Categorical Variable</h2>
-<p>Suppose we build a table to describe the <code>HealthGen</code> distribution.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(HealthGen) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>(., <span class="dt">useNA =</span> <span class="st">&quot;ifany&quot;</span>)</code></pre></div>
-<pre><code>.
-Excellent     Vgood      Good      Fair      Poor      &lt;NA&gt; 
-       51       153       172        71         7        46 </code></pre>
-<p>What if we want to add a total count?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(HealthGen) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>(., <span class="dt">useNA =</span> <span class="st">&quot;ifany&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">addmargins</span>()</code></pre></div>
-<pre><code>.
-Excellent     Vgood      Good      Fair      Poor      &lt;NA&gt;       Sum 
-       51       153       172        71         7        46       500 </code></pre>
-<p>What if we want to leave out the missing responses?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(HealthGen) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>(., <span class="dt">useNA =</span> <span class="st">&quot;no&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">addmargins</span>()</code></pre></div>
-<pre><code>.
-Excellent     Vgood      Good      Fair      Poor       Sum 
-       51       153       172        71         7       454 </code></pre>
-<p>Let’s put the missing values back in, but now calculate proportions instead. Since the total will just be 1.0, we’ll leave that out.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(HealthGen) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>(., <span class="dt">useNA =</span> <span class="st">&quot;ifany&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">prop.table</span>()</code></pre></div>
-<pre><code>.
-Excellent     Vgood      Good      Fair      Poor      &lt;NA&gt; 
-    0.102     0.306     0.344     0.142     0.014     0.092 </code></pre>
-<p>Now, we’ll calculate percentages by multiplying the proportions by 100.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(HealthGen) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>(., <span class="dt">useNA =</span> <span class="st">&quot;ifany&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">prop.table</span>() <span class="op">%&gt;%</span>
-<span class="st">    &quot;*&quot;</span>(<span class="dv">100</span>) </code></pre></div>
-<pre><code>.
-Excellent     Vgood      Good      Fair      Poor      &lt;NA&gt; 
-     10.2      30.6      34.4      14.2       1.4       9.2 </code></pre>
+<div id="using-the-ladder" class="section level2">
+<h2><span class="header-section-number">9.2</span> Using the Ladder</h2>
+<p>As we move further away from the <em>identity</em> function (power = 1) we change the shape more and more in the same general direction.</p>
+<ul>
+<li>For instance, if we try a logarithm, and this seems like too much of a change, we might try a square root instead.</li>
+<li>Note that this ladder (which like many other things is due to John Tukey) uses the logarithm for the “power zero” transformation rather than the constant, which is what x<sup>0</sup> actually is.</li>
+<li>If the variable x can take on negative values, we might take a different approach. If x is a count of something that could be zero, we often simply add 1 to x before transformation.</li>
+</ul>
 </div>
-<div id="the-mode-of-a-categorical-variable" class="section level2">
-<h2><span class="header-section-number">6.3</span> The Mode of a Categorical Variable</h2>
-<p>A common measure applied to a categorical variable is to identify the mode, the most frequently observed value. To find the mode for variables with lots of categories (so that the <code>summary</code> may not be sufficient), we usually tabulate the data, and then sort by the counts of the numbers of observations, as we did with discrete quantitative variables.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(HealthGen) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">count =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">arrange</span>(<span class="kw">desc</span>(count)) </code></pre></div>
-<pre><code># A tibble: 6 x 2
-  HealthGen count
-     &lt;fctr&gt; &lt;int&gt;
-1      Good   172
-2     Vgood   153
-3      Fair    71
-4 Excellent    51
-5        NA    46
-6      Poor     7</code></pre>
+<div id="can-we-transform-waist-circumferences" class="section level2">
+<h2><span class="header-section-number">9.3</span> Can we transform Waist Circumferences?</h2>
+<p>Here are a pair of plots describing the waist circumference data in the NYFS data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">x =</span> waist.circ)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">y =</span> ..density..), 
+                   <span class="dt">binwidth=</span><span class="dv">2</span>, <span class="dt">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;yellow&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(nyfs1<span class="op">$</span>waist.circ), 
+                                           <span class="dt">sd =</span> <span class="kw">sd</span>(nyfs1<span class="op">$</span>waist.circ))) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Waist Circumference&quot;</span>, <span class="dt">title=</span><span class="st">&quot;Histogram + Normal Model&quot;</span>)
+
+p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">sample =</span> waist.circ)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">stat=</span><span class="st">&quot;qq&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;purple&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;Ordered Waist Circumferences&quot;</span>, <span class="dt">title=</span><span class="st">&quot;Normal Q-Q plot&quot;</span>)
+
+<span class="kw">library</span>(grid)
+<span class="co"># this approach to top label lets us adjust </span>
+<span class="co"># the size and font (here bold) used in the main title</span>
+gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(p1, p2, <span class="dt">ncol=</span><span class="dv">2</span>, 
+             <span class="dt">top =</span> <span class="kw">textGrob</span>(<span class="st">&quot;Waist Circumference in the nyfs1 data&quot;</span>, 
+                            <span class="dt">gp=</span><span class="kw">gpar</span>(<span class="dt">fontsize=</span><span class="dv">15</span>,<span class="dt">font=</span><span class="dv">2</span>)))</code></pre></div>
+<p><img src="431-notes_files/figure-html/nyfs1waistnormalchecks-fig-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## clean up
+<span class="kw">rm</span>(p1, p2)</code></pre></div>
+<p>All of the values are positive, naturally, and there is some sign of skew. If we want to use the tools of the Normal distribution to describe these data, we might try taking a step “up” our ladder from power 1 to power 2.</p>
+<div id="the-square" class="section level3">
+<h3><span class="header-section-number">9.3.1</span> The Square</h3>
+<p>Does squaring the Waist Circumference data help to “Normalize” the histogram?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">x =</span> waist.circ<span class="op">^</span><span class="dv">2</span>)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">y =</span> ..density..), <span class="dt">bins =</span> <span class="dv">30</span>, <span class="dt">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="dt">col=</span><span class="st">&quot;white&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, <span class="dt">lwd =</span> <span class="fl">1.5</span>, <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>,
+                  <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(nyfs1<span class="op">$</span>waist.circ<span class="op">^</span><span class="dv">2</span>), <span class="dt">sd =</span> <span class="kw">sd</span>(nyfs1<span class="op">$</span>waist.circ<span class="op">^</span><span class="dv">2</span>))) <span class="op">+</span>
+<span class="st">    </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="dv">8000</span>, <span class="dt">y =</span> <span class="fl">0.0002</span>, <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>,
+             <span class="dt">label =</span> <span class="kw">paste</span>(<span class="st">&quot;Mean = &quot;</span>, <span class="kw">round</span>(<span class="kw">mean</span>(nyfs1<span class="op">$</span>waist.circ<span class="op">^</span><span class="dv">2</span>),<span class="dv">2</span>),
+                           <span class="st">&quot;, SD = &quot;</span>, <span class="kw">round</span>(<span class="kw">sd</span>(nyfs1<span class="op">$</span>waist.circ<span class="op">^</span><span class="dv">2</span>),<span class="dv">2</span>))) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;NYFS1 Waist Circumference, squared, with fitted Normal density&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/transnyfs_waist_square-fig-1.png" width="672" /></p>
+<p>Looks like that was the wrong direction. Shall we try moving down the ladder instead?</p>
 </div>
-<div id="describe-in-the-hmisc-package-1" class="section level2">
-<h2><span class="header-section-number">6.4</span> <code>describe</code> in the <code>Hmisc</code> package</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Hmisc<span class="op">::</span><span class="kw">describe</span>(nh_adults <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">                    </span><span class="kw">select</span>(Sex, Race, Education, PhysActive, 
-                           Smoke100, SleepTrouble, HealthGen))</code></pre></div>
-<pre><code>nh_adults %&gt;% select(Sex, Race, Education, PhysActive, Smoke100, SleepTrouble, HealthGen) 
-
- 7  Variables      500  Observations
----------------------------------------------------------------------------
-Sex 
-       n  missing distinct 
-     500        0        2 
-                        
-Value      female   male
-Frequency     253    247
-Proportion  0.506  0.494
----------------------------------------------------------------------------
-Race 
-       n  missing distinct 
-     500        0        6 
-                                                                
-Value         Asian    Black Hispanic  Mexican    White    Other
-Frequency        29       57       39       43      322       10
-Proportion    0.058    0.114    0.078    0.086    0.644    0.020
----------------------------------------------------------------------------
-Education 
-       n  missing distinct 
-     500        0        5 
-                                                                      
-Value           8th Grade 9 - 11th Grade    High School   Some College
-Frequency              24             57             81            153
-Proportion          0.048          0.114          0.162          0.306
-                         
-Value        College Grad
-Frequency             185
-Proportion          0.370
----------------------------------------------------------------------------
-PhysActive 
-       n  missing distinct 
-     500        0        2 
-                    
-Value        No  Yes
-Frequency   225  275
-Proportion 0.45 0.55
----------------------------------------------------------------------------
-Smoke100 
-       n  missing distinct 
-     500        0        2 
-                      
-Value         No   Yes
-Frequency    289   211
-Proportion 0.578 0.422
----------------------------------------------------------------------------
-SleepTrouble 
-       n  missing distinct 
-     500        0        2 
-                      
-Value         No   Yes
-Frequency    362   138
-Proportion 0.724 0.276
----------------------------------------------------------------------------
-HealthGen 
-       n  missing distinct 
-     454       46        5 
-                                                            
-Value      Excellent     Vgood      Good      Fair      Poor
-Frequency         51       153       172        71         7
-Proportion     0.112     0.337     0.379     0.156     0.015
----------------------------------------------------------------------------</code></pre>
+<div id="the-square-root" class="section level3">
+<h3><span class="header-section-number">9.3.2</span> The Square Root</h3>
+<p>Would a square root applied to the waist circumference data help alleviate that right skew?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">sqrt</span>(waist.circ))) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">y =</span> ..density..), <span class="dt">bins =</span> <span class="dv">30</span>, 
+                   <span class="dt">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="dt">col=</span><span class="st">&quot;white&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, <span class="dt">lwd =</span> <span class="fl">1.5</span>, <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>,
+                  <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(<span class="kw">sqrt</span>(nyfs1<span class="op">$</span>waist.circ)), 
+                              <span class="dt">sd =</span> <span class="kw">sd</span>(<span class="kw">sqrt</span>(nyfs1<span class="op">$</span>waist.circ)))) <span class="op">+</span>
+<span class="st">    </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="fl">9.5</span>, <span class="dt">y =</span> <span class="fl">0.5</span>, <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>,
+             <span class="dt">label =</span> <span class="kw">paste</span>(<span class="st">&quot;Mean = &quot;</span>, <span class="kw">round</span>(<span class="kw">mean</span>(<span class="kw">sqrt</span>(nyfs1<span class="op">$</span>waist.circ)),<span class="dv">2</span>),
+                           <span class="st">&quot;, SD = &quot;</span>, <span class="kw">round</span>(<span class="kw">sd</span>(<span class="kw">sqrt</span>(nyfs1<span class="op">$</span>waist.circ)),<span class="dv">2</span>))) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Square Root of NYFS1 Waist Circumference, with fitted Normal density&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/transnyfs_waist_squareroot-fig-1.png" width="672" /></p>
+<p>That looks a lot closer to a Normal distribution. Consider the Normal Q-Q plot below.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">sample =</span> <span class="kw">sqrt</span>(waist.circ))) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">stat=</span><span class="st">&quot;qq&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;purple&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;Ordered Square root of Waist Circumference&quot;</span>, 
+         <span class="dt">title=</span><span class="st">&quot;Normal Q-Q plot of Square Root of Waist Circumference&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/transnyfs_waist_squarerootQQ-fig-1.png" width="672" /></p>
 </div>
-<div id="cross-tabulations" class="section level2">
-<h2><span class="header-section-number">6.5</span> Cross-Tabulations</h2>
-<p>It is very common for us to want to describe the association of one categorical variable with another. For instance, is there a relationship between Education and SleepTrouble in these data?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(Education, SleepTrouble) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>() <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">addmargins</span>()</code></pre></div>
-<pre><code>                SleepTrouble
-Education         No Yes Sum
-  8th Grade       15   9  24
-  9 - 11th Grade  40  17  57
-  High School     67  14  81
-  Some College   107  46 153
-  College Grad   133  52 185
-  Sum            362 138 500</code></pre>
-<p>To get row percentages, we can use:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(Education, SleepTrouble) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>() <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">prop.table</span>(., <span class="dv">1</span>) <span class="op">%&gt;%</span>
-<span class="st">    &quot;*&quot;</span>(<span class="dv">100</span>) </code></pre></div>
-<pre><code>                SleepTrouble
-Education              No      Yes
-  8th Grade      62.50000 37.50000
-  9 - 11th Grade 70.17544 29.82456
-  High School    82.71605 17.28395
-  Some College   69.93464 30.06536
-  College Grad   71.89189 28.10811</code></pre>
-<p>For column percentages, we use 2 instead of 1 in the <code>prop.table</code> function. Here, we’ll also round off to two decimal places:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(Education, SleepTrouble) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>() <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">prop.table</span>(., <span class="dv">2</span>) <span class="op">%&gt;%</span>
-<span class="st">    &quot;*&quot;</span>(<span class="dv">100</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">round</span>(.,<span class="dv">2</span>) </code></pre></div>
-<pre><code>                SleepTrouble
-Education           No   Yes
-  8th Grade       4.14  6.52
-  9 - 11th Grade 11.05 12.32
-  High School    18.51 10.14
-  Some College   29.56 33.33
-  College Grad   36.74 37.68</code></pre>
-<p>Here’s another approach, to look at the cross-classification of Race and HealthGen:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">xtabs</span>(<span class="op">~</span><span class="st"> </span>Race <span class="op">+</span><span class="st"> </span>HealthGen, <span class="dt">data =</span> nh_adults)</code></pre></div>
-<pre><code>          HealthGen
-Race       Excellent Vgood Good Fair Poor
-  Asian            4     7    9    2    1
-  Black            7    11   16   11    2
-  Hispanic         1     9   18    8    0
-  Mexican          5     6   12   16    1
-  White           34   115  115   32    3
-  Other            0     5    2    2    0</code></pre>
-<div id="cross-classifying-three-categorical-variables" class="section level3">
-<h3><span class="header-section-number">6.5.1</span> Cross-Classifying Three Categorical Variables</h3>
-<p>Suppose we are interested in <code>Smoke100</code> and its relationship to <code>PhysActive</code> and <code>SleepTrouble</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">xtabs</span>(<span class="op">~</span><span class="st"> </span>Smoke100 <span class="op">+</span><span class="st"> </span>PhysActive <span class="op">+</span><span class="st"> </span>SleepTrouble, <span class="dt">data =</span> nh_adults)</code></pre></div>
-<pre><code>, , SleepTrouble = No
+<div id="the-logarithm" class="section level3">
+<h3><span class="header-section-number">9.3.3</span> The Logarithm</h3>
+<p>We might also try a logarithm of the waist circumference data. We can use either the natural logarithm (log, in R) or the base-10 logarithm (log10, in R) - either will have the same impact on skew.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log10</span>(waist.circ))) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">y =</span> ..density..), 
+                   <span class="dt">bins=</span><span class="dv">20</span>, <span class="dt">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;yellow&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(<span class="kw">log10</span>(nyfs1<span class="op">$</span>waist.circ)), 
+                                           <span class="dt">sd =</span> <span class="kw">sd</span>(<span class="kw">log10</span>(nyfs1<span class="op">$</span>waist.circ)))) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;log_10 of Waist Circumference&quot;</span>, <span class="dt">title=</span><span class="st">&quot;Histogram with Normal Density&quot;</span>)
 
-        PhysActive
-Smoke100  No Yes
-     No   99 135
-     Yes  62  66
+p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">sample =</span> <span class="kw">log10</span>(waist.circ))) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">stat=</span><span class="st">&quot;qq&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;purple&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;Ordered log_10(Waist Circumference)&quot;</span>, <span class="dt">title=</span><span class="st">&quot;Normal Q-Q Plot&quot;</span>)
 
-, , SleepTrouble = Yes
+gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(p1, p2, <span class="dt">ncol=</span><span class="dv">2</span>, 
+             <span class="dt">top =</span> <span class="kw">textGrob</span>(<span class="st">&quot;log10(Waist Circumference): nyfs1 data&quot;</span>, 
+                            <span class="dt">gp=</span><span class="kw">gpar</span>(<span class="dt">fontsize=</span><span class="dv">15</span>,<span class="dt">font=</span><span class="dv">2</span>)))</code></pre></div>
+<p><img src="431-notes_files/figure-html/nyfs1log10waistcircumferencenormalchecks-fig-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## clean up
+<span class="kw">rm</span>(p1, p2)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(waist.circ))) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">y =</span> ..density..), 
+                   <span class="dt">bins=</span><span class="dv">20</span>, <span class="dt">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;yellow&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, 
+                  <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(<span class="kw">log</span>(nyfs1<span class="op">$</span>waist.circ)), 
+                              <span class="dt">sd =</span> <span class="kw">sd</span>(<span class="kw">log</span>(nyfs1<span class="op">$</span>waist.circ)))) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;log of Waist Circumference&quot;</span>, <span class="dt">title=</span><span class="st">&quot;Histogram with Normal Density&quot;</span>)
 
-        PhysActive
-Smoke100  No Yes
-     No   26  29
-     Yes  38  45</code></pre>
-<p>We can also build a <strong>flat</strong> version of this table, as follows:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ftable</span>(Smoke100 <span class="op">~</span><span class="st"> </span>PhysActive <span class="op">+</span><span class="st"> </span>SleepTrouble, <span class="dt">data =</span> nh_adults)</code></pre></div>
-<pre><code>                        Smoke100  No Yes
-PhysActive SleepTrouble                 
-No         No                     99  62
-           Yes                    26  38
-Yes        No                    135  66
-           Yes                    29  45</code></pre>
-<p>And we can do this with <code>dplyr</code> functions, as well, for example…</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(Smoke100, PhysActive, SleepTrouble) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>() </code></pre></div>
-<pre><code>, , SleepTrouble = No
+p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">sample =</span> <span class="kw">log</span>(waist.circ))) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">stat=</span><span class="st">&quot;qq&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;purple&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;Ordered log(Waist Circumference)&quot;</span>, <span class="dt">title=</span><span class="st">&quot;Normal Q-Q Plot&quot;</span>)
 
-        PhysActive
-Smoke100  No Yes
-     No   99 135
-     Yes  62  66
-
-, , SleepTrouble = Yes
-
-        PhysActive
-Smoke100  No Yes
-     No   26  29
-     Yes  38  45</code></pre>
-
+gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(p1, p2, <span class="dt">ncol=</span><span class="dv">2</span>, 
+             <span class="dt">top =</span> <span class="kw">textGrob</span>(<span class="st">&quot;Natural Log of Waist Circumference: nyfs1 data&quot;</span>, 
+                            <span class="dt">gp=</span><span class="kw">gpar</span>(<span class="dt">fontsize=</span><span class="dv">15</span>,<span class="dt">font=</span><span class="dv">2</span>)))</code></pre></div>
+<p><img src="431-notes_files/figure-html/nyfs1logwaistcircumferencenormalchecks-fig-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## clean up
+<span class="kw">rm</span>(p1, p2)</code></pre></div>
 </div>
+</div>
+<div id="a-simulated-data-set-with-left-skew" class="section level2">
+<h2><span class="header-section-number">9.4</span> A Simulated Data Set with Left Skew</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">431</span>); data2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">sample2 =</span> <span class="dv">100</span><span class="op">*</span><span class="kw">rbeta</span>(<span class="dt">n =</span> <span class="dv">125</span>, <span class="dt">shape1 =</span> <span class="dv">5</span>, <span class="dt">shape2 =</span> <span class="dv">2</span>))</code></pre></div>
+<p>If we’d like to transform these data so as to better approximate a Normal distribution, where should we start? What transformation do you suggest?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(data2, <span class="kw">aes</span>(<span class="dt">x =</span> sample2)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">y =</span> ..density..), 
+                   <span class="dt">bins =</span> <span class="dv">20</span>, <span class="dt">fill =</span> <span class="st">&quot;dodgerblue&quot;</span>, <span class="dt">col=</span><span class="st">&quot;white&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dnorm, <span class="dt">lwd =</span> <span class="fl">1.5</span>, <span class="dt">col =</span> <span class="st">&quot;purple&quot;</span>,
+                  <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(data2<span class="op">$</span>sample2), 
+                              <span class="dt">sd =</span> <span class="kw">sd</span>(data2<span class="op">$</span>sample2))) <span class="op">+</span>
+<span class="st">    </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="dv">40</span>, <span class="dt">y =</span> <span class="fl">0.02</span>, <span class="dt">col =</span> <span class="st">&quot;purple&quot;</span>,
+             <span class="dt">label =</span> <span class="kw">paste</span>(<span class="st">&quot;Mean = &quot;</span>, <span class="kw">round</span>(<span class="kw">mean</span>(data2<span class="op">$</span>sample2),<span class="dv">2</span>),
+                           <span class="st">&quot;, SD = &quot;</span>, <span class="kw">round</span>(<span class="kw">sd</span>(data2<span class="op">$</span>sample2),<span class="dv">2</span>))) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Sample 2, untransformed, with fitted Normal density&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/transex2hist1-fig-1.png" width="672" /></p>
+</div>
+<div id="transformation-example-2-ladder-of-potential-transformations-in-frequency-polygons" class="section level2">
+<h2><span class="header-section-number">9.5</span> Transformation Example 2: Ladder of Potential Transformations in Frequency Polygons</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(data2, <span class="kw">aes</span>(<span class="dt">x =</span> sample2<span class="op">^</span><span class="dv">3</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_freqpoly</span>(<span class="dt">col =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">bins =</span> <span class="dv">20</span>)
+p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(data2, <span class="kw">aes</span>(<span class="dt">x =</span> sample2<span class="op">^</span><span class="dv">2</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_freqpoly</span>(<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">bins =</span> <span class="dv">20</span>)
+p3 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(data2, <span class="kw">aes</span>(<span class="dt">x =</span> sample2)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_freqpoly</span>(<span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">bins =</span> <span class="dv">20</span>)
+p4 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(data2, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">sqrt</span>(sample2))) <span class="op">+</span><span class="st"> </span><span class="kw">geom_freqpoly</span>(<span class="dt">col =</span> <span class="st">&quot;purple&quot;</span>, <span class="dt">bins =</span> <span class="dv">20</span>)
+p5 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(data2, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(sample2))) <span class="op">+</span><span class="st"> </span><span class="kw">geom_freqpoly</span>(<span class="dt">col =</span> <span class="st">&quot;navy&quot;</span>, <span class="dt">bins =</span> <span class="dv">20</span>)
+p6 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(data2, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">/</span><span class="kw">sqrt</span>(sample2))) <span class="op">+</span><span class="st"> </span><span class="kw">geom_freqpoly</span>(<span class="dt">col =</span> <span class="st">&quot;chocolate&quot;</span>, <span class="dt">bins =</span> <span class="dv">20</span>)
+p7 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(data2, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">/</span>sample2)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_freqpoly</span>(<span class="dt">col =</span> <span class="st">&quot;tomato&quot;</span>, <span class="dt">bins =</span> <span class="dv">20</span>)
+p8 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(data2, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">/</span>(sample2<span class="op">^</span><span class="dv">2</span>))) <span class="op">+</span><span class="st"> </span><span class="kw">geom_freqpoly</span>(<span class="dt">col =</span> <span class="st">&quot;darkcyan&quot;</span>, <span class="dt">bins =</span> <span class="dv">20</span>)
+p9 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(data2, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">/</span>(sample2<span class="op">^</span><span class="dv">3</span>))) <span class="op">+</span><span class="st"> </span><span class="kw">geom_freqpoly</span>(<span class="dt">col =</span> <span class="st">&quot;magenta&quot;</span>, <span class="dt">bins =</span> <span class="dv">20</span>)
+
+gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(p1, p2, p3, p4, p5, p6, p7, p8, p9, <span class="dt">nrow=</span><span class="dv">3</span>, 
+<span class="dt">top=</span><span class="st">&quot;Ladder of Power Transformations&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/transex2ladderofpolygons-fig-1.png" width="672" /></p>
+</div>
+<div id="transformation-example-2-ladder-with-normal-q-q-plots" class="section level2">
+<h2><span class="header-section-number">9.6</span> Transformation Example 2 Ladder with Normal Q-Q Plots</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(data2, <span class="kw">aes</span>(<span class="dt">sample =</span> sample2<span class="op">^</span><span class="dv">3</span>)) <span class="op">+</span><span class="st"> </span>
+<span class="kw">geom_point</span>(<span class="dt">stat=</span><span class="st">&quot;qq&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;x^3&quot;</span>)
+p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(data2, <span class="kw">aes</span>(<span class="dt">sample =</span> sample2<span class="op">^</span><span class="dv">2</span>)) <span class="op">+</span><span class="st"> </span>
+<span class="kw">geom_point</span>(<span class="dt">stat=</span><span class="st">&quot;qq&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;x^2&quot;</span>)
+p3 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(data2, <span class="kw">aes</span>(<span class="dt">sample =</span> sample2)) <span class="op">+</span><span class="st"> </span>
+<span class="kw">geom_point</span>(<span class="dt">stat=</span><span class="st">&quot;qq&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;x&quot;</span>)
+p4 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(data2, <span class="kw">aes</span>(<span class="dt">sample =</span> <span class="kw">sqrt</span>(sample2))) <span class="op">+</span><span class="st"> </span>
+<span class="kw">geom_point</span>(<span class="dt">stat=</span><span class="st">&quot;qq&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;purple&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;sqrt(x)&quot;</span>)
+p5 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(data2, <span class="kw">aes</span>(<span class="dt">sample =</span> <span class="kw">log</span>(sample2))) <span class="op">+</span><span class="st"> </span>
+<span class="kw">geom_point</span>(<span class="dt">stat=</span><span class="st">&quot;qq&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;navy&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;log x&quot;</span>)
+p6 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(data2, <span class="kw">aes</span>(<span class="dt">sample =</span> <span class="dv">1</span><span class="op">/</span><span class="kw">sqrt</span>(sample2))) <span class="op">+</span><span class="st"> </span>
+<span class="kw">geom_point</span>(<span class="dt">stat=</span><span class="st">&quot;qq&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;chocolate&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;1/sqrt(x)&quot;</span>)
+p7 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(data2, <span class="kw">aes</span>(<span class="dt">sample =</span> <span class="dv">1</span><span class="op">/</span>sample2)) <span class="op">+</span><span class="st"> </span>
+<span class="kw">geom_point</span>(<span class="dt">stat=</span><span class="st">&quot;qq&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;tomato&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;1/x&quot;</span>)
+p8 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(data2, <span class="kw">aes</span>(<span class="dt">sample =</span> <span class="dv">1</span><span class="op">/</span>(sample2<span class="op">^</span><span class="dv">2</span>))) <span class="op">+</span><span class="st"> </span>
+<span class="kw">geom_point</span>(<span class="dt">stat=</span><span class="st">&quot;qq&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;darkcyan&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;1/(x^2)&quot;</span>)
+p9 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(data2, <span class="kw">aes</span>(<span class="dt">sample =</span> <span class="dv">1</span><span class="op">/</span>(sample2<span class="op">^</span><span class="dv">3</span>))) <span class="op">+</span><span class="st"> </span>
+<span class="kw">geom_point</span>(<span class="dt">stat=</span><span class="st">&quot;qq&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;magenta&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;1/(x^3)&quot;</span>)
+
+gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(p1, p2, p3, p4, p5, p6, p7, p8, p9, <span class="dt">nrow=</span><span class="dv">3</span>, 
+<span class="dt">bottom=</span><span class="st">&quot;Ladder of Power Transformations&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/transex2ladderofQQs-fig-1.png" width="672" /></p>
+<p>It looks like taking the square of the data produces the most “Normalish” plot in this case.</p>
+
 </div>
 </div>
             </section>
@@ -647,8 +562,8 @@ Smoke100  No Yes
           </div>
         </div>
       </div>
-<a href="summarizing-quantities.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="the-national-youth-fitness-survey-nyfs1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="assessing-normality.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="summarizing-data-within-subgroups.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

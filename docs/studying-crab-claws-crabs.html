@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="summarizing-quantities.html">
-<link rel="next" href="the-national-youth-fitness-survey-nyfs1.html">
+<link rel="prev" href="straight-line-models-and-correlation.html">
+<link rel="next" href="references.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -336,310 +336,311 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="summarizing-categorical-variables" class="section level1">
-<h1><span class="header-section-number">Chapter 6</span> Summarizing Categorical Variables</h1>
-<p>Summarizing categorical variables numerically is mostly about building tables, and calculating percentages or proportions. We’ll save our discussion of modeling categorical data for later. Recall that in the <code>nh_adults</code> data set we built previously, we had the following categorical variables. The number of levels indicates the number of possible categories for each categorical variable.</p>
+<div id="studying-crab-claws-crabs" class="section level1">
+<h1><span class="header-section-number">Chapter 12</span> Studying Crab Claws (<code>crabs</code>)</h1>
+<p>For our next example, we’ll consider a study from zoology, specifically carcinology - the study of crustaceans. My source for these data is Chapter 7 in <span class="citation">Ramsey and Schafer (<a href="#ref-RamseySchafer">2002</a>)</span> which drew the data from a figure in <span class="citation">Yamada and Boulding (<a href="#ref-Yamada1998">1998</a>)</span>.</p>
+<p>The available data are the mean closing forces (in Newtons) and the propodus heights (mm) of the claws on 38 crabs that came from three different species. The <em>propodus</em> is the segment of the crab’s clawed leg with an immovable finger and palm.</p>
+<div class="figure"><span id="fig:crab1-fig"></span>
+<img src="figures/crabanat.jpg" alt="Source: http://txmarspecies.tamug.edu/crustglossary.cfm" width="70%" />
+<p class="caption">
+Figure 12.1: Source: <a href="http://txmarspecies.tamug.edu/crustglossary.cfm" class="uri">http://txmarspecies.tamug.edu/crustglossary.cfm</a>
+</p>
+</div>
+<p>This was part of a study of the effects that predatory intertidal crab species have on populations of snails. The three crab species under study are:</p>
+<ul>
+<li>14 Hemigraspus nudus, also called the <a href="https://en.wikipedia.org/wiki/Purple_shore_crab">purple shore crab</a> (14 crabs)</li>
+<li>12 Lophopanopeus bellus, also called the <a href="https://inverts.wallawalla.edu/Arthropoda/Crustacea/Malacostraca/Eumalacostraca/Eucarida/Decapoda/Brachyura/Family_Xanthidae/Lophopanopeus_bellus_bellus.html">black-clawed pebble crab</a>, and</li>
+<li>12 Cancer productus, one of several species of <a href="https://en.wikipedia.org/wiki/Cancer_productus">red rock crabs</a> (12)</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crabs &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/crabs.csv&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>tbl_df
+
+crabs</code></pre></div>
+<pre><code># A tibble: 38 x 4
+    crab              species force height
+   &lt;int&gt;               &lt;fctr&gt; &lt;dbl&gt;  &lt;dbl&gt;
+ 1     1    Hemigraspus nudus   4.0    8.0
+ 2     2 Lophopanopeus bellus  15.1    7.9
+ 3     3     Cancer productus   5.0    6.7
+ 4     4 Lophopanopeus bellus   2.9    6.6
+ 5     5    Hemigraspus nudus   3.2    5.0
+ 6     6    Hemigraspus nudus   9.5    7.9
+ 7     7     Cancer productus  22.5    9.4
+ 8     8    Hemigraspus nudus   7.4    8.3
+ 9     9     Cancer productus  14.6   11.2
+10    10 Lophopanopeus bellus   8.7    8.6
+# ... with 28 more rows</code></pre>
+<p>Here’s a quick summary of the data. Take care to note the useless results for the first two variables. At least the function flags with a <code>*</code> those variables it thinks are non-numeric.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">psych<span class="op">::</span><span class="kw">describe</span>(crabs)</code></pre></div>
+<pre><code>         vars  n  mean    sd median trimmed   mad min  max range skew
+crab        1 38 19.50 11.11  19.50   19.50 14.08   1 38.0  37.0 0.00
+species*    2 38  2.00  0.81   2.00    2.00  1.48   1  3.0   2.0 0.00
+force       3 38 12.13  8.98   8.70   11.53  9.04   2 29.4  27.4 0.47
+height      4 38  8.81  2.23   8.25    8.78  2.52   5 13.1   8.1 0.19
+         kurtosis   se
+crab        -1.30 1.80
+species*    -1.50 0.13
+force       -1.25 1.46
+height      -1.14 0.36</code></pre>
+<p>Actually, we’re more interested in these results after grouping by species.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crabs <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(species) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">n =</span> <span class="kw">n</span>(), <span class="kw">median</span>(force), <span class="kw">median</span>(height))</code></pre></div>
+<pre><code># A tibble: 3 x 4
+               species     n `median(force)` `median(height)`
+                &lt;fctr&gt; &lt;int&gt;           &lt;dbl&gt;            &lt;dbl&gt;
+1     Cancer productus    12            19.7            10.95
+2    Hemigraspus nudus    14             3.7             7.90
+3 Lophopanopeus bellus    12            14.8             8.15</code></pre>
+<div id="association-of-size-and-force" class="section level2">
+<h2><span class="header-section-number">12.1</span> Association of Size and Force</h2>
+<p>Suppose we want to describe force on the basis of height, across all 38 crabs. We’ll add titles and identify the three species of crab, using shape and color.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(crabs, <span class="kw">aes</span>(<span class="dt">x =</span> height, <span class="dt">y =</span> force, <span class="dt">color =</span> species, <span class="dt">shape =</span> species)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Crab Claw Force by Size&quot;</span>, 
+         <span class="dt">x =</span> <span class="st">&quot;Claw&#39;s propodus height (mm)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Mean closing force (N)&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme_bw</span>()</code></pre></div>
+<p><img src="431-notes_files/figure-html/crabsscatter1-fig-1.png" width="672" /></p>
+<p>A faceted plot for each species really highlights the difference in force between the <em>Hemigraspus nudus</em> and the other two species of crab.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(crabs, <span class="kw">aes</span>(<span class="dt">x =</span> height, <span class="dt">y =</span> force, <span class="dt">color =</span> species)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>species) <span class="op">+</span>
+<span class="st">    </span><span class="kw">guides</span>(<span class="dt">color =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Crab Claw Force by Size&quot;</span>, 
+         <span class="dt">x =</span> <span class="st">&quot;Claw&#39;s propodus height (mm)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Mean closing force (N)&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme_bw</span>()</code></pre></div>
+<p><img src="431-notes_files/figure-html/crabsscatter2-fig-1.png" width="672" /></p>
+</div>
+<div id="loess_smooth" class="section level2">
+<h2><span class="header-section-number">12.2</span> The <code>loess</code> smooth</h2>
+<p>We can obtain a smoothed curve (using several different approaches) to summarize the pattern presented by the data in any scatterplot. For instance, we might build such a plot for the complete set of 38 crabs, adding in a non-linear smooth function (called a loess smooth.)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(crabs, <span class="kw">aes</span>(<span class="dt">x =</span> height, <span class="dt">y =</span> force)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Crab Claw Force by Size&quot;</span>, 
+         <span class="dt">x =</span> <span class="st">&quot;Claw&#39;s propodus height (mm)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Mean closing force (N)&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/crabsscatter4-fig-1.png" width="672" /></p>
+<p>A <strong>loess smooth</strong> is a method of fitting a local polynomial regression model that R uses as its generic smooth for scatterplots with fewer than 1000 observations. Think of the loess as a way of fitting a curve to data by tracking (at point x) the points within a neighborhood of point x, with more emphasis given to points near x. It can be adjusted by tweaking two specific parameters, in particular:</p>
+<ul>
+<li>a <code>span</code> parameter (defaults to 0.75) which is also called <span class="math inline">\(\alpha\)</span> in the literature, that controls the degree of smoothing (essentially, how larger the neighborhood should be), and</li>
+<li>a <code>degree</code> parameter (defaults to 2) which specifies the degree of polynomial to be used. Normally, this is either 1 or 2 - more complex functions are rarely needed for simple scatterplot smoothing.</li>
+</ul>
+<p>In addition to the curve, smoothing procedures can also provide confidence intervals around their main fitted line. Consider the following plot, which adjusts the span and also adds in the confidence intervals.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(crabs, <span class="kw">aes</span>(<span class="dt">x =</span> height, <span class="dt">y =</span> force)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">span =</span> <span class="fl">0.5</span>, <span class="dt">se =</span> <span class="ot">TRUE</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Crab Claw Force by Size&quot;</span>, 
+         <span class="dt">x =</span> <span class="st">&quot;Claw&#39;s propodus height (mm)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Mean closing force (N)&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/crabsscatter5-fig-1.png" width="672" /></p>
+<p>By reducing the size of the span, our resulting picture shows a much less smooth function that we generated previously.</p>
+<div id="smoothing-within-species" class="section level3">
+<h3><span class="header-section-number">12.2.1</span> Smoothing within Species</h3>
+<p>We can, of course, produce the plot above with separate smooths for each of the three species of crab.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(crabs, <span class="kw">aes</span>(<span class="dt">x =</span> height, <span class="dt">y =</span> force, <span class="dt">group =</span> species, <span class="dt">color =</span> species)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Crab Claw Force by Size&quot;</span>, 
+         <span class="dt">x =</span> <span class="st">&quot;Claw&#39;s propodus height (mm)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Mean closing force (N)&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/crabsscatter6-fig-1.png" width="672" /></p>
+<p>If we want to add in the confidence intervals (here I’ll show them at 90% rather than the default of 95%) then this plot should be faceted. Note that by default, what is displayed when <code>se = TRUE</code> are 95% prediction intervals - the <code>level</code> function in <code>stat_smooth</code> [which can be used in place of <code>geom_smooth</code>] is used here to change the coverage percentage from 95% to 90%.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(crabs, <span class="kw">aes</span>(<span class="dt">x =</span> height, <span class="dt">y =</span> force, <span class="dt">group =</span> species, <span class="dt">color =</span> species)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">level =</span> <span class="fl">0.90</span>, <span class="dt">se =</span> <span class="ot">TRUE</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">guides</span>(<span class="dt">color =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Crab Claw Force by Size&quot;</span>, 
+         <span class="dt">caption =</span> <span class="st">&quot;with loess smooths and 90% confidence intervals&quot;</span>,
+         <span class="dt">x =</span> <span class="st">&quot;Claw&#39;s propodus height (mm)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Mean closing force (N)&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>species)</code></pre></div>
+<p><img src="431-notes_files/figure-html/crabsscatter7-fig-1.png" width="672" /></p>
+<p>More on these and other confidence intervals later, especially in part B.</p>
+</div>
+</div>
+<div id="fitting-a-linear-regression-model" class="section level2">
+<h2><span class="header-section-number">12.3</span> Fitting a Linear Regression Model</h2>
+<p>Suppose we plan to use a simple (least squares) linear regression model to describe force as a function of height. Is a least squares model likely to be an effective choice here?</p>
+<p>The plot below shows the regression line predicting closing force as a function of propodus height. Here we annotate the plot to show the actual fitted regression line, which required fitting it with the <code>lm</code> statement prior to developing the graph.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod &lt;-<span class="st"> </span><span class="kw">lm</span>(force <span class="op">~</span><span class="st"> </span>height, <span class="dt">data =</span> crabs)
+
+<span class="kw">ggplot</span>(crabs, <span class="kw">aes</span>(<span class="dt">x =</span> height, <span class="dt">y =</span> force)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Crab Claw Force by Size with Linear Regression Model&quot;</span>, 
+         <span class="dt">x =</span> <span class="st">&quot;Claw&#39;s propodus height (mm)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Mean closing force (N)&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="dv">11</span>, <span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">fontface =</span> <span class="st">&quot;italic&quot;</span>,
+             <span class="dt">label =</span> <span class="kw">paste</span>( <span class="st">&quot;Force - &quot;</span>, <span class="kw">signif</span>(<span class="kw">coef</span>(mod)[<span class="dv">1</span>],<span class="dv">3</span>), <span class="st">&quot; + &quot;</span>, 
+                            <span class="kw">signif</span>(<span class="kw">coef</span>(mod)[<span class="dv">2</span>],<span class="dv">3</span>), <span class="st">&quot; Height&quot;</span> ))</code></pre></div>
+<p><img src="431-notes_files/figure-html/crabsscatter8-fig-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(mod)</code></pre></div>
+<p>The <strong>lm</strong> function, again, specifies the linear model we fit to predict force using height. Here’s the summary.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(<span class="kw">lm</span>(force <span class="op">~</span><span class="st"> </span>height, <span class="dt">data =</span> crabs))</code></pre></div>
+<pre><code>
+Call:
+lm(formula = force ~ height, data = crabs)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-16.794  -3.811  -0.239   4.144  16.881 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  -11.087      4.622   -2.40    0.022 *  
+height         2.635      0.509    5.18  8.7e-06 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 6.89 on 36 degrees of freedom
+Multiple R-squared:  0.427, Adjusted R-squared:  0.411 
+F-statistic: 26.8 on 1 and 36 DF,  p-value: 8.73e-06</code></pre>
+<p>Again, the key things to realize are:</p>
+<ul>
+<li>The outcome variable in this model is <strong>force</strong>, and the predictor variable is <strong>height</strong>.</li>
+<li>The straight line model for these data fitted by least squares is force = -11.1 + 2.63 height.</li>
+<li>The slope of height is positive, which indicates that as height increases, we expect that force will also increase. Specifically, we expect that for every additional mm of height, the force will increase by 2.63 Newtons.</li>
+<li>The multiple R-squared (squared correlation coefficient) is 0.427, which implies that 42.7% of the variation in force is explained using this linear model with height. It also implies that the Pearson correlation between force and height is the square root of 0.427, or 0.653.</li>
+</ul>
+</div>
+<div id="is-a-linear-model-appropriate" class="section level2">
+<h2><span class="header-section-number">12.4</span> Is a Linear Model Appropriate?</h2>
+<p>The zoology (at least as described in <span class="citation">Ramsey and Schafer (<a href="#ref-RamseySchafer">2002</a>)</span>) suggests that the actual nature of the relationship would be represented by a log-log relationship, where the log of force is predicted by the log of height.</p>
+<p>This log-log model is an appropriate model when we think that percentage increases in X (height, here) lead to constant percentage increases in Y (here, force).</p>
+<p>To see the log-log model in action, we plot the log of force against the log of height. We could use either base 10 (log10 in R) or natural (log in R) logarithms.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(crabs, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log</span>(height), <span class="dt">y =</span> <span class="kw">log</span>(force))) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Log-Log Model for Crabs data&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/crabs_loglog_model1-fig-1.png" width="672" /></p>
+<p>The correlations between the raw force and height and between their logarithms turn out to be quite similar, and because the log transformation is monotone in these data, there’s actually no change at all in the Spearman correlations.</p>
 <table>
 <thead>
 <tr class="header">
-<th align="right">Variable</th>
-<th>Description</th>
-<th>Levels</th>
-<th>Type</th>
+<th align="center">Correlation of</th>
+<th align="center">Pearson r</th>
+<th align="center">Spearman r</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">Sex</td>
-<td>sex of subject</td>
-<td>2</td>
-<td>binary</td>
+<td align="center">force and height</td>
+<td align="center">0.653</td>
+<td align="center">0.657</td>
 </tr>
 <tr class="even">
-<td align="right">Race</td>
-<td>subject’s race</td>
-<td>6</td>
-<td>nominal</td>
-</tr>
-<tr class="odd">
-<td align="right">Education</td>
-<td>subject’s educational level</td>
-<td>5</td>
-<td>ordinal</td>
-</tr>
-<tr class="even">
-<td align="right">PhysActive</td>
-<td>Participates in sports?</td>
-<td>2</td>
-<td>binary</td>
-</tr>
-<tr class="odd">
-<td align="right">Smoke100</td>
-<td>Smoked 100+ cigarettes?</td>
-<td>2</td>
-<td>binary</td>
-</tr>
-<tr class="even">
-<td align="right">SleepTrouble</td>
-<td>Trouble sleeping?</td>
-<td>2</td>
-<td>binary</td>
-</tr>
-<tr class="odd">
-<td align="right">HealthGen</td>
-<td>Self-report health</td>
-<td>5</td>
-<td>ordinal</td>
+<td align="center">log(force) and log(height)</td>
+<td align="center">0.662</td>
+<td align="center">0.657</td>
 </tr>
 </tbody>
 </table>
-<div id="the-summary-function-for-categorical-data" class="section level2">
-<h2><span class="header-section-number">6.1</span> The <code>summary</code> function for Categorical data</h2>
-<p>When R recognizes a variable as categorical, it stores it as a <em>factor</em>. Such variables get special treatment from the <code>summary</code> function, in particular a table of available values (so long as there aren’t too many.)</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">select</span>(Sex, Race, Education, PhysActive, Smoke100, SleepTrouble, HealthGen) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">summary</span>()</code></pre></div>
-<pre><code>     Sex            Race              Education   PhysActive Smoke100 
- female:253   Asian   : 29   8th Grade     : 24   No :225    No :289  
- male  :247   Black   : 57   9 - 11th Grade: 57   Yes:275    Yes:211  
-              Hispanic: 39   High School   : 81                       
-              Mexican : 43   Some College  :153                       
-              White   :322   College Grad  :185                       
-              Other   : 10                                            
- SleepTrouble     HealthGen  
- No :362      Excellent: 51  
- Yes:138      Vgood    :153  
-              Good     :172  
-              Fair     : 71  
-              Poor     :  7  
-              NA&#39;s     : 46  </code></pre>
+<div id="the-log-log-model" class="section level3">
+<h3><span class="header-section-number">12.4.1</span> The log-log model</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crab_loglog &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(force) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(height), <span class="dt">data =</span> crabs)
+
+<span class="kw">summary</span>(crab_loglog)</code></pre></div>
+<pre><code>
+Call:
+lm(formula = log(force) ~ log(height), data = crabs)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-1.566 -0.445  0.188  0.480  1.242 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   -2.710      0.925   -2.93   0.0059 ** 
+log(height)    2.271      0.428    5.30    6e-06 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.675 on 36 degrees of freedom
+Multiple R-squared:  0.438, Adjusted R-squared:  0.423 
+F-statistic: 28.1 on 1 and 36 DF,  p-value: 5.96e-06</code></pre>
+<p>Our regression equation is log(force) = -2.71 + 2.27 log(height).</p>
+<p>So, for example, if we found a crab with propodus height = 10 mm, our prediction for that crab’s claw force (in Newtons) based on this log-log model would be…</p>
+<ul>
+<li>log(force) = -2.71 + 2.27 log(10)</li>
+<li>log(force) = -2.71 + 2.27 x 2.303</li>
+<li>log(force) = 2.519</li>
+<li>and so predicted force = exp(2.519) = 12.417 Newtons, which, naturally, we would round to 12.4 Newtons to match the data set’s level of precision.</li>
+</ul>
 </div>
-<div id="tables-to-describe-one-categorical-variable" class="section level2">
-<h2><span class="header-section-number">6.2</span> Tables to describe One Categorical Variable</h2>
-<p>Suppose we build a table to describe the <code>HealthGen</code> distribution.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(HealthGen) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>(., <span class="dt">useNA =</span> <span class="st">&quot;ifany&quot;</span>)</code></pre></div>
-<pre><code>.
-Excellent     Vgood      Good      Fair      Poor      &lt;NA&gt; 
-       51       153       172        71         7        46 </code></pre>
-<p>What if we want to add a total count?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(HealthGen) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>(., <span class="dt">useNA =</span> <span class="st">&quot;ifany&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">addmargins</span>()</code></pre></div>
-<pre><code>.
-Excellent     Vgood      Good      Fair      Poor      &lt;NA&gt;       Sum 
-       51       153       172        71         7        46       500 </code></pre>
-<p>What if we want to leave out the missing responses?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(HealthGen) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>(., <span class="dt">useNA =</span> <span class="st">&quot;no&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">addmargins</span>()</code></pre></div>
-<pre><code>.
-Excellent     Vgood      Good      Fair      Poor       Sum 
-       51       153       172        71         7       454 </code></pre>
-<p>Let’s put the missing values back in, but now calculate proportions instead. Since the total will just be 1.0, we’ll leave that out.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(HealthGen) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>(., <span class="dt">useNA =</span> <span class="st">&quot;ifany&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">prop.table</span>()</code></pre></div>
-<pre><code>.
-Excellent     Vgood      Good      Fair      Poor      &lt;NA&gt; 
-    0.102     0.306     0.344     0.142     0.014     0.092 </code></pre>
-<p>Now, we’ll calculate percentages by multiplying the proportions by 100.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(HealthGen) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>(., <span class="dt">useNA =</span> <span class="st">&quot;ifany&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">prop.table</span>() <span class="op">%&gt;%</span>
-<span class="st">    &quot;*&quot;</span>(<span class="dv">100</span>) </code></pre></div>
-<pre><code>.
-Excellent     Vgood      Good      Fair      Poor      &lt;NA&gt; 
-     10.2      30.6      34.4      14.2       1.4       9.2 </code></pre>
+<div id="how-does-this-compare-to-our-original-linear-model" class="section level3">
+<h3><span class="header-section-number">12.4.2</span> How does this compare to our original linear model?</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crab_linear &lt;-<span class="st"> </span><span class="kw">lm</span>(force <span class="op">~</span><span class="st"> </span>height, <span class="dt">data =</span> crabs)
+
+<span class="kw">summary</span>(crab_linear)</code></pre></div>
+<pre><code>
+Call:
+lm(formula = force ~ height, data = crabs)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-16.794  -3.811  -0.239   4.144  16.881 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  -11.087      4.622   -2.40    0.022 *  
+height         2.635      0.509    5.18  8.7e-06 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 6.89 on 36 degrees of freedom
+Multiple R-squared:  0.427, Adjusted R-squared:  0.411 
+F-statistic: 26.8 on 1 and 36 DF,  p-value: 8.73e-06</code></pre>
+<p>The linear regression equation is force = -11.1 + 2.63 height.</p>
+<p>So, for example, if we found a crab with propodus height = 10 mm, our prediction for that crab’s claw force (in Newtons) based on this linear model would be…</p>
+<ul>
+<li>force = -11.087 + 2.635 x 10</li>
+<li>force = -11.087 + 26.348</li>
+<li>so predicted force = 15.261, which we would round to 15.3 Newtons.</li>
+</ul>
+<p>So, it looks like the two models give meaningfully different predictions.</p>
 </div>
-<div id="the-mode-of-a-categorical-variable" class="section level2">
-<h2><span class="header-section-number">6.3</span> The Mode of a Categorical Variable</h2>
-<p>A common measure applied to a categorical variable is to identify the mode, the most frequently observed value. To find the mode for variables with lots of categories (so that the <code>summary</code> may not be sufficient), we usually tabulate the data, and then sort by the counts of the numbers of observations, as we did with discrete quantitative variables.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(HealthGen) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">count =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">arrange</span>(<span class="kw">desc</span>(count)) </code></pre></div>
-<pre><code># A tibble: 6 x 2
-  HealthGen count
-     &lt;fctr&gt; &lt;int&gt;
-1      Good   172
-2     Vgood   153
-3      Fair    71
-4 Excellent    51
-5        NA    46
-6      Poor     7</code></pre>
 </div>
-<div id="describe-in-the-hmisc-package-1" class="section level2">
-<h2><span class="header-section-number">6.4</span> <code>describe</code> in the <code>Hmisc</code> package</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Hmisc<span class="op">::</span><span class="kw">describe</span>(nh_adults <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">                    </span><span class="kw">select</span>(Sex, Race, Education, PhysActive, 
-                           Smoke100, SleepTrouble, HealthGen))</code></pre></div>
-<pre><code>nh_adults %&gt;% select(Sex, Race, Education, PhysActive, Smoke100, SleepTrouble, HealthGen) 
-
- 7  Variables      500  Observations
----------------------------------------------------------------------------
-Sex 
-       n  missing distinct 
-     500        0        2 
-                        
-Value      female   male
-Frequency     253    247
-Proportion  0.506  0.494
----------------------------------------------------------------------------
-Race 
-       n  missing distinct 
-     500        0        6 
-                                                                
-Value         Asian    Black Hispanic  Mexican    White    Other
-Frequency        29       57       39       43      322       10
-Proportion    0.058    0.114    0.078    0.086    0.644    0.020
----------------------------------------------------------------------------
-Education 
-       n  missing distinct 
-     500        0        5 
-                                                                      
-Value           8th Grade 9 - 11th Grade    High School   Some College
-Frequency              24             57             81            153
-Proportion          0.048          0.114          0.162          0.306
-                         
-Value        College Grad
-Frequency             185
-Proportion          0.370
----------------------------------------------------------------------------
-PhysActive 
-       n  missing distinct 
-     500        0        2 
-                    
-Value        No  Yes
-Frequency   225  275
-Proportion 0.45 0.55
----------------------------------------------------------------------------
-Smoke100 
-       n  missing distinct 
-     500        0        2 
-                      
-Value         No   Yes
-Frequency    289   211
-Proportion 0.578 0.422
----------------------------------------------------------------------------
-SleepTrouble 
-       n  missing distinct 
-     500        0        2 
-                      
-Value         No   Yes
-Frequency    362   138
-Proportion 0.724 0.276
----------------------------------------------------------------------------
-HealthGen 
-       n  missing distinct 
-     454       46        5 
-                                                            
-Value      Excellent     Vgood      Good      Fair      Poor
-Frequency         51       153       172        71         7
-Proportion     0.112     0.337     0.379     0.156     0.015
----------------------------------------------------------------------------</code></pre>
+<div id="making-predictions-with-a-model" class="section level2">
+<h2><span class="header-section-number">12.5</span> Making Predictions with a Model</h2>
+<p>A simpler way to get predictions for a new value like height = 10 mm from our models is available.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">predict</span>(crab_linear, <span class="kw">data.frame</span>(<span class="dt">height =</span> <span class="dv">10</span>), <span class="dt">interval =</span> <span class="st">&quot;prediction&quot;</span>)</code></pre></div>
+<pre><code>   fit  lwr  upr
+1 15.3 1.05 29.5</code></pre>
+<p>We’d interpret this result as saying that the linear model’s predicted force associated with a single new crab claw with propodus height 10 mm is 15.3 Newtons, and that a 95% prediction interval for the true value of such a force for such a claw is between 1.0 and 29.5 Newtons. More on prediction intervals later.</p>
+<div id="predictions-after-a-transformation" class="section level3">
+<h3><span class="header-section-number">12.5.1</span> Predictions After a Transformation</h3>
+<p>We can also get predictions from the log-log model.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">predict</span>(crab_loglog, <span class="kw">data.frame</span>(<span class="dt">height =</span> <span class="dv">10</span>), <span class="dt">interval =</span> <span class="st">&quot;prediction&quot;</span>)</code></pre></div>
+<pre><code>   fit  lwr  upr
+1 2.52 1.13 3.91</code></pre>
+<p>Of course, this prediction is of the <code>log(force)</code> for such a crab claw. To get the prediction in terms of simple force, we’d need to back out of the logarithm, by exponentiating our point estimate and the prediction interval endpoints.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">exp</span>(<span class="kw">predict</span>(crab_loglog, <span class="kw">data.frame</span>(<span class="dt">height =</span> <span class="dv">10</span>), <span class="dt">interval =</span> <span class="st">&quot;prediction&quot;</span>))</code></pre></div>
+<pre><code>   fit  lwr upr
+1 12.4 3.08  50</code></pre>
+<p>We’d interpret this result as saying that the log-log model’s predicted force associated with a single new crab claw with propodus height 10 mm is 12.4 Newtons, and that a 95% prediction interval for the true value of such a force for such a claw is between 3.1 and 50.0 Newtons.</p>
 </div>
-<div id="cross-tabulations" class="section level2">
-<h2><span class="header-section-number">6.5</span> Cross-Tabulations</h2>
-<p>It is very common for us to want to describe the association of one categorical variable with another. For instance, is there a relationship between Education and SleepTrouble in these data?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(Education, SleepTrouble) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>() <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">addmargins</span>()</code></pre></div>
-<pre><code>                SleepTrouble
-Education         No Yes Sum
-  8th Grade       15   9  24
-  9 - 11th Grade  40  17  57
-  High School     67  14  81
-  Some College   107  46 153
-  College Grad   133  52 185
-  Sum            362 138 500</code></pre>
-<p>To get row percentages, we can use:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(Education, SleepTrouble) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>() <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">prop.table</span>(., <span class="dv">1</span>) <span class="op">%&gt;%</span>
-<span class="st">    &quot;*&quot;</span>(<span class="dv">100</span>) </code></pre></div>
-<pre><code>                SleepTrouble
-Education              No      Yes
-  8th Grade      62.50000 37.50000
-  9 - 11th Grade 70.17544 29.82456
-  High School    82.71605 17.28395
-  Some College   69.93464 30.06536
-  College Grad   71.89189 28.10811</code></pre>
-<p>For column percentages, we use 2 instead of 1 in the <code>prop.table</code> function. Here, we’ll also round off to two decimal places:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(Education, SleepTrouble) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>() <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">prop.table</span>(., <span class="dv">2</span>) <span class="op">%&gt;%</span>
-<span class="st">    &quot;*&quot;</span>(<span class="dv">100</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">round</span>(.,<span class="dv">2</span>) </code></pre></div>
-<pre><code>                SleepTrouble
-Education           No   Yes
-  8th Grade       4.14  6.52
-  9 - 11th Grade 11.05 12.32
-  High School    18.51 10.14
-  Some College   29.56 33.33
-  College Grad   36.74 37.68</code></pre>
-<p>Here’s another approach, to look at the cross-classification of Race and HealthGen:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">xtabs</span>(<span class="op">~</span><span class="st"> </span>Race <span class="op">+</span><span class="st"> </span>HealthGen, <span class="dt">data =</span> nh_adults)</code></pre></div>
-<pre><code>          HealthGen
-Race       Excellent Vgood Good Fair Poor
-  Asian            4     7    9    2    1
-  Black            7    11   16   11    2
-  Hispanic         1     9   18    8    0
-  Mexican          5     6   12   16    1
-  White           34   115  115   32    3
-  Other            0     5    2    2    0</code></pre>
-<div id="cross-classifying-three-categorical-variables" class="section level3">
-<h3><span class="header-section-number">6.5.1</span> Cross-Classifying Three Categorical Variables</h3>
-<p>Suppose we are interested in <code>Smoke100</code> and its relationship to <code>PhysActive</code> and <code>SleepTrouble</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">xtabs</span>(<span class="op">~</span><span class="st"> </span>Smoke100 <span class="op">+</span><span class="st"> </span>PhysActive <span class="op">+</span><span class="st"> </span>SleepTrouble, <span class="dt">data =</span> nh_adults)</code></pre></div>
-<pre><code>, , SleepTrouble = No
-
-        PhysActive
-Smoke100  No Yes
-     No   99 135
-     Yes  62  66
-
-, , SleepTrouble = Yes
-
-        PhysActive
-Smoke100  No Yes
-     No   26  29
-     Yes  38  45</code></pre>
-<p>We can also build a <strong>flat</strong> version of this table, as follows:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ftable</span>(Smoke100 <span class="op">~</span><span class="st"> </span>PhysActive <span class="op">+</span><span class="st"> </span>SleepTrouble, <span class="dt">data =</span> nh_adults)</code></pre></div>
-<pre><code>                        Smoke100  No Yes
-PhysActive SleepTrouble                 
-No         No                     99  62
-           Yes                    26  38
-Yes        No                    135  66
-           Yes                    29  45</code></pre>
-<p>And we can do this with <code>dplyr</code> functions, as well, for example…</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(Smoke100, PhysActive, SleepTrouble) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>() </code></pre></div>
-<pre><code>, , SleepTrouble = No
-
-        PhysActive
-Smoke100  No Yes
-     No   99 135
-     Yes  62  66
-
-, , SleepTrouble = Yes
-
-        PhysActive
-Smoke100  No Yes
-     No   26  29
-     Yes  38  45</code></pre>
+<div id="comparing-model-predictions" class="section level3">
+<h3><span class="header-section-number">12.5.2</span> Comparing Model Predictions</h3>
+<p>Suppose we wish to build a plot of force vs height with a straight line for the linear model’s predictions, and a new curve for the log-log model’s predictions, so that we can compare and contrast the implications of the two models on a common scale. The <code>predict</code> function, when not given a new data frame, will use the existing predictor values that are in our <code>crabs</code> data. Such predictions are often called fitted values.</p>
+<p>To put the two sets of predictions on the same scale despite the differing outcomes in the two models, we’ll exponentiate the results of the log-log model, and build a little data frame containing the heights and the predicted forces from that model.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">loglogdat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">height =</span> crabs<span class="op">$</span>height, <span class="dt">force =</span> <span class="kw">exp</span>(<span class="kw">predict</span>(crab_loglog)))</code></pre></div>
+<p>Now, we’re ready to use the <code>geom_smooth</code> approach to plot the linear fit, and <code>geom_line</code> (which also fits curves) to display the log-log fit.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(crabs, <span class="kw">aes</span>(<span class="dt">x =</span> height, <span class="dt">y =</span> force)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">linetype =</span> <span class="dv">2</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_line</span>(<span class="dt">data =</span> loglogdat, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">linetype =</span> <span class="dv">2</span>, <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dv">7</span>, <span class="dv">12</span>, <span class="dt">label =</span> <span class="st">&quot;Linear Model&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dv">10</span>, <span class="dv">8</span>, <span class="dt">label =</span> <span class="st">&quot;Log-Log Model&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Comparing the Linear and Log-Log Models for Crab Claw data&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/crabsmodelcompare-fig-1.png" width="672" /></p>
+<p>Based on these 38 crabs, we see some modest differences between the predictions of the two models, with the log-log model predicting generally lower closing force for a given propodus height than would be predicted by a linear model.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(loglogdat, crab_linear, crab_loglog)</code></pre></div>
 
 </div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-RamseySchafer">
+<p>Ramsey, Fred L., and Daniel W. Schafer. 2002. <em>The Statistical Sleuth: A Course in Methods of Data Analysis</em>. Second. Pacific Grove, CA: Duxbury.</p>
+</div>
+<div id="ref-Yamada1998">
+<p>Yamada, SB, and EG Boulding. 1998. “Claw Morphology, Prey Size Selection and Foraging Efficiency in Generalist and Specialist Shell-Breaking Crabs.” <em>Journal of Experimental Marine Biology and Ecology</em> 220: 191–211. <a href="http://www.science.oregonstate.edu/~yamadas/SylviaCV/BehrensYamada_Boulding1998.pdf" class="uri">http://www.science.oregonstate.edu/~yamadas/SylviaCV/BehrensYamada_Boulding1998.pdf</a>.</p>
 </div>
 </div>
             </section>
@@ -647,8 +648,8 @@ Smoke100  No Yes
           </div>
         </div>
       </div>
-<a href="summarizing-quantities.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="the-national-youth-fitness-survey-nyfs1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="straight-line-models-and-correlation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

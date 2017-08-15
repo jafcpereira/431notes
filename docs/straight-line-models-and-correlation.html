@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="summarizing-quantities.html">
-<link rel="next" href="the-national-youth-fitness-survey-nyfs1.html">
+<link rel="prev" href="summarizing-data-within-subgroups.html">
+<link rel="next" href="studying-crab-claws-crabs.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -336,308 +336,416 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="summarizing-categorical-variables" class="section level1">
-<h1><span class="header-section-number">Chapter 6</span> Summarizing Categorical Variables</h1>
-<p>Summarizing categorical variables numerically is mostly about building tables, and calculating percentages or proportions. We’ll save our discussion of modeling categorical data for later. Recall that in the <code>nh_adults</code> data set we built previously, we had the following categorical variables. The number of levels indicates the number of possible categories for each categorical variable.</p>
+<div id="straight-line-models-and-correlation" class="section level1">
+<h1><span class="header-section-number">Chapter 11</span> Straight Line Models and Correlation</h1>
+<div id="assessing-a-scatterplot" class="section level2">
+<h2><span class="header-section-number">11.1</span> Assessing A Scatterplot</h2>
+<p>Let’s consider the relationship of <code>bmi</code> and <code>waist.circ</code> in the <code>nyfs1</code> data. We’ll begin our investigation, as we always should, by drawing a relevant picture. For the association of two quantitative variables, a <strong>scatterplot</strong> is usually the right start. Each subject in the <code>nyfs1</code> data is represented by one of the points below.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> nyfs1, <span class="kw">aes</span>(<span class="dt">x =</span> waist.circ, <span class="dt">y =</span> bmi)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;BMI vs. Waist Circumference in the nyfs1 data&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/nyfs1_scatter_bmi_by_waist1-fig-1.png" width="672" /></p>
+<p>Here, I’ve arbitrarily decided to place <code>bmi</code> on the vertical axis, and <code>waist.circ</code> on the horizontal. Fitting a prediction model to this scatterplot will then require that we predict <code>bmi</code> on the basis of <code>waist.circ</code>.</p>
+<p>In this case, the pattern appears to be:</p>
+<ol style="list-style-type: decimal">
+<li><strong>direct</strong>, or positive, in that the values of the <span class="math inline">\(x\)</span> variable (<code>waist.circ</code>) increase, so do the values of the <span class="math inline">\(y\)</span> variable (<code>bmi</code>). Essentially, it appears that subjects with larger waist circumferences also have larger BMIs, but we don’t know cause and effect here.</li>
+<li>fairly <strong>linear</strong> in that most of the points cluster around what appears to be a pattern which is well-fitted by a straight line.</li>
+<li><strong>strong</strong> in that the range of values for <code>bmi</code> associated with any particular value of <code>waist.circ</code> is fairly tight. If we know someone’s waist circumference, we can pretty accurately predict their BMI, among the subjects in these data.</li>
+<li>that we see at least one fairly substantial <strong>outlier</strong> value at the upper left of the plot, which I’ll identify in the plot below with a red dot.</li>
+</ol>
+<div id="highlighting-an-unusual-point" class="section level3">
+<h3><span class="header-section-number">11.1.1</span> Highlighting an unusual point</h3>
+<p>To highlight the outlier, I’ll note that it’s the only point with BMI &gt; 35 and waist.circ &lt; 70. So I’ll create a subset of the <code>nyfs1</code> data containing the point that meets that standard, and then add a red point and a label to the plot.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># identify outlier and place it in data frame s1 </span>
+s1 &lt;-<span class="st"> </span><span class="kw">filter</span>(nyfs1, bmi<span class="op">&gt;</span><span class="dv">35</span> <span class="op">&amp;</span><span class="st"> </span>waist.circ <span class="op">&lt;</span><span class="st"> </span><span class="dv">70</span>)
+
+<span class="kw">ggplot</span>(<span class="dt">data =</span> nyfs1, <span class="kw">aes</span>(<span class="dt">x =</span> waist.circ, <span class="dt">y =</span> bmi)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">    </span><span class="co"># next two lines add outlier color, and then a label</span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">data =</span> s1, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_text</span>(<span class="dt">data =</span> s1, <span class="dt">label =</span> s1<span class="op">$</span>subject.id, <span class="dt">vjust =</span> <span class="op">-</span><span class="dv">1</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;BMI vs. Waist Circumference in the nyfs1 data&quot;</span>,
+         <span class="dt">subtitle =</span> <span class="st">&quot;with outlier labeled by subject ID&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/nyfs1_scatter_bmi_by_waist2withoutliermarked-fig-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">s1</code></pre></div>
+<pre><code># A tibble: 1 x 7
+  subject.id    sex age.exam   bmi bmi.cat waist.circ triceps.skinfold
+       &lt;int&gt; &lt;fctr&gt;    &lt;int&gt; &lt;dbl&gt;  &lt;fctr&gt;      &lt;dbl&gt;            &lt;dbl&gt;
+1      73202   Male       13    37 4 Obese       62.3              7.2</code></pre>
+<p>Does it seem to you like a straight line model will describe this relationship well?</p>
+</div>
+<div id="adding-a-scatterplot-smooth-using-loess" class="section level3">
+<h3><span class="header-section-number">11.1.2</span> Adding a Scatterplot Smooth using loess</h3>
+<p>We’ll use the <strong>loess</strong> procedure to fit a smooth curve to the data, which attempts to capture the general pattern.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> nyfs1, <span class="kw">aes</span>(<span class="dt">x =</span> waist.circ, <span class="dt">y =</span> bmi)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;BMI vs. Waist Circumference in the nyfs1 data&quot;</span>,
+         <span class="dt">caption =</span> <span class="st">&quot;with fitted loess smooth&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/nyfs1_scatter_bmi_by_waistwithloess1-fig-1.png" width="672" /></p>
+<p>The smooth curve backs up our earlier thought that a straight line might fit the data well. More on the loess smooth in Section @ref(loess_smooth)</p>
+</div>
+<div id="adding-a-straight-line-to-the-scatterplot" class="section level3">
+<h3><span class="header-section-number">11.1.3</span> Adding a Straight Line to the Scatterplot</h3>
+<p>Let’s go ahead and add a straight line to the plot, and we’ll change the shape of the points to emphasize the fitted line a bit more.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> nyfs1, <span class="kw">aes</span>(<span class="dt">x =</span> waist.circ, <span class="dt">y =</span> bmi)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">shape =</span> <span class="st">&quot;o&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">col =</span> <span class="st">&quot;deeppink&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;BMI vs. Waist Circumference in the nyfs1 data&quot;</span>,
+         <span class="dt">caption =</span> <span class="st">&quot;with fitted straight line model&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme_bw</span>()</code></pre></div>
+<p><img src="431-notes_files/figure-html/nyfs1_scatter_bmi_by_waistwitlm1-fig-1.png" width="672" /></p>
+<p>How can we, mathematically, characterize that line? As with any straight line, our model equation requires us to specify two parameters: a slope and an intercept (sometimes called the y-intercept.)</p>
+</div>
+<div id="what-line-does-r-fit" class="section level3">
+<h3><span class="header-section-number">11.1.4</span> What Line Does R Fit?</h3>
+<p>To identify the equation R used to fit this line (using the method of least squares), we use the <code>lm</code> command</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lm</span>(bmi <span class="op">~</span><span class="st"> </span>waist.circ, <span class="dt">data =</span> nyfs1)</code></pre></div>
+<pre><code>
+Call:
+lm(formula = bmi ~ waist.circ, data = nyfs1)
+
+Coefficients:
+(Intercept)   waist.circ  
+    -0.0665       0.2889  </code></pre>
+<p>So the fitted line is specified as</p>
+<p><span class="math display">\[
+\mbox{BMI} = -0.066 + 0.289 \mbox{ Waist Circumference}
+\]</span></p>
+<p>A detailed summary of the fitted linear regression model is also available.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(<span class="kw">lm</span>(bmi <span class="op">~</span><span class="st"> </span>waist.circ, <span class="dt">data =</span> nyfs1))</code></pre></div>
+<pre><code>
+Call:
+lm(formula = bmi ~ waist.circ, data = nyfs1)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-4.234 -1.094 -0.074  0.925 19.066 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  -0.0665     0.2329   -0.29     0.78    
+waist.circ    0.2889     0.0035   82.55   &lt;2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 1.69 on 1414 degrees of freedom
+Multiple R-squared:  0.828, Adjusted R-squared:  0.828 
+F-statistic: 6.81e+03 on 1 and 1414 DF,  p-value: &lt;2e-16</code></pre>
+<p>We’ll spend a lot of time working with these regression summaries, especially in Part C of the course.</p>
+<p>For now, it will suffice to understand the following:</p>
+<ul>
+<li>The outcome variable in this model is <strong>bmi</strong>, and the predictor variable is <strong>waist.circ</strong>.</li>
+<li>The straight line model for these data fitted by least squares is <code>bmi</code> = -0.066 + 0.289 <code>waist.circ</code></li>
+<li>The slope of <code>waist.circ</code> is positive, which indicates that as <code>waist.circ</code> increases, we expect that <code>bmi</code> will also increase. Specifically, we expect that for every additional cm of waist circumference, the BMI will be 0.289 kg/m<sup>2</sup> larger.</li>
+<li>The multiple R-squared (squared correlation coefficient) is 0.828, which implies that 82.8% of the variation in <code>bmi</code> is explained using this linear model with <code>waist.circ</code> It also implies that the Pearson correlation between force and height is the square root of 0.828, or 0.91. More on the Pearson correlation soon.</li>
+</ul>
+<p>So, if we plan to use a simple (least squares) linear regression model to describe BMI as a function of waist circumference, does it look like a least squares model is likely to be an effective choice here?</p>
+</div>
+</div>
+<div id="correlation-coefficients" class="section level2">
+<h2><span class="header-section-number">11.2</span> Correlation Coefficients</h2>
+<p>We have several types of correlation coefficient to help describe this association.</p>
+<ul>
+<li>The one most often used is called the <em>Pearson</em> correlation coefficient, and is symbolized with the letter r or sometimes the Greek letter rho (<span class="math inline">\(\rho\)</span>).</li>
+<li>Another tool for us is the Spearman rank correlation coefficient, also occasionally symbolized by <span class="math inline">\(\rho\)</span>).</li>
+</ul>
+<p>For the <code>nyfs1</code> data, the Pearson correlation of <code>bmi</code> and <code>waist.circ</code> can be found using the <code>cor()</code> function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(nyfs1<span class="op">$</span>bmi, nyfs1<span class="op">$</span>waist.circ)</code></pre></div>
+<pre><code>[1] 0.91</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nyfs1 <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(bmi, waist.circ) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">cor</span>()</code></pre></div>
+<pre><code>            bmi waist.circ
+bmi        1.00       0.91
+waist.circ 0.91       1.00</code></pre>
+<p>Note that the correlation of any variable with itself is 1, and that the correlation of <code>bmi</code> with <code>waist.circ</code> is the same regardless of whether you enter <code>bmi</code> first or <code>waist.circ</code> first.</p>
+</div>
+<div id="the-pearson-correlation-coefficient" class="section level2">
+<h2><span class="header-section-number">11.3</span> The Pearson Correlation Coefficient</h2>
+<p>Suppose we have <span class="math inline">\(n\)</span> observations on two variables, called X and Y. The Pearson correlation coefficient assesses how well the relationship between X and Y can be described using a linear function.</p>
+<ul>
+<li>The Pearson correlation is <strong>dimension-free</strong>.</li>
+<li>It falls between -1 and +1, with the extremes corresponding to situations where all the points in a scatterplot fall exactly on a straight line with negative and positive slopes, respectively.</li>
+<li>A Pearson correlation of zero corresponds to the situation where there is no linear association.</li>
+<li>Unlike the estimated slope in a regression line, the sample correlation coefficient is symmetric in X and Y, so it does not depend on labeling one of them (Y) the response variable, and one of them (X) the predictor.</li>
+</ul>
+<p>Suppose we have <span class="math inline">\(n\)</span> observations on two variables, called <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, where <span class="math inline">\(\bar{X}\)</span> is the sample mean of <span class="math inline">\(X\)</span> and <span class="math inline">\(s_x\)</span> is the standard deviation of <span class="math inline">\(X\)</span>. The <strong>Pearson</strong> correlation coefficient <span class="math inline">\(r_{XY}\)</span> is:</p>
+<p><span class="math display">\[
+r_{XY} = \frac{1}{n-1} \sum\limits_{i=1}^n (\frac{x_i - \bar{x}}{s_x}) (\frac{y_i - \bar{y}}{s_y}) 
+\]</span></p>
+</div>
+<div id="a-simulated-example" class="section level2">
+<h2><span class="header-section-number">11.4</span> A simulated example</h2>
+<p>The <code>correx1</code> data file contains six different sets of (x,y) points, identified by the <code>set</code> variable.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">correx1 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/corr-ex1.csv&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>tbl_df 
+
+<span class="kw">summary</span>(correx1)</code></pre></div>
+<pre><code>       set           x              y       
+ Alex    :62   Min.   : 5.9   Min.   : 7.3  
+ Bonnie  :37   1st Qu.:29.5   1st Qu.:30.4  
+ Colin   :36   Median :46.2   Median :46.9  
+ Danielle:70   Mean   :46.5   Mean   :49.1  
+ Earl    :15   3rd Qu.:63.3   3rd Qu.:68.1  
+ Fiona   :57   Max.   :98.2   Max.   :95.4  </code></pre>
+<div id="data-set-alex" class="section level3">
+<h3><span class="header-section-number">11.4.1</span> Data Set Alex</h3>
+<p>Let’s start by working with the <strong>Alex</strong> data set.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="kw">filter</span>(correx1, set <span class="op">==</span><span class="st"> &quot;Alex&quot;</span>), <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;correx1: Data Set Alex&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/correx1a-fig-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="kw">filter</span>(correx1, set <span class="op">==</span><span class="st"> &quot;Alex&quot;</span>), <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;correx1: Alex, with loess smooth&quot;</span>)</code></pre></div>
+<pre><code>`geom_smooth()` using method = &#39;loess&#39;</code></pre>
+<p><img src="431-notes_files/figure-html/correx1a2-fig-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">setA &lt;-<span class="st"> </span><span class="kw">filter</span>(correx1, set <span class="op">==</span><span class="st"> &quot;Alex&quot;</span>)
+
+<span class="kw">ggplot</span>(setA, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;correx1: Alex, with Fitted Linear Model&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="dv">75</span>, <span class="dt">y =</span> <span class="dv">75</span>, <span class="dt">col =</span> <span class="st">&quot;purple&quot;</span>, <span class="dt">size =</span> <span class="dv">6</span>,
+             <span class="dt">label =</span> <span class="kw">paste</span>(<span class="st">&quot;Pearson r = &quot;</span>, <span class="kw">signif</span>(<span class="kw">cor</span>(setA<span class="op">$</span>x, setA<span class="op">$</span>y),<span class="dv">3</span>))) <span class="op">+</span>
+<span class="st">    </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="dv">50</span>, <span class="dt">y =</span> <span class="dv">15</span>,  <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">size =</span> <span class="dv">5</span>,
+             <span class="dt">label =</span> <span class="kw">paste</span>(<span class="st">&quot;y = &quot;</span>, <span class="kw">signif</span>(<span class="kw">coef</span>(<span class="kw">lm</span>(setA<span class="op">$</span>y <span class="op">~</span><span class="st"> </span>setA<span class="op">$</span>x))[<span class="dv">1</span>],<span class="dv">3</span>), 
+                           <span class="kw">signif</span>(<span class="kw">coef</span>(<span class="kw">lm</span>(setA<span class="op">$</span>y <span class="op">~</span><span class="st"> </span>setA<span class="op">$</span>x))[<span class="dv">2</span>],<span class="dv">2</span>), <span class="st">&quot;x&quot;</span>))</code></pre></div>
+<p><img src="431-notes_files/figure-html/correx1a3-fig-1.png" width="672" /></p>
+</div>
+<div id="data-set-bonnie" class="section level3">
+<h3><span class="header-section-number">11.4.2</span> Data Set Bonnie</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">setB &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">filter</span>(correx1, set <span class="op">==</span><span class="st"> &quot;Bonnie&quot;</span>)
+
+<span class="kw">ggplot</span>(setB, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;correx1: Data Set Bonnie&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/correx1b-fig-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(setB, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;correx1: Bonnie, with Fitted Linear Model&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="dv">25</span>, <span class="dt">y =</span> <span class="dv">65</span>, <span class="dt">col =</span> <span class="st">&quot;purple&quot;</span>, <span class="dt">size =</span> <span class="dv">6</span>,
+             <span class="dt">label =</span> <span class="kw">paste</span>(<span class="st">&quot;Pearson r = &quot;</span>, <span class="kw">signif</span>(<span class="kw">cor</span>(setB<span class="op">$</span>x, setB<span class="op">$</span>y),<span class="dv">2</span>))) <span class="op">+</span>
+<span class="st">    </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="dv">50</span>, <span class="dt">y =</span> <span class="dv">15</span>,  <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">size =</span> <span class="dv">5</span>,
+             <span class="dt">label =</span> <span class="kw">paste</span>(<span class="st">&quot;y = &quot;</span>, <span class="kw">signif</span>(<span class="kw">coef</span>(<span class="kw">lm</span>(setB<span class="op">$</span>y <span class="op">~</span><span class="st"> </span>setB<span class="op">$</span>x))[<span class="dv">1</span>],<span class="dv">3</span>), 
+                           <span class="st">&quot; + &quot;</span>,
+                           <span class="kw">signif</span>(<span class="kw">coef</span>(<span class="kw">lm</span>(setB<span class="op">$</span>y <span class="op">~</span><span class="st"> </span>setB<span class="op">$</span>x))[<span class="dv">2</span>],<span class="dv">2</span>), <span class="st">&quot;x&quot;</span>))</code></pre></div>
+<p><img src="431-notes_files/figure-html/correx1b2-fig-1.png" width="672" /></p>
+</div>
+<div id="correlations-for-all-six-data-sets-in-the-correx1-example" class="section level3">
+<h3><span class="header-section-number">11.4.3</span> Correlations for All Six Data Sets in the Correx1 Example</h3>
+<p>Let’s look at the Pearson correlations associated with each of the six data sets contained in the <code>correx1</code> example.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tab1 &lt;-<span class="st"> </span>correx1 <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(set) <span class="op">%&gt;%</span>
+<span class="st">    </span>dplyr<span class="op">::</span><span class="kw">summarize</span>(<span class="st">&quot;Pearson r&quot;</span> =<span class="st"> </span><span class="kw">round</span>(<span class="kw">cor</span>(x, y, <span class="dt">use=</span><span class="st">&quot;complete&quot;</span>),<span class="dv">2</span>))
+
+knitr<span class="op">::</span><span class="kw">kable</span>(tab1)</code></pre></div>
 <table>
 <thead>
 <tr class="header">
-<th align="right">Variable</th>
-<th>Description</th>
-<th>Levels</th>
-<th>Type</th>
+<th align="left">set</th>
+<th align="right">Pearson r</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">Sex</td>
-<td>sex of subject</td>
-<td>2</td>
-<td>binary</td>
+<td align="left">Alex</td>
+<td align="right">-0.97</td>
 </tr>
 <tr class="even">
-<td align="right">Race</td>
-<td>subject’s race</td>
-<td>6</td>
-<td>nominal</td>
+<td align="left">Bonnie</td>
+<td align="right">0.80</td>
 </tr>
 <tr class="odd">
-<td align="right">Education</td>
-<td>subject’s educational level</td>
-<td>5</td>
-<td>ordinal</td>
+<td align="left">Colin</td>
+<td align="right">-0.80</td>
 </tr>
 <tr class="even">
-<td align="right">PhysActive</td>
-<td>Participates in sports?</td>
-<td>2</td>
-<td>binary</td>
+<td align="left">Danielle</td>
+<td align="right">0.00</td>
 </tr>
 <tr class="odd">
-<td align="right">Smoke100</td>
-<td>Smoked 100+ cigarettes?</td>
-<td>2</td>
-<td>binary</td>
+<td align="left">Earl</td>
+<td align="right">-0.01</td>
 </tr>
 <tr class="even">
-<td align="right">SleepTrouble</td>
-<td>Trouble sleeping?</td>
-<td>2</td>
-<td>binary</td>
-</tr>
-<tr class="odd">
-<td align="right">HealthGen</td>
-<td>Self-report health</td>
-<td>5</td>
-<td>ordinal</td>
+<td align="left">Fiona</td>
+<td align="right">0.00</td>
 </tr>
 </tbody>
 </table>
-<div id="the-summary-function-for-categorical-data" class="section level2">
-<h2><span class="header-section-number">6.1</span> The <code>summary</code> function for Categorical data</h2>
-<p>When R recognizes a variable as categorical, it stores it as a <em>factor</em>. Such variables get special treatment from the <code>summary</code> function, in particular a table of available values (so long as there aren’t too many.)</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">select</span>(Sex, Race, Education, PhysActive, Smoke100, SleepTrouble, HealthGen) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">summary</span>()</code></pre></div>
-<pre><code>     Sex            Race              Education   PhysActive Smoke100 
- female:253   Asian   : 29   8th Grade     : 24   No :225    No :289  
- male  :247   Black   : 57   9 - 11th Grade: 57   Yes:275    Yes:211  
-              Hispanic: 39   High School   : 81                       
-              Mexican : 43   Some College  :153                       
-              White   :322   College Grad  :185                       
-              Other   : 10                                            
- SleepTrouble     HealthGen  
- No :362      Excellent: 51  
- Yes:138      Vgood    :153  
-              Good     :172  
-              Fair     : 71  
-              Poor     :  7  
-              NA&#39;s     : 46  </code></pre>
 </div>
-<div id="tables-to-describe-one-categorical-variable" class="section level2">
-<h2><span class="header-section-number">6.2</span> Tables to describe One Categorical Variable</h2>
-<p>Suppose we build a table to describe the <code>HealthGen</code> distribution.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(HealthGen) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>(., <span class="dt">useNA =</span> <span class="st">&quot;ifany&quot;</span>)</code></pre></div>
-<pre><code>.
-Excellent     Vgood      Good      Fair      Poor      &lt;NA&gt; 
-       51       153       172        71         7        46 </code></pre>
-<p>What if we want to add a total count?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(HealthGen) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>(., <span class="dt">useNA =</span> <span class="st">&quot;ifany&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">addmargins</span>()</code></pre></div>
-<pre><code>.
-Excellent     Vgood      Good      Fair      Poor      &lt;NA&gt;       Sum 
-       51       153       172        71         7        46       500 </code></pre>
-<p>What if we want to leave out the missing responses?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(HealthGen) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>(., <span class="dt">useNA =</span> <span class="st">&quot;no&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">addmargins</span>()</code></pre></div>
-<pre><code>.
-Excellent     Vgood      Good      Fair      Poor       Sum 
-       51       153       172        71         7       454 </code></pre>
-<p>Let’s put the missing values back in, but now calculate proportions instead. Since the total will just be 1.0, we’ll leave that out.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(HealthGen) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>(., <span class="dt">useNA =</span> <span class="st">&quot;ifany&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">prop.table</span>()</code></pre></div>
-<pre><code>.
-Excellent     Vgood      Good      Fair      Poor      &lt;NA&gt; 
-    0.102     0.306     0.344     0.142     0.014     0.092 </code></pre>
-<p>Now, we’ll calculate percentages by multiplying the proportions by 100.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(HealthGen) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>(., <span class="dt">useNA =</span> <span class="st">&quot;ifany&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">prop.table</span>() <span class="op">%&gt;%</span>
-<span class="st">    &quot;*&quot;</span>(<span class="dv">100</span>) </code></pre></div>
-<pre><code>.
-Excellent     Vgood      Good      Fair      Poor      &lt;NA&gt; 
-     10.2      30.6      34.4      14.2       1.4       9.2 </code></pre>
+<div id="data-set-colin" class="section level3">
+<h3><span class="header-section-number">11.4.4</span> Data Set Colin</h3>
+<p>It looks like the picture for Colin should be very similar (in terms of scatter) to the picture for Bonnie, except that Colin will have a negative slope, rather than the positive one Bonnie has. Is that how this plays out?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">setBC &lt;-<span class="st"> </span><span class="kw">filter</span>(correx1, set <span class="op">==</span><span class="st"> &quot;Bonnie&quot;</span> <span class="op">|</span><span class="st"> </span>set <span class="op">==</span><span class="st"> &quot;Colin&quot;</span>)
+
+<span class="kw">ggplot</span>(setBC, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>set)</code></pre></div>
+<p><img src="431-notes_files/figure-html/correx1bc-fig-1.png" width="672" /></p>
+<p>Uh, oh. It looks like the point in Colin at the top right is twisting what would otherwise be a very straight regression model with an extremely strong negative correlation. There’s no better way to look for outliers than to examine the scatterplot.</p>
 </div>
-<div id="the-mode-of-a-categorical-variable" class="section level2">
-<h2><span class="header-section-number">6.3</span> The Mode of a Categorical Variable</h2>
-<p>A common measure applied to a categorical variable is to identify the mode, the most frequently observed value. To find the mode for variables with lots of categories (so that the <code>summary</code> may not be sufficient), we usually tabulate the data, and then sort by the counts of the numbers of observations, as we did with discrete quantitative variables.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(HealthGen) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">count =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">arrange</span>(<span class="kw">desc</span>(count)) </code></pre></div>
-<pre><code># A tibble: 6 x 2
-  HealthGen count
-     &lt;fctr&gt; &lt;int&gt;
-1      Good   172
-2     Vgood   153
-3      Fair    71
-4 Excellent    51
-5        NA    46
-6      Poor     7</code></pre>
+<div id="draw-the-picture" class="section level3">
+<h3><span class="header-section-number">11.4.5</span> Draw the Picture!</h3>
+<p>We’ve seen that Danielle, Earl and Fiona all show Pearson correlations of essentially zero. However, the three data sets look very different in a scatterplot.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(correx1, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>set)</code></pre></div>
+<p><img src="431-notes_files/figure-html/correx1-all1-fig-1.png" width="672" /></p>
+<p>When we learn that the correlation is zero, we tend to assume we have a picture like the Danielle data set. If Danielle were our real data, we might well think that x would be of little use in predicting y.</p>
+<ul>
+<li>But what if our data looked like Earl? In the Earl data set, x is incredibly helpful in predicting y, but we can’t use a straight line model - instead, we need a non-linear modeling approach.</li>
+<li>You’ll recall that the Fiona data set also had a Pearson correlation of zero. But here, the picture is rather more interesting.</li>
+</ul>
+<p>So, remember, draw the d%$# picture whenever you make use of a summary statistic, like a correlation coefficient, or linear model.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(setA, setB, setBC, tab1)</code></pre></div>
 </div>
-<div id="describe-in-the-hmisc-package-1" class="section level2">
-<h2><span class="header-section-number">6.4</span> <code>describe</code> in the <code>Hmisc</code> package</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Hmisc<span class="op">::</span><span class="kw">describe</span>(nh_adults <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">                    </span><span class="kw">select</span>(Sex, Race, Education, PhysActive, 
-                           Smoke100, SleepTrouble, HealthGen))</code></pre></div>
-<pre><code>nh_adults %&gt;% select(Sex, Race, Education, PhysActive, Smoke100, SleepTrouble, HealthGen) 
-
- 7  Variables      500  Observations
----------------------------------------------------------------------------
-Sex 
-       n  missing distinct 
-     500        0        2 
-                        
-Value      female   male
-Frequency     253    247
-Proportion  0.506  0.494
----------------------------------------------------------------------------
-Race 
-       n  missing distinct 
-     500        0        6 
-                                                                
-Value         Asian    Black Hispanic  Mexican    White    Other
-Frequency        29       57       39       43      322       10
-Proportion    0.058    0.114    0.078    0.086    0.644    0.020
----------------------------------------------------------------------------
-Education 
-       n  missing distinct 
-     500        0        5 
-                                                                      
-Value           8th Grade 9 - 11th Grade    High School   Some College
-Frequency              24             57             81            153
-Proportion          0.048          0.114          0.162          0.306
-                         
-Value        College Grad
-Frequency             185
-Proportion          0.370
----------------------------------------------------------------------------
-PhysActive 
-       n  missing distinct 
-     500        0        2 
-                    
-Value        No  Yes
-Frequency   225  275
-Proportion 0.45 0.55
----------------------------------------------------------------------------
-Smoke100 
-       n  missing distinct 
-     500        0        2 
-                      
-Value         No   Yes
-Frequency    289   211
-Proportion 0.578 0.422
----------------------------------------------------------------------------
-SleepTrouble 
-       n  missing distinct 
-     500        0        2 
-                      
-Value         No   Yes
-Frequency    362   138
-Proportion 0.724 0.276
----------------------------------------------------------------------------
-HealthGen 
-       n  missing distinct 
-     454       46        5 
-                                                            
-Value      Excellent     Vgood      Good      Fair      Poor
-Frequency         51       153       172        71         7
-Proportion     0.112     0.337     0.379     0.156     0.015
----------------------------------------------------------------------------</code></pre>
 </div>
-<div id="cross-tabulations" class="section level2">
-<h2><span class="header-section-number">6.5</span> Cross-Tabulations</h2>
-<p>It is very common for us to want to describe the association of one categorical variable with another. For instance, is there a relationship between Education and SleepTrouble in these data?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(Education, SleepTrouble) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>() <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">addmargins</span>()</code></pre></div>
-<pre><code>                SleepTrouble
-Education         No Yes Sum
-  8th Grade       15   9  24
-  9 - 11th Grade  40  17  57
-  High School     67  14  81
-  Some College   107  46 153
-  College Grad   133  52 185
-  Sum            362 138 500</code></pre>
-<p>To get row percentages, we can use:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(Education, SleepTrouble) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>() <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">prop.table</span>(., <span class="dv">1</span>) <span class="op">%&gt;%</span>
-<span class="st">    &quot;*&quot;</span>(<span class="dv">100</span>) </code></pre></div>
-<pre><code>                SleepTrouble
-Education              No      Yes
-  8th Grade      62.50000 37.50000
-  9 - 11th Grade 70.17544 29.82456
-  High School    82.71605 17.28395
-  Some College   69.93464 30.06536
-  College Grad   71.89189 28.10811</code></pre>
-<p>For column percentages, we use 2 instead of 1 in the <code>prop.table</code> function. Here, we’ll also round off to two decimal places:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(Education, SleepTrouble) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>() <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">prop.table</span>(., <span class="dv">2</span>) <span class="op">%&gt;%</span>
-<span class="st">    &quot;*&quot;</span>(<span class="dv">100</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">round</span>(.,<span class="dv">2</span>) </code></pre></div>
-<pre><code>                SleepTrouble
-Education           No   Yes
-  8th Grade       4.14  6.52
-  9 - 11th Grade 11.05 12.32
-  High School    18.51 10.14
-  Some College   29.56 33.33
-  College Grad   36.74 37.68</code></pre>
-<p>Here’s another approach, to look at the cross-classification of Race and HealthGen:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">xtabs</span>(<span class="op">~</span><span class="st"> </span>Race <span class="op">+</span><span class="st"> </span>HealthGen, <span class="dt">data =</span> nh_adults)</code></pre></div>
-<pre><code>          HealthGen
-Race       Excellent Vgood Good Fair Poor
-  Asian            4     7    9    2    1
-  Black            7    11   16   11    2
-  Hispanic         1     9   18    8    0
-  Mexican          5     6   12   16    1
-  White           34   115  115   32    3
-  Other            0     5    2    2    0</code></pre>
-<div id="cross-classifying-three-categorical-variables" class="section level3">
-<h3><span class="header-section-number">6.5.1</span> Cross-Classifying Three Categorical Variables</h3>
-<p>Suppose we are interested in <code>Smoke100</code> and its relationship to <code>PhysActive</code> and <code>SleepTrouble</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">xtabs</span>(<span class="op">~</span><span class="st"> </span>Smoke100 <span class="op">+</span><span class="st"> </span>PhysActive <span class="op">+</span><span class="st"> </span>SleepTrouble, <span class="dt">data =</span> nh_adults)</code></pre></div>
-<pre><code>, , SleepTrouble = No
+<div id="estimating-correlation-from-scatterplots" class="section level2">
+<h2><span class="header-section-number">11.5</span> Estimating Correlation from Scatterplots</h2>
+<p>The correx2 data set is designed to help you calibrate yourself a bit in terms of estimating a correlation from a scatterplot. There are 11 data sets buried within the correx2 example, and they are labeled by their Pearson correlation coefficients, ranging from r = 0.01 to r = 0.999</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">correx2 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/corr-ex2.csv&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>tbl_df
 
-        PhysActive
-Smoke100  No Yes
-     No   99 135
-     Yes  62  66
-
-, , SleepTrouble = Yes
-
-        PhysActive
-Smoke100  No Yes
-     No   26  29
-     Yes  38  45</code></pre>
-<p>We can also build a <strong>flat</strong> version of this table, as follows:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ftable</span>(Smoke100 <span class="op">~</span><span class="st"> </span>PhysActive <span class="op">+</span><span class="st"> </span>SleepTrouble, <span class="dt">data =</span> nh_adults)</code></pre></div>
-<pre><code>                        Smoke100  No Yes
-PhysActive SleepTrouble                 
-No         No                     99  62
-           Yes                    26  38
-Yes        No                    135  66
-           Yes                    29  45</code></pre>
-<p>And we can do this with <code>dplyr</code> functions, as well, for example…</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nh_adults <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(Smoke100, PhysActive, SleepTrouble) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">table</span>() </code></pre></div>
-<pre><code>, , SleepTrouble = No
-
-        PhysActive
-Smoke100  No Yes
-     No   99 135
-     Yes  62  66
-
-, , SleepTrouble = Yes
-
-        PhysActive
-Smoke100  No Yes
-     No   26  29
-     Yes  38  45</code></pre>
+correx2 <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(set) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">cor =</span> <span class="kw">round</span>(<span class="kw">cor</span>(x, y, <span class="dt">use=</span><span class="st">&quot;complete&quot;</span>),<span class="dv">3</span>))</code></pre></div>
+<pre><code># A tibble: 11 x 2
+       set   cor
+    &lt;fctr&gt; &lt;dbl&gt;
+ 1  Set 01 0.010
+ 2  Set 10 0.102
+ 3  Set 20 0.202
+ 4  Set 30 0.301
+ 5  Set 40 0.403
+ 6  Set 50 0.499
+ 7  Set 60 0.603
+ 8  Set 70 0.702
+ 9  Set 80 0.799
+10  Set 90 0.902
+11 Set 999 0.999</code></pre>
+<p>Here is a plot of the 11 data sets, showing the increase in correlation from 0.01 (in Set 01) to 0.999 (in Set 999).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(correx2, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>set) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Pearson Correlations from 0.01 to 0.999&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/correx2a-fig-1.png" width="672" /></p>
+<p>Note that R will allow you to fit a straight line model to any of these relationships, no matter how appropriate it might be to do so.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(correx2, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>set) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;R will fit a straight line to anything.&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/correx2b-fig-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(correx2, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>set) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Even if a loess smooth suggests non-linearity.&quot;</span>)</code></pre></div>
+<pre><code>`geom_smooth()` using method = &#39;loess&#39;</code></pre>
+<p><img src="431-notes_files/figure-html/correx2c-fig-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(correx2, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">color =</span> <span class="kw">factor</span>(group))) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">guides</span>(<span class="dt">color =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>set) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Note: The same 10 points (in red) are in each plot.&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/correx2d-fig-1.png" width="672" /></p>
+<p>Note that the same 10 points are used in each of the data sets. It’s always possible that a lurking subgroup of the data within a scatterplot follows a very strong linear relationship. This is why it’s so important (and difficult) not to go searching for such a thing without a strong foundation of logic, theory and prior empirical evidence.</p>
+</div>
+<div id="the-spearman-rank-correlation" class="section level2">
+<h2><span class="header-section-number">11.6</span> The Spearman Rank Correlation</h2>
+<p>The Spearman rank correlation coefficient is a rank-based measure of statistical dependence that assesses how well the relationship between X and Y can be described using a <strong>monotone function</strong> even if that relationship is not linear.</p>
+<ul>
+<li>A monotone function preserves order, that is, Y must either be strictly increasing as X increases, or strictly decreasing as X increases.</li>
+<li>A Spearman correlation of 1.0 indicates simply that as X increases, Y always increases.</li>
+<li>Like the Pearson correlation, the Spearman correlation is dimension-free, and falls between -1 and +1.</li>
+<li>A positive Spearman correlation corresponds to an increasing (but not necessarily linear) association between X and Y, while a negative Spearman correlation corresponds to a decreasing (but again not necessarily linear) association.</li>
+</ul>
+<div id="spearman-formula" class="section level3">
+<h3><span class="header-section-number">11.6.1</span> Spearman Formula</h3>
+<p>To calculate the Spearman rank correlation, we take the ranks of the X and Y data, and then apply the usual Pearson correlation. To find the ranks, sort X and Y into ascending order, and then number them from 1 (smallest) to n (largest). In the event of a tie, assign the average rank to the tied subjects.</p>
+</div>
+<div id="comparing-pearson-and-spearman-correlations" class="section level3">
+<h3><span class="header-section-number">11.6.2</span> Comparing Pearson and Spearman Correlations</h3>
+<p>Let’s look at the <code>nyfs1</code> data again.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(nyfs1<span class="op">$</span>bmi, nyfs1<span class="op">$</span>waist.circ)</code></pre></div>
+<pre><code>[1] 0.91</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(nyfs1<span class="op">$</span>bmi, nyfs1<span class="op">$</span>waist.circ, <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</code></pre></div>
+<pre><code>[1] 0.889</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nyfs1 <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(bmi, waist.circ) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">cor</span>(., <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</code></pre></div>
+<pre><code>             bmi waist.circ
+bmi        1.000      0.889
+waist.circ 0.889      1.000</code></pre>
+<p>The Spearman and Pearson correlations are not especially different in this case.</p>
+</div>
+<div id="spearman-vs.pearson-example-1" class="section level3">
+<h3><span class="header-section-number">11.6.3</span> Spearman vs. Pearson Example 1</h3>
+<p>The next few plots describe relationships where we anticipate the Pearson and Spearman correlations might differ in their conclusions.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">spear1 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/spear1.csv&quot;</span>)
+spear2 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/spear2.csv&quot;</span>)
+spear3 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/spear3.csv&quot;</span>)
+spear4 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/spear4.csv&quot;</span>)
+<span class="co"># used read.csv above because these are just toy examples with</span>
+<span class="co"># two columns per data set and no row numbering</span></code></pre></div>
+<p>Example 1 shows a function where the Pearson correlation is 0.925 (a strong but not perfect linear relation), but the Spearman correlation is <code>signif(cor(spear1$x, spear1$y, method = &quot;spearman&quot;),2)</code> because the relationship is monotone, even though it is not perfectly linear.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(spear1, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Spearman vs. Pearson, Example 1&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="op">-</span><span class="dv">10</span>, <span class="dt">y =</span> <span class="dv">20</span>, 
+             <span class="dt">label =</span> <span class="kw">paste</span>(<span class="st">&quot;Pearson r = &quot;</span>, 
+                 <span class="kw">signif</span>(<span class="kw">cor</span>(spear1<span class="op">$</span>x, spear1<span class="op">$</span>y),<span class="dv">2</span>),
+                 <span class="st">&quot;, Spearman r = &quot;</span>, 
+                 <span class="kw">signif</span>(<span class="kw">cor</span>(spear1<span class="op">$</span>x, spear1<span class="op">$</span>y, <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>),<span class="dv">2</span>)))</code></pre></div>
+<p><img src="431-notes_files/figure-html/spearex1-fig-1.png" width="672" /></p>
+<p>So, a positive Spearman correlation corresponds to an increasing (but not necessarily linear) association between x and y.</p>
+</div>
+<div id="spearman-vs.pearson-example-2" class="section level3">
+<h3><span class="header-section-number">11.6.4</span> Spearman vs. Pearson Example 2</h3>
+<p>Example 2 shows that a negative Spearman correlation corresponds to a decreasing (but, again, not necessarily linear) association between x and y.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(spear2, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">col =</span> <span class="st">&quot;purple&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Spearman vs. Pearson, Example 2&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="dv">10</span>, <span class="dt">y =</span> <span class="dv">20</span>, <span class="dt">col =</span> <span class="st">&quot;purple&quot;</span>,
+             <span class="dt">label =</span> <span class="kw">paste</span>(<span class="st">&quot;Pearson r = &quot;</span>, 
+                    <span class="kw">signif</span>(<span class="kw">cor</span>(spear2<span class="op">$</span>x, spear2<span class="op">$</span>y),<span class="dv">2</span>),
+                    <span class="st">&quot;, Spearman r = &quot;</span>, 
+                    <span class="kw">signif</span>(<span class="kw">cor</span>(spear2<span class="op">$</span>x, spear2<span class="op">$</span>y, <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>),<span class="dv">2</span>)))</code></pre></div>
+<p><img src="431-notes_files/figure-html/spearex2-fig-1.png" width="672" /></p>
+</div>
+<div id="spearman-vs.pearson-example-3" class="section level3">
+<h3><span class="header-section-number">11.6.5</span> Spearman vs. Pearson Example 3</h3>
+<p>The Spearman correlation is less sensitive than the Pearson correlation is to strong outliers that are unusual on either the X or Y axis, or both. That is because the Spearman rank coefficient limits the outlier to the value of its rank.</p>
+<p>In Example 3, for instance, the Spearman correlation reacts much less to the outliers around X = 12 than does the Pearson correlation.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(spear3, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Spearman vs. Pearson, Example 3&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="dv">5</span>, <span class="dt">y =</span> <span class="op">-</span><span class="dv">15</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>,
+             <span class="dt">label =</span> <span class="kw">paste</span>(<span class="st">&quot;Pearson r = &quot;</span>, 
+                <span class="kw">signif</span>(<span class="kw">cor</span>(spear3<span class="op">$</span>x, spear3<span class="op">$</span>y),<span class="dv">2</span>),
+                <span class="st">&quot;, Spearman r = &quot;</span>, 
+                <span class="kw">signif</span>(<span class="kw">cor</span>(spear3<span class="op">$</span>x, spear3<span class="op">$</span>y, <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>),<span class="dv">2</span>)))</code></pre></div>
+<p><img src="431-notes_files/figure-html/spearex3-fig-1.png" width="672" /></p>
+</div>
+<div id="spearman-vs.pearson-example-4" class="section level3">
+<h3><span class="header-section-number">11.6.6</span> Spearman vs. Pearson Example 4</h3>
+<p>The use of a Spearman correlation is no substitute for looking at the data. For non-monotone data like what we see in Example 4, neither the Spearman nor the Pearson correlation alone provides much guidance, and just because they are (essentially) telling you the same thing, that doesn’t mean what they’re telling you is all that helpful.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(spear4, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">col =</span> <span class="st">&quot;purple&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Spearman vs. Pearson, Example 4&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="dv">10</span>, <span class="dt">y =</span> <span class="dv">20</span>, <span class="dt">col =</span> <span class="st">&quot;purple&quot;</span>,
+             <span class="dt">label =</span> <span class="kw">paste</span>(<span class="st">&quot;Pearson r = &quot;</span>, 
+                 <span class="kw">signif</span>(<span class="kw">cor</span>(spear4<span class="op">$</span>x, spear4<span class="op">$</span>y),<span class="dv">2</span>),
+                 <span class="st">&quot;, Spearman r = &quot;</span>, 
+                 <span class="kw">signif</span>(<span class="kw">cor</span>(spear4<span class="op">$</span>x, spear4<span class="op">$</span>y, <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>),<span class="dv">2</span>)))</code></pre></div>
+<p><img src="431-notes_files/figure-html/spearex4-fig-1.png" width="672" /></p>
 
 </div>
 </div>
@@ -647,8 +755,8 @@ Smoke100  No Yes
           </div>
         </div>
       </div>
-<a href="summarizing-quantities.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="the-national-youth-fitness-survey-nyfs1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="summarizing-data-within-subgroups.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="studying-crab-claws-crabs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

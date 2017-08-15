@@ -418,30 +418,8 @@ top = textGrob("Comparing BMI to 1/BMI", gp=gpar(fontsize=15)))
 # in the main title
 # note that you'll need to have called library(grid) or 
 # require(grid) for this to work properly
+rm(p1, p2) # cleanup
 ```
 
-## Are the Waist Circumferences Normally Distributed?
-
-```{r nyfs1waistnormalchecks-fig}
-p1 <- ggplot(nyfs1, aes(x = waist.circ)) +
-    geom_histogram(aes(y = ..density..), 
-                   binwidth=2, fill = "purple", color = "yellow") + 
-    stat_function(fun = dnorm, args = list(mean = mean(nyfs1$waist.circ), 
-                                           sd = sd(nyfs1$waist.circ))) +
-    labs(x = "Waist Circumference", title="Histogram + Normal Model")
-
-p2 <- ggplot(nyfs1, aes(sample = waist.circ)) +
-    geom_point(stat="qq", color = "purple") + 
-    labs(y = "Ordered Waist Circumferences", title="Normal Q-Q plot")
-
-# this approach to top label lets us adjust 
-# the size and font (here bold) used in the main title
-gridExtra::grid.arrange(p1, p2, ncol=2, 
-             top = textGrob("Waist Circumference in the nyfs1 data", 
-                            gp=gpar(fontsize=15,font=2)))
-
-## clean up
-rm(p1, p2)
-```
-
+When we are confronted with a variable that is not Normally distributed but that we wish was Normally distributed, it is sometimes useful to consider whether working with a **transformation** of the data will yield a more helpful result. The next Section provides some initial guidance about choosing between a class of power transformations that can reduce the impact of non-Normality in unimodal data.
 
