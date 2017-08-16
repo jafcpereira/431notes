@@ -1,6 +1,6 @@
 # Summarizing Categorical Variables
 
-Summarizing categorical variables numerically is mostly about building tables, and calculating percentages or proportions. We'll save our discussion of modeling categorical data for later. Recall that in the `nh_adults` data set we built previously, we had the following categorical variables. The number of levels indicates the number of possible categories for each categorical variable.
+Summarizing categorical variables numerically is mostly about building tables, and calculating percentages or proportions. We'll save our discussion of modeling categorical data for later. Recall that in the `nh_adults` data set we built in Section (\@ref(createnh_adults)), we had the following categorical variables. The number of levels indicates the number of possible categories for each categorical variable.
 
 Variable     | Description                  | Levels | Type
 ----------:  | ---------------------------- | - | ---------
@@ -31,6 +31,11 @@ nh_adults %>%
     select(HealthGen) %>%
     table(., useNA = "ifany")
 ```
+
+The main tools we have for augmenting tables are:
+    
+- adding in marginal totals, and 
+- working with proportions/percentages.
 
 What if we want to add a total count?
 
@@ -148,3 +153,78 @@ nh_adults %>%
     select(Smoke100, PhysActive, SleepTrouble) %>%
     table() 
 ```
+
+## Constructing Tables Well
+
+The prolific Howard Wainer is responsible for many interesting books on visualization and related issues, including @HW_GraphicDiscovery and @HW_MedicalIlluminations. These rules come from Chapter 10 of @HW_VisualRevelations.
+
+1. Order the rows and columns in a way that makes sense.
+2. Round, a lot!
+3. ALL is different and important
+
+### Alabama First!
+
+Which of these Tables is more useful to you?
+    
+2013 Percent of Students in grades 9-12 who are obese
+
+State | % Obese | 95% CI | Sample Size
+----- | ------- | ------ | -----------
+Alabama | 17.1 | (14.6 - 19.9) | 1,499
+Alaska |	12.4	| (10.5-14.6)	| 1,167
+Arizona |	10.7 |	(8.3-13.6)	| 1,520
+Arkansas |	17.8	| (15.7-20.1)	| 1,470
+Connecticut |	12.3 |	(10.2-14.7)	| 2,270
+Delaware |	14.2 |	(12.9-15.6) |	2,475
+Florida |	11.6	| (10.5-12.8)	| 5,491
+... | | | 
+Wisconsin |	11.6 | 	(9.7-13.9)	| 2,771
+Wyoming	| 10.7 |	(9.4-12.2)	| 2,910
+
+or ...
+
+State | % Obese | 95% CI | Sample Size
+----- | ------- | ------ | -----------
+Kentucky | 18.0 | (15.7 - 20.6) | 1,537
+Arkansas | 17.8 | (15.7 - 20.1) | 1,470
+Alabama | 17.1 | (14.6 - 19.9) | 1,499
+Tennessee | 16.9 | (15.1 - 18.8) | 1,831
+Texas | 15.7 | (13.9 - 17.6) | 3,039
+... | | |
+Massachusetts | 10.2 | (8.5 - 12.1) | 2,547
+Idaho | 9.6 | (8.2 - 11.1) | 1,841
+Montana | 9.4 | (8.4 - 10.5) | 4,679
+New Jersey | 8.7 | (6.8 - 11.2) | 1,644
+Utah | 6.4 | (4.8 - 8.5) | 2,136
+
+It is a rare event when Alabama first is the best choice.
+
+### Order rows and columns sensibly
+
+- Alabama First!
+    + Size places - put the largest first. We often look most carefully at the top.
+- Order time from the past to the future to help the viewer.
+- If there is a clear predictor-outcome relationship, put the predictors in the rows and the outcomes in the columns.
+
+### Round - a lot!
+
+- Humans cannot understand more than two digits very easily.
+- We almost never care about accuracy of more than two digits.
+- We can almost never justify more than two digits of accuracy statistically.
+- It's also helpful to remember that we are almost invariably publishing progress to date, rather than a truly final answer.
+
+Suppose, for instance, we report a correlation coefficient of 0.25. How many observations do you think you would need to justify such a choice?
+
+- To report 0.25 meaningfully, we want to be sure that the second digit isn't 4 or 6.
+- That requires a standard error less than 0.005
+- The *standard error* of any statistic is proportional to 1 over the square root of the sample size, *n*.
+
+So $\frac{1}{\sqrt{n}}$ ~ 0.005, but that means $\sqrt{n} = \frac{1}{0.005} = 200$. If $\sqrt{n} = 200$, then *n* = (200)^2^ = 40,000. 
+
+Do we usually have 40,000 observations?
+
+### ALL is different and important
+
+Summaries of rows and columns provide a measure of what is typical or usual. Sometimes a sum is helpful, at other times, consider presenting a median or other summary. The ALL category, as @HW_VisualRevelations suggests, should be both visually different from the individual entries and set spatially apart.
+
+On the whole, it's *far* easier to fall into a good graph in R (at least if you have some ggplot2 skills) than to produce a good table.
