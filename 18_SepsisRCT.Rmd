@@ -1,0 +1,129 @@
+# A Study Comparing Two Independent Samples: Ibuprofen in Sepsis Trial {#Sepsis_RCT}
+
+## The Ibuprofen in Sepsis Randomized Clinical Trial
+
+We will be working with a sample from the Ibuprofen in Sepsis study, as reported in @Bernard1997. My source for these data is @Dupont.
+
+> Ibuprofen has been shown to have effects on sepsis in humans, but because of their small samples (fewer than 30 patients), previous studies have been inadequate to assess effects on mortality. We sought to determine whether ibuprofen can alter rates of organ failure and mortality in patients with the sepsis syndrome, how the drug affects the increased metabolic demand in sepsis (e.g., fever, tachypnea, tachycardia, hypoxemia, and lactic acidosis), and what potential adverse effects the drug has in the sepsis syndrome.
+
+- @Bernard1997, Abstract.
+
+In this study, patients meeting specific criteria (including elevated temperature) for a diagnosis of sepsis were recruited if they fulfilled an additional set of study criteria (see @Bernard1997) in the intensive care unit at one of seven participating centers. The full trial involved 455 patients, of which our sample includes 300. 150 of our patients were randomly assigned to the Ibuprofen group and 150 to the Placebo group. In either case, the patient received intravenous treatment (ibuprofen or placebo.) This was also a *double-blind* study, where neither the patients nor their care providers know, during the execution of the trial, what intervention group was assigned to each patient.
+
+For the moment, we will focus on two variables:
+
+- **treat**, which specifies the treatment group (Ibuprofen or Placebo), which was assigned via randomization to each patient, and
+- **temp_drop**, the outcome of interest, measured as the change from baseline to 2 hours later in degrees Celsius. Positive values indicate improvement, that is, a *drop* in temperature over the 2 hours following the baseline measurement.
+
+The data in the `sepsis.csv` file also contains the subject's
+
+- *id*, which is just a code
+- *race* (three levels: White, AfricanA or Other)
+- *apache* = baseline APACHE II score, a severity of disease score ranging from 0 to 71 with higher scores indicating more severe disease and a higher mortality risk
+- *temp_0* = baseline temperature, degrees Celsius.
+
+but we'll ignore those for now.
+
+```{r}
+sepsis 
+
+sepsis <- sepsis %>%
+    mutate(treat = factor(treat),
+           race = factor(race))
+
+summary(select(sepsis, treat, temp_drop))
+```
+
+Again, the complete study included 455 patients, but our sample includes 300. We have exactly 150 in the Ibuprofen group and 150 in the Placebo group, as it turns out. I picked the sample so as to exclude patients with missing values for our outcome of interest, and then selected a random sample of 150 Ibuprofen and 150 Placebo patients from the rest of the group, and converted the temperatures and changes from Fahrenheit to Celsius.
+
+### Matched Pairs vs. Two Independent Samples
+
+These data were obtained from two independent samples, rather than as matched pairs.
+
+- Remember that if the sample sizes were different, we'd know we have independent samples, because matched pairs requires that each subject in the "treated" group be matched to a single, unique member of the "control" group, and thus that we have exactly as many "treated" as "control" subjects.
+- But having as many subjects in one treatment group as the other (which is called a *balanced design*) is only necessary, and not sufficient, for us to conclude that matched pairs are used.
+- We only have matched pairs if each individual observation in the "treatment" group is matched to one and only one observation in the "control" group by the way in which the data were gathered.
+    + Paired data can arise in several ways. The most common is a "pre-post" study where subjects are measured both before and after an exposure happens. In observational studies, we often match up subjects who did and did not receive an exposure so as to account for differences on things like age, sex, race and other covariates. This, of course, is what happens in the Lead in the Blood of Children study from Section \@ref(Blood-Lead-Study).
+    + If the data are from paired samples, we should (and in fact) must form paired differences, with no subject left unpaired.
+    + If we cannot line up the data comparing two samples of quantitative data so that the links between the individual "treated" and "control" observations to form matched pairs are evident, then the data are not paired.
+
+As @BockVD suggest, 
+
+> ... if you know the data are paired, you can take advantgage of that fact - in fact, you *must* take advantage of it. ... You must desicde whether the data are paired from understanding how they were collected and what they mean. ... There is no test to determine whether the data are paired.
+
+### Our Key Questions for an Independent Samples Comparison
+
+1. What is the **population** under study?
+
+- All patients in the intensive care unit with sepsis who meet the inclusion and exclusion criteria of the study, at the entire population of health centers like the ones included in the trial.
+
+2. What is the **sample**? Is it representative of the population?
+
+- The sample consists of 300 patients. It is a convenient sample from the population under study.
+- This is a randomized clinical trial. 150 of the patients were assigned to Ibuprofen, and the rest to Placebo. It is this treatment assignment that is randomized, not the selection of the sample as a whole.
+- In expectation, randomization of individuals to treatments, as in this study, should be expected to eliminate treatment selection bias.
+
+3. Who are the subjects / **individuals** within the sample?
+
+- 150 patients who received Ibuprofen and a completely different set of 150 patients who received Placebo.
+- There is no match or link between the patients. They are best thought of as independent samples.
+
+4. What **data** are available on each individual?
+
+- The key variables are the treatment indicator (Ibuprofen or Placebo) and the outcome (drop in temperature in the 2 hours following administration of the randomly assigned treatment.)
+
+### RCT Caveats
+
+The placebo-controlled, double-blind randomized clinical trial, especially if pre-registered, is often considered the best feasible study for assessing the effectiveness of a treatment. While that's not always true, it is a very solid design. The primary caveat is that the patients who are included in such trials are rarely excellent representations of the population of potentially affected patients as a whole.
+
+## Exploratory Data Analysis
+
+
+
+First, we'll look at a boxplot, showing all of the individual data as added-on dots. 
+
+```{r sepsis_temp_drop_by_treat_boxplot}
+ggplot(sepsis, aes(x = treat, y = temp_drop, fill = treat)) +
+    geom_boxplot() +
+    geom_jitter(width = 0.1, height = 0, color = "orangered") +
+    guides(fill = FALSE) + 
+    labs(title = "Boxplot of Temperature Drop in Sepsis Patients",
+         x = "", y = "Drop in Temperature (degrees C)") + 
+    coord_flip() +
+    theme_bw()
+```
+
+Next, we'll consider faceted histograms of the data.
+
+```{r sepsis_temp_drop_by_treat_histograms}
+ggplot(sepsis, aes(x = temp_drop, fill = treat)) +
+    geom_histogram(color = "white", bins = 20) +
+    guides(fill = FALSE) + 
+    labs(title = "Histograms of Temperature Drop in Sepsis Patients",
+         x = "Drop in Temperature (degrees Celsius") +
+    theme_bw() +
+    facet_wrap(~ treat)
+```
+
+We'll also look at a joy plot.
+
+```{r sepsis_temp_drop_by_treat_joyplot}
+ggplot(sepsis, aes(x = temp_drop, y = treat, fill = treat)) +
+    ggjoy::geom_joy(scale = 0.9) +
+    guides(fill = FALSE) + 
+    labs(title = "Joy Plot of Temperature Drop in Sepsis Patients",
+         x = "Drop in Temperature (degrees Celsius)", y = "") +
+    ggjoy::theme_joy()
+```
+
+The center of the ibuprofen distribution is shifted a bit towards the more positive (greater improvement) direction, it seems, than is the distribution for the placebo patients. Here are some key numerical summaries, within the treatment groups, which buoy this conclusion.
+
+```{r sepsis_temp_drop_by_treat_numerical_summary}
+sepsis %>% group_by(treat) %>% 
+    summarize(n = n(), 
+              median = median(temp_drop), 
+              Q1 = quantile(temp_drop, 0.25), 
+              Q3 = quantile(temp_drop, 0.75),
+              mean = mean(temp_drop),
+              sd = sd(temp_drop)) 
+```

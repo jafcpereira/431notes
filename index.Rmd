@@ -32,7 +32,7 @@ Everything you see here is available to you as HTML or PDF. You will also have a
 
 ## Structure {-}
 
-The Notes, like the 431 course, are split into three main parts.
+The Notes, like the 431 course, fall in three main parts.
 
 Part A is about **visualizing data and exploratory data analyses**. These Notes focus on using R to work through issues that arise in the process of exploring data, managing (cleaning and manipulating) data into a tidy format to facilitate useful work downstream, and describing those data effectively with visualizations, numerical summaries, and some simple models.
 

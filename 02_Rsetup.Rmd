@@ -1,4 +1,4 @@
-# Setting Up R
+# Setting Up R {#Rsetup}
 
 These Notes make extensive use of 
 
