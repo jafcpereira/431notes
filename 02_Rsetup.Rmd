@@ -57,12 +57,18 @@ I will also make use of functions in the following packages/libraries, but when 
 
 We also will use a package called `xda` for two functions called `numSummary` and `charSummary`, but that package gets loaded via `devtools` and GitHub by the code in these Notes.
 
-When compiling the Notes from the original code files, these packages will need to be installed (but not loaded) in R, or an error will be thrown when compiling this document. To install all of the packages used within these Notes, type in (or copy and paste) the following commands and run them in the R Console. Again, you only need to install a package once, but you need to reload it every time you start a new session.
+Several other packages are included below, even though they are not used in these Notes, because they will be used in class sessions or in 432.
+
+When compiling the Notes from the original code files, these packages will need to be installed (but not loaded) in R, or an error will be thrown when compiling this document. To install all of the packages used within these Notes, type in (or copy and paste) the following commands and run them in the R Console. Again, you only need to install a package once, but you need to reload it every time you start a new session. 
 
 ```
-pkgs <- c("aplpack", "arm", "boot", "car", "devtools", "Epi", "forcats", "GGally",
-          "ggjoy", gridExtra", "Hmisc", "knitr", "mice", "mosaic", "NHANES", 
-          "pander", "psych", "pwr", "tidyverse", "viridis")
+pkgs <- c("aplpack", "arm", "babynames", "boot", "car", "devtools", "Epi", 
+          "faraway", "forcats", "foreign", "gapminder", "GGally", "ggjoy", 
+          "gridExtra", "Hmisc", "knitr", "lme4", "markdown", "MASS", 
+          "mice", "mosaic", "multcomp", "NHANES", "pander", "psych", 
+          "pwr", "qcc", "rmarkdown", "rms", "sandwich", "survival", 
+          "tableone", "tidyverse", "vcd", "viridis")
+
 install.packages(pkgs)
 ```
 

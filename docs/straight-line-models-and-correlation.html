@@ -558,7 +558,7 @@ r_{XY} = \frac{1}{n-1} \sum\limits_{i=1}^n (\frac{x_i - \bar{x}}{s_x}) (\frac{y_
 <div id="a-simulated-example" class="section level2">
 <h2><span class="header-section-number">11.4</span> A simulated example</h2>
 <p>The <code>correx1</code> data file contains six different sets of (x,y) points, identified by the <code>set</code> variable.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">correx1 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/corr-ex1.csv&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>tbl_df 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">correx1 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/correx1.csv&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>tbl_df 
 
 <span class="kw">summary</span>(correx1)</code></pre></div>
 <pre><code>       set           x              y       
@@ -689,7 +689,7 @@ knitr<span class="op">::</span><span class="kw">kable</span>(tab1)</code></pre><
 <div id="estimating-correlation-from-scatterplots" class="section level2">
 <h2><span class="header-section-number">11.5</span> Estimating Correlation from Scatterplots</h2>
 <p>The correx2 data set is designed to help you calibrate yourself a bit in terms of estimating a correlation from a scatterplot. There are 11 data sets buried within the correx2 example, and they are labeled by their Pearson correlation coefficients, ranging from r = 0.01 to r = 0.999</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">correx2 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/corr-ex2.csv&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>tbl_df
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">correx2 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/correx2.csv&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>tbl_df
 
 correx2 <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">group_by</span>(set) <span class="op">%&gt;%</span>

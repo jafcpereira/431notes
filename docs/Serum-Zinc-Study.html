@@ -513,16 +513,16 @@ gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(p1, p2, 
 <li><code>Emp_Rule</code> provides the results of applying the <code>68-95-99.7</code> Empirical Rule to the <code>zinc</code> data.</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pander</span>(mosaic<span class="op">::</span><span class="kw">favstats</span>(serzinc<span class="op">$</span>zinc))</code></pre></div>
-<table style="width:78%;">
+<table style="width:82%;">
 <colgroup>
 <col width="8%" />
 <col width="6%" />
 <col width="12%" />
 <col width="6%" />
 <col width="8%" />
-<col width="9%" />
+<col width="11%" />
 <col width="6%" />
-<col width="5%" />
+<col width="8%" />
 <col width="12%" />
 </colgroup>
 <thead>
@@ -594,20 +594,19 @@ gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(p1, p2, 
 </tbody>
 </table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pander</span>(psych<span class="op">::</span><span class="kw">describe</span>(serzinc<span class="op">$</span>zinc))</code></pre></div>
-<table>
+<table style="width:100%;">
 <caption>Table continues below</caption>
 <colgroup>
-<col width="11%" />
+<col width="12%" />
 <col width="9%" />
-<col width="5%" />
-<col width="9%" />
+<col width="8%" />
+<col width="10%" />
 <col width="6%" />
-<col width="11%" />
+<col width="12%" />
 <col width="13%" />
-<col width="7%" />
-<col width="7%" />
-<col width="7%" />
-<col width="9%" />
+<col width="10%" />
+<col width="8%" />
+<col width="8%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -621,7 +620,6 @@ gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(p1, p2, 
 <th align="center">mad</th>
 <th align="center">min</th>
 <th align="center">max</th>
-<th align="center">range</th>
 </tr>
 </thead>
 <tbody>
@@ -636,20 +634,21 @@ gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(p1, p2, 
 <td align="center">16.31</td>
 <td align="center">50</td>
 <td align="center">153</td>
-<td align="center">103</td>
 </tr>
 </tbody>
 </table>
-<table style="width:46%;">
+<table style="width:62%;">
 <colgroup>
 <col width="12%" />
-<col width="9%" />
+<col width="11%" />
+<col width="12%" />
 <col width="15%" />
-<col width="8%" />
+<col width="11%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th align="center"> </th>
+<th align="center">range</th>
 <th align="center">skew</th>
 <th align="center">kurtosis</th>
 <th align="center">se</th>
@@ -658,6 +657,7 @@ gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(p1, p2, 
 <tbody>
 <tr class="odd">
 <td align="center"><strong>X1</strong></td>
+<td align="center">103</td>
 <td align="center">0.6191</td>
 <td align="center">0.8732</td>
 <td align="center">0.7446</td>

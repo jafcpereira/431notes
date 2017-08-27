@@ -466,10 +466,15 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li><code>psych</code> for its own version of <code>describe</code>, but other features are described at <a href="http://personality-project.org/r/psych/" class="uri">http://personality-project.org/r/psych/</a></li>
 </ul>
 <p>We also will use a package called <code>xda</code> for two functions called <code>numSummary</code> and <code>charSummary</code>, but that package gets loaded via <code>devtools</code> and GitHub by the code in these Notes.</p>
+<p>Several other packages are included below, even though they are not used in these Notes, because they will be used in class sessions or in 432.</p>
 <p>When compiling the Notes from the original code files, these packages will need to be installed (but not loaded) in R, or an error will be thrown when compiling this document. To install all of the packages used within these Notes, type in (or copy and paste) the following commands and run them in the R Console. Again, you only need to install a package once, but you need to reload it every time you start a new session.</p>
-<pre><code>pkgs &lt;- c(&quot;aplpack&quot;, &quot;arm&quot;, &quot;boot&quot;, &quot;car&quot;, &quot;devtools&quot;, &quot;Epi&quot;, &quot;forcats&quot;, &quot;GGally&quot;,
-          &quot;ggjoy&quot;, gridExtra&quot;, &quot;Hmisc&quot;, &quot;knitr&quot;, &quot;mice&quot;, &quot;mosaic&quot;, &quot;NHANES&quot;, 
-          &quot;pander&quot;, &quot;psych&quot;, &quot;pwr&quot;, &quot;tidyverse&quot;, &quot;viridis&quot;)
+<pre><code>pkgs &lt;- c(&quot;aplpack&quot;, &quot;arm&quot;, &quot;babynames&quot;, &quot;boot&quot;, &quot;car&quot;, &quot;devtools&quot;, &quot;Epi&quot;, 
+          &quot;faraway&quot;, &quot;forcats&quot;, &quot;foreign&quot;, &quot;gapminder&quot;, &quot;GGally&quot;, &quot;ggjoy&quot;, 
+          &quot;gridExtra&quot;, &quot;Hmisc&quot;, &quot;knitr&quot;, &quot;lme4&quot;, &quot;markdown&quot;, &quot;MASS&quot;, 
+          &quot;mice&quot;, &quot;mosaic&quot;, &quot;multcomp&quot;, &quot;NHANES&quot;, &quot;pander&quot;, &quot;psych&quot;, 
+          &quot;pwr&quot;, &quot;qcc&quot;, &quot;rmarkdown&quot;, &quot;rms&quot;, &quot;sandwich&quot;, &quot;survival&quot;, 
+          &quot;tableone&quot;, &quot;tidyverse&quot;, &quot;vcd&quot;, &quot;viridis&quot;)
+
 install.packages(pkgs)</code></pre>
 
 </div>

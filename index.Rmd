@@ -30,6 +30,8 @@ What you will mostly find are brief explanations of a key idea or summary, accom
 
 Everything you see here is available to you as HTML or PDF. You will also have access to the R Markdown files, which contain the code which generates everything in the document, including all of the R results. We will demonstrate the use of R Markdown (this document is generated with the additional help of an R package called `bookdown`) and R Studio (the "program" which we use to interface with the R language) in class. 
 
+To download the data and R code related to these notes, visit https://github.com/THOMASELOVE/431data
+
 ## Structure {-}
 
 The Notes, like the 431 course, fall in three main parts.

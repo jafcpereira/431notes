@@ -144,7 +144,7 @@ $$
 The `correx1` data file contains six different sets of (x,y) points, identified by the `set` variable.
 
 ```{r correlation example 1 setup}
-correx1 <- read.csv("data/corr-ex1.csv") %>% tbl_df 
+correx1 <- read.csv("data/correx1.csv") %>% tbl_df 
 
 summary(correx1)
 ```
@@ -267,7 +267,7 @@ rm(setA, setB, setBC, tab1)
 The correx2 data set is designed to help you calibrate yourself a bit in terms of estimating a correlation from a scatterplot. There are 11 data sets buried within the correx2 example, and they are labeled by their Pearson correlation coefficients, ranging from r = 0.01 to r = 0.999
 
 ```{r correlation example 2}
-correx2 <- read.csv("data/corr-ex2.csv") %>% tbl_df
+correx2 <- read.csv("data/correx2.csv") %>% tbl_df
 
 correx2 %>%
     group_by(set) %>%
