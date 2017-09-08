@@ -33,7 +33,7 @@ nh_adults <- sample_n(nh_temp, size = 500)
 nh_adults
 ```
 
-The data consists of 500 rows (observations) on 13 variables (columns). Essentially, we have 13 pieces of information on each of 500 adult NHANES subjects who were included in the 2011-12 panel.
+The data consist of 500 rows (observations) on 13 variables (columns). Essentially, we have 13 pieces of information on each of 500 adult NHANES subjects who were included in the 2011-12 panel.
 
 ### Summarizing the Data's Structure
 
