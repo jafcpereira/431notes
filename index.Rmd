@@ -22,7 +22,7 @@ While these Notes share some of the features of a textbook, they are neither com
 - amplify what is here,
 - simplify the presentation of things done here,
 - use new examples to show some of the same techniques,
-- refer to issues not mentioned in this document
+- refer to issues not mentioned in this document,
 
 but what we don't do is follow these notes very precisely. We assume instead that you will read the materials and try to learn from them, just as you will attend classes and try to learn from them. We welcome feedback of all kinds on this document or anything else. Just email us at 431-help at case dot edu, or submit a pull request.
 

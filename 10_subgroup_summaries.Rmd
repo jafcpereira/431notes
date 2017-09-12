@@ -73,7 +73,7 @@ ggplot(nyfs1, aes(x=bmi.cat, y=triceps.skinfold, fill = bmi.cat)) +
          x = "BMI Percentile category", y = "Triceps Skinfold (mm)")
 ```
 
-There is no overlap between the notches for each of the four categories, so we might reasonably conclude that the true median tricep skinfold values across the four categories are statistically significantly different. 
+There is no overlap between the notches for each of the four categories, so we might reasonably conclude that the true median triceps skinfold values across the four categories are statistically significantly different. 
 
 For an example where the notches overlap, consider the comparison of ages across sex. 
 

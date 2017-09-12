@@ -79,7 +79,7 @@ You could potentially add `coord_flip() +` to the histogram, and this would have
 
 ### Numerical Summaries
 
-This section describes some numerical summaries of interest to augment the plots in summaring the center, spread and shape of the distribution of serum zine among these 462 teenage males. 
+This section describes some numerical summaries of interest to augment the plots in summarizing the center, spread and shape of the distribution of serum zinc among these 462 teenage males. 
 
 The tables below are built using two functions from the `Love-R-functions.R` script.
 

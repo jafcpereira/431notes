@@ -49,7 +49,7 @@ These data were obtained from two independent samples, rather than as matched pa
 
 As @BockVD suggest, 
 
-> ... if you know the data are paired, you can take advantgage of that fact - in fact, you *must* take advantage of it. ... You must desicde whether the data are paired from understanding how they were collected and what they mean. ... There is no test to determine whether the data are paired.
+> ... if you know the data are paired, you can take advantage of that fact - in fact, you *must* take advantage of it. ... You must decide whether the data are paired from understanding how they were collected and what they mean. ... There is no test to determine whether the data are paired.
 
 ### Our Key Questions for an Independent Samples Comparison
 

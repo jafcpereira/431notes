@@ -213,7 +213,7 @@ When considering the shape of a distribution, one is often interested in three k
 - The **skewness**, or symmetry that is present, which I typically assess by looking at a plot of the distribution of the data, but if required to, will summarize with a non-parametric measure of **skewness**.
 - The **kurtosis**, or heavy-tailedness (outlier-proneness) that is present, usually in comparison to a Normal distribution. Again, this is something I nearly inevitably assess graphically, but there are measures.  
 
-A Normal distribution has a single mode, is symmetric and, naturally, is neither heavy-tailed or light-tailed as compared to a Normal distribution (we call this mesokurtic).
+A Normal distribution has a single mode, is symmetric and, naturally, is neither heavy-tailed nor light-tailed as compared to a Normal distribution (we call this mesokurtic).
 
 ### Multimodal vs. Unimodal distributions
 
@@ -310,7 +310,7 @@ The additional statistics presented here are:
     + To find the `mad` for a set of numbers, find the median, subtract the median from each value and find the absolute value of that difference, and then find the median of those absolute differences.
     + For non-normal data with a skewed shape but tails well approximated by the Normal, the `mad` is likely to be a better (more robust) estimate of the spread than is the standard deviation.
 - a measure of `skew`, which refers to how much asymmetry is present in the shape of the distribution. The measure is not the same as the *nonparametric skew* measure that we will usually prefer. The [Wikipedia page on skewness][https://en.wikipedia.org/wiki/Skewness] is very detailed.
-- a measure of `kurtosis`, which refers to how outlier-prone, or heavy-tailed the the shape of the distribution is, mainly as compared to a Normal distribution. 
+- a measure of `kurtosis`, which refers to how outlier-prone, or heavy-tailed the shape of the distribution is, mainly as compared to a Normal distribution. 
 - `se` = the standard error of the sample mean, equal to the sample sd divided by the square root of the sample size.
 
 ### `describe` in the `Hmisc` package

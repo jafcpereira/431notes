@@ -3,7 +3,7 @@
 These Notes make extensive use of 
 
 - the statistical software language R, and
-- the development environment R Studio
+- the development environment R Studio,
 
 both of which are free, and you'll need to install them on your machine. Instructions for doing so are in found in the course syllabus.
 
