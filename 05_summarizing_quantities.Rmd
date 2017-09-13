@@ -296,7 +296,7 @@ nh_adults %>%
 
 ### `describe` in the `psych` package
 
-The `psych` package has a more detailed list of numerical summaries for quantitative variables that looks us look at a group of observations at once.
+The `psych` package has a more detailed list of numerical summaries for quantitative variables that lets us look at a group of observations at once.
 
 ```{r psych_describe_nh_adults_DBP}
 psych::describe(nh_adults %>% select(Age, BMI, SBP, DBP, Pulse))

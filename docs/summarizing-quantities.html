@@ -773,7 +773,7 @@ Figure 5.4: The Impact of Kurtosis
 </div>
 <div id="describe-in-the-psych-package" class="section level3">
 <h3><span class="header-section-number">5.5.2</span> <code>describe</code> in the <code>psych</code> package</h3>
-<p>The <code>psych</code> package has a more detailed list of numerical summaries for quantitative variables that looks us look at a group of observations at once.</p>
+<p>The <code>psych</code> package has a more detailed list of numerical summaries for quantitative variables that lets us look at a group of observations at once.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">psych<span class="op">::</span><span class="kw">describe</span>(nh_adults <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(Age, BMI, SBP, DBP, Pulse))</code></pre></div>
 <pre><code>      vars   n   mean    sd median trimmed   mad  min max range  skew
 Age      1 500  42.10 12.54   42.0   42.11 16.31 21.0  64  43.0 -0.03
