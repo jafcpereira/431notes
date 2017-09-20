@@ -281,7 +281,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10.4" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#using-multiple-histograms-to-make-comparisons"><i class="fa fa-check"></i><b>10.4</b> Using Multiple Histograms to Make Comparisons</a></li>
 <li class="chapter" data-level="10.5" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#using-multiple-density-plots-to-make-comparisons"><i class="fa fa-check"></i><b>10.5</b> Using Multiple Density Plots to Make Comparisons</a></li>
 <li class="chapter" data-level="10.6" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#building-a-violin-plot"><i class="fa fa-check"></i><b>10.6</b> Building a Violin Plot</a></li>
-<li class="chapter" data-level="10.7" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#a-joy-plot"><i class="fa fa-check"></i><b>10.7</b> A Joy Plot</a></li>
+<li class="chapter" data-level="10.7" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#a-ridgeline-plot"><i class="fa fa-check"></i><b>10.7</b> A Ridgeline Plot</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html"><i class="fa fa-check"></i><b>11</b> Straight Line Models and Correlation</a><ul>
 <li class="chapter" data-level="11.1" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html#assessing-a-scatterplot"><i class="fa fa-check"></i><b>11.1</b> Assessing A Scatterplot</a><ul>
@@ -565,40 +565,40 @@ nyfs1$bmi.cat: 4 Obese
          <span class="dt">x =</span> <span class="st">&quot;BMI category&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Waist Circumference&quot;</span>)</code></pre></div>
 <p><img src="431-notes_files/figure-html/gg-violin2-fig-1.png" width="672" /></p>
 </div>
-<div id="a-joy-plot" class="section level2">
-<h2><span class="header-section-number">10.7</span> A Joy Plot</h2>
-<p>Some people don’t like violin plots - for example, see <a href="https://simplystatistics.org/2017/07/13/the-joy-of-no-more-violin-plots/" class="uri">https://simplystatistics.org/2017/07/13/the-joy-of-no-more-violin-plots/</a>. An very new and attractive alternative to show the distribution of several groups simultaneously, especially when you have lots of subgroup categories, is called a <strong>joy plot</strong>.</p>
+<div id="a-ridgeline-plot" class="section level2">
+<h2><span class="header-section-number">10.7</span> A Ridgeline Plot</h2>
+<p>Some people don’t like violin plots - for example, see <a href="https://simplystatistics.org/2017/07/13/the-joy-of-no-more-violin-plots/" class="uri">https://simplystatistics.org/2017/07/13/the-joy-of-no-more-violin-plots/</a>. An very new and attractive alternative to show the distribution of several groups simultaneously, especially when you have lots of subgroup categories, is called a <strong>ridgeline plot</strong><a href="#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nyfs1 <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> waist.circ, <span class="dt">y =</span> bmi.cat, <span class="dt">height =</span> ..density..)) <span class="op">+</span>
-<span class="st">    </span>ggjoy<span class="op">::</span><span class="kw">geom_joy</span>(<span class="dt">scale =</span> <span class="fl">0.85</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Joy Plot of Waist Circumference by BMI category (nyfs1)&quot;</span>,
+<span class="st">    </span>ggridges<span class="op">::</span><span class="kw">geom_density_ridges</span>(<span class="dt">scale =</span> <span class="fl">0.85</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Ridgeline Plot of Waist Circumference by BMI category (nyfs1)&quot;</span>,
          <span class="dt">x =</span> <span class="st">&quot;Waist Circumference&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;BMI Category&quot;</span>)</code></pre></div>
 <pre><code>Picking joint bandwidth of 3.38</code></pre>
-<p><img src="431-notes_files/figure-html/nyfs1_joyplot_waistbybmicat-fig-1.png" width="672" /></p>
-<p>And here’s a joy plot for the triceps skinfold. We’ll start by sorting the subgroups by the median value of our outcome (triceps skinfold) in this case, though it turns out not to matter. We’ll also add some color.</p>
+<p><img src="431-notes_files/figure-html/nyfs1_ridgelineplot_waistbybmicat-fig-1.png" width="672" /></p>
+<p>And here’s a ridgeline plot for the triceps skinfold. We’ll start by sorting the subgroups by the median value of our outcome (triceps skinfold) in this case, though it turns out not to matter. We’ll also add some color.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nyfs1 <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">mutate</span>(<span class="dt">bmi.cat =</span> <span class="kw">reorder</span>(bmi.cat, triceps.skinfold, median)) <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> triceps.skinfold, <span class="dt">y =</span> bmi.cat, <span class="dt">fill =</span> bmi.cat, <span class="dt">height =</span> ..density..)) <span class="op">+</span>
-<span class="st">    </span>ggjoy<span class="op">::</span><span class="kw">geom_joy</span>(<span class="dt">scale =</span> <span class="fl">0.85</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span>ggridges<span class="op">::</span><span class="kw">geom_density_ridges</span>(<span class="dt">scale =</span> <span class="fl">0.85</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">scale_fill_viridis</span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
-<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Joy Plot of Triceps Skinfold by BMI category (nyfs1)&quot;</span>,
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Ridgeline Plot of Triceps Skinfold by BMI category (nyfs1)&quot;</span>,
          <span class="dt">x =</span> <span class="st">&quot;Triceps Skinfold&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;BMI Category&quot;</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">theme_bw</span>()</code></pre></div>
 <pre><code>Picking joint bandwidth of 1.33</code></pre>
-<p><img src="431-notes_files/figure-html/nyfs1_joyplot_tricepsbybmicat-fig-1.png" width="672" /></p>
-<p>For one last example, we’ll look at age by BMI category, so that sorting the BMI subgroups by the median matters, and we’ll try an alternate color scheme, and a theme specially designed for the joy plot.</p>
+<p><img src="431-notes_files/figure-html/nyfs1_ridgelineplot_tricepsbybmicat-fig-1.png" width="672" /></p>
+<p>For one last example, we’ll look at age by BMI category, so that sorting the BMI subgroups by the median matters, and we’ll try an alternate color scheme, and a theme specially designed for the ridgeline plot.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nyfs1 <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">mutate</span>(<span class="dt">bmi.cat =</span> <span class="kw">reorder</span>(bmi.cat, age.exam, median)) <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> triceps.skinfold, <span class="dt">y =</span> bmi.cat, <span class="dt">fill =</span> bmi.cat, <span class="dt">height =</span> ..density..)) <span class="op">+</span>
-<span class="st">    </span>ggjoy<span class="op">::</span><span class="kw">geom_joy</span>(<span class="dt">scale =</span> <span class="fl">0.85</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span>ggridges<span class="op">::</span><span class="kw">geom_density_ridges</span>(<span class="dt">scale =</span> <span class="fl">0.85</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="dv">2</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
-<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Joy Plot of Age at Exam by BMI category (nyfs1)&quot;</span>,
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Ridgeline Plot of Age at Exam by BMI category (nyfs1)&quot;</span>,
          <span class="dt">x =</span> <span class="st">&quot;Age at Exam&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;BMI Category&quot;</span>) <span class="op">+</span>
-<span class="st">    </span>ggjoy<span class="op">::</span><span class="kw">theme_joy</span>()</code></pre></div>
+<span class="st">    </span>ggridges<span class="op">::</span><span class="kw">theme_ridges</span>()</code></pre></div>
 <pre><code>Picking joint bandwidth of 1.33</code></pre>
-<p><img src="431-notes_files/figure-html/nyfs1_joyplot_agebybmicat-fig-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/nyfs1_ridgelineplot_agebybmicat-fig-1.png" width="672" /></p>
 
 </div>
 </div>
@@ -607,6 +607,12 @@ nyfs1$bmi.cat: 4 Obese
 <div id="ref-R4DS">
 <p>Grolemund, Garrett, and Hadley Wickham. 2017. <em>R for Data Science</em>. O’Reilly. <a href="http://r4ds.had.co.nz/" class="uri">http://r4ds.had.co.nz/</a>.</p>
 </div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="8">
+<li id="fn8"><p>These were originally called joy plots, and the tools were contained in the <code>ggjoy</code> package but that name and package has been deprecated in favor of <code>ggridges</code>.<a href="summarizing-data-within-subgroups.html#fnref8">↩</a></p></li>
+</ol>
 </div>
             </section>
 

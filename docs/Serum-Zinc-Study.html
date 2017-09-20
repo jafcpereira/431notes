@@ -281,7 +281,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10.4" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#using-multiple-histograms-to-make-comparisons"><i class="fa fa-check"></i><b>10.4</b> Using Multiple Histograms to Make Comparisons</a></li>
 <li class="chapter" data-level="10.5" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#using-multiple-density-plots-to-make-comparisons"><i class="fa fa-check"></i><b>10.5</b> Using Multiple Density Plots to Make Comparisons</a></li>
 <li class="chapter" data-level="10.6" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#building-a-violin-plot"><i class="fa fa-check"></i><b>10.6</b> Building a Violin Plot</a></li>
-<li class="chapter" data-level="10.7" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#a-joy-plot"><i class="fa fa-check"></i><b>10.7</b> A Joy Plot</a></li>
+<li class="chapter" data-level="10.7" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#a-ridgeline-plot"><i class="fa fa-check"></i><b>10.7</b> A Ridgeline Plot</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html"><i class="fa fa-check"></i><b>11</b> Straight Line Models and Correlation</a><ul>
 <li class="chapter" data-level="11.1" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html#assessing-a-scatterplot"><i class="fa fa-check"></i><b>11.1</b> Assessing A Scatterplot</a><ul>
@@ -420,7 +420,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">Chapter 16</span> The Serum Zinc Study</h1>
 <div id="serum-zinc-levels-in-462-teenage-males-serzinc" class="section level2">
 <h2><span class="header-section-number">16.1</span> Serum Zinc Levels in 462 Teenage Males (<code>serzinc</code>)</h2>
-<p>The <code>serzinc</code> data include serum zinc levels in micrograms per deciliter that have been gathered for a sample of 462 males aged 15-17, My source for these data is Appendix B1 of <span class="citation">Pagano and Gauvreau (<a href="#ref-PaganoGauvreau">2000</a>)</span>. Serum zinc deficiency has been associated with anemia, loss of strength and endurance, and it is thought that 25% of the world’s population is at risk of zinc deficiency. Such a deficiency can indicate poor nutrition, and can affect growth and vision, for instance. “Typical” values<a href="#fn9" class="footnoteRef" id="fnref9"><sup>9</sup></a> are said to be 0.66-1.10 mcg/ml, which is 66 - 110 micrograms per deciliter.</p>
+<p>The <code>serzinc</code> data include serum zinc levels in micrograms per deciliter that have been gathered for a sample of 462 males aged 15-17, My source for these data is Appendix B1 of <span class="citation">Pagano and Gauvreau (<a href="#ref-PaganoGauvreau">2000</a>)</span>. Serum zinc deficiency has been associated with anemia, loss of strength and endurance, and it is thought that 25% of the world’s population is at risk of zinc deficiency. Such a deficiency can indicate poor nutrition, and can affect growth and vision, for instance. “Typical” values<a href="#fn10" class="footnoteRef" id="fnref10"><sup>10</sup></a> are said to be 0.66-1.10 mcg/ml, which is 66 - 110 micrograms per deciliter.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">serzinc</code></pre></div>
 <pre><code># A tibble: 462 x 2
       ID  zinc
@@ -677,8 +677,8 @@ gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(p1, p2, 
 </div>
 <div class="footnotes">
 <hr />
-<ol start="9">
-<li id="fn9"><p>Reference values for those over the age of 10 years at <a href="http://www.mayomedicallaboratories.com/test-catalog/Clinical+and+Interpretive/8620" class="uri">http://www.mayomedicallaboratories.com/test-catalog/Clinical+and+Interpretive/8620</a> , visited 2017-08-17.<a href="Serum-Zinc-Study.html#fnref9">↩</a></p></li>
+<ol start="10">
+<li id="fn10"><p>Reference values for those over the age of 10 years at <a href="http://www.mayomedicallaboratories.com/test-catalog/Clinical+and+Interpretive/8620" class="uri">http://www.mayomedicallaboratories.com/test-catalog/Clinical+and+Interpretive/8620</a> , visited 2017-08-17.<a href="Serum-Zinc-Study.html#fnref10">↩</a></p></li>
 </ol>
 </div>
             </section>

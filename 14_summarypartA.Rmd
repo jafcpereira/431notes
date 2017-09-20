@@ -3,7 +3,7 @@
 ## Key Graphical Descriptive Summaries for Quantitative Data
 
 - **Histograms** and their variants, including smooth density curves, and normal density functions based on the sample mean and sample standard deviation
-- **Boxplots** and the like, including joy plots and violin plots, that show more of the distribution in a compact format that is especially useful for comparisons
+- **Boxplots** and the like, including ridgeline plots and violin plots, that show more of the distribution in a compact format that is especially useful for comparisons
 - **Normal QQ Plots** which are plots of the ordered data (technically, the order statistics) against certain quantiles of the Normal distribution - show curves to indicate skew, and "S" shaped arcs to indicate seriously heavy- or light-tailed distributions compared to the Normal.
 
 ## Key Numerical Descriptive Summaries for Quantitative Data

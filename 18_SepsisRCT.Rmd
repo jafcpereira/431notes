@@ -105,15 +105,15 @@ ggplot(sepsis, aes(x = temp_drop, fill = treat)) +
     facet_wrap(~ treat)
 ```
 
-We'll also look at a joy plot.
+We'll also look at a ridgeline plot.
 
-```{r sepsis_temp_drop_by_treat_joyplot}
+```{r sepsis_temp_drop_by_treat_ridgelineplot}
 ggplot(sepsis, aes(x = temp_drop, y = treat, fill = treat)) +
-    ggjoy::geom_joy(scale = 0.9) +
+    ggridges::geom_density_ridges(scale = 0.9) +
     guides(fill = FALSE) + 
-    labs(title = "Joy Plot of Temperature Drop in Sepsis Patients",
+    labs(title = "Temperature Drop in Sepsis Patients",
          x = "Drop in Temperature (degrees Celsius)", y = "") +
-    ggjoy::theme_joy()
+    ggridges::theme_ridges()
 ```
 
 The center of the ibuprofen distribution is shifted a bit towards the more positive (greater improvement) direction, it seems, than is the distribution for the placebo patients. Here are some key numerical summaries, within the treatment groups, which buoy this conclusion.

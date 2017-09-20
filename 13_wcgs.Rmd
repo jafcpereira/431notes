@@ -189,15 +189,15 @@ ggplot(wcgs, aes(x = weight_f, y = sbp, fill = weight_f)) +
          x = "Weight Category", y = "Systolic Blood Pressure")
 ```
 
-We might see some details well with a **joy plot**, too.
+We might see some details well with a **ridgeline plot**, too.
 
-```{r wcgs_sbp_by_weight_f_joyplot}
+```{r wcgs_sbp_by_weight_f_ridgelineplot}
 wcgs %>%
     ggplot(aes(x = sbp, y = weight_f, fill = weight_f, height = ..density..)) +
-    ggjoy::geom_joy(scale = 2) +
+    ggridges::geom_density_ridges(scale = 2) +
     scale_fill_viridis(discrete = TRUE) +
     guides(fill = FALSE) +
-    labs(title = "Joy Plot of SBP by Weight Category (wcgs)",
+    labs(title = "SBP by Weight Category (wcgs)",
          x = "Systolic Blood Pressure",
          y = "Weight Category") +
     theme_bw()

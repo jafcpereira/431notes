@@ -137,7 +137,7 @@ If there is a strong linear relationship (usually with a positive slope, thus po
 
 For the purpose of estimating the difference between the exposed and control children, the summaries of the paired differences are what we'll need. 
 
-In some settings, however, we might also look at a boxplot, or violin plot, or joy plot that showed the distributions of exposed and control children separately. But we will run into trouble because one variable (blood lead content) is spread across multiple columns (control and exposed.) The solution is to `gather` up that variable so as to build a new, tidy tibble.
+In some settings, however, we might also look at a boxplot, or violin plot, or ridgeline plot that showed the distributions of exposed and control children separately. But we will run into trouble because one variable (blood lead content) is spread across multiple columns (control and exposed.) The solution is to `gather` up that variable so as to build a new, tidy tibble.
 
 Because the data aren't *tidied* here, so that we have one row for each subject and one column for each variable, we have to do some work to get them in that form for our usual plotting strategy to work well. For more on this approach (gathering and its opposite, spreading the data), visit the Tidy data chapter in @R4DS.
 
@@ -163,14 +163,14 @@ ggplot(blead_tidied, aes(x = status, y = leadcontent, fill = status)) +
     theme_bw()
 ```
 
-We'll also look at a joy plot, because Dr. Love enjoys them, even though they're really more useful when we're comparing more than two samples.
+We'll also look at a ridgeline plot, because Dr. Love likes them, even though they're really more useful when we're comparing more than two samples.
 
-```{r blead_tidied_joyplot}
+```{r blead_tidied_ridgelineplot}
 ggplot(blead_tidied, aes(x = leadcontent, y = status, fill = status)) +
-    ggjoy::geom_joy(scale = 0.9) +
+    ggridges::geom_density_ridges(scale = 0.9) +
     guides(fill = FALSE) + 
-    labs(title = "Joy Plot of Lead Content in Exposed and Control kids") +
-    ggjoy::theme_joy()
+    labs(title = "Lead Content in Exposed and Control kids") +
+    ggridges::theme_ridges()
 ```
 
 Both the center and the spread of the distribution are substantially larger in the exposed group than in the matched controls. Of course, numerical summaries show these patterns, too.

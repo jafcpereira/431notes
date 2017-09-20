@@ -48,7 +48,7 @@ I will also make use of functions in the following packages/libraries, but when 
 - `car` which provides some tools for building scatterplot matrices, but also many other functions described in @Fox-Weisberg
 - `Epi` for 2x2 table analyses and materials for classical epidemiology: http://BendixCarstensen.com/Epi/
 - `GGally` for scatterplot and correlation matrix visualizations: http://ggobi.github.io/ggally/
-- `ggjoy` which is used to make joy plots
+- `ggridges` which is used to make ridgeline plots
 - `gridExtra` which includes a variety of functions for manipulating graphs: https://github.com/baptiste/gridextra
 - `Hmisc` from Frank Harrell at Vanderbilt U., for its version of `describe` and for many regression modeling functions we'll use in 432. Details on Hmisc are at http://biostat.mc.vanderbilt.edu/wiki/Main/Hmisc. Frank has written several books - the most useful of which for 431 students is probably @HarrellBBR
 - `mice`, which we'll use (a little) in 431 for multiple imputation to deal with missing data: http://www.stefvanbuuren.nl/mi/
@@ -63,7 +63,7 @@ When compiling the Notes from the original code files, these packages will need 
 
 ```
 pkgs <- c("aplpack", "arm", "babynames", "boot", "car", "devtools", "Epi", 
-          "faraway", "forcats", "foreign", "gapminder", "GGally", "ggjoy", 
+          "faraway", "forcats", "foreign", "gapminder", "GGally", "ggridges", 
           "gridExtra", "Hmisc", "knitr", "lme4", "markdown", "MASS", 
           "mice", "mosaic", "multcomp", "NHANES", "pander", "psych", 
           "pwr", "qcc", "rmarkdown", "rms", "sandwich", "survival", 

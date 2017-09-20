@@ -281,7 +281,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10.4" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#using-multiple-histograms-to-make-comparisons"><i class="fa fa-check"></i><b>10.4</b> Using Multiple Histograms to Make Comparisons</a></li>
 <li class="chapter" data-level="10.5" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#using-multiple-density-plots-to-make-comparisons"><i class="fa fa-check"></i><b>10.5</b> Using Multiple Density Plots to Make Comparisons</a></li>
 <li class="chapter" data-level="10.6" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#building-a-violin-plot"><i class="fa fa-check"></i><b>10.6</b> Building a Violin Plot</a></li>
-<li class="chapter" data-level="10.7" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#a-joy-plot"><i class="fa fa-check"></i><b>10.7</b> A Joy Plot</a></li>
+<li class="chapter" data-level="10.7" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#a-ridgeline-plot"><i class="fa fa-check"></i><b>10.7</b> A Ridgeline Plot</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html"><i class="fa fa-check"></i><b>11</b> Straight Line Models and Correlation</a><ul>
 <li class="chapter" data-level="11.1" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html#assessing-a-scatterplot"><i class="fa fa-check"></i><b>11.1</b> Assessing A Scatterplot</a><ul>
@@ -420,7 +420,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">Chapter 13</span> The Western Collaborative Group Study</h1>
 <div id="the-western-collaborative-group-study-wcgs-data-set" class="section level2">
 <h2><span class="header-section-number">13.1</span> The Western Collaborative Group Study (<code>wcgs</code>) data set</h2>
-<p><span class="citation">Vittinghoff et al. (<a href="#ref-Vittinghoff">2012</a>)</span> explore data from the Western Collaborative Group Study (WCGS) in great detail<a href="#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a>. We’ll touch lightly on some key issues in this Chapter.</p>
+<p><span class="citation">Vittinghoff et al. (<a href="#ref-Vittinghoff">2012</a>)</span> explore data from the Western Collaborative Group Study (WCGS) in great detail<a href="#fn9" class="footnoteRef" id="fnref9"><sup>9</sup></a>. We’ll touch lightly on some key issues in this Chapter.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wcgs &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/wcgs.csv&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>tbl_df
 
 wcgs</code></pre></div>
@@ -786,18 +786,18 @@ lowest :  98 100 102 104 106, highest: 200 208 210 212 230</code></pre>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Systolic Blood Pressure by Reordered Weight Category in WCGS&quot;</span>, 
          <span class="dt">x =</span> <span class="st">&quot;Weight Category&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Systolic Blood Pressure&quot;</span>)</code></pre></div>
 <p><img src="431-notes_files/figure-html/wcgssbpbyweightboxrevised-fig-1.png" width="672" /></p>
-<p>We might see some details well with a <strong>joy plot</strong>, too.</p>
+<p>We might see some details well with a <strong>ridgeline plot</strong>, too.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wcgs <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> sbp, <span class="dt">y =</span> weight_f, <span class="dt">fill =</span> weight_f, <span class="dt">height =</span> ..density..)) <span class="op">+</span>
-<span class="st">    </span>ggjoy<span class="op">::</span><span class="kw">geom_joy</span>(<span class="dt">scale =</span> <span class="dv">2</span>) <span class="op">+</span>
+<span class="st">    </span>ggridges<span class="op">::</span><span class="kw">geom_density_ridges</span>(<span class="dt">scale =</span> <span class="dv">2</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">scale_fill_viridis</span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
-<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Joy Plot of SBP by Weight Category (wcgs)&quot;</span>,
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;SBP by Weight Category (wcgs)&quot;</span>,
          <span class="dt">x =</span> <span class="st">&quot;Systolic Blood Pressure&quot;</span>,
          <span class="dt">y =</span> <span class="st">&quot;Weight Category&quot;</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">theme_bw</span>()</code></pre></div>
 <pre><code>Picking joint bandwidth of 3.74</code></pre>
-<p><img src="431-notes_files/figure-html/wcgs_sbp_by_weight_f_joyplot-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/wcgs_sbp_by_weight_f_ridgelineplot-1.png" width="672" /></p>
 <p>As the plots suggest, patients in the heavier groups generally had higher systolic blood pressures.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">by</span>(wcgs<span class="op">$</span>sbp, wcgs<span class="op">$</span>weight_f, mosaic<span class="op">::</span>favstats)</code></pre></div>
 <pre><code>wcgs$weight_f: &lt; 140
@@ -1056,8 +1056,8 @@ height 0.0184 -0.0954  0.5330  1.0000</code></pre>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="8">
-<li id="fn8"><p>For more on the WCGS, you might look at <a href="http://www.epi.umn.edu/cvdepi/study-synopsis/western-collaborative-group-study/" class="uri">http://www.epi.umn.edu/cvdepi/study-synopsis/western-collaborative-group-study/</a><a href="the-western-collaborative-group-study.html#fnref8">↩</a></p></li>
+<ol start="9">
+<li id="fn9"><p>For more on the WCGS, you might look at <a href="http://www.epi.umn.edu/cvdepi/study-synopsis/western-collaborative-group-study/" class="uri">http://www.epi.umn.edu/cvdepi/study-synopsis/western-collaborative-group-study/</a><a href="the-western-collaborative-group-study.html#fnref9">↩</a></p></li>
 </ol>
 </div>
             </section>

@@ -281,7 +281,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10.4" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#using-multiple-histograms-to-make-comparisons"><i class="fa fa-check"></i><b>10.4</b> Using Multiple Histograms to Make Comparisons</a></li>
 <li class="chapter" data-level="10.5" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#using-multiple-density-plots-to-make-comparisons"><i class="fa fa-check"></i><b>10.5</b> Using Multiple Density Plots to Make Comparisons</a></li>
 <li class="chapter" data-level="10.6" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#building-a-violin-plot"><i class="fa fa-check"></i><b>10.6</b> Building a Violin Plot</a></li>
-<li class="chapter" data-level="10.7" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#a-joy-plot"><i class="fa fa-check"></i><b>10.7</b> A Joy Plot</a></li>
+<li class="chapter" data-level="10.7" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#a-ridgeline-plot"><i class="fa fa-check"></i><b>10.7</b> A Ridgeline Plot</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html"><i class="fa fa-check"></i><b>11</b> Straight Line Models and Correlation</a><ul>
 <li class="chapter" data-level="11.1" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html#assessing-a-scatterplot"><i class="fa fa-check"></i><b>11.1</b> Assessing A Scatterplot</a><ul>
@@ -458,7 +458,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li><code>car</code> which provides some tools for building scatterplot matrices, but also many other functions described in <span class="citation">Fox and Weisberg (<a href="#ref-Fox-Weisberg">2011</a>)</span></li>
 <li><code>Epi</code> for 2x2 table analyses and materials for classical epidemiology: <a href="http://BendixCarstensen.com/Epi/" class="uri">http://BendixCarstensen.com/Epi/</a></li>
 <li><code>GGally</code> for scatterplot and correlation matrix visualizations: <a href="http://ggobi.github.io/ggally/" class="uri">http://ggobi.github.io/ggally/</a></li>
-<li><code>ggjoy</code> which is used to make joy plots</li>
+<li><code>ggridges</code> which is used to make ridgeline plots</li>
 <li><code>gridExtra</code> which includes a variety of functions for manipulating graphs: <a href="https://github.com/baptiste/gridextra" class="uri">https://github.com/baptiste/gridextra</a></li>
 <li><code>Hmisc</code> from Frank Harrell at Vanderbilt U., for its version of <code>describe</code> and for many regression modeling functions we’ll use in 432. Details on Hmisc are at <a href="http://biostat.mc.vanderbilt.edu/wiki/Main/Hmisc" class="uri">http://biostat.mc.vanderbilt.edu/wiki/Main/Hmisc</a>. Frank has written several books - the most useful of which for 431 students is probably <span class="citation">Harrell and Slaughter (<a href="#ref-HarrellBBR">2017</a>)</span></li>
 <li><code>mice</code>, which we’ll use (a little) in 431 for multiple imputation to deal with missing data: <a href="http://www.stefvanbuuren.nl/mi/" class="uri">http://www.stefvanbuuren.nl/mi/</a></li>
@@ -469,7 +469,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <p>Several other packages are included below, even though they are not used in these Notes, because they will be used in class sessions or in 432.</p>
 <p>When compiling the Notes from the original code files, these packages will need to be installed (but not loaded) in R, or an error will be thrown when compiling this document. To install all of the packages used within these Notes, type in (or copy and paste) the following commands and run them in the R Console. Again, you only need to install a package once, but you need to reload it every time you start a new session.</p>
 <pre><code>pkgs &lt;- c(&quot;aplpack&quot;, &quot;arm&quot;, &quot;babynames&quot;, &quot;boot&quot;, &quot;car&quot;, &quot;devtools&quot;, &quot;Epi&quot;, 
-          &quot;faraway&quot;, &quot;forcats&quot;, &quot;foreign&quot;, &quot;gapminder&quot;, &quot;GGally&quot;, &quot;ggjoy&quot;, 
+          &quot;faraway&quot;, &quot;forcats&quot;, &quot;foreign&quot;, &quot;gapminder&quot;, &quot;GGally&quot;, &quot;ggridges&quot;, 
           &quot;gridExtra&quot;, &quot;Hmisc&quot;, &quot;knitr&quot;, &quot;lme4&quot;, &quot;markdown&quot;, &quot;MASS&quot;, 
           &quot;mice&quot;, &quot;mosaic&quot;, &quot;multcomp&quot;, &quot;NHANES&quot;, &quot;pander&quot;, &quot;psych&quot;, 
           &quot;pwr&quot;, &quot;qcc&quot;, &quot;rmarkdown&quot;, &quot;rms&quot;, &quot;sandwich&quot;, &quot;survival&quot;, 

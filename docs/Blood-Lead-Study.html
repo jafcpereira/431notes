@@ -281,7 +281,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10.4" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#using-multiple-histograms-to-make-comparisons"><i class="fa fa-check"></i><b>10.4</b> Using Multiple Histograms to Make Comparisons</a></li>
 <li class="chapter" data-level="10.5" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#using-multiple-density-plots-to-make-comparisons"><i class="fa fa-check"></i><b>10.5</b> Using Multiple Density Plots to Make Comparisons</a></li>
 <li class="chapter" data-level="10.6" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#building-a-violin-plot"><i class="fa fa-check"></i><b>10.6</b> Building a Violin Plot</a></li>
-<li class="chapter" data-level="10.7" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#a-joy-plot"><i class="fa fa-check"></i><b>10.7</b> A Joy Plot</a></li>
+<li class="chapter" data-level="10.7" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#a-ridgeline-plot"><i class="fa fa-check"></i><b>10.7</b> A Ridgeline Plot</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html"><i class="fa fa-check"></i><b>11</b> Straight Line Models and Correlation</a><ul>
 <li class="chapter" data-level="11.1" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html#assessing-a-scatterplot"><i class="fa fa-check"></i><b>11.1</b> Assessing A Scatterplot</a><ul>
@@ -612,7 +612,7 @@ gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(p1, p2, 
 <div id="looking-at-the-individual-samples-tidying-the-data-with-gather" class="section level2">
 <h2><span class="header-section-number">17.3</span> Looking at the Individual Samples: Tidying the Data with <code>gather</code></h2>
 <p>For the purpose of estimating the difference between the exposed and control children, the summaries of the paired differences are what we’ll need.</p>
-<p>In some settings, however, we might also look at a boxplot, or violin plot, or joy plot that showed the distributions of exposed and control children separately. But we will run into trouble because one variable (blood lead content) is spread across multiple columns (control and exposed.) The solution is to <code>gather</code> up that variable so as to build a new, tidy tibble.</p>
+<p>In some settings, however, we might also look at a boxplot, or violin plot, or ridgeline plot that showed the distributions of exposed and control children separately. But we will run into trouble because one variable (blood lead content) is spread across multiple columns (control and exposed.) The solution is to <code>gather</code> up that variable so as to build a new, tidy tibble.</p>
 <p>Because the data aren’t <em>tidied</em> here, so that we have one row for each subject and one column for each variable, we have to do some work to get them in that form for our usual plotting strategy to work well. For more on this approach (gathering and its opposite, spreading the data), visit the Tidy data chapter in <span class="citation">Grolemund and Wickham (<a href="#ref-R4DS">2017</a>)</span>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">blead_tidied &lt;-<span class="st"> </span>bloodlead <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">gather</span>(control, exposed, <span class="dt">key =</span> <span class="st">&quot;status&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;leadcontent&quot;</span>) <span class="op">%&gt;%</span>
@@ -643,14 +643,14 @@ blead_tidied</code></pre></div>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Boxplot of Lead Content in Exposed and Control kids&quot;</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">theme_bw</span>()</code></pre></div>
 <p><img src="431-notes_files/figure-html/blead_tidied_boxplot-1.png" width="672" /></p>
-<p>We’ll also look at a joy plot, because Dr. Love enjoys them, even though they’re really more useful when we’re comparing more than two samples.</p>
+<p>We’ll also look at a ridgeline plot, because Dr. Love likes them, even though they’re really more useful when we’re comparing more than two samples.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(blead_tidied, <span class="kw">aes</span>(<span class="dt">x =</span> leadcontent, <span class="dt">y =</span> status, <span class="dt">fill =</span> status)) <span class="op">+</span>
-<span class="st">    </span>ggjoy<span class="op">::</span><span class="kw">geom_joy</span>(<span class="dt">scale =</span> <span class="fl">0.9</span>) <span class="op">+</span>
+<span class="st">    </span>ggridges<span class="op">::</span><span class="kw">geom_density_ridges</span>(<span class="dt">scale =</span> <span class="fl">0.9</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="ot">FALSE</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Joy Plot of Lead Content in Exposed and Control kids&quot;</span>) <span class="op">+</span>
-<span class="st">    </span>ggjoy<span class="op">::</span><span class="kw">theme_joy</span>()</code></pre></div>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Lead Content in Exposed and Control kids&quot;</span>) <span class="op">+</span>
+<span class="st">    </span>ggridges<span class="op">::</span><span class="kw">theme_ridges</span>()</code></pre></div>
 <pre><code>Picking joint bandwidth of 4.01</code></pre>
-<p><img src="431-notes_files/figure-html/blead_tidied_joyplot-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/blead_tidied_ridgelineplot-1.png" width="672" /></p>
 <p>Both the center and the spread of the distribution are substantially larger in the exposed group than in the matched controls. Of course, numerical summaries show these patterns, too.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">blead_tidied <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(status) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">summarize</span>(<span class="dt">n =</span> <span class="kw">n</span>(), 

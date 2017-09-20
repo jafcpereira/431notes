@@ -154,42 +154,42 @@ ggplot(nyfs1, aes(x=bmi.cat, y=waist.circ, fill = bmi.cat)) +
          x = "BMI category", y = "Waist Circumference")
 ```
 
-## A Joy Plot
+## A Ridgeline Plot
 
-Some people don't like violin plots - for example, see https://simplystatistics.org/2017/07/13/the-joy-of-no-more-violin-plots/. An very new and attractive alternative to show the distribution of several groups simultaneously, especially when you have lots of subgroup categories, is called a **joy plot**.
+Some people don't like violin plots - for example, see https://simplystatistics.org/2017/07/13/the-joy-of-no-more-violin-plots/. An very new and attractive alternative to show the distribution of several groups simultaneously, especially when you have lots of subgroup categories, is called a **ridgeline plot**^[These were originally called joy plots, and the tools were contained in the `ggjoy` package but that name and package has been deprecated in favor of `ggridges`.].
 
-```{r nyfs1_joyplot_waistbybmicat-fig}
+```{r nyfs1_ridgelineplot_waistbybmicat-fig}
 nyfs1 %>%
     ggplot(aes(x = waist.circ, y = bmi.cat, height = ..density..)) +
-    ggjoy::geom_joy(scale = 0.85) + 
-    labs(title = "Joy Plot of Waist Circumference by BMI category (nyfs1)",
+    ggridges::geom_density_ridges(scale = 0.85) + 
+    labs(title = "Ridgeline Plot of Waist Circumference by BMI category (nyfs1)",
          x = "Waist Circumference", y = "BMI Category")
 ```
 
-And here's a joy plot for the triceps skinfold. We'll start by sorting the subgroups by the median value of our outcome (triceps skinfold) in this case, though it turns out not to matter. We'll also add some color.
+And here's a ridgeline plot for the triceps skinfold. We'll start by sorting the subgroups by the median value of our outcome (triceps skinfold) in this case, though it turns out not to matter. We'll also add some color.
 
-```{r nyfs1_joyplot_tricepsbybmicat-fig}
+```{r nyfs1_ridgelineplot_tricepsbybmicat-fig}
 nyfs1 %>%
     mutate(bmi.cat = reorder(bmi.cat, triceps.skinfold, median)) %>%
     ggplot(aes(x = triceps.skinfold, y = bmi.cat, fill = bmi.cat, height = ..density..)) +
-    ggjoy::geom_joy(scale = 0.85) + 
+    ggridges::geom_density_ridges(scale = 0.85) + 
     scale_fill_viridis(discrete = TRUE) +
     guides(fill = FALSE) +
-    labs(title = "Joy Plot of Triceps Skinfold by BMI category (nyfs1)",
+    labs(title = "Ridgeline Plot of Triceps Skinfold by BMI category (nyfs1)",
          x = "Triceps Skinfold", y = "BMI Category") +
     theme_bw()
 ```
 
-For one last example, we'll look at age by BMI category, so that sorting the BMI subgroups by the median matters, and we'll try an alternate color scheme, and a theme specially designed for the joy plot.
+For one last example, we'll look at age by BMI category, so that sorting the BMI subgroups by the median matters, and we'll try an alternate color scheme, and a theme specially designed for the ridgeline plot.
 
-```{r nyfs1_joyplot_agebybmicat-fig}
+```{r nyfs1_ridgelineplot_agebybmicat-fig}
 nyfs1 %>%
     mutate(bmi.cat = reorder(bmi.cat, age.exam, median)) %>%
     ggplot(aes(x = triceps.skinfold, y = bmi.cat, fill = bmi.cat, height = ..density..)) +
-    ggjoy::geom_joy(scale = 0.85) + 
+    ggridges::geom_density_ridges(scale = 0.85) + 
     scale_fill_brewer(palette = 2) +
     guides(fill = FALSE) +
-    labs(title = "Joy Plot of Age at Exam by BMI category (nyfs1)",
+    labs(title = "Ridgeline Plot of Age at Exam by BMI category (nyfs1)",
          x = "Age at Exam", y = "BMI Category") +
-    ggjoy::theme_joy()
+    ggridges::theme_ridges()
 ```
