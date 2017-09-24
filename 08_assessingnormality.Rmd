@@ -142,70 +142,19 @@ Emp_Rule(nyfs1$bmi)
                                               
 A normal probability plot (or normal quantile-quantile plot) of the BMI results from the `nyfs1` data, developed using `ggplot2` is shown below. In this case, this is a picture of `r length(nyfs1$bmi)` BMI results. The idea of a normal Q-Q plot is that it plots the observed sample values (on the vertical axis) and then, on the horizontal, the expected or theoretical quantiles that would be observed in a standard normal distribution (a Normal distribution with mean 0 and standard deviation 1) with the same number of observations.
                                           
-A Normal Q-Q plot will follow a straight line when the data are (approximately) Normally distributed. When  the data have a different shape, the plot will reflect that.
+A Normal Q-Q plot will follow a straight line when the data are (approximately) Normally distributed. When the data have a different shape, the plot will reflect that.
 
 ```{r nyfs1_qqbmi-fig}
 ggplot(nyfs1, aes(sample = bmi)) +
     geom_point(stat="qq") + 
     theme_bw() # eliminate the gray background
 ```
-                                          
-### A Fancy ggplot2 function - gg_qq
-                                          
-The lengthy function below (which is also part of the Love-boost.R script) produces a normal Q-Q plot with some appealing features, including a Q-Q line, and confidence interval estimates - [original source here](https://gist.github.com/rentrop/d39a8406ad8af2a1066c).
-                                          
-```{r nyfs1_qqbmiwithci-fig}
-                                          
-## Code from https://gist.github.com/rentrop/d39a8406ad8af2a1066c
-## Slightly modified by T. Love
-                                          
-gg_qq <- function(x, distribution = "norm", ..., line.estimate = NULL, conf = 0.95,
-                  labels = names(x)){
-    q.function <- eval(parse(text = paste0("q", distribution)))
-    d.function <- eval(parse(text = paste0("d", distribution)))
-    x <- na.omit(x)
-    ord <- order(x)
-    n <- length(x)
-    P <- ppoints(length(x))
-    df <- data.frame(ord.x = x[ord], z = q.function(P, ...))
-    
-    if(is.null(line.estimate)){
-        Q.x <- quantile(df$ord.x, c(0.25, 0.75))
-        Q.z <- q.function(c(0.25, 0.75), ...)
-        b <- diff(Q.x)/diff(Q.z)
-        coef <- c(Q.x[1] - b * Q.z[1], b)
-        } else {
-            coef <- coef(line.estimate(ord.x ~ z))
-            }
-    zz <- qnorm(1 - (1 - conf)/2)
-    SE <- (coef[2]/d.function(df$z)) * sqrt(P * (1 - P)/n)
-    fit.value <- coef[1] + coef[2] * df$z
-    df$upper <- fit.value + zz * SE
-    df$lower <- fit.value - zz * SE
-                                              
-    if(!is.null(labels)){
-        df$label <- ifelse(df$ord.x > df$upper | df$ord.x < df$lower, labels[ord],"")
-        }
-    
-    p <- ggplot(df, aes(x=z, y=ord.x)) +
-        geom_point() + 
-        geom_abline(intercept = coef[1], slope = coef[2], color="red") +
-        geom_ribbon(aes(ymin = lower, ymax = upper), alpha=0.2) +
-        labs(y = "Ordered Sample Data", x = "Standard Normal Quantiles")
-    
-    if(!is.null(labels)) p <- p + geom_text( aes(label = label))
-    print(p)
-    ## can print 25th and 75th percentiles if desired by removing the 
-    ## single # in the following line
-    # coef 
-  }
-```
-                                          
-                                          
-Having set up the function, we can now use it to look at the BMI data.
-                                          
-```{r nyfs1_qq2bmi-fig}
-gg_qq(nyfs1$bmi)
+
+This is a case where the base graphics approach may be preferable.
+
+```{r nyfs1_qqnormbmi-fig}
+qqnorm(nyfs1$bmi, main = "Normal Q-Q plot for BMI data")
+qqline(nyfs1$bmi, col = "red")
 ```
                                           
 ## Interpreting the Normal Q-Q Plot
@@ -248,7 +197,8 @@ gridExtra::grid.arrange(p1, p2, ncol=2,
 And here is another look at that same simulated data...
                                           
 ```{r sim1fancyqq-fig}
-gg_qq(temp.1$d)
+qqnorm(temp.1$d, main = "Simulated Data Normal Q-Q plot")
+qqline(temp.1$d, col = "red")
 ```
                                           
 So, what are the characteristics of this simulation? The data appear to be well-modeled by the Normal distribution, because:
