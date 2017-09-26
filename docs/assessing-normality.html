@@ -576,6 +576,20 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqnorm</span>(nyfs1<span class="op">$</span>bmi, <span class="dt">main =</span> <span class="st">&quot;Normal Q-Q plot for BMI data&quot;</span>)
 <span class="kw">qqline</span>(nyfs1<span class="op">$</span>bmi, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
 <p><img src="431-notes_files/figure-html/nyfs1_qqnormbmi-fig-1.png" width="672" /></p>
+<p>It is possible to get the base graphics result with <code>ggplot2</code>, though. For example, we might use this modification of a response at <a href="https://stackoverflow.com/questions/4357031/qqnorm-and-qqline-in-ggplot2/" class="uri">https://stackoverflow.com/questions/4357031/qqnorm-and-qqline-in-ggplot2/</a></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span>nyfs1 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">complete.cases</span>(bmi))
+y &lt;-<span class="st"> </span><span class="kw">quantile</span>(dat<span class="op">$</span>bmi, <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>))
+x &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>))
+slope &lt;-<span class="st"> </span><span class="kw">diff</span>(y)<span class="op">/</span><span class="kw">diff</span>(x)
+int &lt;-<span class="st"> </span>y[1L] <span class="op">-</span><span class="st"> </span>slope <span class="op">*</span><span class="st"> </span>x[1L]
+
+<span class="kw">ggplot</span>(nyfs1, <span class="kw">aes</span>(<span class="dt">sample =</span> bmi)) <span class="op">+</span>
+<span class="kw">geom_qq</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span>
+<span class="kw">geom_abline</span>(<span class="dt">slope =</span> slope, <span class="dt">intercept =</span> int, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span>
+<span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Normal Q-Q plot for BMI data&quot;</span>,
+<span class="dt">subtitle =</span> <span class="st">&quot;with line drawn through 25th, 75th percentiles&quot;</span>)</code></pre></div>
+<p><img src="431-notes_files/figure-html/nyfs1_gg_qqplot-fig-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(x, y, slope, int, dat)</code></pre></div>
 </div>
 <div id="interpreting-the-normal-q-q-plot" class="section level2">
 <h2><span class="header-section-number">8.6</span> Interpreting the Normal Q-Q Plot</h2>

@@ -156,6 +156,26 @@ This is a case where the base graphics approach may be preferable.
 qqnorm(nyfs1$bmi, main = "Normal Q-Q plot for BMI data")
 qqline(nyfs1$bmi, col = "red")
 ```
+
+It is possible to get the base graphics result with `ggplot2`, though. For example, we might use this modification of a response at https://stackoverflow.com/questions/4357031/qqnorm-and-qqline-in-ggplot2/
+
+```{r nyfs1_gg_qqplot-fig}
+dat <- nyfs1 %>% filter(complete.cases(bmi))
+y <- quantile(dat$bmi, c(0.25, 0.75))
+x <- qnorm(c(0.25, 0.75))
+slope <- diff(y)/diff(x)
+int <- y[1L] - slope * x[1L]
+
+ggplot(nyfs1, aes(sample = bmi)) +
+geom_qq(alpha = 0.5) +
+geom_abline(slope = slope, intercept = int, col = "red") +
+labs(title = "Normal Q-Q plot for BMI data",
+subtitle = "with line drawn through 25th, 75th percentiles")
+
+rm(x, y, slope, int, dat)
+```
+
+
                                           
 ## Interpreting the Normal Q-Q Plot
                                           
