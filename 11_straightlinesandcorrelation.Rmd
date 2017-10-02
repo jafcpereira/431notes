@@ -54,7 +54,7 @@ ggplot(data = nyfs1, aes(x = waist.circ, y = bmi)) +
          caption = "with fitted loess smooth")
 ```
 
-The smooth curve backs up our earlier thought that a straight line might fit the data well. More on the loess smooth in Section \@ref(loess_smooth)
+The smooth curve backs up our earlier thought that a straight line might fit the data well. More on the loess smooth in the next chapter.
 
 ### Adding a Straight Line to the Scatterplot
 
@@ -105,10 +105,10 @@ So, if we plan to use a simple (least squares) linear regression model to descri
 
 ## Correlation Coefficients
 
-We have several types of correlation coefficient to help describe this association. 
+Two different correlation measures are worth our immediate attention. 
 
 - The one most often used is called the *Pearson* correlation coefficient, and is symbolized with the letter r or sometimes the Greek letter rho ($\rho$).
-- Another tool for us is the Spearman rank correlation coefficient, also occasionally symbolized by $\rho$).
+- Another tool is the Spearman rank correlation coefficient, also occasionally symbolized by $\rho$).
 
 For the `nyfs1` data, the Pearson correlation of `bmi` and `waist.circ` can be found using the `cor()` function. 
 

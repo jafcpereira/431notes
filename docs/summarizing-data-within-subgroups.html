@@ -565,7 +565,7 @@ nyfs1$bmi.cat: 4 Obese
 </div>
 <div id="a-ridgeline-plot" class="section level2">
 <h2><span class="header-section-number">10.7</span> A Ridgeline Plot</h2>
-<p>Some people don’t like violin plots - for example, see <a href="https://simplystatistics.org/2017/07/13/the-joy-of-no-more-violin-plots/" class="uri">https://simplystatistics.org/2017/07/13/the-joy-of-no-more-violin-plots/</a>. An very new and attractive alternative to show the distribution of several groups simultaneously, especially when you have lots of subgroup categories, is called a <strong>ridgeline plot</strong><a href="#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a>.</p>
+<p>Some people don’t like violin plots - for example, see <a href="https://simplystatistics.org/2017/07/13/the-joy-of-no-more-violin-plots/" class="uri">https://simplystatistics.org/2017/07/13/the-joy-of-no-more-violin-plots/</a>. A very new and attractive alternative plot is available. This shows the distribution of several groups simultaneously, especially when you have lots of subgroup categories, and is called a <strong>ridgeline plot</strong><a href="#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nyfs1 <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> waist.circ, <span class="dt">y =</span> bmi.cat, <span class="dt">height =</span> ..density..)) <span class="op">+</span>
 <span class="st">    </span>ggridges<span class="op">::</span><span class="kw">geom_density_ridges</span>(<span class="dt">scale =</span> <span class="fl">0.85</span>) <span class="op">+</span><span class="st"> </span>
