@@ -219,7 +219,7 @@ Let's look at the Pearson correlations associated with each of the six data sets
 ```{r table of correlation coefficients for correx1}
 tab1 <- correx1 %>%
     group_by(set) %>%
-    dplyr::summarize("Pearson r" = round(cor(x, y, use="complete"),2))
+    summarise("Pearson r" = round(cor(x, y, use="complete"),2))
 
 knitr::kable(tab1)
 ```
@@ -271,7 +271,7 @@ correx2 <- read.csv("data/correx2.csv") %>% tbl_df
 
 correx2 %>%
     group_by(set) %>%
-    summarize(cor = round(cor(x, y, use="complete"),3))
+    summarise(cor = round(cor(x, y, use="complete"),3))
 ```
 
 

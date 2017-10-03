@@ -177,7 +177,7 @@ Both the center and the spread of the distribution are substantially larger in t
 
 ```{r blead_tidied_numerical_summary}
 blead_tidied %>% group_by(status) %>% 
-    summarize(n = n(), 
+    summarise(n = n(), 
               median = median(leadcontent), 
               Q1 = quantile(leadcontent, 0.25), 
               Q3 = quantile(leadcontent, 0.75),

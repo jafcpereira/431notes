@@ -360,13 +360,14 @@ A **scatterplot matrix** can be very helpful in understanding relationships betw
 pairs (~ sbp + age + weight + height, data=wcgs, main="Simple Scatterplot Matrix")
 ```
 
-### Using the car library
+### Using the car package
 
-Or, we can use the scatterplotMatrix function from the `car` library, which adds some detail and fitting to the plots, and places density estimates (with rug plots) on the diagonals.
+Or, we can use the `scatterplotMatrix` function from the `car` package, which adds some detail and fitting to the plots, and places density estimates (with rug plots) on the diagonals.
 
 ```{r scattermatcres-fig}
-car::scatterplotMatrix(~ sbp + age + weight + height, data=wcgs, 
-main="Scatterplot Matrix via car")
+car::scatterplotMatrix(~ sbp + age + weight + height, 
+                       data=wcgs, 
+                       main="Scatterplot Matrix via car")
 ```
 
 ### Displaying a Correlation Matrix
@@ -397,13 +398,15 @@ pairs (~ sbp + age + weight + height, data=wcgs,
 The `ggplot2` system doesn't have a built-in scatterplot system. There are some nice add-ins in the world, though. One option I sort of like is in the `GGally` package, which can produce both correlation matrices and scatterplot matrices.
 
 ```{r GGally correlation matrix}
-GGally::ggcorr(select(wcgs, sbp, age, weight, height), name = "Pearson r", label = TRUE)
+GGally::ggcorr(select(wcgs, sbp, age, weight, height), 
+               name = "Pearson r", label = TRUE)
 ```
 
 The `ggpairs` function provides a density plot on each diagonal, Pearson correlations on the upper right and scatterplots on the lower left of the matrix.
 
 ```{r ggallywcgs-fig}
-GGally::ggpairs(select(wcgs, sbp, age, weight, height), title = "Scatterplot Matrix via ggpairs")
+GGally::ggpairs(select(wcgs, sbp, age, weight, height), 
+                title = "Scatterplot Matrix via ggpairs")
 ```
 
 

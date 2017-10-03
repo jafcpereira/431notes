@@ -81,7 +81,7 @@ A common measure applied to a categorical variable is to identify the mode, the 
 ```{r mode_nh_adults_HealthGen}
 nh_adults %>%
     group_by(HealthGen) %>%
-    summarize(count = n()) %>%
+    summarise(count = n()) %>%
     arrange(desc(count)) 
 ```
 

@@ -31,7 +31,7 @@ Actually, we're more interested in these results after grouping by species.
 ```{r numerical summary by species for force and height}
 crabs %>%
     group_by(species) %>%
-    summarize(n = n(), median(force), median(height))
+    summarise(n = n(), median(force), median(height))
 ```
 
 ## Association of Size and Force

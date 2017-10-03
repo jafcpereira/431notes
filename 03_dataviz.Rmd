@@ -9,7 +9,7 @@ Part A of these Notes is designed to ease your transition into working effective
 To begin, we'll gather a random sample of 1,000 subjects participating in NHANES, and then identify several variables of interest about those subjects^[For more on the NHANES data available in the NHANES package, type ?NHANES in the Console in R Studio.]. The motivation for this example came from a Figure in @BaumerKaplanHorton.
 
 ```{r gather and sample NHANES subjects}
-library(NHANES) # load the NHANES package/library of functions, data
+# library(NHANES) # already loaded NHANES package/library of functions, data
 
 set.seed(431001) 
 # use set.seed to ensure that we all get the same random sample 
@@ -181,7 +181,7 @@ ggplot(data = nh_data_2179, aes(x = Gender, y = Height, color = Gender)) +
          y = "Height in cm.")
 ```
 
-Perhaps it might be better to summarize the distribution in a different way. We might consider a boxplot of the data.
+Perhaps it might be better to summarise the distribution in a different way. We might consider a boxplot of the data.
 
 ### A Boxplot of Height by Gender
 
@@ -220,7 +220,7 @@ ggplot(data = nh_data_2179, aes(x = Height, fill = Gender)) +
 Let's look at a different outcome, the *body-mass index*, or BMI. The definition of BMI for adult subjects (which is expressed in units of kg/m^2^) is:
 
 $$
-\mbox{BMI} = \frac{\mbox{weight in kg}}{(\mbox{height in meters})^2} = 703 \times \frac{\mbox{weight in pounds}}{(\mbox{height in inches})^2}
+\mbox{Body Mass Index} = \frac{\mbox{weight in kg}}{(\mbox{height in meters})^2} = 703 \times \frac{\mbox{weight in pounds}}{(\mbox{height in inches})^2}
 $$
 
 > [BMI is essentially] ... a measure of a person's *thinness* or *thickness*... BMI was designed for use as a simple means of classifying average sedentary (physically inactive) populations, with an average body composition. For these individuals, the current value recommendations are as follow: a BMI from 18.5 up to 25 may indicate optimal weight, a BMI lower than 18.5 suggests the person is underweight, a number from 25 up to 30 may indicate the person is overweight, and a number from 30 upwards suggests the person is obese.
@@ -259,10 +259,10 @@ ggplot(data = nh_data_2179, aes(x = BMI, fill = Gender)) +
 
 As an accompanying numerical summary, we might ask how many people fall into each of these Gender categories, and what is their "average" BMI.
 
-```{r}
+```{r, include = TRUE}
 nh_data_2179 %>%
     group_by(Gender) %>%
-    summarize(count = n(), mean(BMI), median(BMI)) %>%
+    summarise(count = n(), mean(BMI), median(BMI)) %>%
     knitr::kable() 
 ```
 
@@ -283,7 +283,7 @@ How many people fall into each of these Diabetes categories, and what is their "
 ```{r}
 nh_data_2179 %>%
     group_by(Diabetes) %>%
-    summarize(count = n(), mean(BMI), median(BMI)) %>%
+    summarise(count = n(), mean(BMI), median(BMI)) %>%
     knitr::kable() 
 ```
 
@@ -302,9 +302,10 @@ ggplot(data = nh_data_2179, aes(x = Race1, y = BMI, fill = Race1)) +
 How many people fall into each of these Race1 categories, and what is their "average" BMI?
 
 ```{r}
+library(tidyverse)
 nh_data_2179 %>%
     group_by(Race1) %>%
-    summarize(count = n(), mean(BMI), median(BMI)) %>%
+    summarise(count = n(), mean(BMI), median(BMI)) %>%
     knitr::kable() 
 ```
 
@@ -482,7 +483,7 @@ We can see that not too many people self-identify with the "Poor" health categor
 ```{r}
 nh_data_2179 %>%
     group_by(HealthGen) %>%
-    summarize(count = n(), mean(BMI), median(BMI)) %>%
+    summarise(count = n(), mean(BMI), median(BMI)) %>%
     knitr::kable() 
 ```
 

@@ -55,6 +55,14 @@ If we are building a confidence interval for the mean $\mu$ of a population or p
 3. The sampled observations are drawn from the population independently and have identical distributions.
 4. The population follows a Normal distribution. At the very least, the sample itself is approximately Normal.
 
+### Using `broom` for a t test using paired samples
+
+The `broom` package places the results of a t test, among other things, into a tidy data frame.
+
+```{r}
+broom::tidy(t.test(bloodlead$exposed - bloodlead$control, 
+       conf.level = 0.95, alt = "two.sided"))
+```
 
 ## Bootstrap CI for mean difference using paired samples
 
@@ -99,7 +107,10 @@ As we've seen, a major part of the bootstrap's appeal is the ability to relax so
 We could also use the Wilcoxon signed rank procedure to generate a CI for the pseudo-median of the paired differences.
 
 ```{r bloodlead_paired-ci-wilcoxon-1}
-wilcox.test(bloodlead$leaddiff, conf.int = TRUE, conf.level = 0.90, exact = FALSE)
+wilcox.test(bloodlead$leaddiff, 
+            conf.int = TRUE, 
+            conf.level = 0.90, 
+            exact = FALSE)
 ```
 
 As in the one sample case, we can revise this code slightly to specify a different confidence level, or gather a one-sided rather than a two-sided confidence interval.
@@ -112,6 +123,15 @@ The Wilcoxon signed rank confidence interval procedure assumes that:
 2. We have drawn a sample of observations at random from the population of interest.
 3. The sampled observations are drawn from the population independently and have identical distributions.
 4. The population follows a symmetric distribution. At the very least, the sample itself shows no substantial skew, so that the sample pseudo-median is a reasonable estimate for the population median.
+
+### Using `broom` and the `tidy` function with a Wilcoxon procedure
+
+```{r}
+broom::tidy(wilcox.test(bloodlead$leaddiff, 
+                        conf.int = TRUE, 
+                        conf.level = 0.90, 
+                        exact = FALSE))
+```
 
 ## Choosing a Confidence Interval Approach
 

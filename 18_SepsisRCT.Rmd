@@ -120,7 +120,7 @@ The center of the ibuprofen distribution is shifted a bit towards the more posit
 
 ```{r sepsis_temp_drop_by_treat_numerical_summary}
 sepsis %>% group_by(treat) %>% 
-    summarize(n = n(), 
+    summarise(n = n(), 
               median = median(temp_drop), 
               Q1 = quantile(temp_drop, 0.25), 
               Q3 = quantile(temp_drop, 0.75),

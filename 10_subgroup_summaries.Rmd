@@ -1,6 +1,6 @@
 # Summarizing data within subgroups
 
-## Using dplyr and summarize to build a tibble of summary information
+## Using dplyr and summarise to build a tibble of summary information
 
 ```{r nyfs_by_sex_1}
 nyfs1 %>%
@@ -12,7 +12,7 @@ nyfs1 %>%
 ```{r nyfs_by_bmicat_2}
 nyfs1 %>%
     group_by(bmi.cat) %>%
-    summarize(mean = mean(waist.circ), sd = sd(waist.circ), median = median(waist.circ), 
+    summarise(mean = mean(waist.circ), sd = sd(waist.circ), median = median(waist.circ), 
               skew_1 = round((mean(waist.circ) - median(waist.circ)) / sd(waist.circ),3))
 ```
 
@@ -33,7 +33,7 @@ As shown below, we could do this in pieces with `dplyr`, but the `by` approach c
 ```{r nyfs_waistxbmicatwithdplyr}
 nyfs1 %>%
     group_by(bmi.cat) %>%
-    summarize(min = min(waist.circ), Q1 = quantile(waist.circ, 0.25),
+    summarise(min = min(waist.circ), Q1 = quantile(waist.circ, 0.25),
               median = median(waist.circ), Q3 = quantile(waist.circ, 0.75),
               max = max(waist.circ), mean = mean(waist.circ), 
               sd = sd(waist.circ), n = length(waist.circ), 

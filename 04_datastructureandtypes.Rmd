@@ -17,7 +17,7 @@ In previous work, we spent some time with a sample from the National Health and 
 Note also that what is listed in the NHANES data frame as `Gender` should be more correctly referred to as `sex`. `Sex` is a biological feature of an individual, while `Gender` is a social construct. This is an important distinction, so I'll change the name of the variable. I'm also changing the names of three other variables, to create `Race`, `SBP` and `DBP`.
 
 ```{r create new NHANES adult sample}
-library(NHANES) # load the NHANES package/library of functions, data
+# library(NHANES) # NHANES package/library of functions, data
 
 nh_temp <- NHANES %>%
     filter(SurveyYr == "2011_12") %>%
