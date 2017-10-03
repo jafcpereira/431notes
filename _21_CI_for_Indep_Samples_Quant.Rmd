@@ -1,0 +1,40 @@
+# Confidence Intervals from Two Independent Samples of Quantitative Data {#CI-Indep-Samples}
+
+Here, we'll consider the problem of estimating a confidence interval to describe the difference in population means (or medians) based on a comparison of two samples of quantitative data, gathered using an independent samples design. Specifically, we'll use as our example the randomized controlled trial of Ibuprofen in Sepsis patients, as described in Section \@ref(Sepsis-RCT). 
+
+In that trial, 300 patients meeting specific criteria (including elevated temperature) for a diagnosis of sepsis were randomly assigned to either the Ibuprofen group (150 patients) and 150 to the Placebo group. Group information (our exposure) is contained in the `treat` variable. The key outcome of interest to us was `temp_drop`, the change in body temperature (in $^{\circ}$C) from baseline to 2 hours later, so that positive numbers indicate drops in temperature (a good outcome.)
+
+```{r sepsis-tibble-listing-for-ci-section}
+sepsis
+```
+
+## t-based CI for population mean difference $mu_1 - \mu_2$ from Independent Samples
+
+### The Welch t procedure
+
+```{r sepsis-ci-t-welch-1}
+t.test(sepsis$temp_drop ~ sepsis$treat, conf.level = 0.90, alt = "two.sided")
+```
+
+### The Pooled t procedure
+
+```{r sepsis-ci-t-pooled-1}
+t.test(sepsis$temp_drop ~ sepsis$treat, conf.level = 0.90, alt = "two.sided", var.equal = TRUE)
+```
+
+
+## Bootstrap CI for $mu_1 - \mu_2$ from Independent Samples
+
+The `bootdif` function contained in the `Love-boost.R` script, that we will use in this setting is a slightly edited version of the function at http://biostat.mc.vanderbilt.edu/wiki/Main/BootstrapMeansSoftware. Note that this approach uses a comma to separate the outcome variable (here, `temp_drop`) from the variable identifying the exposure groups (here, `treat`).
+
+```{r sepsis-ci-bootstrap-1}
+set.seed(431212)
+bootdif(sepsis$temp_drop, sepsis$treat, conf.level = 0.90)
+```
+
+
+## Wilcoxon Rank Sum-based CI from Independent Samples
+
+```{r sepsis-ci-wilcoxon-1}
+wilcox.test(sepsis$temp_drop ~ sepsis$treat, conf.int = TRUE, conf.level = 0.90, alt = "two.sided")
+```

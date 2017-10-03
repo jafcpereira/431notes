@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="Sepsis-RCT.html">
+<link rel="prev" href="CI-Paired-Samples.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -396,6 +396,68 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="18.2" data-path="Sepsis-RCT.html"><a href="Sepsis-RCT.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>18.2</b> Exploratory Data Analysis</a></li>
 </ul></li>
+<li class="chapter" data-level="19" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html"><i class="fa fa-check"></i><b>19</b> Confidence Intervals for a Single Sample of Quantitative Data</a><ul>
+<li class="chapter" data-level="19.1" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#defining-a-confidence-interval"><i class="fa fa-check"></i><b>19.1</b> Defining a Confidence Interval</a></li>
+<li class="chapter" data-level="19.2" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#estimating-the-population-mean-from-the-serum-zinc-data"><i class="fa fa-check"></i><b>19.2</b> Estimating the Population Mean from the Serum Zinc data</a></li>
+<li class="chapter" data-level="19.3" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#confidence-vs.significance-level"><i class="fa fa-check"></i><b>19.3</b> Confidence vs. Significance Level</a></li>
+<li class="chapter" data-level="19.4" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#the-standard-error-of-a-sample-mean"><i class="fa fa-check"></i><b>19.4</b> The Standard Error of a Sample Mean</a></li>
+<li class="chapter" data-level="19.5" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#the-t-distribution-and-confidence-intervals-for-mu"><i class="fa fa-check"></i><b>19.5</b> The t distribution and Confidence Intervals for <span class="math inline">\(\mu\)</span></a><ul>
+<li class="chapter" data-level="19.5.1" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#the-formula"><i class="fa fa-check"></i><b>19.5.1</b> The Formula</a></li>
+<li class="chapter" data-level="19.5.2" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#students-t-distribution"><i class="fa fa-check"></i><b>19.5.2</b> Student’s t distribution</a></li>
+<li class="chapter" data-level="19.5.3" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#building-the-ci-by-hand-for-the-serum-zinc-data"><i class="fa fa-check"></i><b>19.5.3</b> Building the CI “by hand” for the Serum Zinc data</a></li>
+<li class="chapter" data-level="19.5.4" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#getting-r-to-build-a-ci-for-the-serum-zinc-data"><i class="fa fa-check"></i><b>19.5.4</b> Getting R to build a CI for the Serum Zinc data</a></li>
+<li class="chapter" data-level="19.5.5" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#interpreting-the-result"><i class="fa fa-check"></i><b>19.5.5</b> Interpreting the Result</a></li>
+<li class="chapter" data-level="19.5.6" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#what-if-we-want-a-95-or-99-confidence-interval-instead"><i class="fa fa-check"></i><b>19.5.6</b> What if we want a 95% or 99% confidence interval instead?</a></li>
+<li class="chapter" data-level="19.5.7" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#one-sided-vs.two-sided-confidence-intervals"><i class="fa fa-check"></i><b>19.5.7</b> One-sided vs. Two-sided Confidence Intervals</a></li>
+<li class="chapter" data-level="19.5.8" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#calculating-a-one-sided-confidence-interval-for-the-population-mean"><i class="fa fa-check"></i><b>19.5.8</b> Calculating a one-sided confidence interval for the population mean</a></li>
+<li class="chapter" data-level="19.5.9" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#relationship-between-one-sided-and-two-sided-cis"><i class="fa fa-check"></i><b>19.5.9</b> Relationship between One-Sided and Two-Sided CIs</a></li>
+</ul></li>
+<li class="chapter" data-level="19.6" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#bootstrap-confidence-intervals-for-mu"><i class="fa fa-check"></i><b>19.6</b> Bootstrap Confidence Intervals for <span class="math inline">\(\mu\)</span></a><ul>
+<li class="chapter" data-level="19.6.1" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#what-is-a-bootstrap-and-why-should-i-care"><i class="fa fa-check"></i><b>19.6.1</b> What is a Bootstrap and Why Should I Care?</a></li>
+<li class="chapter" data-level="19.6.2" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#resampling-is-a-big-idea"><i class="fa fa-check"></i><b>19.6.2</b> Resampling is A Big Idea</a></li>
+<li class="chapter" data-level="19.6.3" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#when-is-a-bootstrap-confidence-interval-for-mu-reasonable"><i class="fa fa-check"></i><b>19.6.3</b> When is a Bootstrap Confidence Interval for <span class="math inline">\(\mu\)</span> Reasonable?</a></li>
+<li class="chapter" data-level="19.6.4" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#bootstrap-steps-to-estimate-a-confidence-interval-for-mu"><i class="fa fa-check"></i><b>19.6.4</b> Bootstrap: Steps to estimate a confidence interval for <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="19.6.5" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#using-r-to-estimate-a-90-ci-for-mu-with-the-bootstrap"><i class="fa fa-check"></i><b>19.6.5</b> Using R to estimate a 90% CI for <span class="math inline">\(\mu\)</span> with the bootstrap</a></li>
+<li class="chapter" data-level="19.6.6" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#comparing-bootstrap-and-t-based-confidence-intervals"><i class="fa fa-check"></i><b>19.6.6</b> Comparing Bootstrap and T-Based Confidence Intervals</a></li>
+<li class="chapter" data-level="19.6.7" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#ci-for-mu-via-bootstrap-changing-minor-details"><i class="fa fa-check"></i><b>19.6.7</b> 90% CI for <span class="math inline">\(\mu\)</span> via bootstrap, changing minor details</a></li>
+<li class="chapter" data-level="19.6.8" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#bootstrap-changing-the-confidence-level"><i class="fa fa-check"></i><b>19.6.8</b> Bootstrap: Changing the Confidence Level</a></li>
+<li class="chapter" data-level="19.6.9" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#bootstrap-obtaining-a-one-sided-confidence-interval"><i class="fa fa-check"></i><b>19.6.9</b> Bootstrap: Obtaining a One-sided Confidence Interval</a></li>
+<li class="chapter" data-level="19.6.10" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#bootstrap-ci-for-the-population-median"><i class="fa fa-check"></i><b>19.6.10</b> Bootstrap CI for the Population Median</a></li>
+<li class="chapter" data-level="19.6.11" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#bootstrap-ci-for-the-iqr"><i class="fa fa-check"></i><b>19.6.11</b> Bootstrap CI for the IQR</a></li>
+<li class="chapter" data-level="19.6.12" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#bootstrap-resampling-advantages-and-caveats"><i class="fa fa-check"></i><b>19.6.12</b> Bootstrap Resampling: Advantages and Caveats</a></li>
+</ul></li>
+<li class="chapter" data-level="19.7" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#large-sample-normal-approximation-cis-for-mu"><i class="fa fa-check"></i><b>19.7</b> Large-Sample Normal Approximation CIs for <span class="math inline">\(\mu\)</span></a><ul>
+<li class="chapter" data-level="19.7.1" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#the-large-sample-formula-for-the-ci-around-mu"><i class="fa fa-check"></i><b>19.7.1</b> The Large Sample Formula for the CI around <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="19.7.2" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#obtaining-the-z_alpha2-value-using-qnorm"><i class="fa fa-check"></i><b>19.7.2</b> Obtaining the <span class="math inline">\(Z_{\alpha/2}\)</span> value using <code>qnorm</code></a></li>
+<li class="chapter" data-level="19.7.3" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#commonly-used-cutoffs-based-on-the-normal-distribution"><i class="fa fa-check"></i><b>19.7.3</b> Commonly Used Cutoffs based on the Normal Distribution</a></li>
+<li class="chapter" data-level="19.7.4" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#lots-of-cis-use-the-normal-distribution"><i class="fa fa-check"></i><b>19.7.4</b> Lots of CIs use the Normal distribution</a></li>
+<li class="chapter" data-level="19.7.5" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#large-sample-confidence-interval-for-zinc-levels"><i class="fa fa-check"></i><b>19.7.5</b> Large-Sample Confidence Interval for Zinc Levels</a></li>
+<li class="chapter" data-level="19.7.6" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#comparing-z-and-t-based-intervals-for-serum-zinc"><i class="fa fa-check"></i><b>19.7.6</b> Comparing Z and t-based Intervals for Serum Zinc</a></li>
+<li class="chapter" data-level="19.7.7" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#one-sided-confidence-intervals-in-large-samples"><i class="fa fa-check"></i><b>19.7.7</b> One-Sided Confidence Intervals in Large Samples</a></li>
+</ul></li>
+<li class="chapter" data-level="19.8" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#wilcoxon-signed-rank-procedure-for-cis"><i class="fa fa-check"></i><b>19.8</b> Wilcoxon Signed Rank Procedure for CIs</a><ul>
+<li class="chapter" data-level="19.8.1" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#confidence-intervals-for-the-median-of-a-population"><i class="fa fa-check"></i><b>19.8.1</b> Confidence Intervals for the Median of a Population</a></li>
+<li class="chapter" data-level="19.8.2" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#what-is-a-pseudo-median"><i class="fa fa-check"></i><b>19.8.2</b> What is a Pseudo-Median?</a></li>
+<li class="chapter" data-level="19.8.3" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#getting-the-wilcoxon-signed-rank-based-ci-in-r"><i class="fa fa-check"></i><b>19.8.3</b> Getting the Wilcoxon Signed Rank-based CI in R</a></li>
+<li class="chapter" data-level="19.8.4" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#interpreting-the-wilcoxon-ci-for-the-population-median"><i class="fa fa-check"></i><b>19.8.4</b> Interpreting the Wilcoxon CI for the Population Median</a></li>
+</ul></li>
+<li class="chapter" data-level="19.9" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#general-advice"><i class="fa fa-check"></i><b>19.9</b> General Advice</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="CI-Paired-Samples.html"><a href="CI-Paired-Samples.html"><i class="fa fa-check"></i><b>20</b> Confidence Intervals from Two Paired Samples of Quantitative Data</a><ul>
+<li class="chapter" data-level="20.1" data-path="CI-Paired-Samples.html"><a href="CI-Paired-Samples.html#t-based-ci-for-population-mean-of-paired-differences-mu_d."><i class="fa fa-check"></i><b>20.1</b> t-based CI for Population Mean of Paired Differences, <span class="math inline">\(\mu_d\)</span>.</a><ul>
+<li class="chapter" data-level="20.1.1" data-path="CI-Paired-Samples.html"><a href="CI-Paired-Samples.html#method-1"><i class="fa fa-check"></i><b>20.1.1</b> Method 1</a></li>
+<li class="chapter" data-level="20.1.2" data-path="CI-Paired-Samples.html"><a href="CI-Paired-Samples.html#method-2"><i class="fa fa-check"></i><b>20.1.2</b> Method 2</a></li>
+<li class="chapter" data-level="20.1.3" data-path="CI-Paired-Samples.html"><a href="CI-Paired-Samples.html#method-3"><i class="fa fa-check"></i><b>20.1.3</b> Method 3</a></li>
+<li class="chapter" data-level="20.1.4" data-path="CI-Paired-Samples.html"><a href="CI-Paired-Samples.html#assumptions"><i class="fa fa-check"></i><b>20.1.4</b> Assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="CI-Paired-Samples.html"><a href="CI-Paired-Samples.html#bootstrap-ci-for-mean-difference-using-paired-samples"><i class="fa fa-check"></i><b>20.2</b> Bootstrap CI for mean difference using paired samples</a><ul>
+<li class="chapter" data-level="20.2.1" data-path="CI-Paired-Samples.html"><a href="CI-Paired-Samples.html#assumptions-1"><i class="fa fa-check"></i><b>20.2.1</b> Assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="CI-Paired-Samples.html"><a href="CI-Paired-Samples.html#wilcoxon-signed-rank-based-ci-for-paired-samples"><i class="fa fa-check"></i><b>20.3</b> Wilcoxon Signed Rank-based CI for paired samples</a><ul>
+<li class="chapter" data-level="20.3.1" data-path="CI-Paired-Samples.html"><a href="CI-Paired-Samples.html#assumptions-2"><i class="fa fa-check"></i><b>20.3.1</b> Assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="CI-Paired-Samples.html"><a href="CI-Paired-Samples.html#choosing-a-confidence-interval-approach"><i class="fa fa-check"></i><b>20.4</b> Choosing a Confidence Interval Approach</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
@@ -428,10 +490,16 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <p>Bock, David E., Paul F. Velleman, and Richard D. De Veaux. 2004. <em>Stats: Modelling the World</em>. Boston MA: Pearson Addison-Wesley.</p>
 </div>
 <div>
-<p>Cetinkaya-Rundel, Mine. 2017. “Teaching Data Science to New useRs.” <a href="bit.ly/user2017" class="uri">bit.ly/user2017</a>.</p>
+<p>Çetinkaya-Rundel, Mine. 2017. “Teaching Data Science to New useRs.” <a href="bit.ly/user2017" class="uri">bit.ly/user2017</a>.</p>
+</div>
+<div>
+<p>Diez, David M., Christopher D. Barr, and Mine Çetinyaka-Rundel. n.d. <em>OpenIntro Statistics</em>. Third. <a href="https://www.openintro.org/stat/textbook.php?stat_book=os" class="uri">https://www.openintro.org/stat/textbook.php?stat_book=os</a>.</p>
 </div>
 <div>
 <p>Dupont, William D. 2002. <em>Statistical Modeling for Biomedical Researchers</em>. New York: Cambridge University Press.</p>
+</div>
+<div>
+<p>Efron, Bradley. 1979. “Bootstrap Methods: Another Look at the Jackknife.” <em>Annals of Statistics</em> 7(1): 1–26. <a href="https://projecteuclid.org/euclid.aos/1176344552" class="uri">https://projecteuclid.org/euclid.aos/1176344552</a>.</p>
 </div>
 <div>
 <p>Fox, John, and Sanford Weisberg. 2011. <em>An R Companion to Applied Regression</em>. Second. Thousand Oaks CA: Sage. <a href="http://socserv.socsci.mcmaster.ca/jfox/Books/Companion" class="uri">http://socserv.socsci.mcmaster.ca/jfox/Books/Companion</a>.</p>
@@ -444,6 +512,9 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div>
 <p>Good, Phillip I. 2005. <em>Introduction to Statistics Through Resampling Methods and R/S-Plus</em>. Hoboken, NJ: Wiley.</p>
+</div>
+<div>
+<p>Good, Phillip I., and James W. Hardin. 2006. <em>Common Errors in Statistics (and How to Avoid Them)</em>. Second. Hoboken, NJ: Wiley.</p>
 </div>
 <div>
 <p>Grolemund, Garrett, and Hadley Wickham. 2017. <em>R for Data Science</em>. O’Reilly. <a href="http://r4ds.had.co.nz/" class="uri">http://r4ds.had.co.nz/</a>.</p>
@@ -501,12 +572,16 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 
 
 
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="Sepsis-RCT.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="CI-Paired-Samples.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
