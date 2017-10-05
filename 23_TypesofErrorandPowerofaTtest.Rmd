@@ -1,0 +1,216 @@
+# Type I and Type II Error: Power and Confidence
+
+Once we know how unlikely the results would have been if the null hypothesis were true, we must make one of two choices:
+
+1. The *p* value is not small enough to convincingly rule out chance.  Therefore, we cannot reject the null hypothesis as an explanation for the results.
+2. The *p* value was small enough to convincingly rule out chance.  We reject the null hypothesis and accept the alternative hypothesis.
+
+Making choice 2 is equivalent to declaring that the result is statistically significant.  We can rephrase the two choices as:
+
+1.	There is no statistically significant difference or relationship in the data.
+2.	There is a statistically significant difference or relationship in the data.
+
+How small must the *p* value be in order to rule out the null hypothesis?  The standard choice is 5%.  This standardization has advantages and disadvantages\footnote{Ingelfinger JA, Mosteller F, Thibodeau LA and Ware JH (1987) Biostatistics in Clinical Medicine, 2nd Edition, New York: MacMillan. pp. 156-157.}, and it is not compulsory. It is simply a convention that has become accepted over the years, and there are many situations for which a 5% cutoff may be unwise. While it does give a specific, objectively chosen level to keep in mind, it suggests a rather mindless cutpoint having nothing to do with the importance of the decision nor the costs or losses associated with outcomes.
+
+## The Courtroom Analogy
+
+Consider the analogy of the jury in a courtroom.
+
+1.	The evidence is not strong enough to convincingly rule out that the defendant is innocent.  Therefore, we cannot reject the null hypothesis, or innocence of the defendant.
+2.	The evidence was strong enough that we are willing to rule out the possibility that an innocent person (as stated in the null hypothesis) produced the observed data.  We reject the null hypothesis, that the defendant is innocent, and assert the alternative hypothesis.
+
+Consistent with our thinking in hypothesis testing, in many cases we would not accept the hypothesis that the defendant is innocent.  We would simply conclude that the evidence was not strong enough to rule out the possibility of innocence.
+
+The *p* value is the probability of getting a result as extreme or more extreme than the one observed if the proposed null hypothesis is true.  Notice that it is not valid to actually accept that the null hypothesis is true.  To do so would be to say that we are essentially convinced that chance alone produced the observed results -- a common mistake.
+
+## Significance vs. Importance
+
+Remember that a statistically significant relationship or difference does not necessarily mean an important one.  A result that is significant in the statistical meaning of the word may not be significant clinically.  Statistical significance is a technical term.  Findings can be both statistically significant and practically significant or either or neither.
+
+When we have very large samples, we may find small differences statistically significant even though they have no clinical importance.  At the other extreme, with small samples, even large differences will often not be significant at the levels usually required to recognize the difference as real.  We must distinguish between statistical and practical/clinical significance.
+
+## Errors in Hypothesis Testing
+
+In testing hypotheses, there are two potential decisions and each one brings with it the possibility that a mistake has been made.  
+
+Let's use the courtroom analogy.  Here are the potential choices and associated potential errors.  Although the seriousness of errors depends on the seriousness of the crime and punishment, the potential error for choice 2 is usually more serious.
+
+1. We cannot rule out that the defendant is innocent, so (s)he is set free without penalty.
+    - Potential Error: A criminal has been erroneously freed.
+2. We believe that there is enough evidence to conclude that the defendant is guilty.
+    - Potential Error: An innocent person is convicted / penalized and a guilty person remains free.
+
+As another example, consider being tested for disease.  Most tests for diseases are not 100% accurate.  The lab technician or physician must make a choice:
+
+1. In the opinion of the medical practitioner, you are healthy.  The test result was weak enough to be called "negative" for the disease.
+    - Potential Error: You are actually diseased but have been told you are not.  This is called a **false negative**.
+2. In the opinion of the medical practitioner, you are diseased.  The test results were strong enough to be called "positive" for the disease.
+    - Potential Error: You are actually healthy but have been told you are diseased.  This is called a **false positive**.
+
+
+
+## The Two Types of Hypothesis Testing Errors
+
+-- | H~A~ is true | H~0~ is true
+-----------------:| :----------------------------:| :---------------------------:
+Test Rejects H~0~ | Correct Decision | Type I Error (False Positive) 
+Test Retains H~0~ | Type II Error (False Negative) | Correct Decision
+
+- A Type I error can only be made if the null hypothesis is actually true.
+- A Type II error can only be made if the alternative hypothesis is actually true.
+
+## The Significance Level, $\alpha$, is the Probability of a Type I Error
+
+If the null hypothesis is true, the *p* value is the probability of making an error by choosing the alternative hypothesis instead.  Alpha ($\alpha$) is defined as the probability of concluding significance [rejection of H~0~] when there isn't (and H~0~ is true, making a Type I error), also called the significance level, so that 100(1-$\alpha$) is the confidence level -- the probability of correctly concluding that there is no difference (retaining H~0~) when H~0~ is true.
+
+## The Probability of avoiding a Type I Error is called Power, symbolized 1-$\beta$
+
+A Type II error is made if the alternative hypothesis is true, but you fail to choose it.  The probability depends on exactly which part of the alternative hypothesis is true, so that computing the probability of making a Type II error is not feasible.  The power of a test is the probability of making the correct decision when the alternative hypothesis is true.  Beta ($\beta$) is defined as the probability of concluding that there was no difference, when in fact there was one (a Type II error).  Power is then just 1 - $\beta$, the probability of concluding that there was a difference, when, in fact, there was one.  
+
+Traditionally, people like the power of a test to be at least 80%, meaning that $\beta$ is at most 0.20. Often, I'll be arguing for 90% as a minimum power requirement, or we'll be presenting a range of power calculations for a variety of sample size choices.
+
+## Incorporating the Costs of Various Types of Errors
+
+Which error is more serious in medical testing, where we think of our H~0~: patient is healthy vs. H~A~: disease is present?
+
+It depends on the disease and on the consequences of a negative or positive test result.  A false negative in a screening test for cancer could lead to a fatal delay in treatment, whereas a false positive would probably lead to a retest.  A more troublesome example occurs in testing for an infectious disease.  Inevitably, there is a trade-off between the two types of errors.  It all depends on the consequences.
+
+It would be nice if we could specify the probability that we were making an error with each potential decision.  We could then weigh the consequence of the error against its probability.  Unfortunately, in most cases, we can only specify the conditional probability of making a Type I error, given that the null hypothesis is true.  
+
+In deciding whether to reject a null hypothesis, we will need consider the consequences of the two potential types of errors.  If a Type I error is very serious, then you should reject the null hypothesis only if the *p* value is very small.  Conversely, if a Type II error is more serious, you should be willing to reject the null hypothesis with a larger *p* value, perhaps 0.10 or 0.20, instead of 0.05.
+
+## Relation of $\alpha$ and $\beta$ to Error Types
+
+- $\alpha$ is the probability of rejecting H~0~ when H~0~ is true.
+    - So $1 - \alpha$, the confidence level, is the probability of retaining H~0~ when that's the right thing to do.
+- $\beta$ is the probability of retaining H~0~ when H~A~ is true.
+    - So $1 - \beta$, the power, is the probability of rejecting H~0~ when that's the right thing to do.
+
+-- | H~A~ is True | H~0~ is True
+--:| :--------------------------------------:| :-------------------------------------:
+Test Rejects H~0~ | Correct Decision (1 - $\beta$) | Type I Error ($\alpha$)
+Test Retains H~0~ | Type II Error ($\beta$) | Correct Decision (1 - $\alpha$)
+
+## Power and Sample Size Calculations
+
+- For most statistical tests, it is theoretically possible to estimate the power of the test in the design stage, (before any data are collected) for various sample sizes, so we can hone in on a sample size choice which will enable us to collect data only on as many subjects are truly necessary. 
+
+- A power calculation is likely the most common element of an scientific grant proposal on which a statistician is consulted. This is a fine idea in theory, but in practice...
+
+- The tests that have power calculations worked out in intensive detail using R are mostly those with more substantial assumptions. Examples include t tests that assume population normality, common population variance and balanced designs in the independent samples setting, or paired t tests that assume population normality in the paired samples setting. 
+- These power calculations are also usually based on tests rather than confidence intervals, which would be much more useful in most settings. Simulation is your friend here.
+- Even more unfortunately, this process of doing power and related calculations is **far more of an art than a science**. 
+- As a result, the value of many power calculations is negligible, since the assumptions being made are so arbitrary and poorly connected to real data. 
+- On several occasions, I have stood in front of a large audience of medical statisticians actively engaged in clinical trials and other studies that require power calculations for funding. When I ask for a show of hands of people who have had power calculations prior to such a study whose assumptions matched the eventual data perfectly, I get lots of laughs. It doesn't happen.
+- Even the underlying framework that assumes a power of 80% with a significance level of 5% is sufficient for most studies is pretty silly. 
+
+All that said, I feel obliged to show you some examples of power calculations done using R, and provide some insight on how to make some of the key assumptions in a way that won't alert reviewers too much to the silliness of the enterprise. 
+
+## Sample Size and Power Considerations for a Single-Sample t test
+
+For a t test, R can estimate any one of the following elements, given the other four, using the `power.t.test` command, for either a one-tailed or two-tailed single-sample t test...
+
+- n = the sample size 
+- $\delta$ = delta = the true difference in population means between the null hypothesis value and a particular alternative
+- s = sd = the true standard deviation of the population
+- $\alpha$ = sig.level = the significance level for the test (maximum acceptable risk of Type I error)
+- 1 - $\beta$ = power = the power of the t test to detect the effect of size $\delta$
+
+### A Toy Example
+
+Suppose that in a recent health survey, the average beef consumption in the U.S. per person was 90 pounds per year. Suppose you are planning a new study to see if beef consumption levels have changed. You plan to take a random sample of 25 people to build your new estimate, and test whether the current pounds of beef consumer per year is 90. Suppose you want to do a two-sided (two-tailed) test at 95% confidence (so $\alpha$ = 0.05), and that you expect that the true difference will need to be at least $\delta$ = 5 pounds (i.e. 85 or less or 95 or more) in order for the result to be of any real, practical interest. Suppose also that you are willing to assume that the true standard deviation of the measurements in the population is 10 pounds.
+
+That is, of course, a lot to suppose.
+
+Now, we want to know what power the proposed experiment will have to detect a change of 5 pounds (or more) away from the original 90 pounds, with these specifications, and how tweaking these specifications will affect the power of the study.
+
+So, we have
+- n = 25 data points to be collected
+- $\delta$ = 5 pounds is the minimum clinically meaningful effect size
+- s = 10 is the assumed population standard deviation, in pounds per year
+- $\alpha$ is 0.05, and we'll do a two-sided test
+
+### Using the `power.t.test` function
+
+```{r toy_power_1}
+power.t.test(n = 25, delta = 5, sd = 10, sig.level = 0.05, 
+             type="one.sample", alternative="two.sided")
+```
+
+So, under this study design, we would expect to detect an effect of size $\delta$ = 5 pounds with just under 67% power, i.e. with a probability of incorrect retention of H~0~ of just about 1/3. Most of the time, we'd like to improve this power, and to do so, we'd need to adjust our assumptions.
+
+### Changing Assumptions in a Power Calculation
+
+We made assumptions about the sample size n, the minimum clinically meaningful effect size (change in the population mean) $\delta$, the population standard deviation s, and the significance level $\alpha$, not to mention decisions about the test, like that we'd do a one-sample t test, rather than another sort of test for a single sample, and that we'd do a two-tailed, or two-sided test. Often, these assumptions are tweaked a bit to make the power look more like what a reviewer/funder is hoping to see.
+
+### Increasing the Sample Size, absent other changes, will Increase the Power
+
+Suppose, we committed to using more resources and gathering data from 40 subjects instead of the 25 we assumed initially -- what effect would this have on our power?
+
+```{r toy_power_2}
+power.t.test(n = 40, delta = 5, sd = 10, sig.level = 0.05, 
+             type="one.sample", alternative="two.sided")
+```
+
+With more samples, we should have a more powerful test, able to detect the difference with greater probability. In fact, a sample of 40 paired differences yields 87% power. As it turns out, we would need at least 44 observations with this scenario to get to 90% power, as shown in the calculation below, which puts the power in, but leaves out the sample size.
+
+```{r toy_power_3}
+power.t.test(power=0.9, delta = 5, sd = 10, sig.level = 0.05, 
+             type="one.sample", alternative="two.sided")
+```
+
+We see that we would need at least 44 observations to achieve 90% power. Note: we always round the sample size up in doing a power calculation -- if this calculation had actually suggested n = 43.1 paired differences were needed, we would still have rounded up to 44.
+
+### Increasing the Effect Size, absent other changes, will increase the Power
+
+A larger effect should be easier to detect. If we go back to our original calculation, which had 67% power to detect an effect of size $\delta$ = 5, and now change the desired effect size to $\delta$ = 6 pounds (i.e. a value of 84 or less or 96 or more), we should obtain a more powerful design.
+
+```{r toy_power_4}
+power.t.test(n = 25, delta = 6, sd = 10, sig.level = 0.05, 
+             type="one.sample", alternative="two.sided")
+```
+
+We see that this change in effect size from 5 to 6, leaving everything else the same, increases our power from 67% to 82%. To reach 90% power, we'd need to increase the effect size we were trying to detect to at least 6.76 pounds. 
+
+```{r toy_power_5}
+power.t.test(n = 25, power = 0.9, sd = 10, sig.level = 0.05, 
+             type="one.sample", alternative="two.sided")
+```
+
+- Again, note that I am rounding up here. 
+- Using $\delta$ = 6.75 would not quite make it to 90.00% power. 
+- Using $\delta$ = 6.76 guarantees that the power will be 90% or more, and not just round up to 90%..
+
+### Decreasing the Standard Deviation, absent other changes, will increase the Power
+
+The choice of standard deviation is usually motivated by a pilot study, or else pulled out of thin air - it's relatively easy to convince yourself that the true standard deviation might be a little smaller than you'd guessed initially. Let's see what happens to the power if we reduce the sample standard deviation from 10 pounds to 9. This should make the effect of 5 pounds easier to detect, because it will have smaller variation associated with it.
+
+```{r toy_power_6}
+power.t.test(n = 25, delta = 5, sd = 9, sig.level = 0.05, 
+             type="one.sample", alternative="two.sided")
+```
+
+This change in standard deviation from 10 to 9, leaving everything else the same, increases our power from 67% to nearly 76%. To reach 90% power, we'd need to decrease the standard deviation of the population paired differences to no more than 7.39 days. 
+
+```{r toy_power_7}
+power.t.test(n = 25, delta = 5, sd = NULL, power = 0.9, sig.level = 0.05, 
+             type="one.sample", alternative="two.sided")
+```
+
+Note I am rounding down here. 
+
+- Using s = 7.4 days would not quite make it to 90.00% power.
+
+Note also that in order to get R to treat the sd as unknown, I must specify it as NULL in the formula... 
+
+### Tolerating a Larger $\alpha$ (Significance Level), without other changes, increases Power
+
+We can trade off some of our Type II error (lack of power) for Type I error. If we are willing to trade off some Type I error (as described by the $\alpha$), we can improve the power. For instance, suppose we decided to run the original test with 90% confidence. 
+
+```{r toy_power_8}
+power.t.test(n = 25, delta = 5, sd = 10, sig.level = 0.1, 
+             type="one.sample", alternative="two.sided")
+```
+
+The calculation suggests that our power would thus increase from 67% to just over 78%.
+

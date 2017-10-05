@@ -1,0 +1,161 @@
+# Hypothesis Testing of a Population Mean
+
+Hypothesis testing or significance testing uses sample data to attempt to reject the hypothesis that nothing interesting is happening -- that is, to reject the notion that chance alone can explain the sample results\footnote{Some of this is adapted from @GoodHardin, and @Utts1999}. We can, in many settings, use confidence intervals to summarize the results, as well, and confidence intervals and hypothesis tests are closely connected. Significance tests have a valuable role to play, but this role is more limited than many scientists realize, and it is unfortunate that tests are widely misused.
+
+In particular, it's worth stressing that:
+
+- **A significant effect is not necessarily the same thing as an interesting effect.**  For example, results calculated from large samples are nearly always "significant" even when the effects are quite small in magnitude.  Before doing a test, always ask if the effect is large enough to be of any practical interest.  If not, why do the test?
+
+- **A non-significant effect is not necessarily the same thing as no difference.**  A large effect of real practical interest may still produce a non-significant result simply because the sample is too small.
+
+- **There are assumptions behind all statistical inferences.** Checking assumptions is crucial to validating the inference made by any test or confidence interval.
+
+## Five Steps Required in Completing a Hypothesis Test
+
+1.	Specify the null hypothesis, $H_0$ (which usually indicates that there is no difference or no association between the results in various groups of subjects)
+2.	Specify the research or alternative hypothesis, $H_A$, sometimes called $H_1$ (which usually indicates that there is some difference or some association between the results in those same groups of subjects).
+3.	Specify the test procedure or test statistic to be used to make inferences to the population based on sample data. Here is where we usually specify $\alpha$, the probability of incorrectly rejecting $H_0$ that we are willing to accept. In the absence of other information, we often use $\alpha = 0.05$
+4.	Obtain the data, and summarize it to obtain the relevant test statistic, which gets summarized as a $p$ value.
+5.	Use the $p$ value to either
+    - **reject** $H_0$ in favor of the alternative $H_A$ (concluding that there is a statistically significant difference/association at the $\alpha$ significance level) or
+    - **retain** $H_0$ (and conclude that there is no statistically significant difference/association at the $\alpha$ significance level)
+
+## Hypothesis Testing for the Serum Zinc Example
+
+We previously studied serum zinc levels in micrograms per deciliter gathered for a sample of 462 males aged 15-17.  "Typical" values  are said to be 70-110 $\mu$g/dl. Suppose we want to conduct a hypothesis test to see whether our observed zinc values are statistically significantly different from a value we hypothesize might be a reasonable guess for the population as a whole, let's specify **90** $\mu$g/dl.
+
+### Our Research Question
+
+Is there reasonable evidence, based on this sample of 462 males aged 15-17, for us to conclude that the population of males aged 15-17 from which this sample was drawn will have a mean serum zinc level that is statistically significantly different from 90 $\mu$g/dl, the midpoint of the range of "typical" values in the general population?
+
+## Step 1. Specify the null hypothesis
+
+Our population parameter $\mu$ = the mean serum zinc level (in $\mu$g/dl) across the entire population of males aged 15-17. 
+
+- We're testing whether $\mu$ is significantly different from a pre-specified value, 90 $\mu$g/dl.
+- To do this, we apply our pre-specified value in our null hypothesis, so $H_0: \mu = 90$.
+
+## Step 2. Specify the research hypothesis
+
+The research hypothesis is the opposite of the null hypothesis. Here, that's just $H_A: \mu  \neq 90$.
+
+## Step 3. Specify the test procedure
+
+Again, we'll opt for the usual $\alpha$ = 0.05. The main procedures for this one-sample setting include three of the four options we used with paired samples, specifically a one-sample t-test, a one-sample Wilcoxon signed rank test, or a bootstrap confidence interval. 
+
+- Remember our $H_0$ specifies $\mu$ = 90, rather than $\mu$ = 0, as is often the case.
+
+## Step 4. Obtain the *p* value and/or confidence interval
+
+Of course, we've already collected the data. If we're willing to assume the 462 serum zinc levels we have are a random (or sufficiently representative) sample of the population of interest, and that the data were gathered in such a way that each sample is independent of every other sample, and identically distributed, then our methods might work.
+
+### Assuming a Normal distribution in the population yields a t test.
+
+```{r zinc hypothesis test approach 1}
+t.test(serzinc$zinc)
+```
+
+Whoops! This is **WRONG**. Remember that we need to specify that our alternative hypothesis is that the true mean is not equal to 90, not to zero. To change this, we specify our null hypothesis `mu` value in the `t.test` function, as follows... 
+
+```{r zinc hypothesis test approach 1 corrected}
+t.test(serzinc$zinc, mu=90)
+```
+
+You'll note that the only changes here are in the t statistic, *p* value and alternative hypothesis. The degrees of freedom, confidence interval and sample mean are unchanged.
+
+So the correct *p* value from the t test would be 0.006, which is less than our pre-specified $\alpha$ of 0.05, and so we'd reject $H_0$ and conclude that the population mean serum zinc level is statistically significantly different from 90. 
+
+- Notice that we would come to the same conclusion using the confidence interval. Specifically, using a 5% significance level (i.e. a 95% confidence level) a reasonable range for the true value of the population mean is entirely below 90 -- it's (86.5, 89.4). So if 90 is not in the reasonable range, we'd reject $H_0 : \mu = 90$.
+
+### Using `broom` to tidy the results of our t test
+
+```{r}
+broom::tidy(t.test(serzinc$zinc, mu=90))
+```
+
+We can use the `tidy` function within the `broom` package to summarize the results of a t test, just as we did with a t-based confidence interval.
+
+### Wilcoxon signed rank test (doesn't require Normal assumption). 
+
+```{r zinc hypothesis test approach 2}
+wilcox.test(serzinc$zinc, mu=90, conf.int=TRUE, exact = FALSE)
+```
+
+Using the Wilcoxon signed rank test, we obtain a two-sided *p* value of 0.0003, which is far less than our pre-specified $\alpha$ of 0.05, so we would, again, reject $H_0: \mu = 90$.
+
+- Again, the confidence interval suggests that the reasonable range for the population pseudomedian does not contain 90, so we'd reject $H_0: \mu = 90$ by that standard, too.
+
+- We can again use the `tidy` function from the `broom` package to summarize the results of the Wilcoxon signed rank test.
+
+```{r}
+broom::tidy(wilcox.test(serzinc$zinc, mu=90, conf.int = TRUE, exact = FALSE))
+```
+
+### Bootstrap Confidence Interval
+
+```{r zinc hypothesis test approach 3}
+set.seed(43123) 
+Hmisc::smean.cl.boot(serzinc$zinc)
+```
+
+The 95% confidence interval using the bootstrap procedure, again, does not include 90, so we would reject $H_0: \mu = 90$, in favor of the alternative hypothesis $H_A: \mu \neq 90$.
+
+## Step 5. Reject or Retain $H_0$ and Draw Conclusions
+
+Using any of these procedures, we would conclude that the null hypothesis (that the true mean serum zinc level for this population is 90 $\mu$g/dl) is not tenable, and that it should be rejected at the 5% significance level. The smaller the *p* value, the stronger is the evidence that the null hypothesis is incorrect, and in this case, we have some fairly tiny *p* values.
+
+Of course, the confidence intervals suggest that the population mean is reasonably close to 90, and so the difference we can detect (using a fairly large sample of 462 subjects) may not be a clinically meaningful one.
+
+## A One-Sided Test of a Single Sample: What R Reports
+
+Let's walk through a one-sided t test based on a single sample, including a one-sided 90% confidence interval. For instance, suppose we want to test whether the population (of males aged 15-17) has a mean serum zinc level that is statistically significantly **less than** 90 $\mu$g/dl, based on the sample of 462 males aged 15-17 that we discussed earlier.
+
+```{r t test for zinc again}
+t.test(serzinc$zinc, mu = 90, conf = 0.90, alt="less")
+```
+
+Here's a brief summary of what R is calculating
+
+1. A specification of the group being studied -- here the `zinc` results
+2. A specification as to which alternative hypothesis is being tested  
+    - Note that we are trying to see here if the population mean is less than 90, not 0.
+    - here we have a one-sided, specifically a "less than" alternative hypothesis, and it means that we have the following null and alternative hypotheses, 
+$H_0 : \mu \geq 90$ and $H_A$: $\mu$ < 90, where $\mu$ = population mean serum zinc level
+3. The point estimate (sample mean) of the population mean serum zinc level
+    - The sample mean is given as 87.94, so it's at least possible that the true population mean could be less than 90.
+4. A 90% confidence interval for the population mean serum zinc level
+    - This is a one-sided confidence interval, done with 90% confidence. 
+    - Since it's one-sided, and we have a "less than" alternative hypothesis, we will only be specifying an upper bound for the population mean. 
+        - If we had a "greater than" alternative, we would specify a lower bound, instead.
+    - The upper bound from a 100(1-$\alpha$)% one-sided confidence interval for a population mean using the t distribution is $\bar{x} \pm t_{\alpha,n-1}(s / \sqrt{n})$ 
+    - As before, we sample n observations from the population, and $\bar{x}$ = the sample mean, s = the sample standard deviation, and $\alpha$ is the significance level (so that 100[1-$\alpha$] is the confidence level, and $t_(\alpha,n-1)$ is the upper tail cutoff value for a probability of $\alpha$ for the t distribution with $n-1$ degrees of freedom.
+5. R then calculates ...
+    - the sample mean of the n = 462 serum zinc levels ($\bar{x}$ = 87.9372), and
+    - the sample standard deviation of the paired differences (which turns out to be s = 16.0047). 
+    - In order to find a 90% confidence interval, we would need $\alpha$ = 0.10, so we use the appropriate tool in R to find the t cutoff for $\alpha$ = 0.10 with appropriate degrees of freedom ($n-1$ = 462-1 or 461).
+
+```{r t table value for zinc one-sided}
+qt(0.10, 461, lower.tail=FALSE)
+```
+
+So $t_(\alpha,n-1)$= $t_0.10,461$ = 1.283, and we can now complete the calculation.
+
+$\bar{x}$ $\pm$ $t_{\alpha,n-1}$ (s / $\sqrt{n}$) = 87.9372 + 1.283(16.0047 / $\sqrt{462}$ ) = 87.9372 + 0.9553 = 88.893
+
+6. A t statistic, degrees of freedom and *p* value, based on the data that test the null and alternative hypotheses under study
+    - Here, this is t = -2.7703, df = 461, p-value = 0.002913. 
+    - The t statistic again is the sample mean minus the null hypothesized value of the population mean, all divided by the standard error of the sample mean (i.e. the sample standard deviation divided by the square root of the sample size.) 
+    - Or, in mathematical terms, t=($\bar{x}$ - $\mu_0$)/(s / $\sqrt{n}$) = (87.9372 - 90) / (16.0047 / $\sqrt{462}$) = (-2.0628) / 0.7446 = -2.77.
+    - We can interpret the t statistic as the "number of standard errors the sample mean is away from the null hypothesized value of the population mean". 
+    - The degrees of freedom for a single sample comparison like this is just the number of observations minus 1. Here, we have 462 serum zinc results; 461 degrees of freedom.
+    - Given the test statistic, t = -2.77, and the degrees of freedom n-1 = 461, R can now calculate a *p* value, specifically the probability (given that $H_0$ is true) of observing a result as much in favor of the alternative hypothesis HA as these data suggest. 
+    - We want a one-sided *p* value here, since we have a one-sided alternative hypothesis (i.e. a "less than" alternative). 
+    - Find the probability of getting a result this small or smaller (since we have a "less than" alternative, if it was a "greater than" alternative, we'd find the probability of a result this large or larger) as follows...
+
+```{r p value for one-sided test of zinc}  
+pt(-2.77, df=461, lower.tail=TRUE)
+```
+
+
+
+
