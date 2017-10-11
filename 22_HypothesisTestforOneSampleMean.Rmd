@@ -128,7 +128,7 @@ $H_0 : \mu \geq 90$ and $H_A$: $\mu$ < 90, where $\mu$ = population mean serum z
     - Since it's one-sided, and we have a "less than" alternative hypothesis, we will only be specifying an upper bound for the population mean. 
         - If we had a "greater than" alternative, we would specify a lower bound, instead.
     - The upper bound from a 100(1-$\alpha$)% one-sided confidence interval for a population mean using the t distribution is $\bar{x} \pm t_{\alpha,n-1}(s / \sqrt{n})$ 
-    - As before, we sample n observations from the population, and $\bar{x}$ = the sample mean, s = the sample standard deviation, and $\alpha$ is the significance level (so that 100[1-$\alpha$] is the confidence level, and $t_(\alpha,n-1)$ is the upper tail cutoff value for a probability of $\alpha$ for the t distribution with $n-1$ degrees of freedom.
+    - As before, we sample n observations from the population, and $\bar{x}$ = the sample mean, s = the sample standard deviation, and $\alpha$ is the significance level (so that 100[1-$\alpha$] is the confidence level, and $t_{(\alpha,n-1)}$ is the upper tail cutoff value for a probability of $\alpha$ for the t distribution with $n-1$ degrees of freedom.
 5. R then calculates ...
     - the sample mean of the n = 462 serum zinc levels ($\bar{x}$ = 87.9372), and
     - the sample standard deviation of the paired differences (which turns out to be s = 16.0047). 
@@ -138,7 +138,7 @@ $H_0 : \mu \geq 90$ and $H_A$: $\mu$ < 90, where $\mu$ = population mean serum z
 qt(0.10, 461, lower.tail=FALSE)
 ```
 
-So $t_(\alpha,n-1)$= $t_0.10,461$ = 1.283, and we can now complete the calculation.
+So $t_{(\alpha,n-1)}$= $t_0.10,461$ = 1.283, and we can now complete the calculation.
 
 $\bar{x}$ $\pm$ $t_{\alpha,n-1}$ (s / $\sqrt{n}$) = 87.9372 + 1.283(16.0047 / $\sqrt{462}$ ) = 87.9372 + 0.9553 = 88.893
 

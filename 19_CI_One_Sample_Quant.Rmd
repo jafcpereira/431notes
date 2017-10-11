@@ -196,9 +196,9 @@ In some situations, we are concerned with either an upper limit for the populati
 
 If we, as before, have a sample of size *n*, with sample mean $\bar{x}$ and sample standard deviation *s*, then:
 
-- The upper bound for a one-sided 100(1-$\alpha$)% confidence interval for the population mean is $\mu \leq \bar{x} + t_{\alpha/2, n-1}(\frac{s}{\sqrt{n}})$, with lower "bound" $-\infty$.
+- The upper bound for a one-sided 100(1-$\alpha$)% confidence interval for the population mean is $\mu \leq \bar{x} + t_{\alpha, n-1}(\frac{s}{\sqrt{n}})$, with lower "bound" $-\infty$.
 
-- The corresponding lower bound for a one-sided 100(1 - $\alpha$) CI for $\mu$ would be $\mu \geq \bar{x} - t_{\alpha/2, n-1}(\frac{s}{\sqrt{n}})$, with upper "bound" $\infty$.
+- The corresponding lower bound for a one-sided 100(1 - $\alpha$) CI for $\mu$ would be $\mu \geq \bar{x} - t_{\alpha, n-1}(\frac{s}{\sqrt{n}})$, with upper "bound" $\infty$.
 
 ### Calculating a one-sided confidence interval for the population mean
 
