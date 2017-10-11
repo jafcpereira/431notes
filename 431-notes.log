@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.11.16)  10 OCT 2017 23:17
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.11.16)  10 OCT 2017 23:23
 entering extended mode
 **431-notes.tex
 (C:\Users\Thomas\Dropbox\2017-431\431notes\431-notes.tex
@@ -2762,11 +2762,11 @@ Package rerunfilecheck Info: File `431-notes.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 13561.
  ) 
 Here is how much of TeX's memory you used:
- 14959 strings out of 493705
- 247375 string characters out of 3142148
+ 14957 strings out of 493705
+ 247353 string characters out of 3142148
  331181 words of memory out of 3000000
  17130 multiletter control sequences out of 15000+200000
- 107260 words of font info for 173 fonts, out of 3000000 for 9000
+ 107177 words of font info for 172 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  33i,9n,35p,543b,463s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program F
@@ -2796,7 +2796,7 @@ sy7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtk10.pfb><C:
 les (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt8.pfb><C:/Program Files (x86)/Mi
 KTeX 2.9/fonts/type1/public/lm/lmtti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
 onts/type1/public/lm/lmtto10.pfb>
-Output written on 431-notes.pdf (274 pages, 8667400 bytes).
+Output written on 431-notes.pdf (274 pages, 8674479 bytes).
 PDF statistics:
  3594 PDF objects out of 4296 (max. 8388607)
  759 named destinations out of 1000 (max. 500000)
