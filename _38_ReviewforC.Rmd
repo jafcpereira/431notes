@@ -1,0 +1,23 @@
+# A Little Review 
+
+## Scatterplots
+
+We have often accompanied our scatterplots with regression lines estimated by the method of least squares, and by loess smooths which permit local polynomial functions to display curved relationships, and occasionally presented in the form of a scatterplot matrix to enable simultaneous comparisons of multiple two-way associations.
+
+## Correlation Coefficients
+
+By far the most commonly used is the Pearson correlation, which is a unitless (scale-free) measure of bivariate linear association  for the variables X and Y, symbolized by r, and ranging from -1 to +1. The Pearson correlation is a function of the slope of the least squares regression line, divided by the product of the standard deviations of X and Y.
+
+We have also mentioned the Spearman rank correlation coefficient, which is obtained by using the usual formula for a Pearson correlation, but on the ranks (1 = minimum, n = maximum, with average ranks are applied to the ties) of the X and Y values. This approach (running a correlation of the orderings of the data) substantially reduces the effect of outliers. The result still ranges from -1 to +1, with 0 indicating no linear association.
+
+## Fitting a Linear Model
+
+We have fit several styles of linear model to date, including both *simple* regressions, where our outcome Y is modeled as a linear function of a single predictor X, and *multiple* regression models, where more than one predictor is used. Important elements of a regression fit, obtained through the `summary` function for a `lm` object, include
+
+- the estimated coefficients (intercept and slope(s)) of the fitted model, and 
+- the R^2^ or coefficient of determination, which specifies the proportion of variation in our outcome accounted for by the linear model.
+
+## Building Predictions from a Linear Model
+
+We've also used the `predict` function applied to a `lm` object to obtain point and interval estimates for our outcome based on new values of the predictor(s). We've established both *confidence intervals* from such models, which describe the mean result across a population of subjects with the new predictor values, and *prediction intervals* which describe an individual result for a new subject with those same new values. Prediction intervals are much wider than confidence intervals.
+

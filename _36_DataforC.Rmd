@@ -1,0 +1,13 @@
+# Data Sets for Part C
+
+```{r data sets used in this document}
+hydrate <- read.csv("data/hydrate.csv") %>% tbl_df
+hers1race <- read.csv("data/hers1race.csv") %>% tbl_df
+wcgs <- read.csv("data/wcgs.csv") %>% tbl_df
+emp_bmi <- read.csv("data/emp_bmi.csv") %>% tbl_df
+gala <- read.csv("data/gala.csv") %>% tbl_df
+
+source("data/Love-boost.R")
+```
+
+

@@ -1,0 +1,348 @@
+# Comparing Population Rates / Proportions
+
+So, now we've built some methods for making statistical inferences about a single population proportion, the next step is to compare two proportions. 
+
+For instance, recall the Ebola Virus Disease study from the *New England Journal of Medicine*. Suppose we want to compare the proportion of deaths among cases that had a definitive outcome who were hospitalized to the proportion of deaths among cases that had a definitive outcome who were not hospitalized.
+
+- We can summarize the data behind the two proportions we are comparing in a contingency table with two rows which identify the exposure or treatment of interest, and two columns to represent the outcomes of interest.
+- In this case, we are comparing two groups of Ebola victims: those who were hospitalized and those who were not. The outcome of interest is whether the patient died or not. 
+- Our exposure is hospitalization and our outcome is death, and in the table we place the frequency for each combination of a row and a column.
+- The rows need to be mutually exclusive and collectively exhaustive: each patient must either be hospitalized or not hospitalized. Similarly, the columns must meet the same standard: every patient is either dead or alive.
+
+The article suggests that of the 1,737 cases with a definitive outcome, there were 1,153 hospitalized cases. Across those 1,153 hospitalized cases, 741 people (64.3%) died, which means that across the remaining 584 non-hospitalized cases, 488 people (83.6%) died.
+
+Here is the initial contingency table, using only the numbers from the previous paragraph.
+
+Initial Ebola Table | Deceased | Alive | Total
+------------------:| -------: | ----: | ----:
+Hospitalized | 741 | -- | 1153
+Not Hospitalized | 488 | -- | 584
+Total | | | 1737
+
+Now, we can use arithmetic to complete the table, since the rows and the columns are each mutually exclusive and collectively exhaustive.
+
+Ebola 2x2 Table | Deceased | Alive | Total
+------------------:| -------: | ----: | ----:
+Hospitalized | 741 | 412 | 1153
+Not Hospitalized | 488 | 96 | 584
+Total | 1229 | 508 | 1737
+
+We want to compare the fatality risk (probability of being in the deceased column) for the population of people in the hospitalized row to the population of people in the not hospitalized row. 
+
+We do this by means of a hypothesis testing or confidence interval framework. The tricky part is that we have multiple ways to describe the relationship between hospitalization and death. We might compare the risks directly using the difference in probabilities, or the ratio of the two probabilities, or we might convert the risks to odds, and compare the ratio of those odds. In any case, we'll get slightly different *p* values and confidence intervals, all of which will help us answer the question about whether there is a statistically significant difference in fatality rates between those people who were hospitalized and those who were not. We'll return to this set of questions after discussing some of those approaches in a somewhat less depressing example.
+
+## Amoxicillin vs. Placebo for Otitis Media with Effusion
+
+Van Balen et al. (1996) reported a double-blind placebo-controlled study of amoxicillin versus placebo for persistent otitis media with effusion (OME) in general practice\footnote{Adapted from Woodworth GG (2004) Biostatistics: A Bayesian Introduction, Wiley.  Table 7.1. page 109.  Derived from van Balen et al. (1996). Lancet 348: 713-716, Table 4. Otitis media with effusion is occasionally referred to as "glue ear" and is the collection of effusion (fluid) that occurs within the middle-ear space due to the negative pressure produced by dysfunction of the Eustachian tube.}. The research question was whether antibiotic treatment is any better than watchful waiting. In this study, 162 children were randomized to receive amoxicillin or placebo. The outcome was the absence of persistent OME after two weeks of treatment. 
+
+## The 2 by 2 Table
+
+Data for the 149 children completing the two-week follow-up period are shown below:
+
+Treatment Arm | Without OME | With OME | Total
+-------------:| -----------:| --------:| -----:
+Amoxicillin | 37 | 42 | 79
+Placebo | 11 | 59 | 70
+Total | 48 | 101 | 149
+
+This is an example of a 2x2 table, where we have the two treatments in the rows of the table, and the two possible outcomes in the columns of the table. This is an especially appropriate way to look at counts describing where subjects fall in the relationship between a categorical exposure/treatment and a categorical outcome.
+
+## Relating a Treatment to an Outcome
+
+The question of interest is whether the percentage of amoxicillin kids without OME is different (specifically, larger) than the percentage of placebo kids without OME. 
+
+Treatment Arm | Without OME | With OME | Total | Proportion without OME
+-------------:| -----------:| --------:| -----:| ---------------------:
+Amoxicillin | 37 | 42 | 79 | 0.468
+Placebo | 11 | 59 | 70 | 0.157
+
+In other words, what is the relationship between the treatment and the outcome?
+
+## Definitions of Probability and Odds
+
+- Proportion = Probability = Risk of the trait = number with trait / total
+- Odds of having the trait = (number with the trait / number without the trait) to 1
+
+If p is the proportion of subjects with a trait, then the **odds** of having the trait are $\frac{p}{1-p}$ to 1.
+
+So, the probability of a good result (without OME) in this case is $\frac{37}{79} = 0.4684$ in the amoxicillin group. The **odds** of a good result are thus $\frac{0.4684}{1-0.4684} = 0.8811$ to 1.
+
+Treatment  | Without OME | With OME | Total | Pr(without OME) | Odds(without OME)
+----------:| -----------:| --------:| -----:| --------------: | ----------------:
+Amoxicillin | 37 | 42 | 79 | 0.4684 | 0.8811
+Placebo | 11 | 59 | 70 | 0.1571 | 0.1864
+
+## Defining the Relative Risk
+
+Among the amoxicillin subjects, the risk of a good outcome (without OME) is 46.84% or, stated as a proportion, 0.4684. Among the placebo subjects, the risk of a good outcome (without OME) is 15.71% or, stated as a proportion, 0.1571.
+
+So our "crude" estimate of the **relative risk** of a good outcome for amoxicillin subjects as compared to placebo subjects, is the ratio of these two risks, or 0.4684/0.1571 = 2.98
+
+- The fact that this relative risk is greater than 1 indicates that the probability of a good outcome is higher for amoxicillin subjects than for placebo subjects.
+- A relative risk of 1 would indicate that the probability of a good outcome is the same for amoxicillin subjects and for placebo subjects.
+- A relative risk less than 1 would indicate that the probability of a good outcome is lower for amoxicillin subjects than for placebo subjects.
+
+## Defining the Risk Difference
+
+Our "crude" estimate of the **risk difference** of a good outcome for amoxicillin subjects as compared to placebo subjects, is 0.4684 - 0.1571 = 0.3113 or 31.1%
+
+- The fact that this risk difference is greater than 0 indicates that the probability of a good outcome is higher for amoxicillin subjects than for placebo subjects.
+- A risk difference of 0 would indicate that the probability of a good outcome is the same for amoxicillin subjects and for placebo subjects.
+- A relative risk less than 0 would indicate that the probability of a good outcome is lower for amoxicillin subjects than for placebo subjects.
+
+## Defining the Odds Ratio, or the Cross-Product Ratio
+
+Among the amoxicillin subjects, the odds of a good outcome (without OME) are 0.8811. Among the placebo subjects, the odds of a good outcome (without OME) are .1864.
+
+So our "crude" estimate of the **odds ratio** of a good outcome for amoxicillin subjects as compared to placebo subjects, is 0.8811 / 0.1864 = 4.73
+
+Another way to calculate this odds ratio is to calculate the **cross-product ratio**, which is equal to (a*d) / (b * c), for the 2 by 2 table with counts specified as shown:
+
+A Generic Table | Good Outcome | Bad Outcome
+---------------:| ----------:| -----------:
+Treatment Group 1 | a | b
+Treatment Group 2 | c | d 
+
+So, for our table, we have a = 37, b = 42, c = 11, and d = 59, so  the cross-product ratio is $\frac{37 x 59}{42 x 11} = \frac{2183}{462} = 4.73$. As expected, this is the same as the "crude" odds ratio estimate.
+
+- The fact that this odds ratio risk is greater than 1 indicates that the odds of a good outcome are higher for amoxicillin subjects than for placebo subjects.
+- An odds ratio of 1 would indicate that the odds of a good outcome are the same for amoxicillin subjects and for placebo subjects.
+- An odds ratio less than 1 would indicate that the odds of a good outcome are lower for amoxicillin subjects than for placebo subjects.
+
+So, we have several different ways to compare the outcomes across the treatments. Are these differences and ratios large enough to rule out chance?
+
+## Comparing Rates in a 2x2 Table
+
+The key question is whether the percentage of amoxicillin kids without OME is statistically significantly different (specifically, larger) than the percentage of placebo kids without OME. In other words, what is the relationship between the treatment and the outcome in the following two-by-two table?
+
+Treatment Arm | (Good Outcome) Without OME | (Bad Outcome) With OME | **Total**
+-------------:| :-----------:| :--------:| :-----:
+Amoxicillin | 37 | 42 | **79**
+Placebo | 11 | 59 | **70**
+**Total** | **48** | **101** | **149**
+
+## The `twobytwo` function in R
+
+I built the `twobytwo` function in R (based on existing functions in the `Epi` library, which you need to have in your available Packages list in order for this to work) to do the work for this problem. All that is required is a single command, and a two-by-two table like this one, in standard epidemiological format (with the outcomes in the columns, and the treatments in the rows.) 
+
+The command just requires you to read off the cells of the table, followed by the labels for the two treatments, then the two outcomes, in this order:
+
+`twobytwo(37,42,11,59, "Amoxicillin", "Placebo", "Good", "Bad")`
+
+The resulting output follows. We'll walk through it all in a moment.
+
+```{r twobytwo1, message=FALSE}
+twobytwo(37, 42, 11, 59, "Amoxicillin", "Placebo", "Good", "Bad")
+```
+
+The main conclusion for the data using any of these tests and confidence intervals, is that with 95% confidence, we can conclude that the probability of a good outcome (i.e. no OME at two weeks) is significantly higher with the use of Amoxicillin as compared to placebo.
+
+
+## Walking through the `twobytwo` function's Results
+
+### Outcome Probabilities and Confidence Intervals Within the Treatment Groups
+
+The output starts with estimates of the probability (risk) of a Good Outcome among patients who fall into the two treatment groups (Amoxicillin or Placebo), along with 95% confidence intervals for each of these probabilities. 
+
+```
+2 by 2 table analysis: 
+------------------------------------------------------ 
+Outcome   : Good 
+Comparing : Amoxicillin vs. Placebo 
+
+            Good Bad    P(Good) 95% conf. interval
+Amoxicillin   37  42     0.4684    0.3615   0.5781
+Placebo       11  59     0.1571    0.0892   0.2619
+```
+
+The conditional probability of a Good outcome given that the patient is in the Amoxicillin treatment arm, is symbolized as Pr(Good | Amoxicillin) = 0.4684.
+
+- Note that if these two confidence intervals fail to overlap (as these do) then we would expect to find a statistically significant difference in probability of a good outcome when we compare amoxicillin to placebo. 
+- If the two confidence intervals overlap, then we don't know whether the difference will be statistically significant or not yet. 
+
+### Relative Risk, Odds Ratio and Risk Difference, with Confidence Intervals
+
+These elements are followed by estimates of the relative risk, odds ratio, and risk difference, each with associated 95% confidence intervals.
+
+```
+                                   95% conf. interval
+             Relative Risk: 2.9804    1.6501   5.3832
+         Sample Odds Ratio: 4.7251    2.1643  10.3157
+Conditional MLE Odds Ratio: 4.6746    2.0509  11.3837
+    Probability difference: 0.3112    0.1636   0.4391
+```
+
+- The **relative risk**, or the ratio of P(Good Outcome | Amoxicillin) to P(Good Outcome | Placebo), is shown first. Note that the 95% confidence interval is entirely greater than 1, suggesting that the true relative risk is significantly greater than 1, and thus that the probability of a good outcome is significantly more likely for amoxicillin. 
+- The **odds ratio** is presented using two different definitions (the sample odds ratio is the cross-product ratio we mentioned earlier). Note that the 95% confidence interval using either approach is entirely greater than 1, suggesting that the true odds ratio is significantly greater than 1, and thus that the odds and thus also the probability of a good outcome is significantly more likely for amoxicillin.
+- The **probability** (or risk) **difference** [P(Good Outcome | Amoxicillin) - P(Good Outcome | Placebo)] is presented last. Note that the 95% confidence interval is entirely greater than 0, suggesting that the true risk difference is significantly greater than 0, and thus that the probability of a good outcome is significantly more likely for amoxicillin.
+- Note carefully that if there had been no difference between Amoxicillin and Placebo, the relative risk and odds ratios would be 1, but the probability difference would be zero.
+
+### Hypothesis Testing Results
+
+Finally, the output gives *p* values for both a Fisher's exact test (exact) and Pearson $\chi^2$ test (asymptotic) of the hypotheses 
+
+- H~0~: Rows and Columns are statistically independent. vs. 
+- H~A~: Rows and Columns are associated with (or dependent on) each other. 
+
+```
+             Exact P-value: 0 
+        Asymptotic P-value: 1e-04 
+```
+
+Here, the tiny *p* values (in both cases, *p* < 0.001) suggest that we should reject H~0~ and conclude that the outcome probabilities are associated with the treatment received. In other words, which Treatment group you're in significantly affects the probability of obtaining a Good outcome, which is the same conclusion we've drawn from each of the confidence intervals presented above.
+
+## Estimating a Rate More Accurately: Use (x + 1)/(n + 2) rather than x/n
+
+Suppose you have some data involving n independent tries, with x successes. A natural estimate of the "success rate" in the data is x / n. 
+
+But, strangely enough, it turns out this isn't an entirely satisfying estimator. Alan Agresti provides substantial motivation for the (x + 1)/(n + 2) estimate as an alternative\footnote{This note comes largely from a May 15 2007 entry in Andrew Gelman's blog at http://andrewgelman.com/2007/05/15}. This is sometimes called a *Bayesian augmentation*.
+
+- The big problem with x / n is that it estimates p = 0 or p = 1 when x = 0 or x = n. 
+- It's also tricky to compute confidence intervals at these extremes, since the usual standard error for a proportion, $\sqrt{n p (1-p)}$, gives zero, which isn't quite right. 
+- (x + 1)/(n + 2) is much cleaner, especially when you build a confidence interval for the rate. 
+- The only place where (x + 1)/(n + 2) will go wrong (as in the SAIFS approach) is if n is small and the true probability is very close to 0 or 1. 
+
+For example, if n = 10, and p is 1 in a million, then x will almost certainly be zero, and an estimate of 1/12 is much worse than the simple 0/10. However, how big a deal is this?  If p might be 1 in a million, you're not going to estimate it with a n = 10 experiment\footnote{Andrew Gelman's example is "I'm not going to try ten 100-foot golf putts, miss all of them, and then estimate my probability of success as 1/12."}.
+
+## Back to the OTE example
+
+Returning to our example, let's run an augmented analysis (with one extra "Good" and one extra "Bad" in each of the treatment groups)
+
+```{r twobytwo OTE augmented, message=FALSE}
+twobytwo(37+1, 42+1, 11+1, 59+1, "Amoxicillin", "Placebo", "Good", "Bad")
+```
+
+Note that the augmentation moves both the estimate and interval endpoints towards 0.50. 
+
+## Does the Bayesian Augmentation `(x + 1)/(n + 2)` Matter, Practically?
+
+Generally, this augmentation doesn't matter much at all in any setting where you have a reasonably large sample size, or where the sample probability of success in each group isn't too close to 0 or 1. 
+
+Suppose you have 50 subjects who were exposed to some stimulus, and another 45 who were not. Of the 50 exposed subjects, 20 have the outcome of interest, while this is true for 9 of the unexposed subjects. What conclusions do we draw, first without and then with this Bayesian augmentation?
+
+First, without the augmentation:
+```{r twobytwo without augmentation a, message=FALSE}
+twobytwo(20,30,9,36, "Exposed", "Not Exposed", "Has Outcome", "No Outcome")
+```
+
+And now, with the augmentation:
+```{r twobytwo with augmentation b, message=FALSE}
+twobytwo(21,31,10,37, "Exposed", "Not Exposed", "Has Outcome", "No Outcome")
+```
+
+It is likely that the augmented version is a more accurate estimate here, but the two estimates will be comparable, generally, so long as either (a) the sample size in each exposure group is more than, say, 30 subjects, and/or (b) the sample probability of the outcome is between 10% and 90% in each exposure group. 
+
+## Hypothesis Testing About a Population Proportion
+
+To perform a hypothesis test about a population proportion, we'll usually use the `prop.test` or `binom.test` approaches in R.
+
+- The null hypothesis is that the population proportion is equal to some pre-specified value. Often, this is taken to be 0.5, but it can be any value, called $\pi_0$ that is between 0 and 1.
+- The alternative hypothesis may be one-sided or two-sided. If it is two-sided, it will be that the population proportion is not equal to the value $\pi_0$ specified by the null hypothesis. 
+- In the two-sided case, we have $H_0: \pi = \pi_0$ and $H_A: \pi \neq \pi_0$
+- In the one-sided "greater than" case, we have $H_0: \pi leq \pi_0$ and $H_A: \pi > \pi_0$
+
+As an example, suppose we want to see if the evidence available so far is enough to conclude that the population case fatality rate across the countries included in the WHO's report is more than 67% (i.e. more than two-thirds of those with definitive outcomes will die), and we want to do this using a 5% significance level.
+
+We could use `prop.test` or `binom.test` here.
+
+```{r prop test for ebola one-sided}
+binom.test(x = 1229, n = 1737, p = 0.67, alternative="greater")
+prop.test(x = 1229, n = 1737, p = 0.67, alternative="greater")
+```
+
+1. What conclusion should we draw here?
+2. Does it matter which of the two test procedures we use?
+3. Do the *p* values match up with the 95% confidence intervals?
+
+## Assumptions for Inferences about a Population Proportion
+
+1. There are *n* identical trials.
+2. There are two possible outcomes (designated as success and failure) for each trial.
+3. The true probability of success, $\pi$, remains constant across trials.
+4. Each trial is independent of all of the other trials.
+
+In order for the confidence intervals and tests we produce to remain reasonably accurate, we'd also like to see that both np = the observed number of successes and n(1-p) = the observed number of failures are greater than 5. If not, then the intervals may be incorrect (shifted away from the true value of $\pi$), and also less efficient (wider) than necessary.
+
+## Building a 2x2 Table in R from a Data Frame
+
+Remember our first-day survey? It's in the `surveyday1.csv` file on our website, and loaded as the `survey1` data frame here. Two of the questions on that survey asked you to specify your sex and whether English was your first language. Do men and women have statistically significantly different probabilities of being native speakers of English?
+
+```{r use the day 1 survey}
+table(survey1$sex, survey1$english)
+```
+
+I would like to make those a little easier to read, so I'm going to change the labels for the levels without changing their order.
+
+```{r rename the levels in sex and english}
+survey1$sex.new <- factor(survey1$sex, labels = c("Female", "Male"))
+survey1$lang1 <- factor(survey1$english, labels = c("Not English", "English"))
+
+table(survey1$sex.new, survey1$lang1)
+```
+
+## Standard Epidemiological Format
+
+Now, suppose we want this in **standard epidemiological format**, which means that:
+
+- The rows of the table describe the "treatment" (which we'll take here to be sex). The more interesting (sometimes also the more common) "treatment" is placed in the top row.
+- The columns of the table describe the "outcome" (which we'll take here to be whether English was your first language.) Typically, the more common "outcome" is placed to the left. 
+
+So, for standard format, we want to get the "Female" and "English" cell to the top left of the table, not the "Female" and "Not English" cell that is there now. 
+
+So, we are going to reorder the `english` variable's levels to accomplish this:
+
+```{r day 1 survey b}
+survey1$lang.new <- factor(survey1$lang1, levels=c("English", "Not English"))
+table(survey1$sex.new, survey1$lang.new)
+```
+
+And now, we can seamlessly grab these results and insert them into the `twoby2` function from the `Epi` package...
+
+```{r day 1 survey c}
+twoby2(survey1$sex.new, survey1$lang.new)
+```
+
+## Use the Bayesian Augmentation `(x + 1)/(n + 2)`
+
+As a default estimate for a rate, (x + 1)/(n + 2) is a better choice than x / n. Add a success and a failure to your data to get a better estimate (especially a confidence interval) of a population rate. This is sometimes called a Bayesian augmentation of the data. Occasionally, statisticians will use a more extensive adjustment, like (x + 2) / (n + 4), even.
+
+If we like, we can analyze the sex-language relationship including the Bayesian augmentation\footnote{Note that simply adding one to each cell in the table is what we are looking for.}:
+
+```{r day 1 survey d}
+twoby2(table(survey1$sex.new, survey1$lang.new) + 1)
+```
+
+## Returning to the Ebola Virus Disease Survival Example
+
+Recall our 2x2 table comparing case fatality rates by whether the subject was hospitalized.
+
+Ebola 2x2 Table | Deceased | Alive | Total
+------------------:| -------: | ----: | ----:
+Hospitalized | 741 | 412 | 1153
+Not Hospitalized | 488 | 96 | 584
+Total | 1229 | 508 | 1737
+
+We can run these data through R, using the augmentation (adding a death and a survival to the hospitalized and also to the not hospitalized groups.) 
+
+```{r twobytwo for ebola}
+twobytwo(741+1, 412+1, 488+1, 96+1, 
+         "Hospitalized", "Not Hospitalized", "Deceased", "Alive")
+```
+
+1.	What conclusions can you draw from the R output above?
+
+Now, in the same *New England Journal of Medicine* article, data are provided for the percentage of deaths among male and female patients, for a slightly different group of EVD patients. In that group, there were 874 men, of whom 631 died, and 818 women, of whom 572 died.
+
+2.	Specify the null and alternative hypotheses that can be tested for these new data.
+3.	Develop the appropriate 2x2 table and get it into R for analysis.
+4.	What conclusions can we draw from your comparison of fatality risks by sex?  
+
+Here is the appropriate set of 2x2 table results, including the Bayesian augmentation.
+
+```{r twobytwo for ebola 2}
+twobytwo(631 + 1, 213 + 1, 572 + 1, 246 + 1,
+         "Men", "Women", "Died", "Survived")
+```
+
+
+

@@ -1,0 +1,30 @@
+# Some Thoughts on *p* values
+
+## What does Dr. Love dislike about *p* values?
+
+A lot of things. A major issue is that I believe that *p* values are impossible to explain in a way that is both [a] technically correct and [b] straightforward at the same time. As evidence of this, you might want to look at [this article and associated video by Christie Aschwanden at 538.com](http://fivethirtyeight.com/features/statisticians-found-one-thing-they-can-agree-on-its-time-to-stop-misusing-p-values/) 
+
+The notion of a *p* value was an incredibly impressive achievement back when Wald and others were doing the work they were doing in the 1940s, and might still have been useful as recently as 10 years ago. But the notion of a *p* value relies on a lot of flawed assumptions, and null hypothesis significance testing is fraught with difficulties. Nonetheless, researchers use *p* values every day. 
+
+For the moment, I will say this. I emphasize confidence intervals over *p* values, which is at best a partial solution. But ...
+
+1. Very rarely does a situation emerge in which a *p* value can be available in which looking at the associated confidence interval isn't far more helpful for making a comparison of interest.
+2. The use of a *p* value requires making at least as many assumptions about the population, sample, individuals and data as does a confidence interval.
+3. Most null hypotheses are clearly not exactly true prior to data collection, and so the test summarized by a *p* value is of questionable value most of the time.
+4. No one has a truly adequate definition of a *p* value, in terms of both precision and parsimony. Brief, understandable definitions always fail to be technically accurate.
+5. Bayesian approaches avoid some of these pitfalls, but come with their own issues.
+6. Many smart people agree with me, and use *p* values sparingly.
+
+[The American Statistical Association released a statement](http://amstat.tandfonline.com/doi/abs/10.1080/00031305.2016.1154108) on the use and abuse of *p* values in March 2016, and we'll be discussing that statement and some of the reactions to it.
+
+## On Reporting *p* Values
+
+When reporting a *p* value and no rounding rules are in place from the lead author/journal/source for publication, follow these conventions...
+
+1. Use an italicized, lower-case *p* to specify the *p* value. Don't use *p* for anything else.
+2. For *p* values above 0.10, round to two decimal places, at most. 
+3. For *p* values near $\alpha$, include only enough decimal places to clarify the reject/retain decision. 
+4. For very small *p* values, always report either *p* < 0.0001 or even just *p* < 0.001, rather than specifying the result in scientific notation, or, worse, as $p = 0$ which is glaringly inappropriate.
+5. Report *p* values above 0.99 as *p* > 0.99, rather than *p* = 1.
+
+## Much more to come, in class.
