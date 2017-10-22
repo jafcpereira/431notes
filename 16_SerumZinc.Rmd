@@ -1,4 +1,4 @@
-# The Serum Zinc Study {#Serum_Zinc_Study}
+# The Serum Zinc Study {#Serum-Zinc-Study}
 
 ## Serum Zinc Levels in 462 Teenage Males (`serzinc`)
 

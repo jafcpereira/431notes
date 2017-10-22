@@ -118,7 +118,7 @@ For a t test, R can estimate any one of the following elements, given the other 
 
 ### A Toy Example
 
-Suppose that in a recent health survey, the average beef consumption in the U.S. per person was 90 pounds per year. Suppose you are planning a new study to see if beef consumption levels have changed. You plan to take a random sample of 25 people to build your new estimate, and test whether the current pounds of beef consumer per year is 90. Suppose you want to do a two-sided (two-tailed) test at 95% confidence (so $\alpha$ = 0.05), and that you expect that the true difference will need to be at least $\delta$ = 5 pounds (i.e. 85 or less or 95 or more) in order for the result to be of any real, practical interest. Suppose also that you are willing to assume that the true standard deviation of the measurements in the population is 10 pounds.
+Suppose that in a recent health survey, the average beef consumption in the U.S. per person was 90 pounds per year. Suppose you are planning a new study to see if beef consumption levels have changed. You plan to take a random sample of 25 people to build your new estimate, and test whether the current pounds of beef consumed per year is 90. Suppose you want to do a two-sided (two-tailed) test at 95% confidence (so $\alpha$ = 0.05), and that you expect that the true difference will need to be at least $\delta$ = 5 pounds (i.e. 85 or less or 95 or more) in order for the result to be of any real, practical interest. Suppose also that you are willing to assume that the true standard deviation of the measurements in the population is 10 pounds.
 
 That is, of course, a lot to suppose.
 

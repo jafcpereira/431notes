@@ -10,7 +10,7 @@ bloodlead
 
 ## t-based CI for Population Mean of Paired Differences, $\mu_d$.
 
-In R, there are at least different methods for obtaining the t-based confidence interval for the population difference in means between paired samples. They are all mathematically identical. The key idea is to calculate the paired differences (exposed - control, for example) in each pair, and then treat the result as if it were a single sample and apply the methods discussed in Section \@ref(CI-1-Sample).
+In R, there are at least three different methods for obtaining the t-based confidence interval for the population difference in means between paired samples. They are all mathematically identical. The key idea is to calculate the paired differences (exposed - control, for example) in each pair, and then treat the result as if it were a single sample and apply the methods discussed in Section \@ref(CI-1-Sample).
 
 ### Method 1 
 

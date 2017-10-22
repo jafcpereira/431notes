@@ -4,7 +4,7 @@ Suppose that we are interested in learning something about a population or proce
 
 Essentially every textbook on introductory statistics describes the development of a confidence interval, at least for a mean. Good supplemental resources include @OpenStats, @BockVD and @PaganoGauvreau, for instance. 
 
-We'll develop confidence intervals to compare parameters about two populations (either through matched pairs or independent samples) with confidence intervals soon. Here, we'll consider the problem of estimating a confidence interval to describe the mean (or median) of the population represented by a single sample of quantitative data. Our main example uses data from the Serum Zinc study, as described in Section \@ref(Serum_Zinc_Study). 
+We'll develop confidence intervals to compare parameters about two populations (either through matched pairs or independent samples) with confidence intervals soon. Here, we'll consider the problem of estimating a confidence interval to describe the mean (or median) of the population represented by a single sample of quantitative data. Our main example uses data from the Serum Zinc study, as described in Section \@ref(Serum-Zinc-Study). 
 
 ## Defining a Confidence Interval
 

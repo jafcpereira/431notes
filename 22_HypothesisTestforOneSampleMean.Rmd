@@ -1,4 +1,4 @@
-# Hypothesis Testing of a Population Mean
+# Hypothesis Testing of a Population Mean {#Test-One-Mean}
 
 Hypothesis testing or significance testing uses sample data to attempt to reject the hypothesis that nothing interesting is happening -- that is, to reject the notion that chance alone can explain the sample results\footnote{Some of this is adapted from @GoodHardin, and @Utts1999}. We can, in many settings, use confidence intervals to summarize the results, as well, and confidence intervals and hypothesis tests are closely connected. Significance tests have a valuable role to play, but this role is more limited than many scientists realize, and it is unfortunate that tests are widely misused.
 

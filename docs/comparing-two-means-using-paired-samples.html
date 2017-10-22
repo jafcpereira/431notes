@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Data Science for Biological, Medical and Health Research: Notes for 431</title>
+  <meta name="description" content="Data Science for Biological, Medical and Health Research: Notes for 431">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Data Science for Biological, Medical and Health Research: Notes for 431" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Data Science for Biological, Medical and Health Research: Notes for 431" />
+  
+  
+  
+
+<meta name="author" content="Thomas E. Love, Ph.D.">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="type-i-and-type-ii-error-power-and-confidence.html">
+<link rel="next" href="references.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#structure"><i class="fa fa-check"></i>Structure</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-philosophy"><i class="fa fa-check"></i>Course Philosophy</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="data-science.html"><a href="data-science.html"><i class="fa fa-check"></i><b>1</b> Data Science</a><ul>
+<li class="chapter" data-level="1.1" data-path="data-science.html"><a href="data-science.html#why-a-unicorn"><i class="fa fa-check"></i><b>1.1</b> Why a unicorn?</a></li>
+<li class="chapter" data-level="1.2" data-path="data-science.html"><a href="data-science.html#data-science-project-cycle"><i class="fa fa-check"></i><b>1.2</b> Data Science Project Cycle</a></li>
+<li class="chapter" data-level="1.3" data-path="data-science.html"><a href="data-science.html#what-will-we-discuss-in-431"><i class="fa fa-check"></i><b>1.3</b> What Will We Discuss in 431?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="Rsetup.html"><a href="Rsetup.html"><i class="fa fa-check"></i><b>2</b> Setting Up R</a><ul>
+<li class="chapter" data-level="2.1" data-path="Rsetup.html"><a href="Rsetup.html#r-markdown"><i class="fa fa-check"></i><b>2.1</b> R Markdown</a></li>
+<li class="chapter" data-level="2.2" data-path="Rsetup.html"><a href="Rsetup.html#r-packages"><i class="fa fa-check"></i><b>2.2</b> R Packages</a></li>
+<li class="chapter" data-level="2.3" data-path="Rsetup.html"><a href="Rsetup.html#other-packages"><i class="fa fa-check"></i><b>2.3</b> Other Packages</a></li>
+</ul></li>
+<li class="part"><span><b>Part A. Exploring Data</b></span></li>
+<li class="chapter" data-level="3" data-path="dataviz.html"><a href="dataviz.html"><i class="fa fa-check"></i><b>3</b> Visualizing Data</a><ul>
+<li class="chapter" data-level="3.1" data-path="dataviz.html"><a href="dataviz.html#the-nhanes-data-collecting-a-sample"><i class="fa fa-check"></i><b>3.1</b> The NHANES data: Collecting a Sample</a></li>
+<li class="chapter" data-level="3.2" data-path="dataviz.html"><a href="dataviz.html#age-and-height"><i class="fa fa-check"></i><b>3.2</b> Age and Height</a></li>
+<li class="chapter" data-level="3.3" data-path="dataviz.html"><a href="dataviz.html#subset-of-subjects-with-known-age-and-height"><i class="fa fa-check"></i><b>3.3</b> Subset of Subjects with Known Age and Height</a></li>
+<li class="chapter" data-level="3.4" data-path="dataviz.html"><a href="dataviz.html#age-height-and-gender"><i class="fa fa-check"></i><b>3.4</b> Age-Height and Gender?</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="dataviz.html"><a href="dataviz.html#can-we-show-the-female-and-male-relationships-in-separate-panels"><i class="fa fa-check"></i><b>3.4.1</b> Can we show the Female and Male relationships in separate panels?</a></li>
+<li class="chapter" data-level="3.4.2" data-path="dataviz.html"><a href="dataviz.html#can-we-add-a-smooth-curve-to-show-the-relationship-in-each-plot"><i class="fa fa-check"></i><b>3.4.2</b> Can we add a smooth curve to show the relationship in each plot?</a></li>
+<li class="chapter" data-level="3.4.3" data-path="dataviz.html"><a href="dataviz.html#what-if-we-want-to-assume-straight-line-relationships"><i class="fa fa-check"></i><b>3.4.3</b> What if we want to assume straight line relationships?</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="dataviz.html"><a href="dataviz.html#a-subset-ages-21-79"><i class="fa fa-check"></i><b>3.5</b> A Subset: Ages 21-79</a></li>
+<li class="chapter" data-level="3.6" data-path="dataviz.html"><a href="dataviz.html#distribution-of-heights"><i class="fa fa-check"></i><b>3.6</b> Distribution of Heights</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="dataviz.html"><a href="dataviz.html#changing-a-histograms-fill-and-color"><i class="fa fa-check"></i><b>3.6.1</b> Changing a Histogram’s Fill and Color</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="dataviz.html"><a href="dataviz.html#height-and-gender"><i class="fa fa-check"></i><b>3.7</b> Height and Gender</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="dataviz.html"><a href="dataviz.html#a-boxplot-of-height-by-gender"><i class="fa fa-check"></i><b>3.7.1</b> A Boxplot of Height by Gender</a></li>
+<li class="chapter" data-level="3.7.2" data-path="dataviz.html"><a href="dataviz.html#histograms-of-height-by-gender"><i class="fa fa-check"></i><b>3.7.2</b> Histograms of Height by Gender</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="dataviz.html"><a href="dataviz.html#a-look-at-body-mass-index"><i class="fa fa-check"></i><b>3.8</b> A Look at Body-Mass Index</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="dataviz.html"><a href="dataviz.html#bmi-by-gender"><i class="fa fa-check"></i><b>3.8.1</b> BMI by Gender</a></li>
+<li class="chapter" data-level="3.8.2" data-path="dataviz.html"><a href="dataviz.html#bmi-and-diabetes"><i class="fa fa-check"></i><b>3.8.2</b> BMI and Diabetes</a></li>
+<li class="chapter" data-level="3.8.3" data-path="dataviz.html"><a href="dataviz.html#bmi-and-race"><i class="fa fa-check"></i><b>3.8.3</b> BMI and Race</a></li>
+<li class="chapter" data-level="3.8.4" data-path="dataviz.html"><a href="dataviz.html#bmi-and-pulse-rate"><i class="fa fa-check"></i><b>3.8.4</b> BMI and Pulse Rate</a></li>
+<li class="chapter" data-level="3.8.5" data-path="dataviz.html"><a href="dataviz.html#diabetes-vs.no-diabetes"><i class="fa fa-check"></i><b>3.8.5</b> Diabetes vs. No Diabetes</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="dataviz.html"><a href="dataviz.html#general-health-status"><i class="fa fa-check"></i><b>3.9</b> General Health Status</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="dataviz.html"><a href="dataviz.html#bar-chart-for-categorical-data"><i class="fa fa-check"></i><b>3.9.1</b> Bar Chart for Categorical Data</a></li>
+<li class="chapter" data-level="3.9.2" data-path="dataviz.html"><a href="dataviz.html#working-with-tables"><i class="fa fa-check"></i><b>3.9.2</b> Working with Tables</a></li>
+<li class="chapter" data-level="3.9.3" data-path="dataviz.html"><a href="dataviz.html#bmi-by-general-health-status"><i class="fa fa-check"></i><b>3.9.3</b> BMI by General Health Status</a></li>
+<li class="chapter" data-level="3.9.4" data-path="dataviz.html"><a href="dataviz.html#bmi-by-gender-and-general-health-status"><i class="fa fa-check"></i><b>3.9.4</b> BMI by Gender and General Health Status</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="dataviz.html"><a href="dataviz.html#conclusions"><i class="fa fa-check"></i><b>3.10</b> Conclusions</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-structures-and-types-of-variables.html"><a href="data-structures-and-types-of-variables.html"><i class="fa fa-check"></i><b>4</b> Data Structures and Types of Variables</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-structures-and-types-of-variables.html"><a href="data-structures-and-types-of-variables.html#data-require-structure-and-context"><i class="fa fa-check"></i><b>4.1</b> Data require structure and context</a></li>
+<li class="chapter" data-level="4.2" data-path="data-structures-and-types-of-variables.html"><a href="data-structures-and-types-of-variables.html#createnh_adults"><i class="fa fa-check"></i><b>4.2</b> A New NHANES Adult Sample</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="data-structures-and-types-of-variables.html"><a href="data-structures-and-types-of-variables.html#summarizing-the-datas-structure"><i class="fa fa-check"></i><b>4.2.1</b> Summarizing the Data’s Structure</a></li>
+<li class="chapter" data-level="4.2.2" data-path="data-structures-and-types-of-variables.html"><a href="data-structures-and-types-of-variables.html#what-are-the-variables"><i class="fa fa-check"></i><b>4.2.2</b> What are the variables?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="data-structures-and-types-of-variables.html"><a href="data-structures-and-types-of-variables.html#types-of-variables"><i class="fa fa-check"></i><b>4.3</b> Types of Variables</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="data-structures-and-types-of-variables.html"><a href="data-structures-and-types-of-variables.html#quantitative-variables"><i class="fa fa-check"></i><b>4.3.1</b> Quantitative Variables</a></li>
+<li class="chapter" data-level="4.3.2" data-path="data-structures-and-types-of-variables.html"><a href="data-structures-and-types-of-variables.html#qualitative-categorical-variables"><i class="fa fa-check"></i><b>4.3.2</b> Qualitative (Categorical) Variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html"><i class="fa fa-check"></i><b>5</b> Summarizing Quantitative Variables</a><ul>
+<li class="chapter" data-level="5.1" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#the-summary-function-for-quantitative-data"><i class="fa fa-check"></i><b>5.1</b> The <code>summary</code> function for Quantitative data</a></li>
+<li class="chapter" data-level="5.2" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#measuring-the-center-of-a-distribution"><i class="fa fa-check"></i><b>5.2</b> Measuring the Center of a Distribution</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#the-mean-and-the-median"><i class="fa fa-check"></i><b>5.2.1</b> The Mean and The Median</a></li>
+<li class="chapter" data-level="5.2.2" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#dealing-with-missingness"><i class="fa fa-check"></i><b>5.2.2</b> Dealing with Missingness</a></li>
+<li class="chapter" data-level="5.2.3" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#the-mode-of-a-quantitative-variable"><i class="fa fa-check"></i><b>5.2.3</b> The Mode of a Quantitative Variable</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#measuring-the-spread-of-a-distribution"><i class="fa fa-check"></i><b>5.3</b> Measuring the Spread of a Distribution</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#rangeandiqr"><i class="fa fa-check"></i><b>5.3.1</b> The Range and the Interquartile Range (IQR)</a></li>
+<li class="chapter" data-level="5.3.2" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#the-variance-and-the-standard-deviation"><i class="fa fa-check"></i><b>5.3.2</b> The Variance and the Standard Deviation</a></li>
+<li class="chapter" data-level="5.3.3" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#obtaining-the-variance-and-standard-deviation-in-r"><i class="fa fa-check"></i><b>5.3.3</b> Obtaining the Variance and Standard Deviation in R</a></li>
+<li class="chapter" data-level="5.3.4" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#defining-the-variance-and-standard-deviation"><i class="fa fa-check"></i><b>5.3.4</b> Defining the Variance and Standard Deviation</a></li>
+<li class="chapter" data-level="5.3.5" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#empirical-rule-interpretation-of-the-standard-deviation"><i class="fa fa-check"></i><b>5.3.5</b> Empirical Rule Interpretation of the Standard Deviation</a></li>
+<li class="chapter" data-level="5.3.6" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#chebyshevs-inequality-one-interpretation-of-the-standard-deviation"><i class="fa fa-check"></i><b>5.3.6</b> Chebyshev’s Inequality: One Interpretation of the Standard Deviation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#measuring-the-shape-of-a-distribution"><i class="fa fa-check"></i><b>5.4</b> Measuring the Shape of a Distribution</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#multimodal-vs.unimodal-distributions"><i class="fa fa-check"></i><b>5.4.1</b> Multimodal vs. Unimodal distributions</a></li>
+<li class="chapter" data-level="5.4.2" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#skew"><i class="fa fa-check"></i><b>5.4.2</b> Skew</a></li>
+<li class="chapter" data-level="5.4.3" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#kurtosis"><i class="fa fa-check"></i><b>5.4.3</b> Kurtosis</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#more-detailed-numerical-summaries-for-quantitative-variables"><i class="fa fa-check"></i><b>5.5</b> More Detailed Numerical Summaries for Quantitative Variables</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#favstats-in-the-mosaic-package"><i class="fa fa-check"></i><b>5.5.1</b> <code>favstats</code> in the <code>mosaic</code> package</a></li>
+<li class="chapter" data-level="5.5.2" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#describe-in-the-psych-package"><i class="fa fa-check"></i><b>5.5.2</b> <code>describe</code> in the <code>psych</code> package</a></li>
+<li class="chapter" data-level="5.5.3" data-path="summarizing-quantities.html"><a href="summarizing-quantities.html#describe-in-the-hmisc-package"><i class="fa fa-check"></i><b>5.5.3</b> <code>describe</code> in the <code>Hmisc</code> package</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="summarizing-categorical-variables.html"><a href="summarizing-categorical-variables.html"><i class="fa fa-check"></i><b>6</b> Summarizing Categorical Variables</a><ul>
+<li class="chapter" data-level="6.1" data-path="summarizing-categorical-variables.html"><a href="summarizing-categorical-variables.html#the-summary-function-for-categorical-data"><i class="fa fa-check"></i><b>6.1</b> The <code>summary</code> function for Categorical data</a></li>
+<li class="chapter" data-level="6.2" data-path="summarizing-categorical-variables.html"><a href="summarizing-categorical-variables.html#tables-to-describe-one-categorical-variable"><i class="fa fa-check"></i><b>6.2</b> Tables to describe One Categorical Variable</a></li>
+<li class="chapter" data-level="6.3" data-path="summarizing-categorical-variables.html"><a href="summarizing-categorical-variables.html#the-mode-of-a-categorical-variable"><i class="fa fa-check"></i><b>6.3</b> The Mode of a Categorical Variable</a></li>
+<li class="chapter" data-level="6.4" data-path="summarizing-categorical-variables.html"><a href="summarizing-categorical-variables.html#describe-in-the-hmisc-package-1"><i class="fa fa-check"></i><b>6.4</b> <code>describe</code> in the <code>Hmisc</code> package</a></li>
+<li class="chapter" data-level="6.5" data-path="summarizing-categorical-variables.html"><a href="summarizing-categorical-variables.html#cross-tabulations"><i class="fa fa-check"></i><b>6.5</b> Cross-Tabulations</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="summarizing-categorical-variables.html"><a href="summarizing-categorical-variables.html#cross-classifying-three-categorical-variables"><i class="fa fa-check"></i><b>6.5.1</b> Cross-Classifying Three Categorical Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="summarizing-categorical-variables.html"><a href="summarizing-categorical-variables.html#constructing-tables-well"><i class="fa fa-check"></i><b>6.6</b> Constructing Tables Well</a><ul>
+<li class="chapter" data-level="6.6.1" data-path="summarizing-categorical-variables.html"><a href="summarizing-categorical-variables.html#alabama-first"><i class="fa fa-check"></i><b>6.6.1</b> Alabama First!</a></li>
+<li class="chapter" data-level="6.6.2" data-path="summarizing-categorical-variables.html"><a href="summarizing-categorical-variables.html#order-rows-and-columns-sensibly"><i class="fa fa-check"></i><b>6.6.2</b> Order rows and columns sensibly</a></li>
+<li class="chapter" data-level="6.6.3" data-path="summarizing-categorical-variables.html"><a href="summarizing-categorical-variables.html#round---a-lot"><i class="fa fa-check"></i><b>6.6.3</b> Round - a lot!</a></li>
+<li class="chapter" data-level="6.6.4" data-path="summarizing-categorical-variables.html"><a href="summarizing-categorical-variables.html#all-is-different-and-important"><i class="fa fa-check"></i><b>6.6.4</b> ALL is different and important</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html"><i class="fa fa-check"></i><b>7</b> The National Youth Fitness Survey (<code>nyfs1</code>)</a><ul>
+<li class="chapter" data-level="7.1" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#looking-over-the-data-set"><i class="fa fa-check"></i><b>7.1</b> Looking over the Data Set</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#subject.id"><i class="fa fa-check"></i><b>7.1.1</b> subject.id</a></li>
+<li class="chapter" data-level="7.1.2" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#sex"><i class="fa fa-check"></i><b>7.1.2</b> sex</a></li>
+<li class="chapter" data-level="7.1.3" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#age.exam"><i class="fa fa-check"></i><b>7.1.3</b> age.exam</a></li>
+<li class="chapter" data-level="7.1.4" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#bmi"><i class="fa fa-check"></i><b>7.1.4</b> bmi</a></li>
+<li class="chapter" data-level="7.1.5" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#bmi.cat"><i class="fa fa-check"></i><b>7.1.5</b> bmi.cat</a></li>
+<li class="chapter" data-level="7.1.6" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#waist.circ"><i class="fa fa-check"></i><b>7.1.6</b> waist.circ</a></li>
+<li class="chapter" data-level="7.1.7" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#triceps.skinfold"><i class="fa fa-check"></i><b>7.1.7</b> triceps.skinfold</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#summarizing-the-data-set"><i class="fa fa-check"></i><b>7.2</b> Summarizing the Data Set</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#the-five-number-summary-quantiles-and-iqr"><i class="fa fa-check"></i><b>7.2.1</b> The Five Number Summary, Quantiles and IQR</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#additional-summaries-from-favstats"><i class="fa fa-check"></i><b>7.3</b> Additional Summaries from <code>favstats</code></a></li>
+<li class="chapter" data-level="7.4" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#the-histogram"><i class="fa fa-check"></i><b>7.4</b> The Histogram</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#freedman-diaconis-rule-to-select-bin-width"><i class="fa fa-check"></i><b>7.4.1</b> Freedman-Diaconis Rule to select bin width</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#a-note-on-colors"><i class="fa fa-check"></i><b>7.5</b> A Note on Colors</a></li>
+<li class="chapter" data-level="7.6" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#the-stem-and-leaf"><i class="fa fa-check"></i><b>7.6</b> The Stem-and-Leaf</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#a-fancier-stem-and-leaf-display"><i class="fa fa-check"></i><b>7.6.1</b> A Fancier Stem-and-Leaf Display</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#the-dot-plot-to-display-a-distribution"><i class="fa fa-check"></i><b>7.7</b> The Dot Plot to display a distribution</a></li>
+<li class="chapter" data-level="7.8" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#the-frequency-polygon"><i class="fa fa-check"></i><b>7.8</b> The Frequency Polygon</a></li>
+<li class="chapter" data-level="7.9" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#plotting-the-probability-density-function"><i class="fa fa-check"></i><b>7.9</b> Plotting the Probability Density Function</a></li>
+<li class="chapter" data-level="7.10" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#the-boxplot"><i class="fa fa-check"></i><b>7.10</b> The Boxplot</a><ul>
+<li class="chapter" data-level="7.10.1" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#drawing-a-boxplot-for-one-variable-in-ggplot2"><i class="fa fa-check"></i><b>7.10.1</b> Drawing a Boxplot for One Variable in <code>ggplot2</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.11" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#a-simple-comparison-boxplot"><i class="fa fa-check"></i><b>7.11</b> A Simple Comparison Boxplot</a></li>
+<li class="chapter" data-level="7.12" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#using-describe-in-the-psych-library"><i class="fa fa-check"></i><b>7.12</b> Using <code>describe</code> in the <code>psych</code> library</a><ul>
+<li class="chapter" data-level="7.12.1" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#the-trimmed-mean"><i class="fa fa-check"></i><b>7.12.1</b> The Trimmed Mean</a></li>
+<li class="chapter" data-level="7.12.2" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#the-median-absolute-deviation"><i class="fa fa-check"></i><b>7.12.2</b> The Median Absolute Deviation</a></li>
+</ul></li>
+<li class="chapter" data-level="7.13" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#assessing-skew"><i class="fa fa-check"></i><b>7.13</b> Assessing Skew</a><ul>
+<li class="chapter" data-level="7.13.1" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#non-parametric-skew-via-skew1"><i class="fa fa-check"></i><b>7.13.1</b> Non-parametric Skew via skew<sub>1</sub></a></li>
+</ul></li>
+<li class="chapter" data-level="7.14" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#assessing-kurtosis-heavy-tailedness"><i class="fa fa-check"></i><b>7.14</b> Assessing Kurtosis (Heavy-Tailedness)</a><ul>
+<li class="chapter" data-level="7.14.1" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#the-standard-error-of-the-sample-mean"><i class="fa fa-check"></i><b>7.14.1</b> The Standard Error of the Sample Mean</a></li>
+</ul></li>
+<li class="chapter" data-level="7.15" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#the-describe-function-in-the-hmisc-library"><i class="fa fa-check"></i><b>7.15</b> The <code>describe</code> function in the <code>Hmisc</code> library</a></li>
+<li class="chapter" data-level="7.16" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#xda-from-github-for-numerical-summaries-for-exploratory-data-analysis"><i class="fa fa-check"></i><b>7.16</b> <code>xda</code> from GitHub for numerical summaries for exploratory data analysis</a></li>
+<li class="chapter" data-level="7.17" data-path="the-national-youth-fitness-survey-nyfs1.html"><a href="the-national-youth-fitness-survey-nyfs1.html#what-summaries-to-report"><i class="fa fa-check"></i><b>7.17</b> What Summaries to Report</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="assessing-normality.html"><a href="assessing-normality.html"><i class="fa fa-check"></i><b>8</b> Assessing Normality</a><ul>
+<li class="chapter" data-level="8.1" data-path="assessing-normality.html"><a href="assessing-normality.html#empirical-rule-interpretation-of-the-standard-deviation-1"><i class="fa fa-check"></i><b>8.1</b> Empirical Rule Interpretation of the Standard Deviation</a></li>
+<li class="chapter" data-level="8.2" data-path="assessing-normality.html"><a href="assessing-normality.html#describing-outlying-values-with-z-scores"><i class="fa fa-check"></i><b>8.2</b> Describing Outlying Values with Z Scores</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="assessing-normality.html"><a href="assessing-normality.html#fences-and-z-scores"><i class="fa fa-check"></i><b>8.2.1</b> Fences and Z Scores</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="assessing-normality.html"><a href="assessing-normality.html#comparing-a-histogram-to-a-normal-distribution"><i class="fa fa-check"></i><b>8.3</b> Comparing a Histogram to a Normal Distribution</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="assessing-normality.html"><a href="assessing-normality.html#histogram-of-bmi-with-normal-model-with-counts"><i class="fa fa-check"></i><b>8.3.1</b> Histogram of BMI with Normal model (with Counts)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="assessing-normality.html"><a href="assessing-normality.html#does-a-normal-model-work-well-for-the-ages"><i class="fa fa-check"></i><b>8.4</b> Does a Normal model work well for the Ages?</a></li>
+<li class="chapter" data-level="8.5" data-path="assessing-normality.html"><a href="assessing-normality.html#the-normal-q-q-plot"><i class="fa fa-check"></i><b>8.5</b> The Normal Q-Q Plot</a></li>
+<li class="chapter" data-level="8.6" data-path="assessing-normality.html"><a href="assessing-normality.html#interpreting-the-normal-q-q-plot"><i class="fa fa-check"></i><b>8.6</b> Interpreting the Normal Q-Q Plot</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="assessing-normality.html"><a href="assessing-normality.html#data-from-a-normal-distribution-shows-up-as-a-straight-line-in-a-normal-q-q-plot"><i class="fa fa-check"></i><b>8.6.1</b> Data from a Normal distribution shows up as a straight line in a Normal Q-Q plot</a></li>
+<li class="chapter" data-level="8.6.2" data-path="assessing-normality.html"><a href="assessing-normality.html#skew-is-indicated-by-monotonic-curves-in-the-normal-q-q-plot"><i class="fa fa-check"></i><b>8.6.2</b> Skew is indicated by monotonic curves in the Normal Q-Q plot</a></li>
+<li class="chapter" data-level="8.6.3" data-path="assessing-normality.html"><a href="assessing-normality.html#direction-of-skew"><i class="fa fa-check"></i><b>8.6.3</b> Direction of Skew</a></li>
+<li class="chapter" data-level="8.6.4" data-path="assessing-normality.html"><a href="assessing-normality.html#outlier-proneness-is-indicated-by-s-shaped-curves-in-a-normal-q-q-plot"><i class="fa fa-check"></i><b>8.6.4</b> Outlier-proneness is indicated by “s-shaped” curves in a Normal Q-Q plot</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="assessing-normality.html"><a href="assessing-normality.html#does-a-normal-distribution-fit-the-nyfs1-data-well"><i class="fa fa-check"></i><b>8.7</b> Does a Normal Distribution Fit the <code>nyfs1</code> Data Well?</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="using-transformations-to-normalize-distributions.html"><a href="using-transformations-to-normalize-distributions.html"><i class="fa fa-check"></i><b>9</b> Using Transformations to “Normalize” Distributions</a><ul>
+<li class="chapter" data-level="9.1" data-path="using-transformations-to-normalize-distributions.html"><a href="using-transformations-to-normalize-distributions.html#the-ladder-of-power-transformations"><i class="fa fa-check"></i><b>9.1</b> The Ladder of Power Transformations</a></li>
+<li class="chapter" data-level="9.2" data-path="using-transformations-to-normalize-distributions.html"><a href="using-transformations-to-normalize-distributions.html#using-the-ladder"><i class="fa fa-check"></i><b>9.2</b> Using the Ladder</a></li>
+<li class="chapter" data-level="9.3" data-path="using-transformations-to-normalize-distributions.html"><a href="using-transformations-to-normalize-distributions.html#can-we-transform-waist-circumferences"><i class="fa fa-check"></i><b>9.3</b> Can we transform Waist Circumferences?</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="using-transformations-to-normalize-distributions.html"><a href="using-transformations-to-normalize-distributions.html#the-square"><i class="fa fa-check"></i><b>9.3.1</b> The Square</a></li>
+<li class="chapter" data-level="9.3.2" data-path="using-transformations-to-normalize-distributions.html"><a href="using-transformations-to-normalize-distributions.html#the-square-root"><i class="fa fa-check"></i><b>9.3.2</b> The Square Root</a></li>
+<li class="chapter" data-level="9.3.3" data-path="using-transformations-to-normalize-distributions.html"><a href="using-transformations-to-normalize-distributions.html#the-logarithm"><i class="fa fa-check"></i><b>9.3.3</b> The Logarithm</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="using-transformations-to-normalize-distributions.html"><a href="using-transformations-to-normalize-distributions.html#a-simulated-data-set-with-left-skew"><i class="fa fa-check"></i><b>9.4</b> A Simulated Data Set with Left Skew</a></li>
+<li class="chapter" data-level="9.5" data-path="using-transformations-to-normalize-distributions.html"><a href="using-transformations-to-normalize-distributions.html#transformation-example-2-ladder-of-potential-transformations-in-frequency-polygons"><i class="fa fa-check"></i><b>9.5</b> Transformation Example 2: Ladder of Potential Transformations in Frequency Polygons</a></li>
+<li class="chapter" data-level="9.6" data-path="using-transformations-to-normalize-distributions.html"><a href="using-transformations-to-normalize-distributions.html#transformation-example-2-ladder-with-normal-q-q-plots"><i class="fa fa-check"></i><b>9.6</b> Transformation Example 2 Ladder with Normal Q-Q Plots</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html"><i class="fa fa-check"></i><b>10</b> Summarizing data within subgroups</a><ul>
+<li class="chapter" data-level="10.1" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#using-dplyr-and-summarise-to-build-a-tibble-of-summary-information"><i class="fa fa-check"></i><b>10.1</b> Using dplyr and summarise to build a tibble of summary information</a></li>
+<li class="chapter" data-level="10.2" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#using-the-by-function-to-summarize-groups-numerically"><i class="fa fa-check"></i><b>10.2</b> Using the by function to summarize groups numerically</a></li>
+<li class="chapter" data-level="10.3" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#boxplots-to-relate-an-outcome-to-a-categorical-predictor"><i class="fa fa-check"></i><b>10.3</b> Boxplots to Relate an Outcome to a Categorical Predictor</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#augmenting-the-boxplot-with-the-sample-mean"><i class="fa fa-check"></i><b>10.3.1</b> Augmenting the Boxplot with the Sample Mean</a></li>
+<li class="chapter" data-level="10.3.2" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#adding-notches-to-a-boxplot"><i class="fa fa-check"></i><b>10.3.2</b> Adding Notches to a Boxplot</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#using-multiple-histograms-to-make-comparisons"><i class="fa fa-check"></i><b>10.4</b> Using Multiple Histograms to Make Comparisons</a></li>
+<li class="chapter" data-level="10.5" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#using-multiple-density-plots-to-make-comparisons"><i class="fa fa-check"></i><b>10.5</b> Using Multiple Density Plots to Make Comparisons</a></li>
+<li class="chapter" data-level="10.6" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#building-a-violin-plot"><i class="fa fa-check"></i><b>10.6</b> Building a Violin Plot</a></li>
+<li class="chapter" data-level="10.7" data-path="summarizing-data-within-subgroups.html"><a href="summarizing-data-within-subgroups.html#a-ridgeline-plot"><i class="fa fa-check"></i><b>10.7</b> A Ridgeline Plot</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html"><i class="fa fa-check"></i><b>11</b> Straight Line Models and Correlation</a><ul>
+<li class="chapter" data-level="11.1" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html#assessing-a-scatterplot"><i class="fa fa-check"></i><b>11.1</b> Assessing A Scatterplot</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html#highlighting-an-unusual-point"><i class="fa fa-check"></i><b>11.1.1</b> Highlighting an unusual point</a></li>
+<li class="chapter" data-level="11.1.2" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html#adding-a-scatterplot-smooth-using-loess"><i class="fa fa-check"></i><b>11.1.2</b> Adding a Scatterplot Smooth using loess</a></li>
+<li class="chapter" data-level="11.1.3" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html#adding-a-straight-line-to-the-scatterplot"><i class="fa fa-check"></i><b>11.1.3</b> Adding a Straight Line to the Scatterplot</a></li>
+<li class="chapter" data-level="11.1.4" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html#what-line-does-r-fit"><i class="fa fa-check"></i><b>11.1.4</b> What Line Does R Fit?</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html#correlation-coefficients"><i class="fa fa-check"></i><b>11.2</b> Correlation Coefficients</a></li>
+<li class="chapter" data-level="11.3" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html#the-pearson-correlation-coefficient"><i class="fa fa-check"></i><b>11.3</b> The Pearson Correlation Coefficient</a></li>
+<li class="chapter" data-level="11.4" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html#a-simulated-example"><i class="fa fa-check"></i><b>11.4</b> A simulated example</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html#data-set-alex"><i class="fa fa-check"></i><b>11.4.1</b> Data Set Alex</a></li>
+<li class="chapter" data-level="11.4.2" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html#data-set-bonnie"><i class="fa fa-check"></i><b>11.4.2</b> Data Set Bonnie</a></li>
+<li class="chapter" data-level="11.4.3" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html#correlations-for-all-six-data-sets-in-the-correx1-example"><i class="fa fa-check"></i><b>11.4.3</b> Correlations for All Six Data Sets in the Correx1 Example</a></li>
+<li class="chapter" data-level="11.4.4" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html#data-set-colin"><i class="fa fa-check"></i><b>11.4.4</b> Data Set Colin</a></li>
+<li class="chapter" data-level="11.4.5" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html#draw-the-picture"><i class="fa fa-check"></i><b>11.4.5</b> Draw the Picture!</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html#estimating-correlation-from-scatterplots"><i class="fa fa-check"></i><b>11.5</b> Estimating Correlation from Scatterplots</a></li>
+<li class="chapter" data-level="11.6" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html#the-spearman-rank-correlation"><i class="fa fa-check"></i><b>11.6</b> The Spearman Rank Correlation</a><ul>
+<li class="chapter" data-level="11.6.1" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html#spearman-formula"><i class="fa fa-check"></i><b>11.6.1</b> Spearman Formula</a></li>
+<li class="chapter" data-level="11.6.2" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html#comparing-pearson-and-spearman-correlations"><i class="fa fa-check"></i><b>11.6.2</b> Comparing Pearson and Spearman Correlations</a></li>
+<li class="chapter" data-level="11.6.3" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html#spearman-vs.pearson-example-1"><i class="fa fa-check"></i><b>11.6.3</b> Spearman vs. Pearson Example 1</a></li>
+<li class="chapter" data-level="11.6.4" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html#spearman-vs.pearson-example-2"><i class="fa fa-check"></i><b>11.6.4</b> Spearman vs. Pearson Example 2</a></li>
+<li class="chapter" data-level="11.6.5" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html#spearman-vs.pearson-example-3"><i class="fa fa-check"></i><b>11.6.5</b> Spearman vs. Pearson Example 3</a></li>
+<li class="chapter" data-level="11.6.6" data-path="straight-line-models-and-correlation.html"><a href="straight-line-models-and-correlation.html#spearman-vs.pearson-example-4"><i class="fa fa-check"></i><b>11.6.6</b> Spearman vs. Pearson Example 4</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="studying-crab-claws-crabs.html"><a href="studying-crab-claws-crabs.html"><i class="fa fa-check"></i><b>12</b> Studying Crab Claws (<code>crabs</code>)</a><ul>
+<li class="chapter" data-level="12.1" data-path="studying-crab-claws-crabs.html"><a href="studying-crab-claws-crabs.html#association-of-size-and-force"><i class="fa fa-check"></i><b>12.1</b> Association of Size and Force</a></li>
+<li class="chapter" data-level="12.2" data-path="studying-crab-claws-crabs.html"><a href="studying-crab-claws-crabs.html#loess_smooth"><i class="fa fa-check"></i><b>12.2</b> The <code>loess</code> smooth</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="studying-crab-claws-crabs.html"><a href="studying-crab-claws-crabs.html#smoothing-within-species"><i class="fa fa-check"></i><b>12.2.1</b> Smoothing within Species</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="studying-crab-claws-crabs.html"><a href="studying-crab-claws-crabs.html#fitting-a-linear-regression-model"><i class="fa fa-check"></i><b>12.3</b> Fitting a Linear Regression Model</a></li>
+<li class="chapter" data-level="12.4" data-path="studying-crab-claws-crabs.html"><a href="studying-crab-claws-crabs.html#is-a-linear-model-appropriate"><i class="fa fa-check"></i><b>12.4</b> Is a Linear Model Appropriate?</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="studying-crab-claws-crabs.html"><a href="studying-crab-claws-crabs.html#the-log-log-model"><i class="fa fa-check"></i><b>12.4.1</b> The log-log model</a></li>
+<li class="chapter" data-level="12.4.2" data-path="studying-crab-claws-crabs.html"><a href="studying-crab-claws-crabs.html#how-does-this-compare-to-our-original-linear-model"><i class="fa fa-check"></i><b>12.4.2</b> How does this compare to our original linear model?</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="studying-crab-claws-crabs.html"><a href="studying-crab-claws-crabs.html#making-predictions-with-a-model"><i class="fa fa-check"></i><b>12.5</b> Making Predictions with a Model</a><ul>
+<li class="chapter" data-level="12.5.1" data-path="studying-crab-claws-crabs.html"><a href="studying-crab-claws-crabs.html#predictions-after-a-transformation"><i class="fa fa-check"></i><b>12.5.1</b> Predictions After a Transformation</a></li>
+<li class="chapter" data-level="12.5.2" data-path="studying-crab-claws-crabs.html"><a href="studying-crab-claws-crabs.html#comparing-model-predictions"><i class="fa fa-check"></i><b>12.5.2</b> Comparing Model Predictions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="the-western-collaborative-group-study.html"><a href="the-western-collaborative-group-study.html"><i class="fa fa-check"></i><b>13</b> The Western Collaborative Group Study</a><ul>
+<li class="chapter" data-level="13.1" data-path="the-western-collaborative-group-study.html"><a href="the-western-collaborative-group-study.html#the-western-collaborative-group-study-wcgs-data-set"><i class="fa fa-check"></i><b>13.1</b> The Western Collaborative Group Study (<code>wcgs</code>) data set</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="the-western-collaborative-group-study.html"><a href="the-western-collaborative-group-study.html#structure-of-wcgs"><i class="fa fa-check"></i><b>13.1.1</b> Structure of <code>wcgs</code></a></li>
+<li class="chapter" data-level="13.1.2" data-path="the-western-collaborative-group-study.html"><a href="the-western-collaborative-group-study.html#codebook-for-wcgs"><i class="fa fa-check"></i><b>13.1.2</b> Codebook for <code>wcgs</code></a></li>
+<li class="chapter" data-level="13.1.3" data-path="the-western-collaborative-group-study.html"><a href="the-western-collaborative-group-study.html#quick-summary"><i class="fa fa-check"></i><b>13.1.3</b> Quick Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="the-western-collaborative-group-study.html"><a href="the-western-collaborative-group-study.html#are-the-sbps-normally-distributed"><i class="fa fa-check"></i><b>13.2</b> Are the SBPs Normally Distributed?</a></li>
+<li class="chapter" data-level="13.3" data-path="the-western-collaborative-group-study.html"><a href="the-western-collaborative-group-study.html#describing-outlying-values-with-z-scores-1"><i class="fa fa-check"></i><b>13.3</b> Describing Outlying Values with Z Scores</a></li>
+<li class="chapter" data-level="13.4" data-path="the-western-collaborative-group-study.html"><a href="the-western-collaborative-group-study.html#does-weight-category-relate-to-sbp"><i class="fa fa-check"></i><b>13.4</b> Does Weight Category Relate to SBP?</a></li>
+<li class="chapter" data-level="13.5" data-path="the-western-collaborative-group-study.html"><a href="the-western-collaborative-group-study.html#re-leveling-a-factor"><i class="fa fa-check"></i><b>13.5</b> Re-Leveling a Factor</a><ul>
+<li class="chapter" data-level="13.5.1" data-path="the-western-collaborative-group-study.html"><a href="the-western-collaborative-group-study.html#sbp-by-weight-category"><i class="fa fa-check"></i><b>13.5.1</b> SBP by Weight Category</a></li>
+</ul></li>
+<li class="chapter" data-level="13.6" data-path="the-western-collaborative-group-study.html"><a href="the-western-collaborative-group-study.html#are-weight-and-sbp-linked"><i class="fa fa-check"></i><b>13.6</b> Are Weight and SBP Linked?</a></li>
+<li class="chapter" data-level="13.7" data-path="the-western-collaborative-group-study.html"><a href="the-western-collaborative-group-study.html#sbp-and-weight-by-arcus-senilis-groups"><i class="fa fa-check"></i><b>13.7</b> SBP and Weight by Arcus Senilis groups?</a></li>
+<li class="chapter" data-level="13.8" data-path="the-western-collaborative-group-study.html"><a href="the-western-collaborative-group-study.html#linear-model-for-sbp-weight-relationship-subjects-without-arcus-senilis"><i class="fa fa-check"></i><b>13.8</b> Linear Model for SBP-Weight Relationship: subjects without Arcus Senilis</a></li>
+<li class="chapter" data-level="13.9" data-path="the-western-collaborative-group-study.html"><a href="the-western-collaborative-group-study.html#linear-model-for-sbp-weight-relationship-subjects-with-arcus-senilis"><i class="fa fa-check"></i><b>13.9</b> Linear Model for SBP-Weight Relationship: subjects with Arcus Senilis</a></li>
+<li class="chapter" data-level="13.10" data-path="the-western-collaborative-group-study.html"><a href="the-western-collaborative-group-study.html#including-arcus-status-in-the-model"><i class="fa fa-check"></i><b>13.10</b> Including Arcus Status in the model</a></li>
+<li class="chapter" data-level="13.11" data-path="the-western-collaborative-group-study.html"><a href="the-western-collaborative-group-study.html#predictions-from-these-linear-models"><i class="fa fa-check"></i><b>13.11</b> Predictions from these Linear Models</a></li>
+<li class="chapter" data-level="13.12" data-path="the-western-collaborative-group-study.html"><a href="the-western-collaborative-group-study.html#scatterplots-with-facets-across-a-categorical-variable"><i class="fa fa-check"></i><b>13.12</b> Scatterplots with Facets Across a Categorical Variable</a></li>
+<li class="chapter" data-level="13.13" data-path="the-western-collaborative-group-study.html"><a href="the-western-collaborative-group-study.html#scatterplot-and-correlation-matrices"><i class="fa fa-check"></i><b>13.13</b> Scatterplot and Correlation Matrices</a><ul>
+<li class="chapter" data-level="13.13.1" data-path="the-western-collaborative-group-study.html"><a href="the-western-collaborative-group-study.html#using-the-car-package"><i class="fa fa-check"></i><b>13.13.1</b> Using the car package</a></li>
+<li class="chapter" data-level="13.13.2" data-path="the-western-collaborative-group-study.html"><a href="the-western-collaborative-group-study.html#displaying-a-correlation-matrix"><i class="fa fa-check"></i><b>13.13.2</b> Displaying a Correlation Matrix</a></li>
+<li class="chapter" data-level="13.13.3" data-path="the-western-collaborative-group-study.html"><a href="the-western-collaborative-group-study.html#augmented-scatterplot-matrix"><i class="fa fa-check"></i><b>13.13.3</b> Augmented Scatterplot Matrix</a></li>
+<li class="chapter" data-level="13.13.4" data-path="the-western-collaborative-group-study.html"><a href="the-western-collaborative-group-study.html#using-the-ggally-package"><i class="fa fa-check"></i><b>13.13.4</b> Using the <code>GGally</code> package</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="part-a-a-few-of-the-key-points.html"><a href="part-a-a-few-of-the-key-points.html"><i class="fa fa-check"></i><b>14</b> Part A: A Few of the Key Points</a><ul>
+<li class="chapter" data-level="14.1" data-path="part-a-a-few-of-the-key-points.html"><a href="part-a-a-few-of-the-key-points.html#key-graphical-descriptive-summaries-for-quantitative-data"><i class="fa fa-check"></i><b>14.1</b> Key Graphical Descriptive Summaries for Quantitative Data</a></li>
+<li class="chapter" data-level="14.2" data-path="part-a-a-few-of-the-key-points.html"><a href="part-a-a-few-of-the-key-points.html#key-numerical-descriptive-summaries-for-quantitative-data"><i class="fa fa-check"></i><b>14.2</b> Key Numerical Descriptive Summaries for Quantitative Data</a></li>
+<li class="chapter" data-level="14.3" data-path="part-a-a-few-of-the-key-points.html"><a href="part-a-a-few-of-the-key-points.html#the-empirical-rule---interpreting-a-standard-deviation"><i class="fa fa-check"></i><b>14.3</b> The Empirical Rule - Interpreting a Standard Deviation</a></li>
+<li class="chapter" data-level="14.4" data-path="part-a-a-few-of-the-key-points.html"><a href="part-a-a-few-of-the-key-points.html#identifying-outliers-using-fences-andor-z-scores"><i class="fa fa-check"></i><b>14.4</b> Identifying “Outliers” Using Fences and/or Z Scores</a></li>
+<li class="chapter" data-level="14.5" data-path="part-a-a-few-of-the-key-points.html"><a href="part-a-a-few-of-the-key-points.html#summarizing-bivariate-associations-scatterplots-and-regression-lines"><i class="fa fa-check"></i><b>14.5</b> Summarizing Bivariate Associations: Scatterplots and Regression Lines</a></li>
+<li class="chapter" data-level="14.6" data-path="part-a-a-few-of-the-key-points.html"><a href="part-a-a-few-of-the-key-points.html#summarizing-bivariate-associations-with-correlations"><i class="fa fa-check"></i><b>14.6</b> Summarizing Bivariate Associations With Correlations</a></li>
+</ul></li>
+<li class="part"><span><b>Part B. Making Comparisons</b></span></li>
+<li class="chapter" data-level="15" data-path="introduction-to-part-b.html"><a href="introduction-to-part-b.html"><i class="fa fa-check"></i><b>15</b> Introduction to Part B</a><ul>
+<li class="chapter" data-level="15.1" data-path="introduction-to-part-b.html"><a href="introduction-to-part-b.html#point-estimation-and-confidence-intervals"><i class="fa fa-check"></i><b>15.1</b> Point Estimation and Confidence Intervals</a></li>
+<li class="chapter" data-level="15.2" data-path="introduction-to-part-b.html"><a href="introduction-to-part-b.html#one-sample-confidence-intervals-and-hypothesis-testing"><i class="fa fa-check"></i><b>15.2</b> One-Sample Confidence Intervals and Hypothesis Testing</a></li>
+<li class="chapter" data-level="15.3" data-path="introduction-to-part-b.html"><a href="introduction-to-part-b.html#comparing-two-groups"><i class="fa fa-check"></i><b>15.3</b> Comparing Two Groups</a><ul>
+<li class="chapter" data-level="15.3.1" data-path="introduction-to-part-b.html"><a href="introduction-to-part-b.html#model-based-comparisons-and-anovaregression"><i class="fa fa-check"></i><b>15.3.1</b> Model-Based Comparisons and ANOVA/Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="introduction-to-part-b.html"><a href="introduction-to-part-b.html#special-tools-for-categorical-data"><i class="fa fa-check"></i><b>15.4</b> Special Tools for Categorical Data</a></li>
+<li class="chapter" data-level="15.5" data-path="introduction-to-part-b.html"><a href="introduction-to-part-b.html#our-first-three-studies"><i class="fa fa-check"></i><b>15.5</b> Our First Three Studies</a></li>
+<li class="chapter" data-level="15.6" data-path="introduction-to-part-b.html"><a href="introduction-to-part-b.html#data-sets-used-in-part-b"><i class="fa fa-check"></i><b>15.6</b> Data Sets used in Part B</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="Serum-Zinc-Study.html"><a href="Serum-Zinc-Study.html"><i class="fa fa-check"></i><b>16</b> The Serum Zinc Study</a><ul>
+<li class="chapter" data-level="16.1" data-path="Serum-Zinc-Study.html"><a href="Serum-Zinc-Study.html#serum-zinc-levels-in-462-teenage-males-serzinc"><i class="fa fa-check"></i><b>16.1</b> Serum Zinc Levels in 462 Teenage Males (<code>serzinc</code>)</a></li>
+<li class="chapter" data-level="16.2" data-path="Serum-Zinc-Study.html"><a href="Serum-Zinc-Study.html#our-goal-a-confidence-interval-for-the-population-mean"><i class="fa fa-check"></i><b>16.2</b> Our Goal: A Confidence Interval for the Population Mean</a></li>
+<li class="chapter" data-level="16.3" data-path="Serum-Zinc-Study.html"><a href="Serum-Zinc-Study.html#exploratory-data-analysis-for-serum-zinc"><i class="fa fa-check"></i><b>16.3</b> Exploratory Data Analysis for Serum Zinc</a><ul>
+<li class="chapter" data-level="16.3.1" data-path="Serum-Zinc-Study.html"><a href="Serum-Zinc-Study.html#comparison-to-normal-zinc-levels"><i class="fa fa-check"></i><b>16.3.1</b> Comparison to “Normal” Zinc Levels</a></li>
+<li class="chapter" data-level="16.3.2" data-path="Serum-Zinc-Study.html"><a href="Serum-Zinc-Study.html#graphical-summaries"><i class="fa fa-check"></i><b>16.3.2</b> Graphical Summaries</a></li>
+<li class="chapter" data-level="16.3.3" data-path="Serum-Zinc-Study.html"><a href="Serum-Zinc-Study.html#numerical-summaries"><i class="fa fa-check"></i><b>16.3.3</b> Numerical Summaries</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="Blood-Lead-Study.html"><a href="Blood-Lead-Study.html"><i class="fa fa-check"></i><b>17</b> A Paired Sample Study: Lead in the Blood of Children</a><ul>
+<li class="chapter" data-level="17.1" data-path="Blood-Lead-Study.html"><a href="Blood-Lead-Study.html#the-lead-in-the-blood-of-children-study"><i class="fa fa-check"></i><b>17.1</b> The Lead in the Blood of Children Study</a><ul>
+<li class="chapter" data-level="17.1.1" data-path="Blood-Lead-Study.html"><a href="Blood-Lead-Study.html#our-key-questions-for-a-paired-samples-comparison"><i class="fa fa-check"></i><b>17.1.1</b> Our Key Questions for a Paired Samples Comparison</a></li>
+<li class="chapter" data-level="17.1.2" data-path="Blood-Lead-Study.html"><a href="Blood-Lead-Study.html#lead-study-caveats"><i class="fa fa-check"></i><b>17.1.2</b> Lead Study Caveats</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="Blood-Lead-Study.html"><a href="Blood-Lead-Study.html#exploratory-data-analysis-for-paired-samples"><i class="fa fa-check"></i><b>17.2</b> Exploratory Data Analysis for Paired Samples</a><ul>
+<li class="chapter" data-level="17.2.1" data-path="Blood-Lead-Study.html"><a href="Blood-Lead-Study.html#the-paired-differences"><i class="fa fa-check"></i><b>17.2.1</b> The Paired Differences</a></li>
+<li class="chapter" data-level="17.2.2" data-path="Blood-Lead-Study.html"><a href="Blood-Lead-Study.html#numerical-summaries-1"><i class="fa fa-check"></i><b>17.2.2</b> Numerical Summaries</a></li>
+<li class="chapter" data-level="17.2.3" data-path="Blood-Lead-Study.html"><a href="Blood-Lead-Study.html#impact-of-matching---scatterplot-and-correlation"><i class="fa fa-check"></i><b>17.2.3</b> Impact of Matching - Scatterplot and Correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="Blood-Lead-Study.html"><a href="Blood-Lead-Study.html#looking-at-the-individual-samples-tidying-the-data-with-gather"><i class="fa fa-check"></i><b>17.3</b> Looking at the Individual Samples: Tidying the Data with <code>gather</code></a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="Sepsis-RCT.html"><a href="Sepsis-RCT.html"><i class="fa fa-check"></i><b>18</b> A Study Comparing Two Independent Samples: Ibuprofen in Sepsis Trial</a><ul>
+<li class="chapter" data-level="18.1" data-path="Sepsis-RCT.html"><a href="Sepsis-RCT.html#the-ibuprofen-in-sepsis-randomized-clinical-trial"><i class="fa fa-check"></i><b>18.1</b> The Ibuprofen in Sepsis Randomized Clinical Trial</a><ul>
+<li class="chapter" data-level="18.1.1" data-path="Sepsis-RCT.html"><a href="Sepsis-RCT.html#matched-pairs-vs.two-independent-samples"><i class="fa fa-check"></i><b>18.1.1</b> Matched Pairs vs. Two Independent Samples</a></li>
+<li class="chapter" data-level="18.1.2" data-path="Sepsis-RCT.html"><a href="Sepsis-RCT.html#our-key-questions-for-an-independent-samples-comparison"><i class="fa fa-check"></i><b>18.1.2</b> Our Key Questions for an Independent Samples Comparison</a></li>
+<li class="chapter" data-level="18.1.3" data-path="Sepsis-RCT.html"><a href="Sepsis-RCT.html#rct-caveats"><i class="fa fa-check"></i><b>18.1.3</b> RCT Caveats</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="Sepsis-RCT.html"><a href="Sepsis-RCT.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>18.2</b> Exploratory Data Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html"><i class="fa fa-check"></i><b>19</b> Confidence Intervals for a Single Sample of Quantitative Data</a><ul>
+<li class="chapter" data-level="19.1" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#defining-a-confidence-interval"><i class="fa fa-check"></i><b>19.1</b> Defining a Confidence Interval</a></li>
+<li class="chapter" data-level="19.2" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#estimating-the-population-mean-from-the-serum-zinc-data"><i class="fa fa-check"></i><b>19.2</b> Estimating the Population Mean from the Serum Zinc data</a></li>
+<li class="chapter" data-level="19.3" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#confidence-vs.significance-level"><i class="fa fa-check"></i><b>19.3</b> Confidence vs. Significance Level</a></li>
+<li class="chapter" data-level="19.4" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#the-standard-error-of-a-sample-mean"><i class="fa fa-check"></i><b>19.4</b> The Standard Error of a Sample Mean</a></li>
+<li class="chapter" data-level="19.5" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#the-t-distribution-and-confidence-intervals-for-mu"><i class="fa fa-check"></i><b>19.5</b> The t distribution and Confidence Intervals for <span class="math inline">\(\mu\)</span></a><ul>
+<li class="chapter" data-level="19.5.1" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#the-formula"><i class="fa fa-check"></i><b>19.5.1</b> The Formula</a></li>
+<li class="chapter" data-level="19.5.2" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#students-t-distribution"><i class="fa fa-check"></i><b>19.5.2</b> Student’s t distribution</a></li>
+<li class="chapter" data-level="19.5.3" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#building-the-ci-by-hand-for-the-serum-zinc-data"><i class="fa fa-check"></i><b>19.5.3</b> Building the CI “by hand” for the Serum Zinc data</a></li>
+<li class="chapter" data-level="19.5.4" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#getting-r-to-build-a-ci-for-the-serum-zinc-data"><i class="fa fa-check"></i><b>19.5.4</b> Getting R to build a CI for the Serum Zinc data</a></li>
+<li class="chapter" data-level="19.5.5" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#interpreting-the-result"><i class="fa fa-check"></i><b>19.5.5</b> Interpreting the Result</a></li>
+<li class="chapter" data-level="19.5.6" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#what-if-we-want-a-95-or-99-confidence-interval-instead"><i class="fa fa-check"></i><b>19.5.6</b> What if we want a 95% or 99% confidence interval instead?</a></li>
+<li class="chapter" data-level="19.5.7" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#one-sided-vs.two-sided-confidence-intervals"><i class="fa fa-check"></i><b>19.5.7</b> One-sided vs. Two-sided Confidence Intervals</a></li>
+<li class="chapter" data-level="19.5.8" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#calculating-a-one-sided-confidence-interval-for-the-population-mean"><i class="fa fa-check"></i><b>19.5.8</b> Calculating a one-sided confidence interval for the population mean</a></li>
+<li class="chapter" data-level="19.5.9" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#relationship-between-one-sided-and-two-sided-cis"><i class="fa fa-check"></i><b>19.5.9</b> Relationship between One-Sided and Two-Sided CIs</a></li>
+<li class="chapter" data-level="19.5.10" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#using-the-broom-package-with-the-t-test"><i class="fa fa-check"></i><b>19.5.10</b> Using the <code>broom</code> package with the t test</a></li>
+</ul></li>
+<li class="chapter" data-level="19.6" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#bootstrap-confidence-intervals-for-mu"><i class="fa fa-check"></i><b>19.6</b> Bootstrap Confidence Intervals for <span class="math inline">\(\mu\)</span></a><ul>
+<li class="chapter" data-level="19.6.1" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#what-is-a-bootstrap-and-why-should-i-care"><i class="fa fa-check"></i><b>19.6.1</b> What is a Bootstrap and Why Should I Care?</a></li>
+<li class="chapter" data-level="19.6.2" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#resampling-is-a-big-idea"><i class="fa fa-check"></i><b>19.6.2</b> Resampling is A Big Idea</a></li>
+<li class="chapter" data-level="19.6.3" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#when-is-a-bootstrap-confidence-interval-for-mu-reasonable"><i class="fa fa-check"></i><b>19.6.3</b> When is a Bootstrap Confidence Interval for <span class="math inline">\(\mu\)</span> Reasonable?</a></li>
+<li class="chapter" data-level="19.6.4" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#bootstrap-steps-to-estimate-a-confidence-interval-for-mu"><i class="fa fa-check"></i><b>19.6.4</b> Bootstrap: Steps to estimate a confidence interval for <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="19.6.5" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#using-r-to-estimate-a-90-ci-for-mu-with-the-bootstrap"><i class="fa fa-check"></i><b>19.6.5</b> Using R to estimate a 90% CI for <span class="math inline">\(\mu\)</span> with the bootstrap</a></li>
+<li class="chapter" data-level="19.6.6" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#comparing-bootstrap-and-t-based-confidence-intervals"><i class="fa fa-check"></i><b>19.6.6</b> Comparing Bootstrap and T-Based Confidence Intervals</a></li>
+<li class="chapter" data-level="19.6.7" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#ci-for-mu-via-bootstrap-changing-minor-details"><i class="fa fa-check"></i><b>19.6.7</b> 90% CI for <span class="math inline">\(\mu\)</span> via bootstrap, changing minor details</a></li>
+<li class="chapter" data-level="19.6.8" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#bootstrap-changing-the-confidence-level"><i class="fa fa-check"></i><b>19.6.8</b> Bootstrap: Changing the Confidence Level</a></li>
+<li class="chapter" data-level="19.6.9" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#bootstrap-obtaining-a-one-sided-confidence-interval"><i class="fa fa-check"></i><b>19.6.9</b> Bootstrap: Obtaining a One-sided Confidence Interval</a></li>
+<li class="chapter" data-level="19.6.10" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#bootstrap-ci-for-the-population-median"><i class="fa fa-check"></i><b>19.6.10</b> Bootstrap CI for the Population Median</a></li>
+<li class="chapter" data-level="19.6.11" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#bootstrap-ci-for-the-iqr"><i class="fa fa-check"></i><b>19.6.11</b> Bootstrap CI for the IQR</a></li>
+<li class="chapter" data-level="19.6.12" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#bootstrap-resampling-advantages-and-caveats"><i class="fa fa-check"></i><b>19.6.12</b> Bootstrap Resampling: Advantages and Caveats</a></li>
+</ul></li>
+<li class="chapter" data-level="19.7" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#large-sample-normal-approximation-cis-for-mu"><i class="fa fa-check"></i><b>19.7</b> Large-Sample Normal Approximation CIs for <span class="math inline">\(\mu\)</span></a><ul>
+<li class="chapter" data-level="19.7.1" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#the-large-sample-formula-for-the-ci-around-mu"><i class="fa fa-check"></i><b>19.7.1</b> The Large Sample Formula for the CI around <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="19.7.2" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#obtaining-the-z_alpha2-value-using-qnorm"><i class="fa fa-check"></i><b>19.7.2</b> Obtaining the <span class="math inline">\(Z_{\alpha/2}\)</span> value using <code>qnorm</code></a></li>
+<li class="chapter" data-level="19.7.3" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#commonly-used-cutoffs-based-on-the-normal-distribution"><i class="fa fa-check"></i><b>19.7.3</b> Commonly Used Cutoffs based on the Normal Distribution</a></li>
+<li class="chapter" data-level="19.7.4" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#lots-of-cis-use-the-normal-distribution"><i class="fa fa-check"></i><b>19.7.4</b> Lots of CIs use the Normal distribution</a></li>
+<li class="chapter" data-level="19.7.5" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#large-sample-confidence-interval-for-zinc-levels"><i class="fa fa-check"></i><b>19.7.5</b> Large-Sample Confidence Interval for Zinc Levels</a></li>
+<li class="chapter" data-level="19.7.6" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#comparing-z-and-t-based-intervals-for-serum-zinc"><i class="fa fa-check"></i><b>19.7.6</b> Comparing Z and t-based Intervals for Serum Zinc</a></li>
+<li class="chapter" data-level="19.7.7" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#one-sided-confidence-intervals-in-large-samples"><i class="fa fa-check"></i><b>19.7.7</b> One-Sided Confidence Intervals in Large Samples</a></li>
+</ul></li>
+<li class="chapter" data-level="19.8" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#wilcoxon-signed-rank-procedure-for-cis"><i class="fa fa-check"></i><b>19.8</b> Wilcoxon Signed Rank Procedure for CIs</a><ul>
+<li class="chapter" data-level="19.8.1" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#confidence-intervals-for-the-median-of-a-population"><i class="fa fa-check"></i><b>19.8.1</b> Confidence Intervals for the Median of a Population</a></li>
+<li class="chapter" data-level="19.8.2" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#what-is-a-pseudo-median"><i class="fa fa-check"></i><b>19.8.2</b> What is a Pseudo-Median?</a></li>
+<li class="chapter" data-level="19.8.3" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#getting-the-wilcoxon-signed-rank-based-ci-in-r"><i class="fa fa-check"></i><b>19.8.3</b> Getting the Wilcoxon Signed Rank-based CI in R</a></li>
+<li class="chapter" data-level="19.8.4" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#interpreting-the-wilcoxon-ci-for-the-population-median"><i class="fa fa-check"></i><b>19.8.4</b> Interpreting the Wilcoxon CI for the Population Median</a></li>
+<li class="chapter" data-level="19.8.5" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#using-the-broom-package-with-the-wilcoxon-test"><i class="fa fa-check"></i><b>19.8.5</b> Using the <code>broom</code> package with the Wilcoxon test</a></li>
+</ul></li>
+<li class="chapter" data-level="19.9" data-path="CI-1-Sample.html"><a href="CI-1-Sample.html#general-advice"><i class="fa fa-check"></i><b>19.9</b> General Advice</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="CI-Paired-Samples.html"><a href="CI-Paired-Samples.html"><i class="fa fa-check"></i><b>20</b> Confidence Intervals from Two Paired Samples of Quantitative Data</a><ul>
+<li class="chapter" data-level="20.1" data-path="CI-Paired-Samples.html"><a href="CI-Paired-Samples.html#t-based-ci-for-population-mean-of-paired-differences-mu_d."><i class="fa fa-check"></i><b>20.1</b> t-based CI for Population Mean of Paired Differences, <span class="math inline">\(\mu_d\)</span>.</a><ul>
+<li class="chapter" data-level="20.1.1" data-path="CI-Paired-Samples.html"><a href="CI-Paired-Samples.html#method-1"><i class="fa fa-check"></i><b>20.1.1</b> Method 1</a></li>
+<li class="chapter" data-level="20.1.2" data-path="CI-Paired-Samples.html"><a href="CI-Paired-Samples.html#method-2"><i class="fa fa-check"></i><b>20.1.2</b> Method 2</a></li>
+<li class="chapter" data-level="20.1.3" data-path="CI-Paired-Samples.html"><a href="CI-Paired-Samples.html#method-3"><i class="fa fa-check"></i><b>20.1.3</b> Method 3</a></li>
+<li class="chapter" data-level="20.1.4" data-path="CI-Paired-Samples.html"><a href="CI-Paired-Samples.html#assumptions"><i class="fa fa-check"></i><b>20.1.4</b> Assumptions</a></li>
+<li class="chapter" data-level="20.1.5" data-path="CI-Paired-Samples.html"><a href="CI-Paired-Samples.html#using-broom-for-a-t-test-using-paired-samples"><i class="fa fa-check"></i><b>20.1.5</b> Using <code>broom</code> for a t test using paired samples</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="CI-Paired-Samples.html"><a href="CI-Paired-Samples.html#bootstrap-ci-for-mean-difference-using-paired-samples"><i class="fa fa-check"></i><b>20.2</b> Bootstrap CI for mean difference using paired samples</a><ul>
+<li class="chapter" data-level="20.2.1" data-path="CI-Paired-Samples.html"><a href="CI-Paired-Samples.html#assumptions-1"><i class="fa fa-check"></i><b>20.2.1</b> Assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="CI-Paired-Samples.html"><a href="CI-Paired-Samples.html#wilcoxon-signed-rank-based-ci-for-paired-samples"><i class="fa fa-check"></i><b>20.3</b> Wilcoxon Signed Rank-based CI for paired samples</a><ul>
+<li class="chapter" data-level="20.3.1" data-path="CI-Paired-Samples.html"><a href="CI-Paired-Samples.html#assumptions-2"><i class="fa fa-check"></i><b>20.3.1</b> Assumptions</a></li>
+<li class="chapter" data-level="20.3.2" data-path="CI-Paired-Samples.html"><a href="CI-Paired-Samples.html#using-broom-and-the-tidy-function-with-a-wilcoxon-procedure"><i class="fa fa-check"></i><b>20.3.2</b> Using <code>broom</code> and the <code>tidy</code> function with a Wilcoxon procedure</a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="CI-Paired-Samples.html"><a href="CI-Paired-Samples.html#choosing-a-confidence-interval-approach"><i class="fa fa-check"></i><b>20.4</b> Choosing a Confidence Interval Approach</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="CI-Indep-Samples.html"><a href="CI-Indep-Samples.html"><i class="fa fa-check"></i><b>21</b> Confidence Intervals from Two Independent Samples of Quantitative Data</a><ul>
+<li class="chapter" data-level="21.1" data-path="CI-Indep-Samples.html"><a href="CI-Indep-Samples.html#t-based-ci-for-population-mean-difference-mu_1---mu_2-from-independent-samples"><i class="fa fa-check"></i><b>21.1</b> t-based CI for population mean difference <span class="math inline">\(mu_1 - \mu_2\)</span> from Independent Samples</a><ul>
+<li class="chapter" data-level="21.1.1" data-path="CI-Indep-Samples.html"><a href="CI-Indep-Samples.html#the-welch-t-procedure"><i class="fa fa-check"></i><b>21.1.1</b> The Welch t procedure</a></li>
+<li class="chapter" data-level="21.1.2" data-path="CI-Indep-Samples.html"><a href="CI-Indep-Samples.html#the-pooled-t-procedure"><i class="fa fa-check"></i><b>21.1.2</b> The Pooled t procedure</a></li>
+<li class="chapter" data-level="21.1.3" data-path="CI-Indep-Samples.html"><a href="CI-Indep-Samples.html#using-linear-regression-to-obtain-a-pooled-t-confidence-interval"><i class="fa fa-check"></i><b>21.1.3</b> Using linear regression to obtain a pooled t confidence interval</a></li>
+</ul></li>
+<li class="chapter" data-level="21.2" data-path="CI-Indep-Samples.html"><a href="CI-Indep-Samples.html#bootstrap-ci-for-mu_1---mu_2-from-independent-samples"><i class="fa fa-check"></i><b>21.2</b> Bootstrap CI for <span class="math inline">\(mu_1 - \mu_2\)</span> from Independent Samples</a></li>
+<li class="chapter" data-level="21.3" data-path="CI-Indep-Samples.html"><a href="CI-Indep-Samples.html#wilcoxon-rank-sum-based-ci-from-independent-samples"><i class="fa fa-check"></i><b>21.3</b> Wilcoxon Rank Sum-based CI from Independent Samples</a></li>
+<li class="chapter" data-level="21.4" data-path="CI-Indep-Samples.html"><a href="CI-Indep-Samples.html#using-the-tidy-function-from-broom-for-t-and-wilcoxon-procedures"><i class="fa fa-check"></i><b>21.4</b> Using the <code>tidy</code> function from <code>broom</code> for t and Wilcoxon procedures</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="Test-One-Mean.html"><a href="Test-One-Mean.html"><i class="fa fa-check"></i><b>22</b> Hypothesis Testing of a Population Mean</a><ul>
+<li class="chapter" data-level="22.1" data-path="Test-One-Mean.html"><a href="Test-One-Mean.html#five-steps-required-in-completing-a-hypothesis-test"><i class="fa fa-check"></i><b>22.1</b> Five Steps Required in Completing a Hypothesis Test</a></li>
+<li class="chapter" data-level="22.2" data-path="Test-One-Mean.html"><a href="Test-One-Mean.html#hypothesis-testing-for-the-serum-zinc-example"><i class="fa fa-check"></i><b>22.2</b> Hypothesis Testing for the Serum Zinc Example</a><ul>
+<li class="chapter" data-level="22.2.1" data-path="Test-One-Mean.html"><a href="Test-One-Mean.html#our-research-question"><i class="fa fa-check"></i><b>22.2.1</b> Our Research Question</a></li>
+</ul></li>
+<li class="chapter" data-level="22.3" data-path="Test-One-Mean.html"><a href="Test-One-Mean.html#step-1.-specify-the-null-hypothesis"><i class="fa fa-check"></i><b>22.3</b> Step 1. Specify the null hypothesis</a></li>
+<li class="chapter" data-level="22.4" data-path="Test-One-Mean.html"><a href="Test-One-Mean.html#step-2.-specify-the-research-hypothesis"><i class="fa fa-check"></i><b>22.4</b> Step 2. Specify the research hypothesis</a></li>
+<li class="chapter" data-level="22.5" data-path="Test-One-Mean.html"><a href="Test-One-Mean.html#step-3.-specify-the-test-procedure"><i class="fa fa-check"></i><b>22.5</b> Step 3. Specify the test procedure</a></li>
+<li class="chapter" data-level="22.6" data-path="Test-One-Mean.html"><a href="Test-One-Mean.html#step-4.-obtain-the-p-value-andor-confidence-interval"><i class="fa fa-check"></i><b>22.6</b> Step 4. Obtain the <em>p</em> value and/or confidence interval</a><ul>
+<li class="chapter" data-level="22.6.1" data-path="Test-One-Mean.html"><a href="Test-One-Mean.html#assuming-a-normal-distribution-in-the-population-yields-a-t-test."><i class="fa fa-check"></i><b>22.6.1</b> Assuming a Normal distribution in the population yields a t test.</a></li>
+<li class="chapter" data-level="22.6.2" data-path="Test-One-Mean.html"><a href="Test-One-Mean.html#using-broom-to-tidy-the-results-of-our-t-test"><i class="fa fa-check"></i><b>22.6.2</b> Using <code>broom</code> to tidy the results of our t test</a></li>
+<li class="chapter" data-level="22.6.3" data-path="Test-One-Mean.html"><a href="Test-One-Mean.html#wilcoxon-signed-rank-test-doesnt-require-normal-assumption."><i class="fa fa-check"></i><b>22.6.3</b> Wilcoxon signed rank test (doesn’t require Normal assumption).</a></li>
+<li class="chapter" data-level="22.6.4" data-path="Test-One-Mean.html"><a href="Test-One-Mean.html#bootstrap-confidence-interval"><i class="fa fa-check"></i><b>22.6.4</b> Bootstrap Confidence Interval</a></li>
+</ul></li>
+<li class="chapter" data-level="22.7" data-path="Test-One-Mean.html"><a href="Test-One-Mean.html#step-5.-reject-or-retain-h_0-and-draw-conclusions"><i class="fa fa-check"></i><b>22.7</b> Step 5. Reject or Retain <span class="math inline">\(H_0\)</span> and Draw Conclusions</a></li>
+<li class="chapter" data-level="22.8" data-path="Test-One-Mean.html"><a href="Test-One-Mean.html#a-one-sided-test-of-a-single-sample-what-r-reports"><i class="fa fa-check"></i><b>22.8</b> A One-Sided Test of a Single Sample: What R Reports</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="type-i-and-type-ii-error-power-and-confidence.html"><a href="type-i-and-type-ii-error-power-and-confidence.html"><i class="fa fa-check"></i><b>23</b> Type I and Type II Error: Power and Confidence</a><ul>
+<li class="chapter" data-level="23.1" data-path="type-i-and-type-ii-error-power-and-confidence.html"><a href="type-i-and-type-ii-error-power-and-confidence.html#the-courtroom-analogy"><i class="fa fa-check"></i><b>23.1</b> The Courtroom Analogy</a></li>
+<li class="chapter" data-level="23.2" data-path="type-i-and-type-ii-error-power-and-confidence.html"><a href="type-i-and-type-ii-error-power-and-confidence.html#significance-vs.importance"><i class="fa fa-check"></i><b>23.2</b> Significance vs. Importance</a></li>
+<li class="chapter" data-level="23.3" data-path="type-i-and-type-ii-error-power-and-confidence.html"><a href="type-i-and-type-ii-error-power-and-confidence.html#errors-in-hypothesis-testing"><i class="fa fa-check"></i><b>23.3</b> Errors in Hypothesis Testing</a></li>
+<li class="chapter" data-level="23.4" data-path="type-i-and-type-ii-error-power-and-confidence.html"><a href="type-i-and-type-ii-error-power-and-confidence.html#the-two-types-of-hypothesis-testing-errors"><i class="fa fa-check"></i><b>23.4</b> The Two Types of Hypothesis Testing Errors</a></li>
+<li class="chapter" data-level="23.5" data-path="type-i-and-type-ii-error-power-and-confidence.html"><a href="type-i-and-type-ii-error-power-and-confidence.html#the-significance-level-alpha-is-the-probability-of-a-type-i-error"><i class="fa fa-check"></i><b>23.5</b> The Significance Level, <span class="math inline">\(\alpha\)</span>, is the Probability of a Type I Error</a></li>
+<li class="chapter" data-level="23.6" data-path="type-i-and-type-ii-error-power-and-confidence.html"><a href="type-i-and-type-ii-error-power-and-confidence.html#the-probability-of-avoiding-a-type-i-error-is-called-power-symbolized-1-beta"><i class="fa fa-check"></i><b>23.6</b> The Probability of avoiding a Type I Error is called Power, symbolized 1-<span class="math inline">\(\beta\)</span></a></li>
+<li class="chapter" data-level="23.7" data-path="type-i-and-type-ii-error-power-and-confidence.html"><a href="type-i-and-type-ii-error-power-and-confidence.html#incorporating-the-costs-of-various-types-of-errors"><i class="fa fa-check"></i><b>23.7</b> Incorporating the Costs of Various Types of Errors</a></li>
+<li class="chapter" data-level="23.8" data-path="type-i-and-type-ii-error-power-and-confidence.html"><a href="type-i-and-type-ii-error-power-and-confidence.html#relation-of-alpha-and-beta-to-error-types"><i class="fa fa-check"></i><b>23.8</b> Relation of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> to Error Types</a></li>
+<li class="chapter" data-level="23.9" data-path="type-i-and-type-ii-error-power-and-confidence.html"><a href="type-i-and-type-ii-error-power-and-confidence.html#power-and-sample-size-calculations"><i class="fa fa-check"></i><b>23.9</b> Power and Sample Size Calculations</a></li>
+<li class="chapter" data-level="23.10" data-path="type-i-and-type-ii-error-power-and-confidence.html"><a href="type-i-and-type-ii-error-power-and-confidence.html#sample-size-and-power-considerations-for-a-single-sample-t-test"><i class="fa fa-check"></i><b>23.10</b> Sample Size and Power Considerations for a Single-Sample t test</a><ul>
+<li class="chapter" data-level="23.10.1" data-path="type-i-and-type-ii-error-power-and-confidence.html"><a href="type-i-and-type-ii-error-power-and-confidence.html#a-toy-example"><i class="fa fa-check"></i><b>23.10.1</b> A Toy Example</a></li>
+<li class="chapter" data-level="23.10.2" data-path="type-i-and-type-ii-error-power-and-confidence.html"><a href="type-i-and-type-ii-error-power-and-confidence.html#using-the-power.t.test-function"><i class="fa fa-check"></i><b>23.10.2</b> Using the <code>power.t.test</code> function</a></li>
+<li class="chapter" data-level="23.10.3" data-path="type-i-and-type-ii-error-power-and-confidence.html"><a href="type-i-and-type-ii-error-power-and-confidence.html#changing-assumptions-in-a-power-calculation"><i class="fa fa-check"></i><b>23.10.3</b> Changing Assumptions in a Power Calculation</a></li>
+<li class="chapter" data-level="23.10.4" data-path="type-i-and-type-ii-error-power-and-confidence.html"><a href="type-i-and-type-ii-error-power-and-confidence.html#increasing-the-sample-size-absent-other-changes-will-increase-the-power"><i class="fa fa-check"></i><b>23.10.4</b> Increasing the Sample Size, absent other changes, will Increase the Power</a></li>
+<li class="chapter" data-level="23.10.5" data-path="type-i-and-type-ii-error-power-and-confidence.html"><a href="type-i-and-type-ii-error-power-and-confidence.html#increasing-the-effect-size-absent-other-changes-will-increase-the-power"><i class="fa fa-check"></i><b>23.10.5</b> Increasing the Effect Size, absent other changes, will increase the Power</a></li>
+<li class="chapter" data-level="23.10.6" data-path="type-i-and-type-ii-error-power-and-confidence.html"><a href="type-i-and-type-ii-error-power-and-confidence.html#decreasing-the-standard-deviation-absent-other-changes-will-increase-the-power"><i class="fa fa-check"></i><b>23.10.6</b> Decreasing the Standard Deviation, absent other changes, will increase the Power</a></li>
+<li class="chapter" data-level="23.10.7" data-path="type-i-and-type-ii-error-power-and-confidence.html"><a href="type-i-and-type-ii-error-power-and-confidence.html#tolerating-a-larger-alpha-significance-level-without-other-changes-increases-power"><i class="fa fa-check"></i><b>23.10.7</b> Tolerating a Larger <span class="math inline">\(\alpha\)</span> (Significance Level), without other changes, increases Power</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="comparing-two-means-using-paired-samples.html"><a href="comparing-two-means-using-paired-samples.html"><i class="fa fa-check"></i><b>24</b> Comparing Two Means Using Paired Samples</a><ul>
+<li class="chapter" data-level="24.1" data-path="comparing-two-means-using-paired-samples.html"><a href="comparing-two-means-using-paired-samples.html#specifying-a-two-sample-study-design"><i class="fa fa-check"></i><b>24.1</b> Specifying A Two-Sample Study Design</a><ul>
+<li class="chapter" data-level="24.1.1" data-path="comparing-two-means-using-paired-samples.html"><a href="comparing-two-means-using-paired-samples.html#for-the-bloodlead-study"><i class="fa fa-check"></i><b>24.1.1</b> For the <code>bloodlead</code> study</a></li>
+</ul></li>
+<li class="chapter" data-level="24.2" data-path="comparing-two-means-using-paired-samples.html"><a href="comparing-two-means-using-paired-samples.html#hypothesis-testing-for-the-blood-lead-example"><i class="fa fa-check"></i><b>24.2</b> Hypothesis Testing for the Blood Lead Example</a><ul>
+<li class="chapter" data-level="24.2.1" data-path="comparing-two-means-using-paired-samples.html"><a href="comparing-two-means-using-paired-samples.html#our-research-question-1"><i class="fa fa-check"></i><b>24.2.1</b> Our Research Question</a></li>
+<li class="chapter" data-level="24.2.2" data-path="comparing-two-means-using-paired-samples.html"><a href="comparing-two-means-using-paired-samples.html#specify-the-null-hypothesis"><i class="fa fa-check"></i><b>24.2.2</b> Specify the null hypothesis</a></li>
+<li class="chapter" data-level="24.2.3" data-path="comparing-two-means-using-paired-samples.html"><a href="comparing-two-means-using-paired-samples.html#specify-the-research-hypothesis"><i class="fa fa-check"></i><b>24.2.3</b> Specify the research hypothesis</a></li>
+<li class="chapter" data-level="24.2.4" data-path="comparing-two-means-using-paired-samples.html"><a href="comparing-two-means-using-paired-samples.html#specify-the-test-procedure-and-alpha"><i class="fa fa-check"></i><b>24.2.4</b> Specify the test procedure and <span class="math inline">\(\alpha\)</span></a></li>
+<li class="chapter" data-level="24.2.5" data-path="comparing-two-means-using-paired-samples.html"><a href="comparing-two-means-using-paired-samples.html#calculate-the-test-statistic-and-p-value"><i class="fa fa-check"></i><b>24.2.5</b> Calculate the test statistic and <span class="math inline">\(p\)</span> value</a></li>
+<li class="chapter" data-level="24.2.6" data-path="comparing-two-means-using-paired-samples.html"><a href="comparing-two-means-using-paired-samples.html#draw-a-conclusion"><i class="fa fa-check"></i><b>24.2.6</b> Draw a conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="24.3" data-path="comparing-two-means-using-paired-samples.html"><a href="comparing-two-means-using-paired-samples.html#assuming-a-normal-distribution-in-the-population-of-paired-differences-yields-a-paired-t-test."><i class="fa fa-check"></i><b>24.3</b> Assuming a Normal distribution in the population of paired differences yields a paired t test.</a><ul>
+<li class="chapter" data-level="24.3.1" data-path="comparing-two-means-using-paired-samples.html"><a href="comparing-two-means-using-paired-samples.html#assumptions-of-the-paired-t-test"><i class="fa fa-check"></i><b>24.3.1</b> Assumptions of the paired t test</a></li>
+<li class="chapter" data-level="24.3.2" data-path="comparing-two-means-using-paired-samples.html"><a href="comparing-two-means-using-paired-samples.html#using-broom-to-tidy-the-paired-t-test"><i class="fa fa-check"></i><b>24.3.2</b> Using <code>broom</code> to tidy the paired t test</a></li>
+<li class="chapter" data-level="24.3.3" data-path="comparing-two-means-using-paired-samples.html"><a href="comparing-two-means-using-paired-samples.html#calculation-details-the-paired-t-test"><i class="fa fa-check"></i><b>24.3.3</b> Calculation Details: The Paired t test</a></li>
+</ul></li>
+<li class="chapter" data-level="24.4" data-path="comparing-two-means-using-paired-samples.html"><a href="comparing-two-means-using-paired-samples.html#the-bootstrap-approach-build-a-confidence-interval"><i class="fa fa-check"></i><b>24.4</b> The Bootstrap Approach: Build a Confidence Interval</a><ul>
+<li class="chapter" data-level="24.4.1" data-path="comparing-two-means-using-paired-samples.html"><a href="comparing-two-means-using-paired-samples.html#assumptions-of-the-paired-samples-bootstrap-procedure"><i class="fa fa-check"></i><b>24.4.1</b> Assumptions of the paired samples bootstrap procedure</a></li>
+</ul></li>
+<li class="chapter" data-level="24.5" data-path="comparing-two-means-using-paired-samples.html"><a href="comparing-two-means-using-paired-samples.html#the-wilcoxon-signed-rank-test-doesnt-require-normal-assumption."><i class="fa fa-check"></i><b>24.5</b> The Wilcoxon signed rank test (doesn’t require Normal assumption).</a><ul>
+<li class="chapter" data-level="24.5.1" data-path="comparing-two-means-using-paired-samples.html"><a href="comparing-two-means-using-paired-samples.html#assumptions-of-the-wilcoxon-signed-rank-procedure"><i class="fa fa-check"></i><b>24.5.1</b> Assumptions of the Wilcoxon Signed Rank procedure</a></li>
+<li class="chapter" data-level="24.5.2" data-path="comparing-two-means-using-paired-samples.html"><a href="comparing-two-means-using-paired-samples.html#calculation-details-the-wilcoxon-signed-rank-test"><i class="fa fa-check"></i><b>24.5.2</b> Calculation Details: The Wilcoxon Signed Rank test</a></li>
+</ul></li>
+<li class="chapter" data-level="24.6" data-path="comparing-two-means-using-paired-samples.html"><a href="comparing-two-means-using-paired-samples.html#step-5.-reject-or-retain-h_0-and-draw-conclusions-1"><i class="fa fa-check"></i><b>24.6</b> Step 5. Reject or Retain <span class="math inline">\(H_0\)</span> and Draw Conclusions</a></li>
+<li class="chapter" data-level="24.7" data-path="comparing-two-means-using-paired-samples.html"><a href="comparing-two-means-using-paired-samples.html#the-sign-test"><i class="fa fa-check"></i><b>24.7</b> The Sign test</a></li>
+<li class="chapter" data-level="24.8" data-path="comparing-two-means-using-paired-samples.html"><a href="comparing-two-means-using-paired-samples.html#building-a-decision-support-tool-comparing-means"><i class="fa fa-check"></i><b>24.8</b> Building a Decision Support Tool: Comparing Means</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Science for Biological, Medical and Health Research: Notes for 431</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="comparing-two-means-using-paired-samples" class="section level1">
+<h1><span class="header-section-number">Chapter 24</span> Comparing Two Means Using Paired Samples</h1>
+<p>In this section, we apply several methods of testing the null hypothesis that two populations have the same distribution of a quantitative variable. In particular, we’ll focus on the comparison of means using paired sample t tests, signed rank tests, and bootstrap approaches. Our example comes from the Lead in the Blood of Children study, described in Section <a href="Blood-Lead-Study.html#Blood-Lead-Study">17</a> and the methods outlined in Section <a href="CI-Paired-Samples.html#CI-Paired-Samples">20</a>.</p>
+<p>Recall that in that study, we measured blood lead content, in mg/dl, for 33 matched pairs of children, one of which was exposed (had a parent working in a battery factory) and the other of which was control (no parent in the battery factory, but matched to the exposed child by age, exposure to traffic and neighborhood). We then created a variable called <code>leaddiff</code> which contained the (exposed - control) differences within each pair.</p>
+<div id="specifying-a-two-sample-study-design" class="section level2">
+<h2><span class="header-section-number">24.1</span> Specifying A Two-Sample Study Design</h2>
+<p>These questions will help specify the details of the study design involved in any comparison of means.</p>
+<ol style="list-style-type: decimal">
+<li>What is the outcome under study?</li>
+<li>What are the (in this case, two) treatment/exposure groups?</li>
+<li>Were the data collected using matched / paired samples or independent samples?</li>
+<li>Are the data a random sample from the population(s) of interest? Or is there at least a reasonable argument for generalizing from the sample to the population(s)?</li>
+<li>What is the significance level (or, the confidence level) we require here?</li>
+<li>Are we doing one-sided or two-sided testing/confidence interval generation?</li>
+<li>If we have paired samples, did pairing help reduce nuisance variation?</li>
+<li>If we have paired samples, what does the distribution of sample paired differences tell us about which inferential procedure to use?</li>
+</ol>
+<div id="for-the-bloodlead-study" class="section level3">
+<h3><span class="header-section-number">24.1.1</span> For the <code>bloodlead</code> study</h3>
+<ol style="list-style-type: decimal">
+<li>The outcome is blood lead content in mg/dl.</li>
+<li>The groups are <strong>exposed</strong> (had a parent working in a battery factory) and <strong>control</strong> (no parent in the battery factory, but matched to the exposed child by age, exposure to traffic and neighborhood) children.</li>
+<li>The data were collected using matched samples. The pairs of subjects are matched by age, exposure to traffic and neighborhood.</li>
+<li>The data aren’t a random sample of the population of interest, but we will assume for now that there’s no serious issue with representing that population.</li>
+<li>We’ll use a 10% significance level (or 90% confidence level) in this setting.</li>
+<li>We’ll use a two-sided testing and confidence interval approach.</li>
+</ol>
+<p>To answer question 7 (did pairing help reduce nuisance variation), we return to Section <a href="Blood-Lead-Study.html#Blood-Lead-Study">17</a> where we saw that:</p>
+<ul>
+<li>The stronger the Pearson correlation coefficient, the more helpful pairing will be.</li>
+<li>Here, a straight line model using the control child’s blood lead content accounts for about 3% of the variation in blood lead content in the exposed child.</li>
+<li>So, as it turns out, pairing will have only a modest impact here on the inferences we draw in the study.</li>
+</ul>
+<p>To address question 8, we’ll need to look at the data - specifically the paired differences. Repeating a panel of plots from Section <a href="Blood-Lead-Study.html#Blood-Lead-Study">17</a>, we will see that the paired differences appear to follow a Normal distribution, at least approximately (there’s a single outlier, but with 33 pairs, that’s not much of a concern, and the data are basically symmetric), so that a t-based procedure may be appropriate, or, at least, we’d expect to see similar results with t and bootstrap procedures.</p>
+<p><img src="431-notes_files/figure-html/bloodleaddifferences-keyplots-again-fig-1.png" width="672" /></p>
+</div>
+</div>
+<div id="hypothesis-testing-for-the-blood-lead-example" class="section level2">
+<h2><span class="header-section-number">24.2</span> Hypothesis Testing for the Blood Lead Example</h2>
+<div id="our-research-question-1" class="section level3">
+<h3><span class="header-section-number">24.2.1</span> Our Research Question</h3>
+<p>Is there reasonable evidence, based on these paired sample of 33 exposed and 33 control children, for us to conclude that the population of children similar to those in the exposed group will have a distribution of blood lead content that is statistically significantly different from the population of children similar to those in the control group. In other words, if we generated the population of all exposed-control differences across the entire population of such pairs, would that distribution of paired differences be centered at zero (indicating no difference in the means)?</p>
+<p>Again, the key idea is to calculate the paired differences (exposed - control, for example) in each pair, and then treat the result as if it were a single sample and apply the methods discussed in Section <a href="Test-One-Mean.html#Test-One-Mean">22</a>.</p>
+</div>
+<div id="specify-the-null-hypothesis" class="section level3">
+<h3><span class="header-section-number">24.2.2</span> Specify the null hypothesis</h3>
+<p>Our null hypothesis here is that the population (true) mean blood lead content in the exposed group is the same as the population mean blood lead content in the control group plus a constant value (which we’ll symbolize with <span class="math inline">\(\Delta_0\)</span> which is most often taken to be zero. Since we have paired samples, we can instead describe this hypothesis in terms of the difference between exposed and control within each pair. So, our null hypothesis can be written either as:</p>
+<p><span class="math display">\[
+H_0: \mu_{Exposed} = \mu_{Control} + \Delta_0
+\]</span> where <span class="math inline">\(\Delta_0\)</span> is a constant, usually taken to be zero, or</p>
+<p><span class="math display">\[
+H_0: \mu_{Exposed - Control} = \Delta_0,
+\]</span> where, again, <span class="math inline">\(\Delta_0\)</span> is usually zero.</p>
+<p>We will generally take this latter approach, where the population mean of the paired differences (here, exposed - control, but we could have just as easily selected control - exposed: the order is arbitrary so long as we are consistent) is compared to a constant value, usually 0.</p>
+<p>For the <code>bloodlead</code> example, our population parameter <span class="math inline">\(\mu_{Exposed - Control}\)</span> = the mean difference in blood lead content between the exposed and control groups (in mg/dl) across the entire population.</p>
+<ul>
+<li>We’re testing whether <span class="math inline">\(\mu\)</span> is significantly different from a pre-specified value, 0 mg/dl.</li>
+</ul>
+</div>
+<div id="specify-the-research-hypothesis" class="section level3">
+<h3><span class="header-section-number">24.2.3</span> Specify the research hypothesis</h3>
+<p>The research hypothesis is that the population mean of the exposed - control differences is not equal to our constant value <span class="math inline">\(\Delta_0\)</span>.</p>
+<p><span class="math display">\[
+H_A: \mu_{Exposed - Control} \neq \Delta_0,
+\]</span></p>
+<p>For the <code>bloodlead</code> example, we have <span class="math inline">\(H_A: \mu_{Exposed - Control} \neq 0.\)</span></p>
+</div>
+<div id="specify-the-test-procedure-and-alpha" class="section level3">
+<h3><span class="header-section-number">24.2.4</span> Specify the test procedure and <span class="math inline">\(\alpha\)</span></h3>
+<p>As we’ve seen in Section <a href="CI-Paired-Samples.html#CI-Paired-Samples">20</a>, there are several ways to build a confidence interval to address these hypotheses, and each of those approaches provides information about a related hypothesis test. This includes several methods for obtaining a paired t test, plus a Wilcoxon signed rank test, and a bootstrap comparison of means (or medians, etc.) using paired samples. We’ll specify an <span class="math inline">\(\alpha\)</span> value of .10 here, indicating a 10% significance level (and 90% confidence level.)</p>
+</div>
+<div id="calculate-the-test-statistic-and-p-value" class="section level3">
+<h3><span class="header-section-number">24.2.5</span> Calculate the test statistic and <span class="math inline">\(p\)</span> value</h3>
+<p>For the paired t test and Wilcoxon signed rank test, Section <a href="CI-Paired-Samples.html#CI-Paired-Samples">20</a> demonstrated the relevant R code for the <code>bloodlead</code> example to obtain <em>p</em> values. For the bootstrap procedure, we again build a confidence interval. We repeat that work below.</p>
+<p>Of course, we’ve already collected the data. If we’re willing to assume the 462 serum zinc levels we have are a random (or sufficiently representative) sample of the population of interest, and that the data were gathered in such a way that each sample is independent of every other sample, and identically distributed, then our methods might work.</p>
+</div>
+<div id="draw-a-conclusion" class="section level3">
+<h3><span class="header-section-number">24.2.6</span> Draw a conclusion</h3>
+<p>As we’ve seen, we use the <span class="math inline">\(p\)</span> value to either</p>
+<ul>
+<li><strong>reject</strong> <span class="math inline">\(H_0\)</span> in favor of the alternative <span class="math inline">\(H_A\)</span> (concluding that there is a statistically significant difference/association at the <span class="math inline">\(\alpha\)</span> significance level) if the <span class="math inline">\(p\)</span> value is less than our desired <span class="math inline">\(\alpha\)</span> or</li>
+<li><strong>retain</strong> <span class="math inline">\(H_0\)</span> (and conclude that there is no statistically significant difference/association at the <span class="math inline">\(\alpha\)</span> significance level) if the <span class="math inline">\(p\)</span> value is greater than or equal to <span class="math inline">\(\alpha\)</span>.</li>
+</ul>
+</div>
+</div>
+<div id="assuming-a-normal-distribution-in-the-population-of-paired-differences-yields-a-paired-t-test." class="section level2">
+<h2><span class="header-section-number">24.3</span> Assuming a Normal distribution in the population of paired differences yields a paired t test.</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(bloodlead<span class="op">$</span>exposed <span class="op">-</span><span class="st"> </span>bloodlead<span class="op">$</span>control, <span class="dt">conf =</span> <span class="fl">0.90</span>, <span class="dt">alt =</span> <span class="st">&quot;two.sided&quot;</span>)</code></pre></div>
+<pre><code>
+    One Sample t-test
+
+data:  bloodlead$exposed - bloodlead$control
+t = 6, df = 30, p-value = 2e-06
+alternative hypothesis: true mean is not equal to 0
+90 percent confidence interval:
+ 11.3 20.6
+sample estimates:
+mean of x 
+       16 </code></pre>
+<p>The t test statistic here is 6, based on 30 degrees of freedom, and this yields a <em>p</em> value of <code>2.036e-06</code> or 2.036 <span class="math inline">\(\times 10^{-6}\)</span>, or <span class="math inline">\(p\)</span> = .000002036. This <em>p</em> value is certainly less than our pre-specified <span class="math inline">\(\alpha\)</span> of 0.10, and so we’d reject <span class="math inline">\(H_0\)</span> and conclude that the population mean of the exposed-control paired differences is statistically significantly different from 0.</p>
+<ul>
+<li>Notice that we would come to the same conclusion using the confidence interval. Specifically, using a 10% significance level (i.e. a 90% confidence level) a reasonable range for the true value of the population mean is entirely above 0 – it’s (11.3, 20.6). So if 0 is not in the 90% confidence interval, we’d reject <span class="math inline">\(H_0 : \mu_{Exposed - Control} = 0\)</span> at the 10% significance level.</li>
+</ul>
+<div id="assumptions-of-the-paired-t-test" class="section level3">
+<h3><span class="header-section-number">24.3.1</span> Assumptions of the paired t test</h3>
+<p>We must be willing to believe that</p>
+<ol style="list-style-type: decimal">
+<li>the paired differences data are a random (or failing that, representative) sample from the population of interest, and</li>
+<li>that the samples were drawn independently, from an identical population distribution</li>
+</ol>
+<p>regardless of what testing procedure we use. For the paired t test, we must also assume that:</p>
+<ol start="3" style="list-style-type: decimal">
+<li>the paired differences come from a Normally distributed population.</li>
+</ol>
+</div>
+<div id="using-broom-to-tidy-the-paired-t-test" class="section level3">
+<h3><span class="header-section-number">24.3.2</span> Using <code>broom</code> to tidy the paired t test</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">broom<span class="op">::</span><span class="kw">tidy</span>(<span class="kw">t.test</span>(bloodlead<span class="op">$</span>exposed <span class="op">-</span><span class="st"> </span>bloodlead<span class="op">$</span>control, 
+                   <span class="dt">conf =</span> <span class="fl">0.90</span>, <span class="dt">alt =</span> <span class="st">&quot;two.sided&quot;</span>))</code></pre></div>
+<pre><code>  estimate statistic  p.value parameter conf.low conf.high
+1       16      5.78 2.04e-06        32     11.3      20.6
+             method alternative
+1 One Sample t-test   two.sided</code></pre>
+<p>We can use the <code>tidy</code> function within the <code>broom</code> package to summarize the results of a t test, just as we did with a t-based confidence interval.</p>
+</div>
+<div id="calculation-details-the-paired-t-test" class="section level3">
+<h3><span class="header-section-number">24.3.3</span> Calculation Details: The Paired t test</h3>
+<p>The paired t test is calculated using:</p>
+<ul>
+<li><span class="math inline">\(\bar{d}\)</span>, the sample mean of the paired differences,</li>
+<li>the null hypothesized value <span class="math inline">\(\Delta_0\)</span> for the differences (which is usually 0),</li>
+<li><span class="math inline">\(s_d\)</span>, the sample standard deviation, and</li>
+<li><span class="math inline">\(n\)</span>, the sample size (number of pairs).</li>
+</ul>
+<p>We have</p>
+<p><span class="math display">\[
+t = \frac{\bar{d} - \Delta_0}{s_d/\sqrt{n}}
+\]</span></p>
+<p>which is then compared to a <span class="math inline">\(t\)</span> distribution with <span class="math inline">\(n - 1\)</span> degrees of freedom to obtain a <span class="math inline">\(p\)</span> value.</p>
+<p><a href="https://en.wikipedia.org/wiki/Student%27s_t-test">Wikipedia’s page on Student’s t test</a> is a good resource for these calculations.</p>
+</div>
+</div>
+<div id="the-bootstrap-approach-build-a-confidence-interval" class="section level2">
+<h2><span class="header-section-number">24.4</span> The Bootstrap Approach: Build a Confidence Interval</h2>
+<p>The same bootstrap approach is used for paired differences as for a single sample. We again use the <code>smean.cl.boot()</code> function in the <code>Hmisc</code> package to obtain bootstrap confidence intervals for the population mean, <span class="math inline">\(\mu_d\)</span>, of the paired differences in blood lead content.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">431888</span>)
+Hmisc<span class="op">::</span><span class="kw">smean.cl.boot</span>(bloodlead<span class="op">$</span>exposed <span class="op">-</span><span class="st"> </span>bloodlead<span class="op">$</span>control, <span class="dt">conf.int =</span> <span class="fl">0.90</span>, <span class="dt">B =</span> <span class="dv">1000</span>) </code></pre></div>
+<pre><code> Mean Lower Upper 
+ 16.0  11.6  20.6 </code></pre>
+<p>Since 0 is not contained in this 90% confidence interval, we reject the null hypothesis (that the mean of the paired differences in the population is zero) at the 10% significance level, so we know that <em>p</em> &lt; 0.10.</p>
+<div id="assumptions-of-the-paired-samples-bootstrap-procedure" class="section level3">
+<h3><span class="header-section-number">24.4.1</span> Assumptions of the paired samples bootstrap procedure</h3>
+<p>We still must be willing to believe that</p>
+<ol style="list-style-type: decimal">
+<li>the paired differences data are a random (or failing that, representative) sample from the population of interest, and</li>
+<li>that the samples were drawn independently, from an identical population distribution</li>
+</ol>
+<p>regardless of what testing procedure we use. But, for the bootstrap, we do not also need to assume Normality of the population distribution of paired differences.</p>
+</div>
+</div>
+<div id="the-wilcoxon-signed-rank-test-doesnt-require-normal-assumption." class="section level2">
+<h2><span class="header-section-number">24.5</span> The Wilcoxon signed rank test (doesn’t require Normal assumption).</h2>
+<p>We could also use the Wilcoxon signed rank procedure to generate a CI for the pseudo-median of the paired differences.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">wilcox.test</span>(bloodlead<span class="op">$</span>leaddiff, 
+            <span class="dt">conf.int =</span> <span class="ot">TRUE</span>, 
+            <span class="dt">conf.level =</span> <span class="fl">0.90</span>, 
+            <span class="dt">exact =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<pre><code>
+    Wilcoxon signed rank test with continuity correction
+
+data:  bloodlead$leaddiff
+V = 500, p-value = 1e-05
+alternative hypothesis: true location is not equal to 0
+90 percent confidence interval:
+ 11.0 20.5
+sample estimates:
+(pseudo)median 
+          15.5 </code></pre>
+<p>Using the Wilcoxon signed rank test, we obtain a two-sided <em>p</em> value of 1.155 <span class="math inline">\(\times 10^{-5}\)</span>, which is far less than our pre-specified <span class="math inline">\(\alpha\)</span> of 0.10, so we would, again, reject <span class="math inline">\(H_0: \mu_{Exposed - Control} = 0\)</span> at the 10% significance level.</p>
+<ul>
+<li>We can again use the <code>tidy</code> function from the <code>broom</code> package to summarize the results of the Wilcoxon signed rank test.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">broom<span class="op">::</span><span class="kw">tidy</span>(<span class="kw">wilcox.test</span>(bloodlead<span class="op">$</span>leaddiff, <span class="dt">conf.int =</span> <span class="ot">TRUE</span>, 
+                        <span class="dt">conf.level =</span> <span class="fl">0.90</span>, <span class="dt">exact =</span> <span class="ot">FALSE</span>))</code></pre></div>
+<pre><code>  estimate statistic  p.value conf.low conf.high
+1     15.5       499 1.15e-05       11      20.5
+                                                method alternative
+1 Wilcoxon signed rank test with continuity correction   two.sided</code></pre>
+<div id="assumptions-of-the-wilcoxon-signed-rank-procedure" class="section level3">
+<h3><span class="header-section-number">24.5.1</span> Assumptions of the Wilcoxon Signed Rank procedure</h3>
+<p>We still must be willing to believe that</p>
+<ol style="list-style-type: decimal">
+<li>the paired differences data are a random (or failing that, representative) sample from the population of interest, and</li>
+<li>that the samples were drawn independently, from an identical population distribution</li>
+</ol>
+<p>regardless of what testing procedure we use. But, for the Wilcoxon signed rank test, we also assume</p>
+<ol start="3" style="list-style-type: decimal">
+<li>that the population distribution of the paired differences is symmetric, but potentially outlier-prone.</li>
+</ol>
+</div>
+<div id="calculation-details-the-wilcoxon-signed-rank-test" class="section level3">
+<h3><span class="header-section-number">24.5.2</span> Calculation Details: The Wilcoxon Signed Rank test</h3>
+<ul>
+<li>Calculate the paired difference for each pair, and drop those with difference = 0.</li>
+<li>Let N be the number of pairs, so there are 2N data points.</li>
+<li>Rank the pairs in order of smallest (rank = 1) to largest (rank = N) absolute difference.</li>
+<li>Calculate W, the sum of the signed ranks by <span class="math display">\[ W = \sum_{i=1}^{N} [sgn(x_{2,i} - x_{1,i})] \prod R_i)]\]</span></li>
+<li>The sign function sgn(x) = -1 if x &lt; 0, 0 if x = 0, and +1 if x &gt; 0.</li>
+<li>Statistical software will convert W into a <em>p</em> value, given <span class="math inline">\(N\)</span>.</li>
+</ul>
+<p><a href="https://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test">Wikipedia’s page on the Wilcoxon signed-rank test</a> is a good resource for example calculations.</p>
+</div>
+</div>
+<div id="step-5.-reject-or-retain-h_0-and-draw-conclusions-1" class="section level2">
+<h2><span class="header-section-number">24.6</span> Step 5. Reject or Retain <span class="math inline">\(H_0\)</span> and Draw Conclusions</h2>
+<p>Using any of these procedures, we would conclude that the null hypothesis (that the true mean of the paired differences is 0 mg/dl) is not tenable, and that it should be rejected at the 10% significance level. The smaller the <em>p</em> value, the stronger is the evidence that the null hypothesis is incorrect, and in this case, we have some fairly tiny <em>p</em> values.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Procedure</th>
+<th align="right">p value</th>
+<th align="right">90% CI for <span class="math inline">\(\mu_{Exposed - Control}\)</span></th>
+<th>Conclusion</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">Paired t</td>
+<td align="right"><span class="math inline">\(2 \times 10^{-6}\)</span></td>
+<td align="right">11.3, 20.6</td>
+<td>Reject <span class="math inline">\(H_0\)</span>.</td>
+</tr>
+<tr class="even">
+<td align="right">Wilcoxon signed rank</td>
+<td align="right"><span class="math inline">\(1 \times 10^{-5}\)</span></td>
+<td align="right">11, 20.5</td>
+<td>Reject <span class="math inline">\(H_0\)</span>.</td>
+</tr>
+<tr class="odd">
+<td align="right">Bootstrap CI</td>
+<td align="right"><span class="math inline">\(p\)</span> &lt; 0.10</td>
+<td align="right">11.6, 20.6</td>
+<td>Reject <span class="math inline">\(H_0\)</span>.</td>
+</tr>
+</tbody>
+</table>
+<p>Note that <strong>one-sided</strong> or <strong>one-tailed</strong> hypothesis testing procedures work the same way for paired samples as they did for single samples in Section (Test-One-Mean).</p>
+</div>
+<div id="the-sign-test" class="section level2">
+<h2><span class="header-section-number">24.7</span> The Sign test</h2>
+<p>The <strong>sign test</strong> is something we’ve skipped in our discussion so far. It is a test for consistent differences between pairs of observations, just as the paired t test, Wilcoxon signed rank test and bootstrap for paired samples can provide. It has the advantage that it is relatively easy to calculate by hand, and that it doesn’t require the paired differences to follow a Normal distribution. In fact, it will even work if the data are substantially skewed.</p>
+<ul>
+<li>Calculate the paired difference for each pair, and drop those with difference = 0.</li>
+<li>Let <span class="math inline">\(N\)</span> be the number of pairs that remain, so there are 2N data points.</li>
+<li>Let <span class="math inline">\(W\)</span>, the test statistic, be the number of pairs (out of N) in which the difference is positive.</li>
+<li>Assuming that <span class="math inline">\(H_0\)</span> is true, then <span class="math inline">\(W\)</span> follows a binomial distribution with probability 0.5 on <span class="math inline">\(N\)</span> trials.</li>
+</ul>
+<p>For example, consider our data on blood lead content:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bloodlead<span class="op">$</span>leaddiff</code></pre></div>
+<pre><code> [1] 22  5 23 -6 18 25 13 47 15 16  6  1  2  7  0  4 -9 -3 36 25  1 16 42
+[24] 30 25 23 32 17  9 -3 60 14 14</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Difference</th>
+<th align="right"># of Pairs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">Greater than zero</td>
+<td align="right">28</td>
+</tr>
+<tr class="even">
+<td align="right">Equal to zero</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">Less than zero</td>
+<td align="right">4</td>
+</tr>
+</tbody>
+</table>
+<p>So we have <span class="math inline">\(N\)</span> = 32 pairs, with <span class="math inline">\(W\)</span> = 28 that are positive. We can calculate the <em>p</em> value using the <code>binom.test</code> approach in R:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">binom.test</span>(<span class="dt">x =</span> <span class="dv">28</span>, <span class="dt">n =</span> <span class="dv">32</span>, <span class="dt">p =</span> <span class="fl">0.5</span>, <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</code></pre></div>
+<pre><code>
+    Exact binomial test
+
+data:  28 and 32
+number of successes = 30, number of trials = 30, p-value = 2e-05
+alternative hypothesis: true probability of success is not equal to 0.5
+95 percent confidence interval:
+ 0.710 0.965
+sample estimates:
+probability of success 
+                 0.875 </code></pre>
+</div>
+<div id="building-a-decision-support-tool-comparing-means" class="section level2">
+<h2><span class="header-section-number">24.8</span> Building a Decision Support Tool: Comparing Means</h2>
+<ol style="list-style-type: decimal">
+<li><p>Are these paired or independent samples?</p></li>
+<li>If paired samples, then are the paired differences approximately Normally distributed?
+<ol style="list-style-type: lower-alpha">
+<li>If yes, then a paired t test or confidence interval is likely the best choice.</li>
+<li>If no, is the main concern outliers (with generally symmetric data), or skew?
+<ol style="list-style-type: decimal">
+<li>If the paired differences appear to be generally symmetric but with substantial outliers, a Wilcoxon signed rank test is an appropriate choice, as is a bootstrap confidence interval for the population mean of the paired differences.</li>
+<li>If the paired differences appear to be seriously skewed, then we’ll usually build a bootstrap confidence interval, although a sign test is another reasonable possibility.</li>
+</ol></li>
+</ol></li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="type-i-and-type-ii-error-power-and-confidence.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["431-notes.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
