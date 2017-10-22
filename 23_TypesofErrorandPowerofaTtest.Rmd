@@ -63,7 +63,7 @@ Test Retains H~0~ | Type II Error (False Negative) | Correct Decision
 
 If the null hypothesis is true, the *p* value is the probability of making an error by choosing the alternative hypothesis instead.  Alpha ($\alpha$) is defined as the probability of concluding significance [rejection of H~0~] when there isn't (and H~0~ is true, making a Type I error), also called the significance level, so that 100(1-$\alpha$) is the confidence level -- the probability of correctly concluding that there is no difference (retaining H~0~) when H~0~ is true.
 
-## The Probability of avoiding a Type I Error is called Power, symbolized 1-$\beta$
+## The Probability of avoiding a Type II Error is called Power, symbolized 1-$\beta$
 
 A Type II error is made if the alternative hypothesis is true, but you fail to choose it.  The probability depends on exactly which part of the alternative hypothesis is true, so that computing the probability of making a Type II error is not feasible.  The power of a test is the probability of making the correct decision when the alternative hypothesis is true.  Beta ($\beta$) is defined as the probability of concluding that there was no difference, when in fact there was one (a Type II error).  Power is then just 1 - $\beta$, the probability of concluding that there was a difference, when, in fact, there was one.  
 
@@ -190,7 +190,7 @@ power.t.test(n = 25, delta = 5, sd = 9, sig.level = 0.05,
              type="one.sample", alternative="two.sided")
 ```
 
-This change in standard deviation from 10 to 9, leaving everything else the same, increases our power from 67% to nearly 76%. To reach 90% power, we'd need to decrease the standard deviation of the population paired differences to no more than 7.39 days. 
+This change in standard deviation from 10 to 9, leaving everything else the same, increases our power from 67% to nearly 76%. To reach 90% power, we'd need to decrease the standard deviation of the population paired differences to no more than 7.39 pounds. 
 
 ```{r toy_power_7}
 power.t.test(n = 25, delta = 5, sd = NULL, power = 0.9, sig.level = 0.05, 
@@ -199,7 +199,7 @@ power.t.test(n = 25, delta = 5, sd = NULL, power = 0.9, sig.level = 0.05,
 
 Note I am rounding down here. 
 
-- Using s = 7.4 days would not quite make it to 90.00% power.
+- Using s = 7.4 pounds would not quite make it to 90.00% power.
 
 Note also that in order to get R to treat the sd as unknown, I must specify it as NULL in the formula... 
 

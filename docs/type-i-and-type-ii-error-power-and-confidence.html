@@ -495,7 +495,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="23.3" data-path="type-i-and-type-ii-error-power-and-confidence.html"><a href="type-i-and-type-ii-error-power-and-confidence.html#errors-in-hypothesis-testing"><i class="fa fa-check"></i><b>23.3</b> Errors in Hypothesis Testing</a></li>
 <li class="chapter" data-level="23.4" data-path="type-i-and-type-ii-error-power-and-confidence.html"><a href="type-i-and-type-ii-error-power-and-confidence.html#the-two-types-of-hypothesis-testing-errors"><i class="fa fa-check"></i><b>23.4</b> The Two Types of Hypothesis Testing Errors</a></li>
 <li class="chapter" data-level="23.5" data-path="type-i-and-type-ii-error-power-and-confidence.html"><a href="type-i-and-type-ii-error-power-and-confidence.html#the-significance-level-alpha-is-the-probability-of-a-type-i-error"><i class="fa fa-check"></i><b>23.5</b> The Significance Level, <span class="math inline">\(\alpha\)</span>, is the Probability of a Type I Error</a></li>
-<li class="chapter" data-level="23.6" data-path="type-i-and-type-ii-error-power-and-confidence.html"><a href="type-i-and-type-ii-error-power-and-confidence.html#the-probability-of-avoiding-a-type-i-error-is-called-power-symbolized-1-beta"><i class="fa fa-check"></i><b>23.6</b> The Probability of avoiding a Type I Error is called Power, symbolized 1-<span class="math inline">\(\beta\)</span></a></li>
+<li class="chapter" data-level="23.6" data-path="type-i-and-type-ii-error-power-and-confidence.html"><a href="type-i-and-type-ii-error-power-and-confidence.html#the-probability-of-avoiding-a-type-ii-error-is-called-power-symbolized-1-beta"><i class="fa fa-check"></i><b>23.6</b> The Probability of avoiding a Type II Error is called Power, symbolized 1-<span class="math inline">\(\beta\)</span></a></li>
 <li class="chapter" data-level="23.7" data-path="type-i-and-type-ii-error-power-and-confidence.html"><a href="type-i-and-type-ii-error-power-and-confidence.html#incorporating-the-costs-of-various-types-of-errors"><i class="fa fa-check"></i><b>23.7</b> Incorporating the Costs of Various Types of Errors</a></li>
 <li class="chapter" data-level="23.8" data-path="type-i-and-type-ii-error-power-and-confidence.html"><a href="type-i-and-type-ii-error-power-and-confidence.html#relation-of-alpha-and-beta-to-error-types"><i class="fa fa-check"></i><b>23.8</b> Relation of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> to Error Types</a></li>
 <li class="chapter" data-level="23.9" data-path="type-i-and-type-ii-error-power-and-confidence.html"><a href="type-i-and-type-ii-error-power-and-confidence.html#power-and-sample-size-calculations"><i class="fa fa-check"></i><b>23.9</b> Power and Sample Size Calculations</a></li>
@@ -861,8 +861,8 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">23.5</span> The Significance Level, <span class="math inline">\(\alpha\)</span>, is the Probability of a Type I Error</h2>
 <p>If the null hypothesis is true, the <em>p</em> value is the probability of making an error by choosing the alternative hypothesis instead. Alpha (<span class="math inline">\(\alpha\)</span>) is defined as the probability of concluding significance [rejection of H<sub>0</sub>] when there isn’t (and H<sub>0</sub> is true, making a Type I error), also called the significance level, so that 100(1-<span class="math inline">\(\alpha\)</span>) is the confidence level – the probability of correctly concluding that there is no difference (retaining H<sub>0</sub>) when H<sub>0</sub> is true.</p>
 </div>
-<div id="the-probability-of-avoiding-a-type-i-error-is-called-power-symbolized-1-beta" class="section level2">
-<h2><span class="header-section-number">23.6</span> The Probability of avoiding a Type I Error is called Power, symbolized 1-<span class="math inline">\(\beta\)</span></h2>
+<div id="the-probability-of-avoiding-a-type-ii-error-is-called-power-symbolized-1-beta" class="section level2">
+<h2><span class="header-section-number">23.6</span> The Probability of avoiding a Type II Error is called Power, symbolized 1-<span class="math inline">\(\beta\)</span></h2>
 <p>A Type II error is made if the alternative hypothesis is true, but you fail to choose it. The probability depends on exactly which part of the alternative hypothesis is true, so that computing the probability of making a Type II error is not feasible. The power of a test is the probability of making the correct decision when the alternative hypothesis is true. Beta (<span class="math inline">\(\beta\)</span>) is defined as the probability of concluding that there was no difference, when in fact there was one (a Type II error). Power is then just 1 - <span class="math inline">\(\beta\)</span>, the probability of concluding that there was a difference, when, in fact, there was one.</p>
 <p>Traditionally, people like the power of a test to be at least 80%, meaning that <span class="math inline">\(\beta\)</span> is at most 0.20. Often, I’ll be arguing for 90% as a minimum power requirement, or we’ll be presenting a range of power calculations for a variety of sample size choices.</p>
 </div>
@@ -1031,7 +1031,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
       sig.level = 0.05
           power = 0.76
     alternative = two.sided</code></pre>
-<p>This change in standard deviation from 10 to 9, leaving everything else the same, increases our power from 67% to nearly 76%. To reach 90% power, we’d need to decrease the standard deviation of the population paired differences to no more than 7.39 days.</p>
+<p>This change in standard deviation from 10 to 9, leaving everything else the same, increases our power from 67% to nearly 76%. To reach 90% power, we’d need to decrease the standard deviation of the population paired differences to no more than 7.39 pounds.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">power.t.test</span>(<span class="dt">n =</span> <span class="dv">25</span>, <span class="dt">delta =</span> <span class="dv">5</span>, <span class="dt">sd =</span> <span class="ot">NULL</span>, <span class="dt">power =</span> <span class="fl">0.9</span>, <span class="dt">sig.level =</span> <span class="fl">0.05</span>, 
              <span class="dt">type=</span><span class="st">&quot;one.sample&quot;</span>, <span class="dt">alternative=</span><span class="st">&quot;two.sided&quot;</span>)</code></pre></div>
 <pre><code>
@@ -1045,7 +1045,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
     alternative = two.sided</code></pre>
 <p>Note I am rounding down here.</p>
 <ul>
-<li>Using s = 7.4 days would not quite make it to 90.00% power.</li>
+<li>Using s = 7.4 pounds would not quite make it to 90.00% power.</li>
 </ul>
 <p>Note also that in order to get R to treat the sd as unknown, I must specify it as NULL in the formula…</p>
 </div>
