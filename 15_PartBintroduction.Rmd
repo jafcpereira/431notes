@@ -53,19 +53,19 @@ We'll focus, for a while, on three studies, and the next three Sections of these
 serzinc <- read_csv("data/serzinc.csv") 
 bloodlead <- read_csv("data/bloodlead.csv")
 sepsis <- read_csv("data/sepsis.csv")
-
-
-schiztwin <- read.csv("data/schiztwin.csv") %>% tbl_df
-hers <- read.csv("data/hers.csv") %>% tbl_df
-cotinine <- read.csv("data/cotinine.csv") %>% tbl_df
 battery <- read.csv("data/battery.csv") %>% tbl_df
-survey1 <- read.csv("data/surveyday1.csv") %>% tbl_df
-active2x3 <- read.csv("data/active2x3.csv") # deliberately NOT a tibble
 breakfast <- read.csv("data/breakfast.csv") %>% tbl_df
-hairloss <- read.csv("data/hairloss.csv") %>% tbl_df
-darwin <- read.csv("data/darwin.csv") %>% tbl_df
+nyfs2 <- read.csv("data/nyfs2.csv") %>% tbl_df
+
+# schiztwin <- read.csv("data/schiztwin.csv") %>% tbl_df
+# hers <- read.csv("data/hers.csv") %>% tbl_df
+# cotinine <- read.csv("data/cotinine.csv") %>% tbl_df
+# survey1 <- read.csv("data/surveyday1.csv") %>% tbl_df
+# active2x3 <- read.csv("data/active2x3.csv") # deliberately NOT a tibble
+# hairloss <- read.csv("data/hairloss.csv") %>% tbl_df
+# darwin <- read.csv("data/darwin.csv") %>% tbl_df
 ```
 
-We'll also continue to make use of the Love-boost.R script of functions loaded in Section \@ref(Rsetup).
+We'll also continue to make use of the `Love-boost.R` script of functions loaded in Section \@ref(Rsetup).
 
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.11.16)  22 OCT 2017 15:16
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.11.16)  22 OCT 2017 18:03
 entering extended mode
 **431-notes.tex
 (C:\Users\Thomas\Dropbox\2017-431\431notes\431-notes.tex
@@ -922,13 +922,13 @@ LaTeX Font Info:    Try loading font information for TS1+lmr on input line 163.
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [9] [10]
 Chapter 1.
-<figures/data-science-venn20.png, id=1068, 722.7pt x 542.025pt>
+<figures/data-science-venn20.png, id=1143, 722.7pt x 542.025pt>
 File: figures/data-science-venn20.png Graphic file (type png)
 <use figures/data-science-venn20.png>
 Package pdftex.def Info: figures/data-science-venn20.png used on input line 265
 .
 (pdftex.def)             Requested size: 375.80615pt x 281.85461pt.
-<figures/data-science-cycle.png, id=1072, 389.20406pt x 143.03438pt>
+<figures/data-science-cycle.png, id=1147, 389.20406pt x 143.03438pt>
 File: figures/data-science-cycle.png Graphic file (type png)
 <use figures/data-science-cycle.png>
 Package pdftex.def Info: figures/data-science-cycle.png used on input line 311.
@@ -953,7 +953,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 [21
 
 ]
-<431-notes_files/figure-latex/nh_data_heightbyage1-fig-1.pdf, id=1156, 469.755p
+<431-notes_files/figure-latex/nh_data_heightbyage1-fig-1.pdf, id=1231, 469.755p
 t x 325.215pt>
 File: 431-notes_files/figure-latex/nh_data_heightbyage1-fig-1.pdf Graphic file 
 (type pdf)
@@ -968,7 +968,7 @@ LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 687
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\ts1lmtt.fd"
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [23]
-<431-notes_files/figure-latex/nh_data_heightbyageandgender1-fig-1.pdf, id=1177,
+<431-notes_files/figure-latex/nh_data_heightbyageandgender1-fig-1.pdf, id=1252,
  469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nh_data_heightbyageandgender1-fig-1.pdf Grap
 hic file (type pdf)
@@ -977,7 +977,7 @@ Package pdftex.def Info: 431-notes_files/figure-latex/nh_data_heightbyageandgen
 der1-fig-1.pdf used on input line 707.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-<431-notes_files/figure-latex/nh_data_heightbyageandgender2-fig-1.pdf, id=1178,
+<431-notes_files/figure-latex/nh_data_heightbyageandgender2-fig-1.pdf, id=1253,
  469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nh_data_heightbyageandgender2-fig-1.pdf Grap
 hic file (type pdf)
@@ -990,7 +990,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [24 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/nh_
 data_heightbyageandgender1-fig-1.pdf>]
-<431-notes_files/figure-latex/nh_data_heightbyageandgender3-fig-1.pdf, id=1189,
+<431-notes_files/figure-latex/nh_data_heightbyageandgender3-fig-1.pdf, id=1264,
  469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nh_data_heightbyageandgender3-fig-1.pdf Grap
 hic file (type pdf)
@@ -1003,7 +1003,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [25 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/nh_
 data_heightbyageandgender2-fig-1.pdf>]
-<431-notes_files/figure-latex/nh_data_heightbyageandgender4-fig-1.pdf, id=1201,
+<431-notes_files/figure-latex/nh_data_heightbyageandgender4-fig-1.pdf, id=1276,
  469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nh_data_heightbyageandgender4-fig-1.pdf Grap
 hic file (type pdf)
@@ -1017,7 +1017,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [26 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/nh_
 data_heightbyageandgender3-fig-1.pdf>] [27 <C:/Users/Thomas/Dropbox/2017-431/43
 1notes/431-notes_files/figure-latex/nh_data_heightbyageandgender4-fig-1.pdf>]
-<431-notes_files/figure-latex/nh_data_2179_heighthistogram-fig-1.pdf, id=1227, 
+<431-notes_files/figure-latex/nh_data_2179_heighthistogram-fig-1.pdf, id=1302, 
 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nh_data_2179_heighthistogram-fig-1.pdf Graph
 ic file (type pdf)
@@ -1026,7 +1026,7 @@ Package pdftex.def Info: 431-notes_files/figure-latex/nh_data_2179_heighthistog
 ram-fig-1.pdf used on input line 816.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-<431-notes_files/figure-latex/nh_data_2179_heighthistogram2-fig-1.pdf, id=1228,
+<431-notes_files/figure-latex/nh_data_2179_heighthistogram2-fig-1.pdf, id=1303,
  469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nh_data_2179_heighthistogram2-fig-1.pdf Grap
 hic file (type pdf)
@@ -1037,7 +1037,7 @@ ram2-fig-1.pdf used on input line 845.
 [28 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/nh_
 data_2179_heighthistogram-fig-1.pdf>]
 <431-notes_files/figure-latex/nh_data_2179_histogramwithCWRUscheme-fig-1.pdf, i
-d=1243, 469.755pt x 325.215pt>
+d=1318, 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nh_data_2179_histogramwithCWRUscheme-fig-1.p
 df Graphic file (type pdf)
 
@@ -1051,7 +1051,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [29 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/nh_
 data_2179_heighthistogram2-fig-1.pdf>]
-<431-notes_files/figure-latex/nh_data_2179_heightbygender1-fig-1.pdf, id=1254, 
+<431-notes_files/figure-latex/nh_data_2179_heightbygender1-fig-1.pdf, id=1329, 
 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nh_data_2179_heightbygender1-fig-1.pdf Graph
 ic file (type pdf)
@@ -1064,7 +1064,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [30 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/nh_
 data_2179_histogramwithCWRUscheme-fig-1.pdf>]
-<431-notes_files/figure-latex/nh_data_2179_heightbygender2-fig-1.pdf, id=1266, 
+<431-notes_files/figure-latex/nh_data_2179_heightbygender2-fig-1.pdf, id=1341, 
 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nh_data_2179_heightbygender2-fig-1.pdf Graph
 ic file (type pdf)
@@ -1077,7 +1077,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [31 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/nh_
 data_2179_heightbygender1-fig-1.pdf>]
-<431-notes_files/figure-latex/nh_data_2179_heightbygenderbox-fig-1.pdf, id=1277
+<431-notes_files/figure-latex/nh_data_2179_heightbygenderbox-fig-1.pdf, id=1352
 , 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nh_data_2179_heightbygenderbox-fig-1.pdf Gra
 phic file (type pdf)
@@ -1090,8 +1090,8 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [32 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/nh_
 data_2179_heightbygender2-fig-1.pdf>]
-<431-notes_files/figure-latex/nh_data_2179_heightbygenderhist-fig-1.pdf, id=128
-8, 469.755pt x 325.215pt>
+<431-notes_files/figure-latex/nh_data_2179_heightbygenderhist-fig-1.pdf, id=136
+3, 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nh_data_2179_heightbygenderhist-fig-1.pdf Gr
 aphic file (type pdf)
 <use 431-notes_files/figure-latex/nh_data_2179_heightbygenderhist-fig-1.pdf>
@@ -1103,8 +1103,8 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [33 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/nh_
 data_2179_heightbygenderbox-fig-1.pdf>]
-<431-notes_files/figure-latex/nh_data_2179_heightbygenderhist2-fig-1.pdf, id=12
-99, 469.755pt x 325.215pt>
+<431-notes_files/figure-latex/nh_data_2179_heightbygenderhist2-fig-1.pdf, id=13
+74, 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nh_data_2179_heightbygenderhist2-fig-1.pdf G
 raphic file (type pdf)
 <use 431-notes_files/figure-latex/nh_data_2179_heightbygenderhist2-fig-1.pdf>
@@ -1116,7 +1116,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [34 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/nh_
 data_2179_heightbygenderhist-fig-1.pdf>]
-<431-notes_files/figure-latex/nh_data_2179_bmihistbin1-fig-1.pdf, id=1310, 469.
+<431-notes_files/figure-latex/nh_data_2179_bmihistbin1-fig-1.pdf, id=1385, 469.
 755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nh_data_2179_bmihistbin1-fig-1.pdf Graphic f
 ile (type pdf)
@@ -1126,7 +1126,7 @@ fig-1.pdf used on input line 994.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [35 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/nh_
 data_2179_heightbygenderhist2-fig-1.pdf>]
-<431-notes_files/figure-latex/nh_data_2179_bmihistbin5-fig-1.pdf, id=1321, 469.
+<431-notes_files/figure-latex/nh_data_2179_bmihistbin5-fig-1.pdf, id=1396, 469.
 755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nh_data_2179_bmihistbin5-fig-1.pdf Graphic f
 ile (type pdf)
@@ -1139,7 +1139,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [36 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/nh_
 data_2179_bmihistbin1-fig-1.pdf>]
-<431-notes_files/figure-latex/nh_data_2179_bmibygenderhist-fig-1.pdf, id=1331, 
+<431-notes_files/figure-latex/nh_data_2179_bmibygenderhist-fig-1.pdf, id=1406, 
 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nh_data_2179_bmibygenderhist-fig-1.pdf Graph
 ic file (type pdf)
@@ -1152,7 +1152,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [37 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/nh_
 data_2179_bmihistbin5-fig-1.pdf>]
-<431-notes_files/figure-latex/nh_data_2179_bmibydiabetes-fig-1.pdf, id=1343, 46
+<431-notes_files/figure-latex/nh_data_2179_bmibydiabetes-fig-1.pdf, id=1418, 46
 9.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nh_data_2179_bmibydiabetes-fig-1.pdf Graphic
  file (type pdf)
@@ -1165,7 +1165,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [38 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/nh_
 data_2179_bmibygenderhist-fig-1.pdf>]
-<431-notes_files/figure-latex/nh_data_2179_bmibyrace-fig-1.pdf, id=1354, 469.75
+<431-notes_files/figure-latex/nh_data_2179_bmibyrace-fig-1.pdf, id=1429, 469.75
 5pt x 325.215pt>
 File: 431-notes_files/figure-latex/nh_data_2179_bmibyrace-fig-1.pdf Graphic fil
 e (type pdf)
@@ -1178,7 +1178,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [39 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/nh_
 data_2179_bmibydiabetes-fig-1.pdf>]
-<431-notes_files/figure-latex/nh_data_2179_bmivspulse-fig-1.pdf, id=1365, 469.7
+<431-notes_files/figure-latex/nh_data_2179_bmivspulse-fig-1.pdf, id=1440, 469.7
 55pt x 325.215pt>
 File: 431-notes_files/figure-latex/nh_data_2179_bmivspulse-fig-1.pdf Graphic fi
 le (type pdf)
@@ -1191,7 +1191,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [40 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/nh_
 data_2179_bmibyrace-fig-1.pdf>]
-<431-notes_files/figure-latex/nh_data_2179_bmivspulsewithdm-fig-1.pdf, id=1376,
+<431-notes_files/figure-latex/nh_data_2179_bmivspulsewithdm-fig-1.pdf, id=1451,
  469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nh_data_2179_bmivspulsewithdm-fig-1.pdf Grap
 hic file (type pdf)
@@ -1205,7 +1205,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [41 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/nh_
 data_2179_bmivspulse-fig-1.pdf>]
 <431-notes_files/figure-latex/nh_data_2179_bmivspulsewithdmfacets-fig-1.pdf, id
-=1390, 469.755pt x 325.215pt>
+=1465, 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nh_data_2179_bmivspulsewithdmfacets-fig-1.pd
 f Graphic file (type pdf)
 
@@ -1219,7 +1219,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [42 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/nh_
 data_2179_bmivspulsewithdm-fig-1.pdf>]
-<431-notes_files/figure-latex/HealthGengraph1-fig-1.pdf, id=1403, 469.755pt x 3
+<431-notes_files/figure-latex/HealthGengraph1-fig-1.pdf, id=1478, 469.755pt x 3
 25.215pt>
 File: 431-notes_files/figure-latex/HealthGengraph1-fig-1.pdf Graphic file (type
  pdf)
@@ -1229,7 +1229,7 @@ Package pdftex.def Info: 431-notes_files/figure-latex/HealthGengraph1-fig-1.pdf
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [43 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/nh_
 data_2179_bmivspulsewithdmfacets-fig-1.pdf>]
-<431-notes_files/figure-latex/HealthGengraph2-fig-1.pdf, id=1418, 469.755pt x 3
+<431-notes_files/figure-latex/HealthGengraph2-fig-1.pdf, id=1493, 469.755pt x 3
 25.215pt>
 File: 431-notes_files/figure-latex/HealthGengraph2-fig-1.pdf Graphic file (type
  pdf)
@@ -1242,7 +1242,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [44 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/Hea
 lthGengraph1-fig-1.pdf>]
-<431-notes_files/figure-latex/HealthGengraph3-fig-1.pdf, id=1428, 469.755pt x 3
+<431-notes_files/figure-latex/HealthGengraph3-fig-1.pdf, id=1503, 469.755pt x 3
 25.215pt>
 File: 431-notes_files/figure-latex/HealthGengraph3-fig-1.pdf Graphic file (type
  pdf)
@@ -1259,7 +1259,7 @@ es_files/figure-latex/HealthGengraph3-fig-1.pdf>]
 Underfull \vbox (badness 1430) has occurred while \output is active []
 
 [47]
-<431-notes_files/figure-latex/nh_data_2179_bmibyhealth-fig-1.pdf, id=1452, 469.
+<431-notes_files/figure-latex/nh_data_2179_bmibyhealth-fig-1.pdf, id=1527, 469.
 755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nh_data_2179_bmibyhealth-fig-1.pdf Graphic f
 ile (type pdf)
@@ -1273,7 +1273,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [48 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/nh_
 data_2179_bmibyhealth-fig-1.pdf>]
 <431-notes_files/figure-latex/nh_data_2179_bmibyhealthbygender1-fig-1.pdf, id=1
-463, 469.755pt x 325.215pt>
+538, 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nh_data_2179_bmibyhealthbygender1-fig-1.pdf 
 Graphic file (type pdf)
 
@@ -1283,7 +1283,7 @@ ygender1-fig-1.pdf used on input line 1479.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 <431-notes_files/figure-latex/nh_data_2179_bmibyhealthbygender2-fig-1.pdf, id=1
-464, 469.755pt x 325.215pt>
+539, 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nh_data_2179_bmibyhealthbygender2-fig-1.pdf 
 Graphic file (type pdf)
 
@@ -1313,25 +1313,25 @@ de",..: 5 3 4 5 3 5 1 3 5 1 ...[]
 Chapter 5.
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 1985.
-[57] [58] [59] [60] [61] <figures/Empirical_Rule.png, id=1562, 578.91281pt x 42
+[57] [58] [59] [60] [61] <figures/Empirical_Rule.png, id=1637, 578.91281pt x 42
 0.06938pt>
 File: figures/Empirical_Rule.png Graphic file (type png)
 <use figures/Empirical_Rule.png>
 Package pdftex.def Info: figures/Empirical_Rule.png used on input line 2466.
 (pdftex.def)             Requested size: 422.77951pt x 306.77629pt.
 [62] [63 <C:/Users/Thomas/Dropbox/2017-431/431notes/figures/Empirical_Rule.png>
-] <figures/modality.png, id=1578, 688.82344pt x 210.03468pt>
+] <figures/modality.png, id=1653, 688.82344pt x 210.03468pt>
 File: figures/modality.png Graphic file (type png)
 <use figures/modality.png>
 Package pdftex.def Info: figures/modality.png used on input line 2525.
 (pdftex.def)             Requested size: 422.7778pt x 128.91257pt.
 [64 <C:/Users/Thomas/Dropbox/2017-431/431notes/figures/modality.png>] <figures/
-negandposskew.png, id=1588, 447.6725pt x 159.59625pt>
+negandposskew.png, id=1663, 447.6725pt x 159.59625pt>
 File: figures/negandposskew.png Graphic file (type png)
 <use figures/negandposskew.png>
 Package pdftex.def Info: figures/negandposskew.png used on input line 2561.
 (pdftex.def)             Requested size: 422.78635pt x 150.72426pt.
-<figures/kurtosis.png, id=1589, 595.47469pt x 346.29375pt>
+<figures/kurtosis.png, id=1664, 595.47469pt x 346.29375pt>
 File: figures/kurtosis.png Graphic file (type png)
 <use figures/kurtosis.png>
 Package pdftex.def Info: figures/kurtosis.png used on input line 2588.
@@ -1356,7 +1356,7 @@ LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <24.88> not available
 [77
 
 ] [78] [79] [80] [81] [82]
-<431-notes_files/figure-latex/nyfs1_bmihist-fig-1.pdf, id=1709, 469.755pt x 325
+<431-notes_files/figure-latex/nyfs1_bmihist-fig-1.pdf, id=1784, 469.755pt x 325
 .215pt>
 File: 431-notes_files/figure-latex/nyfs1_bmihist-fig-1.pdf Graphic file (type p
 df)
@@ -1368,7 +1368,7 @@ sed on input line 3947.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [83]
-<431-notes_files/figure-latex/nyfs1_bmihist2-fig-1.pdf, id=1714, 469.755pt x 32
+<431-notes_files/figure-latex/nyfs1_bmihist2-fig-1.pdf, id=1789, 469.755pt x 32
 5.215pt>
 File: 431-notes_files/figure-latex/nyfs1_bmihist2-fig-1.pdf Graphic file (type 
 pdf)
@@ -1378,7 +1378,7 @@ used on input line 3989.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [84 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/nyf
 s1_bmihist-fig-1.pdf>]
-<431-notes_files/figure-latex/nyfs1_bmihist3-fig-1.pdf, id=1725, 469.755pt x 32
+<431-notes_files/figure-latex/nyfs1_bmihist3-fig-1.pdf, id=1800, 469.755pt x 32
 5.215pt>
 File: 431-notes_files/figure-latex/nyfs1_bmihist3-fig-1.pdf Graphic file (type 
 pdf)
@@ -1392,7 +1392,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [85 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/nyf
 s1_bmihist2-fig-1.pdf>] [86 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-note
 s_files/figure-latex/nyfs1_bmihist3-fig-1.pdf>] [87] [88]
-<431-notes_files/figure-latex/nyfs1_bmidotplot-fig-1.pdf, id=1756, 469.755pt x 
+<431-notes_files/figure-latex/nyfs1_bmidotplot-fig-1.pdf, id=1831, 469.755pt x 
 325.215pt>
 File: 431-notes_files/figure-latex/nyfs1_bmidotplot-fig-1.pdf Graphic file (typ
 e pdf)
@@ -1404,7 +1404,7 @@ f used on input line 4244.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [89]
-<431-notes_files/figure-latex/nyfs1_bmifreqpoly-fig-1.pdf, id=1761, 469.755pt x
+<431-notes_files/figure-latex/nyfs1_bmifreqpoly-fig-1.pdf, id=1836, 469.755pt x
  325.215pt>
 File: 431-notes_files/figure-latex/nyfs1_bmifreqpoly-fig-1.pdf Graphic file (ty
 pe pdf)
@@ -1417,7 +1417,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [90 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/nyf
 s1_bmidotplot-fig-1.pdf>]
-<431-notes_files/figure-latex/nyfs1_bmidensity-fig-1.pdf, id=1771, 469.755pt x 
+<431-notes_files/figure-latex/nyfs1_bmidensity-fig-1.pdf, id=1846, 469.755pt x 
 325.215pt>
 File: 431-notes_files/figure-latex/nyfs1_bmidensity-fig-1.pdf Graphic file (typ
 e pdf)
@@ -1430,7 +1430,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [91 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/nyf
 s1_bmifreqpoly-fig-1.pdf>]
-<431-notes_files/figure-latex/nyfs1_boxplot1-fig-1.pdf, id=1783, 469.755pt x 32
+<431-notes_files/figure-latex/nyfs1_boxplot1-fig-1.pdf, id=1858, 469.755pt x 32
 5.215pt>
 File: 431-notes_files/figure-latex/nyfs1_boxplot1-fig-1.pdf Graphic file (type 
 pdf)
@@ -1444,7 +1444,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [92 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/nyf
 s1_bmidensity-fig-1.pdf>] [93 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-no
 tes_files/figure-latex/nyfs1_boxplot1-fig-1.pdf>]
-<431-notes_files/figure-latex/nyfs1_boxplot2-fig-1.pdf, id=1804, 469.755pt x 21
+<431-notes_files/figure-latex/nyfs1_boxplot2-fig-1.pdf, id=1879, 469.755pt x 21
 6.81pt>
 File: 431-notes_files/figure-latex/nyfs1_boxplot2-fig-1.pdf Graphic file (type 
 pdf)
@@ -1453,7 +1453,7 @@ Package pdftex.def Info: 431-notes_files/figure-latex/nyfs1_boxplot2-fig-1.pdf
 used on input line 4403.
 (pdftex.def)             Requested size: 469.75386pt x 216.80946pt.
 
-<431-notes_files/figure-latex/nyfs1_boxplot3-fig-1.pdf, id=1805, 469.755pt x 32
+<431-notes_files/figure-latex/nyfs1_boxplot3-fig-1.pdf, id=1880, 469.755pt x 32
 5.215pt>
 File: 431-notes_files/figure-latex/nyfs1_boxplot3-fig-1.pdf Graphic file (type 
 pdf)
@@ -1463,7 +1463,7 @@ used on input line 4419.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [94 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/nyf
 s1_boxplot2-fig-1.pdf>]
-<431-notes_files/figure-latex/nyfs1_boxplot4-fig-1.pdf, id=1816, 469.755pt x 32
+<431-notes_files/figure-latex/nyfs1_boxplot4-fig-1.pdf, id=1891, 469.755pt x 32
 5.215pt>
 File: 431-notes_files/figure-latex/nyfs1_boxplot4-fig-1.pdf Graphic file (type 
 pdf)
@@ -1476,7 +1476,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [95 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/nyf
 s1_boxplot3-fig-1.pdf>]
-<431-notes_files/figure-latex/nyfs1_boxplot5-fig-1.pdf, id=1826, 469.755pt x 32
+<431-notes_files/figure-latex/nyfs1_boxplot5-fig-1.pdf, id=1901, 469.755pt x 32
 5.215pt>
 File: 431-notes_files/figure-latex/nyfs1_boxplot5-fig-1.pdf Graphic file (type 
 pdf)
@@ -1510,7 +1510,7 @@ Chapter 8.
 [103
 
 ] [104]
-<431-notes_files/figure-latex/nyfs1_bmihistvsNormal-fig-1.pdf, id=1884, 469.755
+<431-notes_files/figure-latex/nyfs1_bmihistvsNormal-fig-1.pdf, id=1959, 469.755
 pt x 325.215pt>
 File: 431-notes_files/figure-latex/nyfs1_bmihistvsNormal-fig-1.pdf Graphic file
  (type pdf)
@@ -1520,7 +1520,7 @@ Package pdftex.def Info: 431-notes_files/figure-latex/nyfs1_bmihistvsNormal-fig
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [105 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/ny
 fs1_bmihistvsNormal-fig-1.pdf>]
-<431-notes_files/figure-latex/nyfs1_bmihistofcounts-fig-1.pdf, id=1896, 469.755
+<431-notes_files/figure-latex/nyfs1_bmihistofcounts-fig-1.pdf, id=1971, 469.755
 pt x 325.215pt>
 File: 431-notes_files/figure-latex/nyfs1_bmihistofcounts-fig-1.pdf Graphic file
  (type pdf)
@@ -1529,7 +1529,7 @@ Package pdftex.def Info: 431-notes_files/figure-latex/nyfs1_bmihistofcounts-fig
 -1.pdf used on input line 5130.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-<431-notes_files/figure-latex/nyfs1_histage-fig-1.pdf, id=1897, 469.755pt x 325
+<431-notes_files/figure-latex/nyfs1_histage-fig-1.pdf, id=1972, 469.755pt x 325
 .215pt>
 File: 431-notes_files/figure-latex/nyfs1_histage-fig-1.pdf Graphic file (type p
 df)
@@ -1546,7 +1546,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [107 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/ny
 fs1_histage-fig-1.pdf>]
-<431-notes_files/figure-latex/nyfs1_qqbmi-fig-1.pdf, id=1919, 469.755pt x 325.2
+<431-notes_files/figure-latex/nyfs1_qqbmi-fig-1.pdf, id=1994, 469.755pt x 325.2
 15pt>
 File: 431-notes_files/figure-latex/nyfs1_qqbmi-fig-1.pdf Graphic file (type pdf
 )
@@ -1555,7 +1555,7 @@ Package pdftex.def Info: 431-notes_files/figure-latex/nyfs1_qqbmi-fig-1.pdf use
 d on input line 5255.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-<431-notes_files/figure-latex/nyfs1_qqnormbmi-fig-1.pdf, id=1920, 469.755pt x 3
+<431-notes_files/figure-latex/nyfs1_qqnormbmi-fig-1.pdf, id=1995, 469.755pt x 3
 25.215pt>
 File: 431-notes_files/figure-latex/nyfs1_qqnormbmi-fig-1.pdf Graphic file (type
  pdf)
@@ -1568,7 +1568,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [108 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/ny
 fs1_qqbmi-fig-1.pdf>]
-<431-notes_files/figure-latex/nyfs1_gg_qqplot-fig-1.pdf, id=1931, 469.755pt x 3
+<431-notes_files/figure-latex/nyfs1_gg_qqplot-fig-1.pdf, id=2006, 469.755pt x 3
 25.215pt>
 File: 431-notes_files/figure-latex/nyfs1_gg_qqplot-fig-1.pdf Graphic file (type
  pdf)
@@ -1582,7 +1582,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [109 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/ny
 fs1_qqnormbmi-fig-1.pdf>] [110 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-n
 otes_files/figure-latex/nyfs1_gg_qqplot-fig-1.pdf>]
-<431-notes_files/figure-latex/simnormal1plots-fig-1.pdf, id=1957, 469.755pt x 3
+<431-notes_files/figure-latex/simnormal1plots-fig-1.pdf, id=2032, 469.755pt x 3
 25.215pt>
 File: 431-notes_files/figure-latex/simnormal1plots-fig-1.pdf Graphic file (type
  pdf)
@@ -1591,7 +1591,7 @@ Package pdftex.def Info: 431-notes_files/figure-latex/simnormal1plots-fig-1.pdf
  used on input line 5344.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-<431-notes_files/figure-latex/sim1fancyqq-fig-1.pdf, id=1958, 469.755pt x 325.2
+<431-notes_files/figure-latex/sim1fancyqq-fig-1.pdf, id=2033, 469.755pt x 325.2
 15pt>
 File: 431-notes_files/figure-latex/sim1fancyqq-fig-1.pdf Graphic file (type pdf
 )
@@ -1604,7 +1604,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [111 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/si
 mnormal1plots-fig-1.pdf>]
-<431-notes_files/figure-latex/sim2plot1-fig-1.pdf, id=1968, 469.755pt x 325.215
+<431-notes_files/figure-latex/sim2plot1-fig-1.pdf, id=2043, 469.755pt x 325.215
 pt>
 File: 431-notes_files/figure-latex/sim2plot1-fig-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/sim2plot1-fig-1.pdf>
@@ -1613,7 +1613,7 @@ on input line 5390.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [112 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/si
 m1fancyqq-fig-1.pdf>]
-<431-notes_files/figure-latex/sim2hist-fig-1.pdf, id=1980, 469.755pt x 325.215p
+<431-notes_files/figure-latex/sim2hist-fig-1.pdf, id=2055, 469.755pt x 325.215p
 t>
 File: 431-notes_files/figure-latex/sim2hist-fig-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/sim2hist-fig-1.pdf>
@@ -1625,7 +1625,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [113 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/si
 m2plot1-fig-1.pdf>]
-<431-notes_files/figure-latex/sim2augmentqq-fig-1.pdf, id=1990, 469.755pt x 325
+<431-notes_files/figure-latex/sim2augmentqq-fig-1.pdf, id=2065, 469.755pt x 325
 .215pt>
 File: 431-notes_files/figure-latex/sim2augmentqq-fig-1.pdf Graphic file (type p
 df)
@@ -1638,7 +1638,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [114 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/si
 m2hist-fig-1.pdf>]
-<431-notes_files/figure-latex/sim1outlier-fig-1.pdf, id=2001, 469.755pt x 325.2
+<431-notes_files/figure-latex/sim1outlier-fig-1.pdf, id=2076, 469.755pt x 325.2
 15pt>
 File: 431-notes_files/figure-latex/sim1outlier-fig-1.pdf Graphic file (type pdf
 )
@@ -1651,7 +1651,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [115 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/si
 m2augmentqq-fig-1.pdf>]
-<431-notes_files/figure-latex/histogramssim3-fig-1.pdf, id=2014, 469.755pt x 32
+<431-notes_files/figure-latex/histogramssim3-fig-1.pdf, id=2089, 469.755pt x 32
 5.215pt>
 File: 431-notes_files/figure-latex/histogramssim3-fig-1.pdf Graphic file (type 
 pdf)
@@ -1664,7 +1664,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [116 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/si
 m1outlier-fig-1.pdf>]
-<431-notes_files/figure-latex/nyfs1skewdemo-fig-1.pdf, id=2025, 469.755pt x 325
+<431-notes_files/figure-latex/nyfs1skewdemo-fig-1.pdf, id=2100, 469.755pt x 325
 .215pt>
 File: 431-notes_files/figure-latex/nyfs1skewdemo-fig-1.pdf Graphic file (type p
 df)
@@ -1677,8 +1677,8 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [117 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/hi
 stogramssim3-fig-1.pdf>]
-<431-notes_files/figure-latex/nyfs1bmihistwithtransformations-fig-1.pdf, id=203
-5, 469.755pt x 325.215pt>
+<431-notes_files/figure-latex/nyfs1bmihistwithtransformations-fig-1.pdf, id=211
+0, 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nyfs1bmihistwithtransformations-fig-1.pdf Gr
 aphic file (type pdf)
 <use 431-notes_files/figure-latex/nyfs1bmihistwithtransformations-fig-1.pdf>
@@ -1692,7 +1692,7 @@ es_files/figure-latex/nyfs1bmihistwithtransformations-fig-1.pdf>] [120
 ]
 Chapter 9.
 [121]
-<431-notes_files/figure-latex/nyfs1waistnormalchecks-fig-1.pdf, id=2066, 469.75
+<431-notes_files/figure-latex/nyfs1waistnormalchecks-fig-1.pdf, id=2141, 469.75
 5pt x 325.215pt>
 File: 431-notes_files/figure-latex/nyfs1waistnormalchecks-fig-1.pdf Graphic fil
 e (type pdf)
@@ -1702,7 +1702,7 @@ g-1.pdf used on input line 5715.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [122 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/ny
 fs1waistnormalchecks-fig-1.pdf>]
-<431-notes_files/figure-latex/transnyfs_waist_square-fig-1.pdf, id=2077, 469.75
+<431-notes_files/figure-latex/transnyfs_waist_square-fig-1.pdf, id=2152, 469.75
 5pt x 325.215pt>
 File: 431-notes_files/figure-latex/transnyfs_waist_square-fig-1.pdf Graphic fil
 e (type pdf)
@@ -1712,7 +1712,7 @@ g-1.pdf used on input line 5747.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [123 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/tr
 ansnyfs_waist_square-fig-1.pdf>]
-<431-notes_files/figure-latex/transnyfs_waist_squareroot-fig-1.pdf, id=2089, 46
+<431-notes_files/figure-latex/transnyfs_waist_squareroot-fig-1.pdf, id=2164, 46
 9.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/transnyfs_waist_squareroot-fig-1.pdf Graphic
  file (type pdf)
@@ -1721,7 +1721,7 @@ Package pdftex.def Info: 431-notes_files/figure-latex/transnyfs_waist_squareroo
 t-fig-1.pdf used on input line 5772.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-<431-notes_files/figure-latex/transnyfs_waist_squarerootQQ-fig-1.pdf, id=2090, 
+<431-notes_files/figure-latex/transnyfs_waist_squarerootQQ-fig-1.pdf, id=2165, 
 469.755pt x 469.755pt>
 File: 431-notes_files/figure-latex/transnyfs_waist_squarerootQQ-fig-1.pdf Graph
 ic file (type pdf)
@@ -1736,7 +1736,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ansnyfs_waist_squareroot-fig-1.pdf>] [125 <C:/Users/Thomas/Dropbox/2017-431/431
 notes/431-notes_files/figure-latex/transnyfs_waist_squarerootQQ-fig-1.pdf>]
 <431-notes_files/figure-latex/nyfs1log10waistcircumferencenormalchecks-fig-1.pd
-f, id=2110, 469.755pt x 325.215pt>
+f, id=2185, 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nyfs1log10waistcircumferencenormalchecks-fig
 -1.pdf Graphic file (type pdf)
 
@@ -1747,7 +1747,7 @@ ncenormalchecks-fig-1.pdf used on input line 5813.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 <431-notes_files/figure-latex/nyfs1logwaistcircumferencenormalchecks-fig-1.pdf,
- id=2111, 469.755pt x 325.215pt>
+ id=2186, 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nyfs1logwaistcircumferencenormalchecks-fig-1
 .pdf Graphic file (type pdf)
 
@@ -1761,7 +1761,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [126 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/ny
 fs1log10waistcircumferencenormalchecks-fig-1.pdf>]
-<431-notes_files/figure-latex/transex2hist1-fig-1.pdf, id=2122, 469.755pt x 325
+<431-notes_files/figure-latex/transex2hist1-fig-1.pdf, id=2197, 469.755pt x 325
 .215pt>
 File: 431-notes_files/figure-latex/transex2hist1-fig-1.pdf Graphic file (type p
 df)
@@ -1774,7 +1774,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [127 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/ny
 fs1logwaistcircumferencenormalchecks-fig-1.pdf>]
-<431-notes_files/figure-latex/transex2ladderofpolygons-fig-1.pdf, id=2134, 469.
+<431-notes_files/figure-latex/transex2ladderofpolygons-fig-1.pdf, id=2209, 469.
 755pt x 325.215pt>
 File: 431-notes_files/figure-latex/transex2ladderofpolygons-fig-1.pdf Graphic f
 ile (type pdf)
@@ -1787,7 +1787,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [128 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/tr
 ansex2hist1-fig-1.pdf>]
-<431-notes_files/figure-latex/transex2ladderofQQs-fig-1.pdf, id=2144, 469.755pt
+<431-notes_files/figure-latex/transex2ladderofQQs-fig-1.pdf, id=2219, 469.755pt
  x 325.215pt>
 File: 431-notes_files/figure-latex/transex2ladderofQQs-fig-1.pdf Graphic file (
 type pdf)
@@ -1802,7 +1802,7 @@ Chapter 10.
 [131
 
 ]
-<431-notes_files/figure-latex/nyfs1_triceps_gg-boxplot-a-fig-1.pdf, id=2168, 46
+<431-notes_files/figure-latex/nyfs1_triceps_gg-boxplot-a-fig-1.pdf, id=2243, 46
 9.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nyfs1_triceps_gg-boxplot-a-fig-1.pdf Graphic
  file (type pdf)
@@ -1814,7 +1814,7 @@ a-fig-1.pdf used on input line 6058.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [132]
-<431-notes_files/figure-latex/nyfs1_triceps_gg-boxplot-b-fig-1.pdf, id=2173, 46
+<431-notes_files/figure-latex/nyfs1_triceps_gg-boxplot-b-fig-1.pdf, id=2248, 46
 9.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nyfs1_triceps_gg-boxplot-b-fig-1.pdf Graphic
  file (type pdf)
@@ -1827,7 +1827,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [133 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/ny
 fs1_triceps_gg-boxplot-a-fig-1.pdf>]
-<431-notes_files/figure-latex/nyfs1_triceps_gg-boxplot-c-fig-1.pdf, id=2185, 46
+<431-notes_files/figure-latex/nyfs1_triceps_gg-boxplot-c-fig-1.pdf, id=2260, 46
 9.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nyfs1_triceps_gg-boxplot-c-fig-1.pdf Graphic
  file (type pdf)
@@ -1840,7 +1840,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [134 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/ny
 fs1_triceps_gg-boxplot-b-fig-1.pdf>]
-<431-notes_files/figure-latex/nyfs1_triceps_gg-boxplot-d-fig-1.pdf, id=2196, 46
+<431-notes_files/figure-latex/nyfs1_triceps_gg-boxplot-d-fig-1.pdf, id=2271, 46
 9.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nyfs1_triceps_gg-boxplot-d-fig-1.pdf Graphic
  file (type pdf)
@@ -1853,7 +1853,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [135 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/ny
 fs1_triceps_gg-boxplot-c-fig-1.pdf>]
-<431-notes_files/figure-latex/nyfs1_triceps_gg-histgroups-a-fig-1.pdf, id=2206,
+<431-notes_files/figure-latex/nyfs1_triceps_gg-histgroups-a-fig-1.pdf, id=2281,
  469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nyfs1_triceps_gg-histgroups-a-fig-1.pdf Grap
 hic file (type pdf)
@@ -1866,7 +1866,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [136 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/ny
 fs1_triceps_gg-boxplot-d-fig-1.pdf>]
-<431-notes_files/figure-latex/nyfs1_triceps_gg-density-a-fig-1.pdf, id=2216, 46
+<431-notes_files/figure-latex/nyfs1_triceps_gg-density-a-fig-1.pdf, id=2291, 46
 9.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nyfs1_triceps_gg-density-a-fig-1.pdf Graphic
  file (type pdf)
@@ -1879,7 +1879,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [137 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/ny
 fs1_triceps_gg-histgroups-a-fig-1.pdf>]
-<431-notes_files/figure-latex/nyfs1_triceps_gg-density-b-fig-1.pdf, id=2226, 46
+<431-notes_files/figure-latex/nyfs1_triceps_gg-density-b-fig-1.pdf, id=2301, 46
 9.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nyfs1_triceps_gg-density-b-fig-1.pdf Graphic
  file (type pdf)
@@ -1892,7 +1892,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [138 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/ny
 fs1_triceps_gg-density-a-fig-1.pdf>]
-<431-notes_files/figure-latex/nyfs1_triceps_gg-density-c-fig-1.pdf, id=2236, 46
+<431-notes_files/figure-latex/nyfs1_triceps_gg-density-c-fig-1.pdf, id=2311, 46
 9.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nyfs1_triceps_gg-density-c-fig-1.pdf Graphic
  file (type pdf)
@@ -1905,7 +1905,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [139 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/ny
 fs1_triceps_gg-density-b-fig-1.pdf>]
-<431-notes_files/figure-latex/gg-violin1-fig-1.pdf, id=2250, 469.755pt x 325.21
+<431-notes_files/figure-latex/gg-violin1-fig-1.pdf, id=2325, 469.755pt x 325.21
 5pt>
 File: 431-notes_files/figure-latex/gg-violin1-fig-1.pdf Graphic file (type pdf)
 
@@ -1918,7 +1918,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [140 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/ny
 fs1_triceps_gg-density-c-fig-1.pdf>]
-<431-notes_files/figure-latex/gg-violin2-fig-1.pdf, id=2263, 469.755pt x 325.21
+<431-notes_files/figure-latex/gg-violin2-fig-1.pdf, id=2338, 469.755pt x 325.21
 5pt>
 File: 431-notes_files/figure-latex/gg-violin2-fig-1.pdf Graphic file (type pdf)
 
@@ -1944,7 +1944,7 @@ w and at-trac-tive al-ter-na-tive plot is avail-able. This
 
 
 <431-notes_files/figure-latex/nyfs1_ridgelineplot_waistbybmicat-fig-1.pdf, id=2
-275, 469.755pt x 325.215pt>
+350, 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nyfs1_ridgelineplot_waistbybmicat-fig-1.pdf 
 Graphic file (type pdf)
 
@@ -1958,7 +1958,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [142 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/gg
 -violin2-fig-1.pdf>]
 <431-notes_files/figure-latex/nyfs1_ridgelineplot_tricepsbybmicat-fig-1.pdf, id
-=2287, 469.755pt x 325.215pt>
+=2362, 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nyfs1_ridgelineplot_tricepsbybmicat-fig-1.pd
 f Graphic file (type pdf)
 
@@ -1972,8 +1972,8 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [143 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/ny
 fs1_ridgelineplot_waistbybmicat-fig-1.pdf>]
-<431-notes_files/figure-latex/nyfs1_ridgelineplot_agebybmicat-fig-1.pdf, id=229
-7, 469.755pt x 325.215pt>
+<431-notes_files/figure-latex/nyfs1_ridgelineplot_agebybmicat-fig-1.pdf, id=237
+2, 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nyfs1_ridgelineplot_agebybmicat-fig-1.pdf Gr
 aphic file (type pdf)
 <use 431-notes_files/figure-latex/nyfs1_ridgelineplot_agebybmicat-fig-1.pdf>
@@ -1991,7 +1991,7 @@ fs1_ridgelineplot_tricepsbybmicat-fig-1.pdf>] [145 <C:/Users/Thomas/Dropbox/201
 ]
 Chapter 11.
 
-<431-notes_files/figure-latex/nyfs1_scatter_bmi_by_waist1-fig-1.pdf, id=2322, 4
+<431-notes_files/figure-latex/nyfs1_scatter_bmi_by_waist1-fig-1.pdf, id=2397, 4
 69.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nyfs1_scatter_bmi_by_waist1-fig-1.pdf Graphi
 c file (type pdf)
@@ -2002,7 +2002,7 @@ t1-fig-1.pdf used on input line 6322.
 [147 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/ny
 fs1_scatter_bmi_by_waist1-fig-1.pdf>]
 <431-notes_files/figure-latex/nyfs1_scatter_bmi_by_waist2withoutliermarked-fig-
-1.pdf, id=2332, 469.755pt x 325.215pt>
+1.pdf, id=2407, 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nyfs1_scatter_bmi_by_waist2withoutliermarked
 -fig-1.pdf Graphic file (type pdf)
 
@@ -2016,7 +2016,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [148]
 <431-notes_files/figure-latex/nyfs1_scatter_bmi_by_waistwithloess1-fig-1.pdf, i
-d=2342, 469.755pt x 325.215pt>
+d=2417, 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nyfs1_scatter_bmi_by_waistwithloess1-fig-1.p
 df Graphic file (type pdf)
 
@@ -2030,8 +2030,8 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [149 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/ny
 fs1_scatter_bmi_by_waist2withoutliermarked-fig-1.pdf>]
-<431-notes_files/figure-latex/nyfs1_scatter_bmi_by_waistwitlm1-fig-1.pdf, id=23
-53, 469.755pt x 325.215pt>
+<431-notes_files/figure-latex/nyfs1_scatter_bmi_by_waistwitlm1-fig-1.pdf, id=24
+28, 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/nyfs1_scatter_bmi_by_waistwitlm1-fig-1.pdf G
 raphic file (type pdf)
 <use 431-notes_files/figure-latex/nyfs1_scatter_bmi_by_waistwitlm1-fig-1.pdf>
@@ -2045,7 +2045,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 fs1_scatter_bmi_by_waistwithloess1-fig-1.pdf>] [151 <C:/Users/Thomas/Dropbox/20
 17-431/431notes/431-notes_files/figure-latex/nyfs1_scatter_bmi_by_waistwitlm1-f
 ig-1.pdf>] [152]
-<431-notes_files/figure-latex/correx1a-fig-1.pdf, id=2379, 469.755pt x 325.215p
+<431-notes_files/figure-latex/correx1a-fig-1.pdf, id=2454, 469.755pt x 325.215p
 t>
 File: 431-notes_files/figure-latex/correx1a-fig-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/correx1a-fig-1.pdf>
@@ -2056,7 +2056,7 @@ n input line 6643.
 Underfull \vbox (badness 1033) has occurred while \output is active []
 
 [153]
-<431-notes_files/figure-latex/correx1a2-fig-1.pdf, id=2385, 469.755pt x 325.215
+<431-notes_files/figure-latex/correx1a2-fig-1.pdf, id=2460, 469.755pt x 325.215
 pt>
 File: 431-notes_files/figure-latex/correx1a2-fig-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/correx1a2-fig-1.pdf>
@@ -2068,7 +2068,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [154 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/co
 rrex1a-fig-1.pdf>]
-<431-notes_files/figure-latex/correx1a3-fig-1.pdf, id=2395, 469.755pt x 325.215
+<431-notes_files/figure-latex/correx1a3-fig-1.pdf, id=2470, 469.755pt x 325.215
 pt>
 File: 431-notes_files/figure-latex/correx1a3-fig-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/correx1a3-fig-1.pdf>
@@ -2080,7 +2080,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [155 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/co
 rrex1a2-fig-1.pdf>]
-<431-notes_files/figure-latex/correx1b-fig-1.pdf, id=2408, 469.755pt x 325.215p
+<431-notes_files/figure-latex/correx1b-fig-1.pdf, id=2483, 469.755pt x 325.215p
 t>
 File: 431-notes_files/figure-latex/correx1b-fig-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/correx1b-fig-1.pdf>
@@ -2092,7 +2092,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [156 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/co
 rrex1a3-fig-1.pdf>]
-<431-notes_files/figure-latex/correx1b2-fig-1.pdf, id=2422, 469.755pt x 325.215
+<431-notes_files/figure-latex/correx1b2-fig-1.pdf, id=2497, 469.755pt x 325.215
 pt>
 File: 431-notes_files/figure-latex/correx1b2-fig-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/correx1b2-fig-1.pdf>
@@ -2105,7 +2105,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [157 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/co
 rrex1b-fig-1.pdf>] [158 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_fi
 les/figure-latex/correx1b2-fig-1.pdf>]
-<431-notes_files/figure-latex/correx1bc-fig-1.pdf, id=2447, 469.755pt x 325.215
+<431-notes_files/figure-latex/correx1bc-fig-1.pdf, id=2522, 469.755pt x 325.215
 pt>
 File: 431-notes_files/figure-latex/correx1bc-fig-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/correx1bc-fig-1.pdf>
@@ -2113,7 +2113,7 @@ Package pdftex.def Info: 431-notes_files/figure-latex/correx1bc-fig-1.pdf used
 on input line 6761.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-<431-notes_files/figure-latex/correx1-all1-fig-1.pdf, id=2448, 469.755pt x 325.
+<431-notes_files/figure-latex/correx1-all1-fig-1.pdf, id=2523, 469.755pt x 325.
 215pt>
 File: 431-notes_files/figure-latex/correx1-all1-fig-1.pdf Graphic file (type pd
 f)
@@ -2127,7 +2127,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [159 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/co
 rrex1bc-fig-1.pdf>] [160 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_f
 iles/figure-latex/correx1-all1-fig-1.pdf>]
-<431-notes_files/figure-latex/correx2a-fig-1.pdf, id=2474, 469.755pt x 325.215p
+<431-notes_files/figure-latex/correx2a-fig-1.pdf, id=2549, 469.755pt x 325.215p
 t>
 File: 431-notes_files/figure-latex/correx2a-fig-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/correx2a-fig-1.pdf>
@@ -2136,7 +2136,7 @@ n input line 6856.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [161 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/co
 rrex2a-fig-1.pdf>]
-<431-notes_files/figure-latex/correx2b-fig-1.pdf, id=2484, 469.755pt x 325.215p
+<431-notes_files/figure-latex/correx2b-fig-1.pdf, id=2559, 469.755pt x 325.215p
 t>
 File: 431-notes_files/figure-latex/correx2b-fig-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/correx2b-fig-1.pdf>
@@ -2144,7 +2144,7 @@ Package pdftex.def Info: 431-notes_files/figure-latex/correx2b-fig-1.pdf used o
 n input line 6871.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-<431-notes_files/figure-latex/correx2c-fig-1.pdf, id=2485, 469.755pt x 325.215p
+<431-notes_files/figure-latex/correx2c-fig-1.pdf, id=2560, 469.755pt x 325.215p
 t>
 File: 431-notes_files/figure-latex/correx2c-fig-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/correx2c-fig-1.pdf>
@@ -2156,7 +2156,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [162 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/co
 rrex2b-fig-1.pdf>]
-<431-notes_files/figure-latex/correx2d-fig-1.pdf, id=2498, 469.755pt x 325.215p
+<431-notes_files/figure-latex/correx2d-fig-1.pdf, id=2573, 469.755pt x 325.215p
 t>
 File: 431-notes_files/figure-latex/correx2d-fig-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/correx2d-fig-1.pdf>
@@ -2169,7 +2169,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [163 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/co
 rrex2c-fig-1.pdf>] [164 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_fi
 les/figure-latex/correx2d-fig-1.pdf>]
-<431-notes_files/figure-latex/spearex1-fig-1.pdf, id=2522, 469.755pt x 325.215p
+<431-notes_files/figure-latex/spearex1-fig-1.pdf, id=2597, 469.755pt x 325.215p
 t>
 File: 431-notes_files/figure-latex/spearex1-fig-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/spearex1-fig-1.pdf>
@@ -2180,7 +2180,7 @@ n input line 7020.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [165]
-<431-notes_files/figure-latex/spearex2-fig-1.pdf, id=2529, 469.755pt x 325.215p
+<431-notes_files/figure-latex/spearex2-fig-1.pdf, id=2604, 469.755pt x 325.215p
 t>
 File: 431-notes_files/figure-latex/spearex2-fig-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/spearex2-fig-1.pdf>
@@ -2192,7 +2192,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [166 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/sp
 earex1-fig-1.pdf>]
-<431-notes_files/figure-latex/spearex3-fig-1.pdf, id=2540, 469.755pt x 325.215p
+<431-notes_files/figure-latex/spearex3-fig-1.pdf, id=2615, 469.755pt x 325.215p
 t>
 File: 431-notes_files/figure-latex/spearex3-fig-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/spearex3-fig-1.pdf>
@@ -2204,7 +2204,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [167 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/sp
 earex2-fig-1.pdf>]
-<431-notes_files/figure-latex/spearex4-fig-1.pdf, id=2551, 469.755pt x 325.215p
+<431-notes_files/figure-latex/spearex4-fig-1.pdf, id=2626, 469.755pt x 325.215p
 t>
 File: 431-notes_files/figure-latex/spearex4-fig-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/spearex4-fig-1.pdf>
@@ -2220,13 +2220,13 @@ les/figure-latex/spearex4-fig-1.pdf>] [170
 
 ]
 Chapter 12.
-<figures/crabanat.jpg, id=2578, 722.7pt x 543.02875pt>
+<figures/crabanat.jpg, id=2653, 722.7pt x 543.02875pt>
 File: figures/crabanat.jpg Graphic file (type jpg)
 <use figures/crabanat.jpg>
 Package pdftex.def Info: figures/crabanat.jpg used on input line 7115.
 (pdftex.def)             Requested size: 328.82901pt x 247.07846pt.
 [171] [172 <C:/Users/Thomas/Dropbox/2017-431/431notes/figures/crabanat.jpg>]
-<431-notes_files/figure-latex/crabsscatter1-fig-1.pdf, id=2593, 469.755pt x 325
+<431-notes_files/figure-latex/crabsscatter1-fig-1.pdf, id=2668, 469.755pt x 325
 .215pt>
 File: 431-notes_files/figure-latex/crabsscatter1-fig-1.pdf Graphic file (type p
 df)
@@ -2235,7 +2235,7 @@ Package pdftex.def Info: 431-notes_files/figure-latex/crabsscatter1-fig-1.pdf u
 sed on input line 7223.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-<431-notes_files/figure-latex/crabsscatter2-fig-1.pdf, id=2594, 469.755pt x 325
+<431-notes_files/figure-latex/crabsscatter2-fig-1.pdf, id=2669, 469.755pt x 325
 .215pt>
 File: 431-notes_files/figure-latex/crabsscatter2-fig-1.pdf Graphic file (type p
 df)
@@ -2248,7 +2248,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [173 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/cr
 absscatter1-fig-1.pdf>]
-<431-notes_files/figure-latex/crabsscatter4-fig-1.pdf, id=2604, 469.755pt x 325
+<431-notes_files/figure-latex/crabsscatter4-fig-1.pdf, id=2679, 469.755pt x 325
 .215pt>
 File: 431-notes_files/figure-latex/crabsscatter4-fig-1.pdf Graphic file (type p
 df)
@@ -2261,7 +2261,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [174 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/cr
 absscatter2-fig-1.pdf>]
-<431-notes_files/figure-latex/crabsscatter5-fig-1.pdf, id=2614, 469.755pt x 325
+<431-notes_files/figure-latex/crabsscatter5-fig-1.pdf, id=2689, 469.755pt x 325
 .215pt>
 File: 431-notes_files/figure-latex/crabsscatter5-fig-1.pdf Graphic file (type p
 df)
@@ -2274,7 +2274,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [175 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/cr
 absscatter4-fig-1.pdf>]
-<431-notes_files/figure-latex/crabsscatter6-fig-1.pdf, id=2625, 469.755pt x 325
+<431-notes_files/figure-latex/crabsscatter6-fig-1.pdf, id=2700, 469.755pt x 325
 .215pt>
 File: 431-notes_files/figure-latex/crabsscatter6-fig-1.pdf Graphic file (type p
 df)
@@ -2287,7 +2287,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [176 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/cr
 absscatter5-fig-1.pdf>]
-<431-notes_files/figure-latex/crabsscatter7-fig-1.pdf, id=2639, 469.755pt x 325
+<431-notes_files/figure-latex/crabsscatter7-fig-1.pdf, id=2714, 469.755pt x 325
 .215pt>
 File: 431-notes_files/figure-latex/crabsscatter7-fig-1.pdf Graphic file (type p
 df)
@@ -2300,7 +2300,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [177 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/cr
 absscatter6-fig-1.pdf>]
-<431-notes_files/figure-latex/crabsscatter8-fig-1.pdf, id=2649, 469.755pt x 325
+<431-notes_files/figure-latex/crabsscatter8-fig-1.pdf, id=2724, 469.755pt x 325
 .215pt>
 File: 431-notes_files/figure-latex/crabsscatter8-fig-1.pdf Graphic file (type p
 df)
@@ -2314,7 +2314,7 @@ Underfull \vbox (badness 8132) has occurred while \output is active []
 [178 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/cr
 absscatter7-fig-1.pdf>] [179 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-not
 es_files/figure-latex/crabsscatter8-fig-1.pdf>]
-<431-notes_files/figure-latex/crabs_loglog_model1-fig-1.pdf, id=2676, 469.755pt
+<431-notes_files/figure-latex/crabs_loglog_model1-fig-1.pdf, id=2751, 469.755pt
  x 325.215pt>
 File: 431-notes_files/figure-latex/crabs_loglog_model1-fig-1.pdf Graphic file (
 type pdf)
@@ -2324,7 +2324,7 @@ Package pdftex.def Info: 431-notes_files/figure-latex/crabs_loglog_model1-fig-1
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [180 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/cr
 abs_loglog_model1-fig-1.pdf>] [181] [182]
-<431-notes_files/figure-latex/crabsmodelcompare-fig-1.pdf, id=2702, 469.755pt x
+<431-notes_files/figure-latex/crabsmodelcompare-fig-1.pdf, id=2777, 469.755pt x
  325.215pt>
 File: 431-notes_files/figure-latex/crabsmodelcompare-fig-1.pdf Graphic file (ty
 pe pdf)
@@ -2336,7 +2336,7 @@ df used on input line 7675.
 absmodelcompare-fig-1.pdf>] [184]
 Chapter 13.
 
-Underfull \hbox (badness 10000) in paragraph at lines 7698--7698
+Underfull \hbox (badness 10000) in paragraph at lines 7697--7697
 [][][]\T1/lmr/m/n/8 (+20) For more on the WCGS, you might look at []$http : / /
  www . epi . umn . edu / cvdepi / study-[]synopsis /
  []
@@ -2344,47 +2344,47 @@ Underfull \hbox (badness 10000) in paragraph at lines 7698--7698
 [185
 
 ] [186] [187]
-<431-notes_files/figure-latex/wcgs_sbphistwithnormal-fig-1.pdf, id=2739, 469.75
+<431-notes_files/figure-latex/wcgs_sbphistwithnormal-fig-1.pdf, id=2814, 469.75
 5pt x 325.215pt>
 File: 431-notes_files/figure-latex/wcgs_sbphistwithnormal-fig-1.pdf Graphic fil
 e (type pdf)
 <use 431-notes_files/figure-latex/wcgs_sbphistwithnormal-fig-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/wcgs_sbphistwithnormal-fi
-g-1.pdf used on input line 7905.
+g-1.pdf used on input line 7904.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [188 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/wc
 gs_sbphistwithnormal-fig-1.pdf>]
-<431-notes_files/figure-latex/wcgs_lnsbphistwithnormal-fig-1.pdf, id=2749, 469.
+<431-notes_files/figure-latex/wcgs_lnsbphistwithnormal-fig-1.pdf, id=2824, 469.
 755pt x 325.215pt>
 File: 431-notes_files/figure-latex/wcgs_lnsbphistwithnormal-fig-1.pdf Graphic f
 ile (type pdf)
 <use 431-notes_files/figure-latex/wcgs_lnsbphistwithnormal-fig-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/wcgs_lnsbphistwithnormal-
-fig-1.pdf used on input line 7927.
+fig-1.pdf used on input line 7926.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 <431-notes_files/figure-latex/wcgs_qqplotsforsbpandlnsbpfromggplot-fig-1.pdf, i
-d=2750, 469.755pt x 325.215pt>
+d=2825, 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/wcgs_qqplotsforsbpandlnsbpfromggplot-fig-1.p
 df Graphic file (type pdf)
 
 <use 431-notes_files/figure-latex/wcgs_qqplotsforsbpandlnsbpfromggplot-fig-1.pd
 f>
 Package pdftex.def Info: 431-notes_files/figure-latex/wcgs_qqplotsforsbpandlnsb
-pfromggplot-fig-1.pdf used on input line 7945.
+pfromggplot-fig-1.pdf used on input line 7944.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [189 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/wc
 gs_lnsbphistwithnormal-fig-1.pdf>]
-<431-notes_files/figure-latex/wcgs_boxplotofsbp_alone-1.pdf, id=2760, 469.755pt
+<431-notes_files/figure-latex/wcgs_boxplotofsbp_alone-1.pdf, id=2835, 469.755pt
  x 325.215pt>
 File: 431-notes_files/figure-latex/wcgs_boxplotofsbp_alone-1.pdf Graphic file (
 type pdf)
 <use 431-notes_files/figure-latex/wcgs_boxplotofsbp_alone-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/wcgs_boxplotofsbp_alone-1
-.pdf used on input line 7968.
+.pdf used on input line 7967.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -2392,35 +2392,35 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [190 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/wc
 gs_qqplotsforsbpandlnsbpfromggplot-fig-1.pdf>] [191 <C:/Users/Thomas/Dropbox/20
 17-431/431notes/431-notes_files/figure-latex/wcgs_boxplotofsbp_alone-1.pdf>]
-<431-notes_files/figure-latex/wcgssbpbyweightbox-fig-1.pdf, id=2779, 469.755pt 
+<431-notes_files/figure-latex/wcgssbpbyweightbox-fig-1.pdf, id=2854, 469.755pt 
 x 325.215pt>
 File: 431-notes_files/figure-latex/wcgssbpbyweightbox-fig-1.pdf Graphic file (t
 ype pdf)
 <use 431-notes_files/figure-latex/wcgssbpbyweightbox-fig-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/wcgssbpbyweightbox-fig-1.
-pdf used on input line 8020.
+pdf used on input line 8019.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [192 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/wc
 gssbpbyweightbox-fig-1.pdf>]
-<431-notes_files/figure-latex/wcgssbpbyweightboxrevised-fig-1.pdf, id=2790, 469
+<431-notes_files/figure-latex/wcgssbpbyweightboxrevised-fig-1.pdf, id=2865, 469
 .755pt x 325.215pt>
 File: 431-notes_files/figure-latex/wcgssbpbyweightboxrevised-fig-1.pdf Graphic 
 file (type pdf)
 <use 431-notes_files/figure-latex/wcgssbpbyweightboxrevised-fig-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/wcgssbpbyweightboxrevised
--fig-1.pdf used on input line 8107.
+-fig-1.pdf used on input line 8106.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [193]
-<431-notes_files/figure-latex/wcgs_sbp_by_weight_f_ridgelineplot-1.pdf, id=2797
+<431-notes_files/figure-latex/wcgs_sbp_by_weight_f_ridgelineplot-1.pdf, id=2872
 , 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/wcgs_sbp_by_weight_f_ridgelineplot-1.pdf Gra
 phic file (type pdf)
 <use 431-notes_files/figure-latex/wcgs_sbp_by_weight_f_ridgelineplot-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/wcgs_sbp_by_weight_f_ridg
-elineplot-1.pdf used on input line 8129.
+elineplot-1.pdf used on input line 8128.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -2428,60 +2428,60 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [194 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/wc
 gssbpbyweightboxrevised-fig-1.pdf>] [195 <C:/Users/Thomas/Dropbox/2017-431/431n
 otes/431-notes_files/figure-latex/wcgs_sbp_by_weight_f_ridgelineplot-1.pdf>]
-<431-notes_files/figure-latex/wcgs_scatter_sbpbyweight-fig-1.pdf, id=2816, 469.
+<431-notes_files/figure-latex/wcgs_scatter_sbpbyweight-fig-1.pdf, id=2891, 469.
 755pt x 325.215pt>
 File: 431-notes_files/figure-latex/wcgs_scatter_sbpbyweight-fig-1.pdf Graphic f
 ile (type pdf)
 <use 431-notes_files/figure-latex/wcgs_scatter_sbpbyweight-fig-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/wcgs_scatter_sbpbyweight-
-fig-1.pdf used on input line 8174.
+fig-1.pdf used on input line 8173.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [196 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/wc
 gs_scatter_sbpbyweight-fig-1.pdf>]
 <431-notes_files/figure-latex/wcgs_scatter_sbpbyweightbyarcus_facets-fig-1.pdf,
- id=2829, 469.755pt x 325.215pt>
+ id=2904, 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/wcgs_scatter_sbpbyweightbyarcus_facets-fig-1
 .pdf Graphic file (type pdf)
 
 <use 431-notes_files/figure-latex/wcgs_scatter_sbpbyweightbyarcus_facets-fig-1.
 pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/wcgs_scatter_sbpbyweightb
-yarcus_facets-fig-1.pdf used on input line 8275.
+yarcus_facets-fig-1.pdf used on input line 8274.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [197] [198 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-la
 tex/wcgs_scatter_sbpbyweightbyarcus_facets-fig-1.pdf>] [199] [200]
-<431-notes_files/figure-latex/wcgsweightandsbpbybehavior-fig-1.pdf, id=2855, 46
+<431-notes_files/figure-latex/wcgsweightandsbpbybehavior-fig-1.pdf, id=2930, 46
 9.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/wcgsweightandsbpbybehavior-fig-1.pdf Graphic
  file (type pdf)
 <use 431-notes_files/figure-latex/wcgsweightandsbpbybehavior-fig-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/wcgsweightandsbpbybehavio
-r-fig-1.pdf used on input line 8477.
+r-fig-1.pdf used on input line 8476.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-<431-notes_files/figure-latex/scattermata-fig-1.pdf, id=2856, 469.755pt x 433.6
+<431-notes_files/figure-latex/scattermata-fig-1.pdf, id=2931, 469.755pt x 433.6
 2pt>
 File: 431-notes_files/figure-latex/scattermata-fig-1.pdf Graphic file (type pdf
 )
 <use 431-notes_files/figure-latex/scattermata-fig-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/scattermata-fig-1.pdf use
-d on input line 8493.
+d on input line 8492.
 (pdftex.def)             Requested size: 469.75386pt x 433.61894pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [201 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/wc
 gsweightandsbpbybehavior-fig-1.pdf>]
-<431-notes_files/figure-latex/scattermatcres-fig-1.pdf, id=2867, 469.755pt x 32
+<431-notes_files/figure-latex/scattermatcres-fig-1.pdf, id=2942, 469.755pt x 32
 5.215pt>
 File: 431-notes_files/figure-latex/scattermatcres-fig-1.pdf Graphic file (type 
 pdf)
 <use 431-notes_files/figure-latex/scattermatcres-fig-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/scattermatcres-fig-1.pdf 
-used on input line 8509.
+used on input line 8508.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -2489,35 +2489,35 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [202 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/sc
 attermata-fig-1.pdf>] [203 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes
 _files/figure-latex/scattermatcres-fig-1.pdf>]
-<431-notes_files/figure-latex/wcgsscattermatrixaugmented-fig-1.pdf, id=2892, 46
+<431-notes_files/figure-latex/wcgsscattermatrixaugmented-fig-1.pdf, id=2967, 46
 9.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/wcgsscattermatrixaugmented-fig-1.pdf Graphic
  file (type pdf)
 <use 431-notes_files/figure-latex/wcgsscattermatrixaugmented-fig-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/wcgsscattermatrixaugmente
-d-fig-1.pdf used on input line 8554.
+d-fig-1.pdf used on input line 8553.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-<431-notes_files/figure-latex/GGally correlation matrix-1.pdf, id=2893, 469.755
+<431-notes_files/figure-latex/GGally correlation matrix-1.pdf, id=2968, 469.755
 pt x 325.215pt>
 File: 431-notes_files/figure-latex/GGally correlation matrix-1.pdf Graphic file
  (type pdf)
 <use 431-notes_files/figure-latex/GGally correlation matrix-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/GGally correlation matrix
--1.pdf used on input line 8571.
+-1.pdf used on input line 8570.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [204 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/wc
 gsscattermatrixaugmented-fig-1.pdf>]
-<431-notes_files/figure-latex/ggallywcgs-fig-1.pdf, id=2905, 469.755pt x 325.21
+<431-notes_files/figure-latex/ggallywcgs-fig-1.pdf, id=2980, 469.755pt x 325.21
 5pt>
 File: 431-notes_files/figure-latex/ggallywcgs-fig-1.pdf Graphic file (type pdf)
 
 <use 431-notes_files/figure-latex/ggallywcgs-fig-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/ggallywcgs-fig-1.pdf used
- on input line 8584.
+ on input line 8583.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -2539,13 +2539,13 @@ Chapter 15.
 ]
 Chapter 16.
 [215] [216]
-<431-notes_files/figure-latex/serzinckeyplots-fig-1.pdf, id=2980, 469.755pt x 3
+<431-notes_files/figure-latex/serzinckeyplots-fig-1.pdf, id=3055, 469.755pt x 3
 61.35pt>
 File: 431-notes_files/figure-latex/serzinckeyplots-fig-1.pdf Graphic file (type
  pdf)
 <use 431-notes_files/figure-latex/serzinckeyplots-fig-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/serzinckeyplots-fig-1.pdf
- used on input line 9041.
+ used on input line 9040.
 (pdftex.def)             Requested size: 469.75386pt x 361.34912pt.
 [217 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/se
 rzinckeyplots-fig-1.pdf>] [218]
@@ -2553,45 +2553,45 @@ Chapter 17.
 [219
 
 ] [220] [221]
-<431-notes_files/figure-latex/bloodleaddifferences-keyplots-fig-1.pdf, id=3026,
+<431-notes_files/figure-latex/bloodleaddifferences-keyplots-fig-1.pdf, id=3101,
  469.755pt x 361.35pt>
 File: 431-notes_files/figure-latex/bloodleaddifferences-keyplots-fig-1.pdf Grap
 hic file (type pdf)
 <use 431-notes_files/figure-latex/bloodleaddifferences-keyplots-fig-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/bloodleaddifferences-keyp
-lots-fig-1.pdf used on input line 9571.
+lots-fig-1.pdf used on input line 9570.
 (pdftex.def)             Requested size: 469.75386pt x 361.34912pt.
 
 Underfull \vbox (badness 3815) has occurred while \output is active []
 
 [222 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/bl
 oodleaddifferences-keyplots-fig-1.pdf>]
-<431-notes_files/figure-latex/scatter-bloodleaddiffs-fig-1.pdf, id=3038, 469.75
+<431-notes_files/figure-latex/scatter-bloodleaddiffs-fig-1.pdf, id=3113, 469.75
 5pt x 325.215pt>
 File: 431-notes_files/figure-latex/scatter-bloodleaddiffs-fig-1.pdf Graphic fil
 e (type pdf)
 <use 431-notes_files/figure-latex/scatter-bloodleaddiffs-fig-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/scatter-bloodleaddiffs-fi
-g-1.pdf used on input line 9665.
+g-1.pdf used on input line 9664.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [223 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/sc
 atter-bloodleaddiffs-fig-1.pdf>]
-<431-notes_files/figure-latex/blead_tidied_boxplot-1.pdf, id=3051, 469.755pt x 
+<431-notes_files/figure-latex/blead_tidied_boxplot-1.pdf, id=3126, 469.755pt x 
 325.215pt>
 File: 431-notes_files/figure-latex/blead_tidied_boxplot-1.pdf Graphic file (typ
 e pdf)
 <use 431-notes_files/figure-latex/blead_tidied_boxplot-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/blead_tidied_boxplot-1.pd
-f used on input line 9751.
+f used on input line 9750.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [224]
-<431-notes_files/figure-latex/blead_tidied_ridgelineplot-1.pdf, id=3056, 469.75
+<431-notes_files/figure-latex/blead_tidied_ridgelineplot-1.pdf, id=3131, 469.75
 5pt x 325.215pt>
 File: 431-notes_files/figure-latex/blead_tidied_ridgelineplot-1.pdf Graphic fil
 e (type pdf)
 <use 431-notes_files/figure-latex/blead_tidied_ridgelineplot-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/blead_tidied_ridgelineplo
-t-1.pdf used on input line 9771.
+t-1.pdf used on input line 9770.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -2609,22 +2609,22 @@ NT SAMPLES: IBUPROFEN IN SEPSIS TRIAL
  []
 
 [228] [229]
-<431-notes_files/figure-latex/sepsis_temp_drop_by_treat_boxplot-1.pdf, id=3104,
+<431-notes_files/figure-latex/sepsis_temp_drop_by_treat_boxplot-1.pdf, id=3179,
  469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/sepsis_temp_drop_by_treat_boxplot-1.pdf Grap
 hic file (type pdf)
 <use 431-notes_files/figure-latex/sepsis_temp_drop_by_treat_boxplot-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/sepsis_temp_drop_by_treat
-_boxplot-1.pdf used on input line 10077.
+_boxplot-1.pdf used on input line 10076.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 <431-notes_files/figure-latex/sepsis_temp_drop_by_treat_histograms-1.pdf, id=31
-05, 469.755pt x 325.215pt>
+80, 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/sepsis_temp_drop_by_treat_histograms-1.pdf G
 raphic file (type pdf)
 <use 431-notes_files/figure-latex/sepsis_temp_drop_by_treat_histograms-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/sepsis_temp_drop_by_treat
-_histograms-1.pdf used on input line 10093.
+_histograms-1.pdf used on input line 10092.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -2638,14 +2638,14 @@ NT SAMPLES: IBUPROFEN IN SEPSIS TRIAL
 [230 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/se
 psis_temp_drop_by_treat_boxplot-1.pdf>]
 <431-notes_files/figure-latex/sepsis_temp_drop_by_treat_qqplot_original_fig-1.p
-df, id=3115, 469.755pt x 325.215pt>
+df, id=3190, 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/sepsis_temp_drop_by_treat_qqplot_original_fi
 g-1.pdf Graphic file (type pdf)
 
 <use 431-notes_files/figure-latex/sepsis_temp_drop_by_treat_qqplot_original_fig
 -1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/sepsis_temp_drop_by_treat
-_qqplot_original_fig-1.pdf used on input line 10125.
+_qqplot_original_fig-1.pdf used on input line 10124.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -2653,14 +2653,14 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [231 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/se
 psis_temp_drop_by_treat_histograms-1.pdf>]
 <431-notes_files/figure-latex/sepsis_temp_drop_by_treat_ridgelineplot-1.pdf, id
-=3125, 469.755pt x 325.215pt>
+=3200, 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/sepsis_temp_drop_by_treat_ridgelineplot-1.pd
 f Graphic file (type pdf)
 
 <use 431-notes_files/figure-latex/sepsis_temp_drop_by_treat_ridgelineplot-1.pdf
 >
 Package pdftex.def Info: 431-notes_files/figure-latex/sepsis_temp_drop_by_treat
-_ridgelineplot-1.pdf used on input line 10144.
+_ridgelineplot-1.pdf used on input line 10143.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -2686,17 +2686,17 @@ NT SAMPLES: IBUPROFEN IN SEPSIS TRIAL
 Chapter 19.
 [235] [236]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 10339.
+(Font)              <14.4> on input line 10338.
 
 <431-notes_files/figure-latex/plot-6-t-distributions-and-standard-normal-fig-1.
-pdf, id=3164, 469.755pt x 325.215pt>
+pdf, id=3239, 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/plot-6-t-distributions-and-standard-normal-f
 ig-1.pdf Graphic file (type pdf)
 
 <use 431-notes_files/figure-latex/plot-6-t-distributions-and-standard-normal-fi
 g-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/plot-6-t-distributions-an
-d-standard-normal-fig-1.pdf used on input line 10394.
+d-standard-normal-fig-1.pdf used on input line 10393.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 3568) has occurred while \output is active []
@@ -2776,14 +2776,14 @@ Chapter 24.
 
 ]
 <431-notes_files/figure-latex/bloodleaddifferences-keyplots-again-fig-1.pdf, id
-=3484, 469.755pt x 361.35pt>
+=3559, 469.755pt x 361.35pt>
 File: 431-notes_files/figure-latex/bloodleaddifferences-keyplots-again-fig-1.pd
 f Graphic file (type pdf)
 
 <use 431-notes_files/figure-latex/bloodleaddifferences-keyplots-again-fig-1.pdf
 >
 Package pdftex.def Info: 431-notes_files/figure-latex/bloodleaddifferences-keyp
-lots-again-fig-1.pdf used on input line 13599.
+lots-again-fig-1.pdf used on input line 13598.
 (pdftex.def)             Requested size: 469.75386pt x 361.34912pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -2801,18 +2801,18 @@ ED DIFFERENCES YIELDS A PAIRED T TEST. \T1/lmr/m/n/10 281
 Chapter 25.
 [287]
 <431-notes_files/figure-latex/sepsis_temp_drop_by_treat_boxplot_again_fig-1.pdf
-, id=3583, 469.755pt x 325.215pt>
+, id=3658, 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/sepsis_temp_drop_by_treat_boxplot_again_fig-
 1.pdf Graphic file (type pdf)
 
 <use 431-notes_files/figure-latex/sepsis_temp_drop_by_treat_boxplot_again_fig-1
 .pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/sepsis_temp_drop_by_treat
-_boxplot_again_fig-1.pdf used on input line 14260.
+_boxplot_again_fig-1.pdf used on input line 14259.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 <431-notes_files/figure-latex/sepsis_temp_drop_by_treat_qqplot_repeat_fig-1.pdf
-, id=3584, 469.755pt x 325.215pt>
+, id=3659, 469.755pt x 325.215pt>
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [288]
@@ -2822,7 +2822,7 @@ File: 431-notes_files/figure-latex/sepsis_temp_drop_by_treat_qqplot_repeat_fig-
 <use 431-notes_files/figure-latex/sepsis_temp_drop_by_treat_qqplot_repeat_fig-1
 .pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/sepsis_temp_drop_by_treat
-_qqplot_repeat_fig-1.pdf used on input line 14262.
+_qqplot_repeat_fig-1.pdf used on input line 14261.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -2835,29 +2835,188 @@ t_repeat_fig-1.pdf>] [291] [292] [293] [294] [295] [296] [297] [298
 ]
 Chapter 26.
 [299] [300] [301] [302]
-Underfull \hbox (badness 10000) in paragraph at lines 15286--15289
+Underfull \hbox (badness 10000) in paragraph at lines 15285--15288
 
  []
 
-[303] [304] [305]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 15571.
-[306] [307]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 15571.
-(C:\Users\Thomas\Dropbox\2017-431\431notes\431-notes.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 15571.
+[303] [304] [305] [306
 
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 15571
+]
+Chapter 27.
+[307] [308]
+<431-notes_files/figure-latex/battery 1-1.pdf, id=3831, 469.755pt x 325.215pt>
+File: 431-notes_files/figure-latex/battery 1-1.pdf Graphic file (type pdf)
+<use 431-notes_files/figure-latex/battery 1-1.pdf>
+Package pdftex.def Info: 431-notes_files/figure-latex/battery 1-1.pdf used on i
+nput line 15579.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+<431-notes_files/figure-latex/histograms for battery-1.pdf, id=3832, 469.755pt 
+x 252.945pt>
+File: 431-notes_files/figure-latex/histograms for battery-1.pdf Graphic file (t
+ype pdf)
+<use 431-notes_files/figure-latex/histograms for battery-1.pdf>
+Package pdftex.def Info: 431-notes_files/figure-latex/histograms for battery-1.
+pdf used on input line 15594.
+(pdftex.def)             Requested size: 469.75386pt x 252.94438pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[309 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/ba
+ttery 1-1.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[310 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/hi
+stograms for battery-1.pdf>]
+Overfull \hbox (11.94617pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10 27.2.  THE BREAKFAST STUDY: DOES OAT BRAN CEREAL LOWER SERUM LD
+L CHOLESTEROL? \T1/lmr/m/n/10 311
+ []
+
+[311]
+<431-notes_files/figure-latex/paired diffs breakfast-1.pdf, id=3869, 469.755pt 
+x 289.08pt>
+File: 431-notes_files/figure-latex/paired diffs breakfast-1.pdf Graphic file (t
+ype pdf)
+<use 431-notes_files/figure-latex/paired diffs breakfast-1.pdf>
+Package pdftex.def Info: 431-notes_files/figure-latex/paired diffs breakfast-1.
+pdf used on input line 15767.
+(pdftex.def)             Requested size: 469.75386pt x 289.07928pt.
+
+Underfull \vbox (badness 5908) has occurred while \output is active []
+
+[312] [313 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-la
+tex/paired diffs breakfast-1.pdf>] [314] [315] [316
+
+]
+Chapter 28.
+[317]
+<431-notes_files/figure-latex/boxplot_nyfs2a-1.pdf, id=3911, 469.755pt x 325.21
+5pt>
+File: 431-notes_files/figure-latex/boxplot_nyfs2a-1.pdf Graphic file (type pdf)
+
+<use 431-notes_files/figure-latex/boxplot_nyfs2a-1.pdf>
+Package pdftex.def Info: 431-notes_files/figure-latex/boxplot_nyfs2a-1.pdf used
+ on input line 16038.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[318]
+<431-notes_files/figure-latex/histograms_nyfs2a-1.pdf, id=3918, 469.755pt x 289
+.08pt>
+File: 431-notes_files/figure-latex/histograms_nyfs2a-1.pdf Graphic file (type p
+df)
+<use 431-notes_files/figure-latex/histograms_nyfs2a-1.pdf>
+Package pdftex.def Info: 431-notes_files/figure-latex/histograms_nyfs2a-1.pdf u
+sed on input line 16052.
+(pdftex.def)             Requested size: 469.75386pt x 289.07928pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[319 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/bo
+xplot_nyfs2a-1.pdf>]
+<431-notes_files/figure-latex/nyfs2a_ridgelineplot-1.pdf, id=3935, 469.755pt x 
+325.215pt>
+File: 431-notes_files/figure-latex/nyfs2a_ridgelineplot-1.pdf Graphic file (typ
+e pdf)
+<use 431-notes_files/figure-latex/nyfs2a_ridgelineplot-1.pdf>
+Package pdftex.def Info: 431-notes_files/figure-latex/nyfs2a_ridgelineplot-1.pd
+f used on input line 16068.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[320 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/hi
+stograms_nyfs2a-1.pdf>] [321 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-not
+es_files/figure-latex/nyfs2a_ridgelineplot-1.pdf>] [322] [323] [324] [325] [326
+]
+Overfull \hbox (84.23714pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10 28.7.  THE REGRESSION APPROACH TO COMPARE POPULATION MEANS BASE
+D ON INDEPENDENT SAMPLES \T1/lmr/m/n/10 327
+ []
+
+[327] [328]
+<431-notes_files/figure-latex/hsd_plot_nyfs2a-1.pdf, id=4012, 469.755pt x 433.6
+2pt>
+File: 431-notes_files/figure-latex/hsd_plot_nyfs2a-1.pdf Graphic file (type pdf
+)
+<use 431-notes_files/figure-latex/hsd_plot_nyfs2a-1.pdf>
+Package pdftex.def Info: 431-notes_files/figure-latex/hsd_plot_nyfs2a-1.pdf use
+d on input line 16828.
+(pdftex.def)             Requested size: 469.75386pt x 433.61894pt.
+
+Underfull \vbox (badness 1048) has occurred while \output is active []
+
+[329]
+<431-notes_files/figure-latex/revised plot hsd for glucose-1.pdf, id=4021, 469.
+755pt x 325.215pt>
+File: 431-notes_files/figure-latex/revised plot hsd for glucose-1.pdf Graphic f
+ile (type pdf)
+<use 431-notes_files/figure-latex/revised plot hsd for glucose-1.pdf>
+Package pdftex.def Info: 431-notes_files/figure-latex/revised plot hsd for gluc
+ose-1.pdf used on input line 16846.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[330 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/hs
+d_plot_nyfs2a-1.pdf>]
+<431-notes_files/figure-latex/unnamed-chunk-37-1.pdf, id=4032, 469.755pt x 325.
+215pt>
+File: 431-notes_files/figure-latex/unnamed-chunk-37-1.pdf Graphic file (type pd
+f)
+<use 431-notes_files/figure-latex/unnamed-chunk-37-1.pdf>
+Package pdftex.def Info: 431-notes_files/figure-latex/unnamed-chunk-37-1.pdf us
+ed on input line 16877.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[331 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/re
+vised plot hsd for glucose-1.pdf>]
+<431-notes_files/figure-latex/unnamed-chunk-38-1.pdf, id=4044, 469.755pt x 325.
+215pt>
+File: 431-notes_files/figure-latex/unnamed-chunk-38-1.pdf Graphic file (type pd
+f)
+<use 431-notes_files/figure-latex/unnamed-chunk-38-1.pdf>
+Package pdftex.def Info: 431-notes_files/figure-latex/unnamed-chunk-38-1.pdf us
+ed on input line 16892.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[332 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/un
+named-chunk-37-1.pdf>] [333 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-note
+s_files/figure-latex/unnamed-chunk-38-1.pdf>]
+<431-notes_files/figure-latex/unnamed-chunk-41-1.pdf, id=4070, 469.755pt x 325.
+215pt>
+File: 431-notes_files/figure-latex/unnamed-chunk-41-1.pdf Graphic file (type pd
+f)
+<use 431-notes_files/figure-latex/unnamed-chunk-41-1.pdf>
+Package pdftex.def Info: 431-notes_files/figure-latex/unnamed-chunk-41-1.pdf us
+ed on input line 16952.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+[334 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/un
+named-chunk-41-1.pdf>] [335]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 17104.
+[336]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 17104.
+(C:\Users\Thomas\Dropbox\2017-431\431notes\431-notes.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 17104.
+
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 17104
 .
 Package rerunfilecheck Info: File `431-notes.out' has not changed.
-(rerunfilecheck)             Checksum: 766B6BC51A20F12A586A740015339D9D;52033.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 15571.
+(rerunfilecheck)             Checksum: 1CC515072AEFB720BC67DC14A2C4A419;56657.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 17104.
  ) 
 Here is how much of TeX's memory you used:
- 15245 strings out of 493705
- 253537 string characters out of 3142148
- 336720 words of memory out of 3000000
- 17239 multiletter control sequences out of 15000+200000
- 107899 words of font info for 179 fonts, out of 3000000 for 9000
+ 15464 strings out of 493705
+ 260060 string characters out of 3142148
+ 341533 words of memory out of 3000000
+ 17358 multiletter control sequences out of 15000+200000
+ 112300 words of font info for 181 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  33i,9n,35p,617b,463s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Progr
@@ -2888,9 +3047,9 @@ es (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt10.pfb><C:/Program Files (x86)/Mi
 KTeX 2.9/fonts/type1/public/lm/lmtt8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
 ts/type1/public/lm/lmtti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/p
 ublic/lm/lmtto10.pfb>
-Output written on 431-notes.pdf (307 pages, 8865338 bytes).
+Output written on 431-notes.pdf (336 pages, 9072208 bytes).
 PDF statistics:
- 4051 PDF objects out of 4296 (max. 8388607)
- 924 named destinations out of 1000 (max. 500000)
- 20731 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 4417 PDF objects out of 5155 (max. 8388607)
+ 1022 named destinations out of 1200 (max. 500000)
+ 20906 words of extra memory for PDF output out of 24883 (max. 10000000)
 

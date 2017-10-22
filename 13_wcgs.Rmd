@@ -1,4 +1,4 @@
-# The Western Collaborative Group Study
+# The Western Collaborative Group Study {#WCGS-Study}
 
 ## The Western Collaborative Group Study (`wcgs`) data set
 

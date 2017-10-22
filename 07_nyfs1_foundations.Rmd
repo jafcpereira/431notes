@@ -1,4 +1,4 @@
-# The National Youth Fitness Survey (`nyfs1`)
+# The National Youth Fitness Survey (`nyfs1`) {#NYFS-Study}
 
 The `nyfs1.csv` data file comes from the [2012 National Youth Fitness Survey](http://www.cdc.gov/Nchs/Nnyfs.htm). 
 
