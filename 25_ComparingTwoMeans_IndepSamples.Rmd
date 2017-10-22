@@ -1,0 +1,325 @@
+# Comparing Two Means Using Independent Samples
+
+In this section, we apply several methods of testing the null hypothesis that two populations have the same distribution of a quantitative variable, based on independent samples of data. In particular, we'll focus on the comparison of means using independent sample t tests,  rank sum tests, and bootstrap approaches. Our example comes from the Ibuprofen in Sepsis trial, which was introduced in Section \@ref(Sepsis-RCT) and then further developed in Section \@ref(CI-Indep-Samples)
+
+In that trial, 300 patients meeting specific criteria (including elevated temperature) for a diagnosis of sepsis were randomly assigned to either the Ibuprofen group (150 patients) and 150 to the Placebo group. Group information (our exposure) is contained in the `treat` variable. The key outcome of interest to us was `temp_drop`, the change in body temperature (in $^{\circ}$C) from baseline to 2 hours later, so that positive numbers indicate drops in temperature (a good outcome.)
+
+```{r}
+sepsis %>% select(id, treat, temp_drop)
+```
+
+## Specifying A Two-Sample Study Design
+
+Again, these questions will help specify the details of the study design involved in any comparison of means.
+
+1.	What is the outcome under study?
+2.	What are the (in this case, two) treatment/exposure groups?
+3.	Were the data collected using matched / paired samples or independent samples?
+4.	Are the data a random sample from the population(s) of interest? Or is there at least a reasonable argument for generalizing from the sample to the population(s)?
+5.	What is the significance level (or, the confidence level) we require here?
+6.	Are we doing one-sided or two-sided testing/confidence interval generation?
+7.	If we have paired samples, did pairing help reduce nuisance variation?
+8.	If we have paired samples, what does the distribution of sample paired differences tell us about which inferential procedure to use?
+9.  If we have independent samples, what does the distribution of each individual sample tell us about which inferential procedure to use?
+
+### For the `sepsis` study
+
+1. The outcome is `temp_drop`, the change in body temperature (in $^{\circ}$C) from baseline to 2 hours later, so that positive numbers indicate drops in temperature (a good outcome.)
+2. The groups are **Ibuprofen**  and **Placebo** as contained in the `treat` variable in the `sepsis` tibble.
+3. The data were collected using independent samples. The Ibuprofen subjects are not matched or linked to individual Placebo subjects - they are separate groups.
+4. The subjects of the study aren't drawn from a random sample of the population of interest, but they are randomly assigned to their respective treatments (Ibuprofen and Placebo) which will provide the reasoned basis for our inferences. 
+5. We'll use a 10% significance level (or 90% confidence level) in this setting, as we did in our previous work on these data.
+6. We'll use a two-sided testing and confidence interval approach.
+
+Questions 7 and 8 don't apply, because these are independent samples of data, rather than paired samples.
+
+To address question 9, we'll need to look at the data in each sample. We'll repeat the boxplot from Section \@ref(Sepsis-RCT), that allow us to assess the Normality of the distributions of (separately) the `temp_drop` results in the Ibuprofen and Placebo groups.
+
+```{r sepsis_temp_drop_by_treat_boxplot_again_fig, echo = FALSE}
+ggplot(sepsis, aes(x = treat, y = temp_drop, fill = treat)) +
+    geom_boxplot() +
+    geom_jitter(width = 0.1, height = 0, color = "orangered") +
+    guides(fill = FALSE) + 
+    labs(title = "Boxplot of Temperature Drop in Sepsis Patients",
+         x = "", y = "Drop in Temperature (degrees C)") + 
+    coord_flip() +
+    theme_bw()
+```
+
+```{r sepsis_temp_drop_by_treat_qqplot_repeat_fig, echo = FALSE}
+p1 <- sepsis %>%
+    filter(treat == "Ibuprofen") %>%
+    ggplot(aes(sample = temp_drop)) +
+    geom_qq() +
+    geom_abline(intercept = qq_int(filter(sepsis, treat == "Ibuprofen")$temp_drop), 
+                slope = qq_slope(filter(sepsis, treat == "Ibuprofen")$temp_drop),
+                col = "red") +
+    labs(title = "Ibuprofen Sample", y = "Ibuprofen Group temp_drop values") +
+    theme_bw()
+
+p2 <- sepsis %>%
+    filter(treat == "Placebo") %>%
+    ggplot(aes(sample = temp_drop)) +
+    geom_qq() +
+    geom_abline(intercept = qq_int(filter(sepsis, treat == "Placebo")$temp_drop), 
+                slope = qq_slope(filter(sepsis, treat == "Placebo")$temp_drop),
+                col = "red") +
+    labs(title = "Placebo Sample", y = "Placebo Group temp_drop values") +
+    theme_bw()
+
+gridExtra::grid.arrange(p1, p2, nrow = 1, top = "Normal Q-Q Plots for Sepsis data")
+```
+
+From these plots we  conclude that the data in the Ibuprofen sample follow a reasonably Normal distribution, but this isn't as true for the Placebo sample. It's hard to know whether the apparent Placebo group outliers will affect whether the Normal distribution assumption is reasonable, but we'll look into it.
+
+## Hypothesis Testing for the Sepsis Example
+
+### Our Research Question
+
+Is there reasonable evidence, based on these samples of 150 Ibuprofen and 150 Placebo subjects, for us to conclude that those randomly assigned to receive Ibuprofen have a different population mean `temp_drop` than those randomly assigned to receive the Placebo? In other words, if we generated `temp_drop` results for Ibuprofen and Placebo at the population level, would the difference in (say) means be centered at zero, indicating no difference between the two treatments?
+
+### Specify the null hypothesis
+
+Our null hypothesis here is that the population (true) mean `temp_drop` for subjects receiving Ibuprofen is the same as the population mean `temp_drop` for subjects receiving Placebo plus a constant value (which we'll symbolize with $\Delta_0$, which is again usually 0.) Since we have independent samples of data in this trial, we describe this hypothesis in terms of the difference between the separate population means. The hypotheses we are testing are:
+
+- $H_0$: mean in population 1 = mean in population 2 + hypothesized difference $\Delta_0$ vs.
+- $H_A$: mean in population 1 $\neq$ mean in population 2 + hypothesized difference $\Delta_0$, 
+
+where $\Delta_0$ is almost always zero. An equivalent way to write this is:
+
+- $H_0: \mu_1 = \mu_2 + \Delta_0$ vs. 
+- $H_A: \mu_1 \neq \mu_2 + \Delta_0$ 
+
+Yet another equally valid way to write this is: 
+
+- $H_0: \mu_1 - \mu_2 = \Delta_0$ vs. 
+- $H_A: \mu_1 - \mu_2 \neq \Delta_0$,
+
+where, again $\Delta_0$ is almost always zero. 
+
+We will generally take this latter approach, where the difference in population means (here, we'll use Ibuprofen - Placebo, but we could have just as easily selected Placebo - Ibuprofen: the order is arbitrary so long as we are consistent) is compared to a constant value, usually 0.
+
+For the `sepsis` example, our population parameters $\mu_{Ibuprofen}$ and $\mu_{Placebo}$ are mean temperature drops (in $^{\circ}$C) from baseline to 2 hours later, so that positive numbers indicate drops in temperature (a good outcome.) 
+
+- Our null hypothesis is that $\mu_{Ibuprofen} - \mu{Placebo}$ is 0 degrees.
+
+### Specify the research hypothesis
+
+The research hypothesis for the sepsis trial is that $\mu_{Ibuprofen} - \mu{Placebo}$ is NOT 0 degrees.
+
+### Specify the test procedure and $\alpha$
+
+As we've seen in Section \@ref(CI-Indep-Samples), there are several ways to build a confidence interval to address these hypotheses, and each of those approaches provides information about a related hypothesis test. This includes the pooled t test, the Welch t test, the Wilcoxon-Mann-Whitney rank sum test, and a bootstrap comparison of means (or medians, etc.) using independent samples. We'll specify an $\alpha$ value of .10 here for the sepsis trial, indicating a 10% significance level (and 90% confidence level.)
+
+### Calculate the test statistic and $p$ value
+
+Section \@ref(CI-Indep-Samples) demonstrated the relevant R code for the `sepsis` example to obtain *p* values. For the bootstrap procedure, we again build a confidence interval. We repeat that work below.
+
+### Draw a conclusion
+
+As we've seen, we use the $p$ value to either
+
+- **reject** $H_0$ in favor of the alternative $H_A$ (concluding that there is a statistically significant difference/association at the $\alpha$ significance level) if the $p$ value is less than our desired $\alpha$ or
+- **retain** $H_0$ (and conclude that there is no statistically significant difference/association at the $\alpha$ significance level) if the $p$ value is greater than or equal to $\alpha$.
+
+## The Pooled T test
+
+The standard method for comparing population means based on two independent samples is based on the t distribution, and requires the following assumptions:
+
+1.	[Independence] The samples for the two groups are drawn independently.
+2.	[Random Samples] The samples for each of the groups are drawn at random from the populations of interest.
+3.	[Normal Population] The two populations are each Normally distributed
+4.	[Equal Variances] The population variances in the two groups being compared are the same, so we can obtain a pooled estimate of their joint variance.
+
+### The Pooled t test Statistic
+
+The test statistic is a t ratio, built up as follows.
+
+$t_{observed} = \frac{(\bar{x}_1 - \bar{x}_2) - \Delta_0}{SE_{pooled}(\bar{x}_1 - \bar{x}_2)}$, 
+
+where $SE_{pooled}(\bar{x}_1 - \bar{x}_2)$ = $\sqrt{\frac{s^2_{pooled}}{n_1} + \frac{s^2_{pooled}}{n_2}}$ and $s^2_{pooled} = \frac{(n_1 - 1)s^2_1 + (n_2 - 1)s^2_2}{n_1 + n_2 - 2}$ and 
+
+where the *p* value is found by comparing this observed value $t_{observed}$ to the t distribution with $n_1 + n_2 - 2$ degrees of freedom.
+
+### The Pooled Variances t test in R
+
+The pooled variances t test in R (also called the t test assuming equal population variances) is obtained as follows.
+
+```{r ttest1forsepsis}
+t.test(temp_drop ~ treat, data = sepsis, var.equal=TRUE)
+```
+
+We see from the t test output that the test statistic $t_{observed} = 4.27$ is based on 298 degrees of freedom, which produces a *p* value of $2.7 \times 10^{-5}$. This *p* value is much less than our chosen value for $\alpha$ = 0.10, so we will clearly **reject** the null hypothesis and conclude that there is a statistically significant difference between the mean temperature drops in the Ibuprofen and Placebo groups.
+
+### Using `broom` to tidy the pooled t test
+
+We can use the `tidy` function within the `broom` package to summarize the results of a t test, just as we did with a t-based confidence interval.
+
+```{r}
+broom::tidy(t.test(temp_drop ~ treat, 
+                   data = sepsis, var.equal=TRUE))
+```
+
+
+### The Pooled T test in a Regression Model
+
+Another way to obtain the pooled t test when comparing two population means using independent samples is to fit a simple regression model, that predicts the outcome of interest using an indicator variable to describe the exposure. For instance, in our `sepsis` trial, we have `temp_drop` as the outcome, and `treat` (Ibuprofen or Placebo) as the predictor in the following model.
+
+```{r model_for_sepsis_1}
+sepsis.model1 <- lm(temp_drop ~ treat, data = sepsis)
+summary(sepsis.model1)
+confint(sepsis.model1)
+```
+
+The regression model estimates:
+
+- the point estimate for the population mean in the "Ibuprofen" group as 0.464
+- the estimated effect of "Placebo" as compared to "Ibuprofen" as -0.311
+- the *p* value from the pooled t test comparing "Ibuprofen" to "Placebo" as $2.68 \times 10^{-5}$
+- the 95% confidence interval associated with the pooled t test, of (-0.455, -0.168), which is just the negative of the result we obtained earlier (in this model, we are estimating Placebo - Ibuprofen, and in our `t.test` output, we estimated Ibuprofen - Placebo)
+
+All of these values, drawn from the regression output above, match the pooled t test results.
+
+## The Welch T test
+
+The default confidence interval based on the t test for independent samples in R uses something called the Welch test, in which the two populations being compared are not assumed to have the same variance. Each population is assumed to follow a Normal distribution, though, so the assumptions are:
+
+1.	[Independence] The samples for the two groups are drawn independently.
+2.	[Random Samples] The samples for each of the groups are drawn at random from the populations of interest.
+3.	[Normal Population] The two populations are each Normally distributed
+
+It turns out that the Welch test gives essentially the same result as the pooled t test when either:
+
+- the design is balanced (our sample contains the same number of subjects in each group), or
+- the sample variances (equivalently, standard deviations) are quite similar in the two groups.
+
+In our case, we have a balanced design, and so expect the Welch test and pooled t test to give nearly the same result.
+
+### The Welch t test in R
+
+The Welch t test in R (also called the t test NOT assuming equal population variances) is obtained as follows.
+
+```{r ttest2forsepsis}
+t.test(temp_drop ~ treat, data = sepsis)
+```
+
+We see from the t test output that the test statistic $t_{observed} = 4.27$ is based on a fractional degrees of freedom, specifically 288.24 (this fractional df is characteristic of the Welch test) which produces a *p* value of $2.7 \times 10^{-5}$. Again, since the *p* value is  less than $\alpha$ = 0.10, we will **reject** the null hypothesis and conclude that there is a statistically significant difference between the mean temperature drops in the Ibuprofen and Placebo groups.
+
+### Using `broom` to tidy the pooled t test
+
+```{r}
+broom::tidy(t.test(temp_drop ~ treat, 
+                   data = sepsis))
+```
+
+
+## Bootstrap CI for $mu_1 - \mu_2$ from Independent Samples
+
+As we saw in our plots earlier, assuming Normality, particularly in the Placebo population, is hard to justify. So we'll consider methods that don't require that assumption. The bootstrap approach to comparing population means using two independent samples still requires:
+
+1.	[Independence] The samples for the two groups are drawn independently.
+2.	[Random Samples] The samples for each of the groups are drawn at random from the populations of interest.
+
+but does not require either of the other two assumptions.
+
+### Using the `bootdif` function from `Love-boost.R`
+
+The `bootdif` function contained in the `Love-boost.R` script is a slightly edited version of the function at http://biostat.mc.vanderbilt.edu/wiki/Main/BootstrapMeansSoftware. Note that this approach uses a comma to separate the outcome variable (here, `temp_drop`) from the variable identifying the exposure groups (here, `treat`).
+
+As in our previous bootstrap procedures, we are sampling (with replacement) a series of many data sets (default: 2000).
+
+- Here, we are building bootstrap samples based on the SBP levels in the two independent samples (Ibuprofen vs. Placebo). 
+- For each bootstrap sample, we are calculating a mean difference between the two groups (Ibuprofen vs. Placebo).
+- We then determine the 5^th^ and 95^th^ percentile of the resulting distribution of mean differences (for a 90% confidence interval).  
+
+
+```{r sepsis-ci-bootstrap-again, eval = FALSE, message = FALSE}
+set.seed(431212)
+bootdif(sepsis$temp_drop, sepsis$treat, conf.level = 0.90)
+
+detach("package:Hmisc", unload=TRUE)
+```
+```
+Mean Difference            0.05            0.95 
+     -0.3113333      -0.4313333      -0.1973000
+```
+
+Since zero is not contained in this 90% confidence interval, we reject the null hypothesis (that the difference in population means between Ibuprofen and Placebo is zero) at the 10% significance level, so we know that *p* < 0.10.
+
+*Note*: Running `bootdif` loads the `Hmisc` package which conflicts with some key functions in the `tidyverse` later. To remove these undesirable effects, I sometimes run `detach("package:Hmisc", unload=TRUE)` as above to try to help.
+
+## Wilcoxon-Mann-Whitney Rank Sum Test
+
+The rank sum test is a non-parametric test of whether the two samples were selected from populations having the same distribution. The Wilcoxon-Mann-Whitney Rank Sum test still requires:
+
+1.	[Independence] The samples for the two groups are drawn independently.
+2.	[Random Samples] The samples for each of the groups are drawn at random from the populations of interest.
+
+It also doesn't really compare population means, so in that sense it can be a little confusing.
+
+### The Test Statistic
+
+- Assign numerical ranks to all observations across the two groups. 
+    + 1 = smallest, n = largest. Use midpoint for any ties.
+- Add up the ranks from sample 1. Call that $R_1$. 
+    + $R_2$ is then known, since the sum of all ranks is $\frac{n(n+1)}{2}$
+- $U_1 = R_1 - \frac{n_1(n_1 + 1)}{2}$, where $n_1$ is the sample size for sample 1.
+- $U_1 + U_2$ is always just $n_1 n_2$, so it doesn't matter which sample you treat as sample 1.
+- The smaller of $U_1$ and $U_2$ is then called U, the test statistic.
+- Software converts U into a *p* value via a Normal approximation, given $n_1$ and $n_2$.
+
+More details, including an alternative calculation approach, and a worked example are found on the [Wikipedia page for the Mann-Whitney U test](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test). 
+
+### Wilcoxon-Mann-Whitney Rank Sum Test in R
+
+```{r rank sum test for sbp by sex}
+wilcox.test(temp_drop ~ treat, data = sepsis, conf.int = TRUE)
+```
+
+## The Continuity Correction
+
+The *p* value for the rank sum test is obtained via a Normal approximation, using the test statistic W. 
+
+- That approximation can be slightly improved through the use of a continuity correction (a small adjustment to account for the fact that we're using a continuous distribution, the Normal, to approximate a discretely valued test statistic, W.) 
+- The continuity correction is particularly important in the case where we have many tied ranks, and is applied by default in R.
+- If you want (for some reason) to not use it, add `correct = FALSE` to your call to the `wilcox.test()` function.
+
+
+### Tidying a Wilcoxon Rank Sum Test
+
+```{r}
+broom::tidy(wilcox.test(temp_drop ~ treat, 
+                 data = sepsis, conf.int = TRUE))
+```
+
+## Conclusions for the `sepsis` study
+
+Using any of these procedures, we would conclude that the null hypothesis (that the true difference between the Ibuprofen and Placebo mean temperature drops is 0 degrees) is untenable, and that it should be rejected at the 10% significance level. The smaller the *p* value, the stronger is the evidence that the null hypothesis is incorrect, and in this case, we have some fairly tiny *p* values.
+
+The sample mean temperature drop for Ibuprofen was 0.464, and the sample mean for Placebo was 0.153.
+
+Procedure | p value | 90% CI for $\mu_{Exposed - Control}$ | Conclusion
+---------: | -----: | --------------: | -------------
+Pooled t test | $2.7 \times 10^{-5}$ | 0.168, 0.455 | Reject $H_0$.
+Welch t test | $2.7 \times 10^{-5}$ | 0.168, 0.455 | Reject $H_0$.
+Wilcoxon-Mann-Whitney rank sum test | $7.3 \times 10^{-6}$ | 0.2, 0.5 | Reject $H_0$.
+Bootstrap CI from `bootdif` | p < 0.10 | 0.197, 0.431 | Reject $H_0$.
+
+Note that **one-sided** or **one-tailed** hypothesis testing procedures work the same way for tests as they did for confidence intervals.
+
+## A More Complete Decision Support Tool: Comparing Means
+
+1. Are these paired or independent samples?
+
+2. If paired samples, then are the paired differences approximately Normally distributed?
+    a. If yes, then a paired t test or confidence interval is likely the best choice.
+    b. If no, is the main concern outliers (with generally symmetric data), or skew?
+        1. If the paired differences appear to be generally symmetric but with substantial outliers, a Wilcoxon signed rank test is an appropriate choice, as is a bootstrap confidence interval for the population mean of the paired differences.
+        2. If the paired differences appear to be seriously skewed, then we'll usually build a bootstrap confidence interval, although a sign test is another reasonable possibility.
+        
+3. If independent, is each sample Normally distributed?
+    a. No --> use Wilcoxon-Mann-Whitney rank sum test or bootstrap via `bootdif`.
+    b. Yes --> are sample sizes equal?
+        1. Balanced Design (equal sample sizes) - use pooled t test
+        2. Unbalanced Design - use Welch test
+

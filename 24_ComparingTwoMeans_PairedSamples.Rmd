@@ -1,8 +1,12 @@
 # Comparing Two Means Using Paired Samples
 
-In this section, we apply several methods of testing the null hypothesis that two populations have the same distribution of a quantitative variable. In particular, we'll focus on the comparison of means using paired sample t tests, signed rank tests, and bootstrap approaches. Our example comes from the Lead in the Blood of Children study, described in Section \@ref(Blood-Lead-Study) and the methods outlined in Section \@ref(CI-Paired-Samples). 
+In this section, we apply several methods of testing the null hypothesis that two populations have the same distribution of a quantitative variable. In particular, we'll focus on the comparison of means using paired sample t tests, signed rank tests, and bootstrap approaches. Our example comes from the Lead in the Blood of Children study, described in Section \@ref(Blood-Lead-Study) and then developed further (including confidence intervals) in Section \@ref(CI-Paired-Samples). 
 
 Recall that in that study, we measured blood lead content, in mg/dl, for 33 matched pairs of children, one of which was exposed (had a parent working in a battery factory) and the other of which was control (no parent in the battery factory, but matched to the exposed child by age, exposure to traffic and neighborhood). We then created a variable called `leaddiff` which contained the (exposed - control) differences within each pair.
+
+```{r}
+bloodlead
+```
 
 ## Specifying A Two-Sample Study Design
 
@@ -16,6 +20,7 @@ These questions will help specify the details of the study design involved in an
 6.	Are we doing one-sided or two-sided testing/confidence interval generation?
 7.	If we have paired samples, did pairing help reduce nuisance variation?
 8.	If we have paired samples, what does the distribution of sample paired differences tell us about which inferential procedure to use?
+9.  If we have independent samples, what does the distribution of each individual sample tell us about which inferential procedure to use?
 
 ### For the `bloodlead` study
 
@@ -65,12 +70,13 @@ gridExtra::grid.arrange(p1, p2, p3, nrow=1,
     top = "Difference in Blood Lead Content (mg/dl) for 33 Pairs of Children")
 ```
 
+Of course, question 9 doesn't apply here, because we have paired, and not independent samples.
 
 ## Hypothesis Testing for the Blood Lead Example
 
 ### Our Research Question
 
-Is there reasonable evidence, based on these paired sample of 33 exposed and 33 control children, for us to conclude that the population of children similar to those in the exposed group will have a distribution of blood lead content that is statistically significantly different from the population of children similar to those in the control group. In other words, if we generated the population of all exposed-control differences across the entire population of such pairs, would that distribution of paired differences be centered at zero (indicating no difference in the means)?
+Is there reasonable evidence, based on these paired samples of 33 exposed and 33 control children, for us to conclude that the population of children similar to those in the exposed group will have a distribution of blood lead content that is statistically significantly different from the population of children similar to those in the control group. In other words, if we generated the population of all exposed-control differences across the entire population of such pairs, would that distribution of paired differences be centered at zero (indicating no difference in the means)?
 
 Again, the key idea is to calculate the paired differences (exposed - control, for example) in each pair, and then treat the result as if it were a single sample and apply the methods discussed in Section \@ref(Test-One-Mean). 
 
@@ -111,8 +117,6 @@ As we've seen in Section \@ref(CI-Paired-Samples), there are several ways to bui
 ### Calculate the test statistic and $p$ value
 
 For the paired t test and Wilcoxon signed rank test, Section \@ref(CI-Paired-Samples) demonstrated the relevant R code for the `bloodlead` example to obtain *p* values. For the bootstrap procedure, we again build a confidence interval. We repeat that work below.
-
-Of course, we've already collected the data. If we're willing to assume the 462 serum zinc levels we have are a random (or sufficiently representative) sample of the population of interest, and that the data were gathered in such a way that each sample is independent of every other sample, and identically distributed, then our methods might work.
 
 ### Draw a conclusion
 
@@ -233,18 +237,6 @@ regardless of what testing procedure we use. But, for the Wilcoxon signed rank t
 
 [Wikipedia's page on the Wilcoxon signed-rank test](https://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test) is a good resource for example calculations.
 
-## Step 5. Reject or Retain $H_0$ and Draw Conclusions
-
-Using any of these procedures, we would conclude that the null hypothesis (that the true mean of the paired differences is 0 mg/dl) is not tenable, and that it should be rejected at the 10% significance level. The smaller the *p* value, the stronger is the evidence that the null hypothesis is incorrect, and in this case, we have some fairly tiny *p* values.
-
-Procedure | p value | 90% CI for $\mu_{Exposed - Control}$ | Conclusion
----------: | -----: | --------------: | -------------
-Paired t | $2 \times 10^{-6}$ | 11.3, 20.6 | Reject $H_0$.
-Wilcoxon signed rank | $1 \times 10^{-5}$ | 11, 20.5 | Reject $H_0$.
-Bootstrap CI | $p$ < 0.10 | 11.6, 20.6 | Reject $H_0$.
-
-Note that **one-sided** or **one-tailed** hypothesis testing procedures work the same way for paired samples as they did for single samples in Section \ref(Test-One-Mean).
-
 ## The Sign test
 
 The **sign test** is something we've skipped in our discussion so far. It is a test for consistent differences between pairs of observations, just as the paired t test, Wilcoxon signed rank test and bootstrap for paired samples can provide. It has the advantage that it is relatively easy to calculate by hand, and that it doesn't require the paired differences to follow a Normal distribution. In fact, it will even work if the data are substantially skewed. 
@@ -272,6 +264,21 @@ So we have $N$ = 32 pairs, with $W$ = 28 that are positive. We can calculate the
 binom.test(x = 28, n = 32, p = 0.5, alternative = "two.sided")
 ```
 
+- A one-tailed test can be obtained by substituting in "less" or "greater" as the alternative of interest.
+- The confidence interval provided here doesn't relate back to our original population means, of course. It's just showing the confidence interval around the probability of the exposed mean being greater than the control mean for a pair of children.
+
+## Conclusions for the `bloodlead` study
+
+Using any of these procedures, we would conclude that the null hypothesis (that the true mean of the paired differences is 0 mg/dl) is not tenable, and that it should be rejected at the 10% significance level. The smaller the *p* value, the stronger is the evidence that the null hypothesis is incorrect, and in this case, we have some fairly tiny *p* values.
+
+Procedure | p value | 90% CI for $\mu_{Exposed - Control}$ | Conclusion
+---------: | -----: | --------------: | -------------
+Paired t | $2 \times 10^{-6}$ | 11.3, 20.6 | Reject $H_0$.
+Wilcoxon signed rank | $1 \times 10^{-5}$ | 11, 20.5 | Reject $H_0$.
+Bootstrap CI | $p$ < 0.10 | 11.6, 20.6 | Reject $H_0$.
+Sign test | $2 \times 10^{-5}$ | None provided | Reject $H_0$.
+
+Note that **one-sided** or **one-tailed** hypothesis testing procedures work the same way for paired samples as they did for single samples in Section \@ref(Test-One-Mean).
 
 ## Building a Decision Support Tool: Comparing Means
 

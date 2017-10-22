@@ -1,4 +1,4 @@
-# A Study Comparing Two Independent Samples: Ibuprofen in Sepsis Trial {#Sepsis_RCT}
+# A Study Comparing Two Independent Samples: Ibuprofen in Sepsis Trial {#Sepsis-RCT}
 
 ## The Ibuprofen in Sepsis Randomized Clinical Trial
 
@@ -78,8 +78,6 @@ The placebo-controlled, double-blind randomized clinical trial, especially if pr
 
 ## Exploratory Data Analysis
 
-
-
 First, we'll look at a boxplot, showing all of the individual data as added-on dots. 
 
 ```{r sepsis_temp_drop_by_treat_boxplot}
@@ -104,6 +102,33 @@ ggplot(sepsis, aes(x = temp_drop, fill = treat)) +
     theme_bw() +
     facet_wrap(~ treat)
 ```
+
+Here's a pair of Normal Q-Q plots. It's not hard to use a Normal model to approximate the Ibuprofen data, but such a model is probably not a good choice for the Placebo results.
+
+```{r sepsis_temp_drop_by_treat_qqplot_original_fig}
+p1 <- sepsis %>%
+    filter(treat == "Ibuprofen") %>%
+    ggplot(aes(sample = temp_drop)) +
+    geom_qq() +
+    geom_abline(intercept = qq_int(filter(sepsis, treat == "Ibuprofen")$temp_drop), 
+                slope = qq_slope(filter(sepsis, treat == "Ibuprofen")$temp_drop),
+                col = "red") +
+    labs(title = "Ibuprofen Sample", y = "Ibuprofen Group temp_drop values") +
+    theme_bw()
+
+p2 <- sepsis %>%
+    filter(treat == "Placebo") %>%
+    ggplot(aes(sample = temp_drop)) +
+    geom_qq() +
+    geom_abline(intercept = qq_int(filter(sepsis, treat == "Placebo")$temp_drop), 
+                slope = qq_slope(filter(sepsis, treat == "Placebo")$temp_drop),
+                col = "red") +
+    labs(title = "Placebo Sample", y = "Placebo Group temp_drop values") +
+    theme_bw()
+
+gridExtra::grid.arrange(p1, p2, nrow = 1, top = "Normal Q-Q Plots for Sepsis data")
+```
+
 
 We'll also look at a ridgeline plot.
 
