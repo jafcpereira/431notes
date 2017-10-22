@@ -213,7 +213,7 @@ broom::tidy(t.test(temp_drop ~ treat,
 ```
 
 
-## Bootstrap CI for $mu_1 - \mu_2$ from Independent Samples
+## Bootstrap CI for $\mu_1 - \mu_2$ from Independent Samples
 
 As we saw in our plots earlier, assuming Normality, particularly in the Placebo population, is hard to justify. So we'll consider methods that don't require that assumption. The bootstrap approach to comparing population means using two independent samples still requires:
 
