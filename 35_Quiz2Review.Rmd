@@ -4,11 +4,11 @@ There are 15 items here, and then a set of answer sketches follow the questions.
 
 ## Review Items 1-7
 
-Researchers comparing the effectiveness of two pain medications randomly selected a group of patients who had been complaining of a certain kind of joint pain. They randomly divided those people into two groups, then administered the pain killers. Of the 85 people in the group who received medication A, 65 said that it provided relief. Of the 70 people in the group receiving medication B, 45 reported that it provided relief.
+Researchers comparing the effectiveness of two pain medications randomly selected a group of patients who had been complaining of a certain kind of joint pain. They randomly divided those people into two groups, then administered the medications. Of the 85 people in the group who received medication A, 65 said that it provided relief. Of the 70 people in the group receiving medication B, 45 reported that it provided relief.
 
 1. Use the single augmentation with an imaginary failure or success (SAIFS) approach to specify a 95% confidence interval for the proportion of people who find relief from this kind of joint pain by using medication A. 
 2. Now use the same approach to specify a 95% confidence interval for the proportion of people who find relief using medication B. 
-3. Do the confidence intervals in items 1 and 2 overlap? What conclusions you can draw in light of that overlap (or lack thereof) about whether medication A or medication B is significantly more effective?
+3. Do the confidence intervals in items 1 and 2 overlap? What conclusions can you draw in light of that overlap (or lack thereof) about whether medication A or medication B is significantly more effective?
 4. Specify and display the correct 2x2 table (incorporating a Bayesian augmentation) analysis to enable you to study the A - B difference in the true proportions of people who find these medications effective.
 5. Use the 2x2 table results to specify an appropriate odds ratio and its 95% confidence interval in this situation, and explain what the values mean in context.
 6. Specify the hypotheses (H~0~ and H~A~) tested by the Fisher exact test you obtain in your 2x2 table. What does the provided *p* value tell you about what conclusion you should draw in this case regarding those hypotheses?
