@@ -47,6 +47,7 @@ I will also make use of functions in the following packages/libraries, but when 
 - `arm` which provides a set of functions for model building and checking that are used in @Gelman-Hill
 - `broom` which turns the results lots of different analyses in R into more useful tidy data frames (tibbles.)
 - `car` which provides some tools for building scatterplot matrices, but also many other functions described in @Fox-Weisberg
+- `cowplot` which is used in Part C to put multiple graphical objects in the same plot, like `gridExtra`: https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html
 - `Epi` for 2x2 table analyses and materials for classical epidemiology: http://BendixCarstensen.com/Epi/
 - `GGally` for scatterplot and correlation matrix visualizations: http://ggobi.github.io/ggally/
 - `ggridges` which is used to make ridgeline plots
@@ -63,12 +64,12 @@ Several other packages are included below, even though they are not used in thes
 When compiling the Notes from the original code files, these packages will need to be installed (but not loaded) in R, or an error will be thrown when compiling this document. To install all of the packages used within these Notes, type in (or copy and paste) the following commands and run them in the R Console. Again, you only need to install a package once, but you need to reload it every time you start a new session. 
 
 ```
-pkgs <- c("aplpack", "arm", "babynames", "boot", "broom", "car", "devtools", "Epi", 
-          "faraway", "forcats", "foreign", "gapminder", "GGally", "ggridges", 
-          "gridExtra", "Hmisc", "knitr", "lme4", "markdown", "MASS", 
-          "mice", "mosaic", "multcomp", "NHANES", "pander", "psych", 
-          "pwr", "qcc", "rmarkdown", "rms", "sandwich", "survival", 
-          "tableone", "tidyverse", "vcd", "viridis")
+pkgs <- c("aplpack", "arm", "babynames", "boot", "broom", "car", "cowplot",
+          "devtools", "Epi", "faraway", "forcats", "foreign", "gapminder", 
+          "GGally", "ggridges", "gridExtra", "Hmisc", "knitr", "lme4", "magrittr", 
+          "markdown", "MASS", "mice", "mosaic", "multcomp", "NHANES", 
+          "pander", "psych", "pwr", "qcc", "rmarkdown", "rms", "sandwich", 
+          "survival", "tableone", "tidyverse", "vcd", "viridis")
 
 install.packages(pkgs)
 ```
