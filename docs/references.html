@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="model-selection-and-out-of-sample-validation.html">
+<link rel="prev" href="standardizingrescaling-in-regression-models.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -874,6 +874,118 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="43.4" data-path="model-selection-and-out-of-sample-validation.html"><a href="model-selection-and-out-of-sample-validation.html#aic-anova-and-bic-to-assess-candidate-models"><i class="fa fa-check"></i><b>43.4</b> AIC, ANOVA and BIC to assess Candidate Models</a></li>
 <li class="chapter" data-level="43.5" data-path="model-selection-and-out-of-sample-validation.html"><a href="model-selection-and-out-of-sample-validation.html#comparing-models-in-the-test-sample-mspe-mape"><i class="fa fa-check"></i><b>43.5</b> Comparing Models in the Test Sample (MSPE, MAPE)</a></li>
 </ul></li>
+<li class="chapter" data-level="44" data-path="dealing-with-missing-data.html"><a href="dealing-with-missing-data.html"><i class="fa fa-check"></i><b>44</b> Dealing with Missing Data</a><ul>
+<li class="chapter" data-level="44.1" data-path="dealing-with-missing-data.html"><a href="dealing-with-missing-data.html#identifying-missingness"><i class="fa fa-check"></i><b>44.1</b> Identifying Missingness</a></li>
+<li class="chapter" data-level="44.2" data-path="dealing-with-missing-data.html"><a href="dealing-with-missing-data.html#complete-case-analysis-a-model-for-chol"><i class="fa fa-check"></i><b>44.2</b> Complete Case Analysis: A model for <code>chol</code></a><ul>
+<li class="chapter" data-level="44.2.1" data-path="dealing-with-missing-data.html"><a href="dealing-with-missing-data.html#removing-all-subjects-with-na-via-na.omit"><i class="fa fa-check"></i><b>44.2.1</b> Removing all subjects with NA, via <code>na.omit</code></a></li>
+<li class="chapter" data-level="44.2.2" data-path="dealing-with-missing-data.html"><a href="dealing-with-missing-data.html#removing-subjects-with-na-on-one-particular-variable"><i class="fa fa-check"></i><b>44.2.2</b> Removing subjects with NA on one particular variable</a></li>
+</ul></li>
+<li class="chapter" data-level="44.3" data-path="dealing-with-missing-data.html"><a href="dealing-with-missing-data.html#using-multiple-imputation-to-fit-our-regression-model"><i class="fa fa-check"></i><b>44.3</b> Using Multiple Imputation to fit our Regression Model</a><ul>
+<li class="chapter" data-level="44.3.1" data-path="dealing-with-missing-data.html"><a href="dealing-with-missing-data.html#examining-a-single-imputed-data-set"><i class="fa fa-check"></i><b>44.3.1</b> Examining a Single Imputed Data Set</a></li>
+<li class="chapter" data-level="44.3.2" data-path="dealing-with-missing-data.html"><a href="dealing-with-missing-data.html#fitting-a-pooled-regression-model-across-the-imputations"><i class="fa fa-check"></i><b>44.3.2</b> Fitting a Pooled Regression Model across the Imputations</a></li>
+</ul></li>
+<li class="chapter" data-level="44.4" data-path="dealing-with-missing-data.html"><a href="dealing-with-missing-data.html#comparing-two-models-after-imputation-with-pool.compare"><i class="fa fa-check"></i><b>44.4</b> Comparing Two Models After Imputation with <code>pool.compare</code></a></li>
+</ul></li>
+<li class="chapter" data-level="45" data-path="bmi-and-employment-working-with-categorical-predictors.html"><a href="bmi-and-employment-working-with-categorical-predictors.html"><i class="fa fa-check"></i><b>45</b> BMI and Employment: Working with Categorical Predictors</a><ul>
+<li class="chapter" data-level="45.1" data-path="bmi-and-employment-working-with-categorical-predictors.html"><a href="bmi-and-employment-working-with-categorical-predictors.html#the-data"><i class="fa fa-check"></i><b>45.1</b> The Data</a><ul>
+<li class="chapter" data-level="45.1.1" data-path="bmi-and-employment-working-with-categorical-predictors.html"><a href="bmi-and-employment-working-with-categorical-predictors.html#specifying-outcome-and-predictors-for-our-model"><i class="fa fa-check"></i><b>45.1.1</b> Specifying Outcome and Predictors for our Model</a></li>
+<li class="chapter" data-level="45.1.2" data-path="bmi-and-employment-working-with-categorical-predictors.html"><a href="bmi-and-employment-working-with-categorical-predictors.html#dealing-with-missing-predictor-values"><i class="fa fa-check"></i><b>45.1.2</b> Dealing with Missing Predictor Values</a></li>
+</ul></li>
+<li class="chapter" data-level="45.2" data-path="bmi-and-employment-working-with-categorical-predictors.html"><a href="bmi-and-employment-working-with-categorical-predictors.html#the-kitchen-sink-model-1"><i class="fa fa-check"></i><b>45.2</b> The “Kitchen Sink” Model</a></li>
+<li class="chapter" data-level="45.3" data-path="bmi-and-employment-working-with-categorical-predictors.html"><a href="bmi-and-employment-working-with-categorical-predictors.html#using-categorical-variables-factors-as-predictors"><i class="fa fa-check"></i><b>45.3</b> Using Categorical Variables (Factors) as Predictors</a><ul>
+<li class="chapter" data-level="45.3.1" data-path="bmi-and-employment-working-with-categorical-predictors.html"><a href="bmi-and-employment-working-with-categorical-predictors.html#gender-a-binary-variable-represented-by-letters"><i class="fa fa-check"></i><b>45.3.1</b> <code>gender</code>: A binary variable represented by letters</a></li>
+<li class="chapter" data-level="45.3.2" data-path="bmi-and-employment-working-with-categorical-predictors.html"><a href="bmi-and-employment-working-with-categorical-predictors.html#employed-a-binary-variable-represented-a-10-indicator"><i class="fa fa-check"></i><b>45.3.2</b> <code>employed</code>: A binary variable represented a 1/0 indicator</a></li>
+<li class="chapter" data-level="45.3.3" data-path="bmi-and-employment-working-with-categorical-predictors.html"><a href="bmi-and-employment-working-with-categorical-predictors.html#alcohol-a-three-category-variable-coded-by-names"><i class="fa fa-check"></i><b>45.3.3</b> <code>alcohol</code>: A three-category variable coded by names</a></li>
+<li class="chapter" data-level="45.3.4" data-path="bmi-and-employment-working-with-categorical-predictors.html"><a href="bmi-and-employment-working-with-categorical-predictors.html#t-tests-and-multi-categorical-variables"><i class="fa fa-check"></i><b>45.3.4</b> t tests and multi-categorical variables</a></li>
+<li class="chapter" data-level="45.3.5" data-path="bmi-and-employment-working-with-categorical-predictors.html"><a href="bmi-and-employment-working-with-categorical-predictors.html#education-a-four-category-variable-coded-by-names"><i class="fa fa-check"></i><b>45.3.5</b> <code>education</code>: A four-category variable coded by names</a></li>
+<li class="chapter" data-level="45.3.6" data-path="bmi-and-employment-working-with-categorical-predictors.html"><a href="bmi-and-employment-working-with-categorical-predictors.html#interpreting-the-kitchen-sink-model"><i class="fa fa-check"></i><b>45.3.6</b> Interpreting the Kitchen Sink Model</a></li>
+</ul></li>
+<li class="chapter" data-level="45.4" data-path="bmi-and-employment-working-with-categorical-predictors.html"><a href="bmi-and-employment-working-with-categorical-predictors.html#scatterplot-matrix-with-categorical-predictors"><i class="fa fa-check"></i><b>45.4</b> Scatterplot Matrix with Categorical Predictors</a></li>
+<li class="chapter" data-level="45.5" data-path="bmi-and-employment-working-with-categorical-predictors.html"><a href="bmi-and-employment-working-with-categorical-predictors.html#residual-plots-when-we-have-categorical-predictors"><i class="fa fa-check"></i><b>45.5</b> Residual Plots when we have Categorical Predictors</a></li>
+<li class="chapter" data-level="45.6" data-path="bmi-and-employment-working-with-categorical-predictors.html"><a href="bmi-and-employment-working-with-categorical-predictors.html#stepwise-regression-and-categorical-predictors"><i class="fa fa-check"></i><b>45.6</b> Stepwise Regression and Categorical Predictors</a></li>
+<li class="chapter" data-level="45.7" data-path="bmi-and-employment-working-with-categorical-predictors.html"><a href="bmi-and-employment-working-with-categorical-predictors.html#pooling-results-after-multiple-imputation"><i class="fa fa-check"></i><b>45.7</b> Pooling Results after Multiple Imputation</a></li>
+</ul></li>
+<li class="chapter" data-level="46" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html"><i class="fa fa-check"></i><b>46</b> Species Found on the Galapagos Islands</a><ul>
+<li class="chapter" data-level="46.1" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#a-little-background"><i class="fa fa-check"></i><b>46.1</b> A Little Background</a><ul>
+<li class="chapter" data-level="46.1.1" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#sources"><i class="fa fa-check"></i><b>46.1.1</b> Sources</a></li>
+<li class="chapter" data-level="46.1.2" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#variables-in-the-gala-data-frame"><i class="fa fa-check"></i><b>46.1.2</b> Variables in the <code>gala</code> data frame</a></li>
+</ul></li>
+<li class="chapter" data-level="46.2" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#dtdp-a-scatterplot-matrix"><i class="fa fa-check"></i><b>46.2</b> DTDP: A Scatterplot Matrix</a><ul>
+<li class="chapter" data-level="46.2.1" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#questions-about-the-scatterplot-matrix"><i class="fa fa-check"></i><b>46.2.1</b> Questions about the Scatterplot Matrix</a></li>
+</ul></li>
+<li class="chapter" data-level="46.3" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#fitting-a-kitchen-sink-linear-regression-model"><i class="fa fa-check"></i><b>46.3</b> Fitting A “Kitchen Sink” Linear Regression model</a><ul>
+<li class="chapter" data-level="46.3.1" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#questions-about-the-kitchen-sink-model-summaries"><i class="fa fa-check"></i><b>46.3.1</b> Questions about the Kitchen Sink Model Summaries</a></li>
+</ul></li>
+<li class="chapter" data-level="46.4" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#finding-confidence-intervals-for-our-coefficient-estimates"><i class="fa fa-check"></i><b>46.4</b> Finding Confidence Intervals for our Coefficient Estimates</a><ul>
+<li class="chapter" data-level="46.4.1" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#questions-about-the-confidence-intervals"><i class="fa fa-check"></i><b>46.4.1</b> Questions about the Confidence Intervals</a></li>
+</ul></li>
+<li class="chapter" data-level="46.5" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#measuring-collinearity---the-variance-inflation-factor"><i class="fa fa-check"></i><b>46.5</b> Measuring Collinearity - the Variance Inflation Factor</a></li>
+<li class="chapter" data-level="46.6" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#global-f-testing-of-overall-significance"><i class="fa fa-check"></i><b>46.6</b> Global (F) Testing of Overall Significance</a><ul>
+<li class="chapter" data-level="46.6.1" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#questions-about-the-global-test-via-anova"><i class="fa fa-check"></i><b>46.6.1</b> Questions about the Global Test via ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="46.7" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#sequential-testing-in-a-regression-model-with-anova"><i class="fa fa-check"></i><b>46.7</b> Sequential Testing in a Regression Model with ANOVA</a><ul>
+<li class="chapter" data-level="46.7.1" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#questions-about-sequential-testing-and-anova"><i class="fa fa-check"></i><b>46.7.1</b> Questions about Sequential Testing and ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="46.8" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#an-anova-table-for-the-model-as-a-whole"><i class="fa fa-check"></i><b>46.8</b> An ANOVA table for the Model as a Whole</a></li>
+<li class="chapter" data-level="46.9" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#assumption-checking-for-our-galapagos-islands-models"><i class="fa fa-check"></i><b>46.9</b> Assumption Checking for our Galápagos Islands models</a></li>
+<li class="chapter" data-level="46.10" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#my-first-plot-studentized-residuals-vs.fitted-values"><i class="fa fa-check"></i><b>46.10</b> My First Plot: Studentized Residuals vs. Fitted Values</a><ul>
+<li class="chapter" data-level="46.10.1" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#questions-about-studentized-residuals-vs.fitted-values"><i class="fa fa-check"></i><b>46.10.1</b> Questions about Studentized Residuals vs. Fitted Values</a></li>
+</ul></li>
+<li class="chapter" data-level="46.11" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#automatic-regression-diagnostics-for-model-1"><i class="fa fa-check"></i><b>46.11</b> Automatic Regression Diagnostics for Model 1</a></li>
+<li class="chapter" data-level="46.12" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#model-1-diagnostic-plot-1"><i class="fa fa-check"></i><b>46.12</b> Model 1: Diagnostic Plot 1</a><ul>
+<li class="chapter" data-level="46.12.1" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#questions-about-diagnostic-plot-1-residuals-vs.fitted-values"><i class="fa fa-check"></i><b>46.12.1</b> Questions about Diagnostic Plot 1: Residuals vs. Fitted Values</a></li>
+</ul></li>
+<li class="chapter" data-level="46.13" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#diagnostic-plot-2-assessing-normality"><i class="fa fa-check"></i><b>46.13</b> Diagnostic Plot 2: Assessing Normality</a><ul>
+<li class="chapter" data-level="46.13.1" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#questions-about-diagnostic-plot-2-normal-plot-of-standardized-residuals"><i class="fa fa-check"></i><b>46.13.1</b> Questions about Diagnostic Plot 2: Normal Plot of Standardized Residuals</a></li>
+</ul></li>
+<li class="chapter" data-level="46.14" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#diagnostic-plot-3-assessing-constant-variance"><i class="fa fa-check"></i><b>46.14</b> Diagnostic Plot 3: Assessing Constant Variance</a><ul>
+<li class="chapter" data-level="46.14.1" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#questions-about-diagnostic-plot-3-scale-location-plot"><i class="fa fa-check"></i><b>46.14.1</b> Questions about Diagnostic Plot 3: Scale-Location Plot</a></li>
+</ul></li>
+<li class="chapter" data-level="46.15" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#obtaining-fitted-values-and-residuals-from-a-model"><i class="fa fa-check"></i><b>46.15</b> Obtaining Fitted Values and Residuals from a Model</a><ul>
+<li class="chapter" data-level="46.15.1" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#questions-about-fitted-values"><i class="fa fa-check"></i><b>46.15.1</b> Questions about Fitted Values</a></li>
+<li class="chapter" data-level="46.15.2" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#questions-about-residuals"><i class="fa fa-check"></i><b>46.15.2</b> Questions about Residuals</a></li>
+</ul></li>
+<li class="chapter" data-level="46.16" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#relationship-between-fitted-and-observed-values"><i class="fa fa-check"></i><b>46.16</b> Relationship between Fitted and Observed Values</a><ul>
+<li class="chapter" data-level="46.16.1" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#questions-about-fitted-and-observed-values"><i class="fa fa-check"></i><b>46.16.1</b> Questions about Fitted and Observed Values</a></li>
+</ul></li>
+<li class="chapter" data-level="46.17" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#standardizing-residuals"><i class="fa fa-check"></i><b>46.17</b> Standardizing Residuals</a><ul>
+<li class="chapter" data-level="46.17.1" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#questions-about-standardized-and-studentized-residuals"><i class="fa fa-check"></i><b>46.17.1</b> Questions about Standardized and Studentized Residuals</a></li>
+</ul></li>
+<li class="chapter" data-level="46.18" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#three-types-of-residuals"><i class="fa fa-check"></i><b>46.18</b> Three Types of Residuals</a><ul>
+<li class="chapter" data-level="46.18.1" data-path="species-found-on-the-galapagos-islands.html"><a href="species-found-on-the-galapagos-islands.html#questions-about-three-types-of-residuals"><i class="fa fa-check"></i><b>46.18.1</b> Questions about Three Types of Residuals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="47" data-path="influence-measures-for-multiple-regression.html"><a href="influence-measures-for-multiple-regression.html"><i class="fa fa-check"></i><b>47</b> Influence Measures for Multiple Regression</a><ul>
+<li class="chapter" data-level="47.1" data-path="influence-measures-for-multiple-regression.html"><a href="influence-measures-for-multiple-regression.html#dfbetas"><i class="fa fa-check"></i><b>47.1</b> DFBETAs</a></li>
+<li class="chapter" data-level="47.2" data-path="influence-measures-for-multiple-regression.html"><a href="influence-measures-for-multiple-regression.html#other-available-influence-measures"><i class="fa fa-check"></i><b>47.2</b> Other Available Influence Measures</a><ul>
+<li class="chapter" data-level="47.2.1" data-path="influence-measures-for-multiple-regression.html"><a href="influence-measures-for-multiple-regression.html#cooks-d-or-cooks-distance"><i class="fa fa-check"></i><b>47.2.1</b> Cook’s d or Cook’s Distance</a></li>
+<li class="chapter" data-level="47.2.2" data-path="influence-measures-for-multiple-regression.html"><a href="influence-measures-for-multiple-regression.html#plotting-cooks-distance"><i class="fa fa-check"></i><b>47.2.2</b> Plotting Cook’s Distance</a></li>
+<li class="chapter" data-level="47.2.3" data-path="influence-measures-for-multiple-regression.html"><a href="influence-measures-for-multiple-regression.html#dffits"><i class="fa fa-check"></i><b>47.2.3</b> DFFITS</a></li>
+<li class="chapter" data-level="47.2.4" data-path="influence-measures-for-multiple-regression.html"><a href="influence-measures-for-multiple-regression.html#covariance-ratio"><i class="fa fa-check"></i><b>47.2.4</b> Covariance Ratio</a></li>
+<li class="chapter" data-level="47.2.5" data-path="influence-measures-for-multiple-regression.html"><a href="influence-measures-for-multiple-regression.html#leverage"><i class="fa fa-check"></i><b>47.2.5</b> Leverage</a></li>
+<li class="chapter" data-level="47.2.6" data-path="influence-measures-for-multiple-regression.html"><a href="influence-measures-for-multiple-regression.html#indicator-of-influence"><i class="fa fa-check"></i><b>47.2.6</b> Indicator of Influence</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="48" data-path="building-predictions-from-our-models.html"><a href="building-predictions-from-our-models.html"><i class="fa fa-check"></i><b>48</b> Building Predictions from our models</a><ul>
+<li class="chapter" data-level="48.1" data-path="building-predictions-from-our-models.html"><a href="building-predictions-from-our-models.html#predictions-for-a-typical-island"><i class="fa fa-check"></i><b>48.1</b> Predictions for a “typical” island</a><ul>
+<li class="chapter" data-level="48.1.1" data-path="building-predictions-from-our-models.html"><a href="building-predictions-from-our-models.html#questions-about-the-prediction-and-confidence-interval-methods"><i class="fa fa-check"></i><b>48.1.1</b> Questions about the Prediction and Confidence Interval Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="48.2" data-path="building-predictions-from-our-models.html"><a href="building-predictions-from-our-models.html#making-a-prediction-with-new-data"><i class="fa fa-check"></i><b>48.2</b> Making a Prediction with New Data</a></li>
+</ul></li>
+<li class="chapter" data-level="49" data-path="standardizingrescaling-in-regression-models.html"><a href="standardizingrescaling-in-regression-models.html"><i class="fa fa-check"></i><b>49</b> Standardizing/Rescaling in Regression Models</a><ul>
+<li class="chapter" data-level="49.1" data-path="standardizingrescaling-in-regression-models.html"><a href="standardizingrescaling-in-regression-models.html#scaling-predictors-using-z-scores-semi-standardized-coefficients"><i class="fa fa-check"></i><b>49.1</b> Scaling Predictors using Z Scores: Semi-Standardized Coefficients</a><ul>
+<li class="chapter" data-level="49.1.1" data-path="standardizingrescaling-in-regression-models.html"><a href="standardizingrescaling-in-regression-models.html#questions-about-the-semi-standardized-model"><i class="fa fa-check"></i><b>49.1.1</b> Questions about the Semi-Standardized Model</a></li>
+</ul></li>
+<li class="chapter" data-level="49.2" data-path="standardizingrescaling-in-regression-models.html"><a href="standardizingrescaling-in-regression-models.html#fully-standardized-regression-coefficients"><i class="fa fa-check"></i><b>49.2</b> Fully Standardized Regression Coefficients</a><ul>
+<li class="chapter" data-level="49.2.1" data-path="standardizingrescaling-in-regression-models.html"><a href="standardizingrescaling-in-regression-models.html#questions-about-the-standardized-model"><i class="fa fa-check"></i><b>49.2.1</b> Questions about the Standardized Model</a></li>
+</ul></li>
+<li class="chapter" data-level="49.3" data-path="standardizingrescaling-in-regression-models.html"><a href="standardizingrescaling-in-regression-models.html#robust-standardization-of-regression-coefficients"><i class="fa fa-check"></i><b>49.3</b> Robust Standardization of Regression Coefficients</a><ul>
+<li class="chapter" data-level="49.3.1" data-path="standardizingrescaling-in-regression-models.html"><a href="standardizingrescaling-in-regression-models.html#questions-about-robust-standardization"><i class="fa fa-check"></i><b>49.3.1</b> Questions about Robust Standardization</a></li>
+</ul></li>
+<li class="chapter" data-level="49.4" data-path="standardizingrescaling-in-regression-models.html"><a href="standardizingrescaling-in-regression-models.html#scaling-inputs-by-dividing-by-2-standard-deviations"><i class="fa fa-check"></i><b>49.4</b> Scaling Inputs by Dividing by 2 Standard Deviations</a><ul>
+<li class="chapter" data-level="49.4.1" data-path="standardizingrescaling-in-regression-models.html"><a href="standardizingrescaling-in-regression-models.html#questions-about-standardizing-by-dividing-by-two-sd"><i class="fa fa-check"></i><b>49.4.1</b> Questions about Standardizing by Dividing by Two SD</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
@@ -916,6 +1028,9 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div>
 <p>Efron, Bradley. 1979. “Bootstrap Methods: Another Look at the Jackknife.” <em>Annals of Statistics</em> 7(1): 1–26. <a href="https://projecteuclid.org/euclid.aos/1176344552" class="uri">https://projecteuclid.org/euclid.aos/1176344552</a>.</p>
+</div>
+<div>
+<p>Faraway, Julian J. 2015. <em>Linear Models with R</em>. Second. Boca Raton, FL: CRC Press.</p>
 </div>
 <div>
 <p>Fox, John, and Sanford Weisberg. 2011. <em>An R Companion to Applied Regression</em>. Second. Thousand Oaks CA: Sage. <a href="http://socserv.socsci.mcmaster.ca/jfox/Books/Companion" class="uri">http://socserv.socsci.mcmaster.ca/jfox/Books/Companion</a>.</p>
@@ -997,7 +1112,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="model-selection-and-out-of-sample-validation.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="standardizingrescaling-in-regression-models.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
