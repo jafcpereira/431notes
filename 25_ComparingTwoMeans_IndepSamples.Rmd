@@ -205,7 +205,7 @@ t.test(temp_drop ~ treat, data = sepsis)
 
 We see from the t test output that the test statistic $t_{observed} = 4.27$ is based on a fractional degrees of freedom, specifically 288.24 (this fractional df is characteristic of the Welch test) which produces a *p* value of $2.7 \times 10^{-5}$. Again, since the *p* value is  less than $\alpha$ = 0.10, we will **reject** the null hypothesis and conclude that there is a statistically significant difference between the mean temperature drops in the Ibuprofen and Placebo groups.
 
-### Using `broom` to tidy the pooled t test
+### Using `broom` to tidy the Welch t test
 
 ```{r}
 broom::tidy(t.test(temp_drop ~ treat, 

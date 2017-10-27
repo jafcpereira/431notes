@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.11.16)  26 OCT 2017 07:21
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.11.16)  27 OCT 2017 10:19
 entering extended mode
 **431-notes.tex
 (C:\Users\Thomas\Dropbox\2017-431\431notes\431-notes.tex
@@ -3716,8 +3716,8 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 27922.
  ) 
 Here is how much of TeX's memory you used:
  16890 strings out of 493705
- 292037 string characters out of 3142148
- 369849 words of memory out of 3000000
+ 292034 string characters out of 3142148
+ 369847 words of memory out of 3000000
  18039 multiletter control sequences out of 15000+200000
  125335 words of font info for 197 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
@@ -3751,7 +3751,7 @@ eX 2.9/fonts/type1/public/lm/lmtk10.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/public/lm/lmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
 lic/lm/lmtt8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtti
 10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtto10.pfb>
-Output written on 431-notes.pdf (523 pages, 11201567 bytes).
+Output written on 431-notes.pdf (523 pages, 11201083 bytes).
 PDF statistics:
  6874 PDF objects out of 7423 (max. 8388607)
  1739 named destinations out of 2073 (max. 500000)

@@ -557,7 +557,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="25.4" data-path="comparing-two-means-using-independent-samples.html"><a href="comparing-two-means-using-independent-samples.html#the-welch-t-test"><i class="fa fa-check"></i><b>25.4</b> The Welch T test</a><ul>
 <li class="chapter" data-level="25.4.1" data-path="comparing-two-means-using-independent-samples.html"><a href="comparing-two-means-using-independent-samples.html#the-welch-t-test-in-r"><i class="fa fa-check"></i><b>25.4.1</b> The Welch t test in R</a></li>
-<li class="chapter" data-level="25.4.2" data-path="comparing-two-means-using-independent-samples.html"><a href="comparing-two-means-using-independent-samples.html#using-broom-to-tidy-the-pooled-t-test-1"><i class="fa fa-check"></i><b>25.4.2</b> Using <code>broom</code> to tidy the pooled t test</a></li>
+<li class="chapter" data-level="25.4.2" data-path="comparing-two-means-using-independent-samples.html"><a href="comparing-two-means-using-independent-samples.html#using-broom-to-tidy-the-welch-t-test"><i class="fa fa-check"></i><b>25.4.2</b> Using <code>broom</code> to tidy the Welch t test</a></li>
 </ul></li>
 <li class="chapter" data-level="25.5" data-path="comparing-two-means-using-independent-samples.html"><a href="comparing-two-means-using-independent-samples.html#bootstrap-ci-for-mu_1---mu_2-from-independent-samples-1"><i class="fa fa-check"></i><b>25.5</b> Bootstrap CI for <span class="math inline">\(\mu_1 - \mu_2\)</span> from Independent Samples</a><ul>
 <li class="chapter" data-level="25.5.1" data-path="comparing-two-means-using-independent-samples.html"><a href="comparing-two-means-using-independent-samples.html#using-the-bootdif-function-from-love-boost.r"><i class="fa fa-check"></i><b>25.5.1</b> Using the <code>bootdif</code> function from <code>Love-boost.R</code></a></li>
@@ -1216,8 +1216,8 @@ mean in group Ibuprofen   mean in group Placebo
                   0.464                   0.153 </code></pre>
 <p>We see from the t test output that the test statistic <span class="math inline">\(t_{observed} = 4.27\)</span> is based on a fractional degrees of freedom, specifically 288.24 (this fractional df is characteristic of the Welch test) which produces a <em>p</em> value of <span class="math inline">\(2.7 \times 10^{-5}\)</span>. Again, since the <em>p</em> value is less than <span class="math inline">\(\alpha\)</span> = 0.10, we will <strong>reject</strong> the null hypothesis and conclude that there is a statistically significant difference between the mean temperature drops in the Ibuprofen and Placebo groups.</p>
 </div>
-<div id="using-broom-to-tidy-the-pooled-t-test-1" class="section level3">
-<h3><span class="header-section-number">25.4.2</span> Using <code>broom</code> to tidy the pooled t test</h3>
+<div id="using-broom-to-tidy-the-welch-t-test" class="section level3">
+<h3><span class="header-section-number">25.4.2</span> Using <code>broom</code> to tidy the Welch t test</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">broom<span class="op">::</span><span class="kw">tidy</span>(<span class="kw">t.test</span>(temp_drop <span class="op">~</span><span class="st"> </span>treat, 
                    <span class="dt">data =</span> sepsis))</code></pre></div>
 <pre><code>  estimate estimate1 estimate2 statistic  p.value parameter conf.low
