@@ -77,7 +77,7 @@ It depends on the disease and on the consequences of a negative or positive test
 
 It would be nice if we could specify the probability that we were making an error with each potential decision.  We could then weigh the consequence of the error against its probability.  Unfortunately, in most cases, we can only specify the conditional probability of making a Type I error, given that the null hypothesis is true.  
 
-In deciding whether to reject a null hypothesis, we will need consider the consequences of the two potential types of errors.  If a Type I error is very serious, then you should reject the null hypothesis only if the *p* value is very small.  Conversely, if a Type II error is more serious, you should be willing to reject the null hypothesis with a larger *p* value, perhaps 0.10 or 0.20, instead of 0.05.
+In deciding whether to reject a null hypothesis, we will need to consider the consequences of the two potential types of errors.  If a Type I error is very serious, then you should reject the null hypothesis only if the *p* value is very small.  Conversely, if a Type II error is more serious, you should be willing to reject the null hypothesis with a larger *p* value, perhaps 0.10 or 0.20, instead of 0.05.
 
 ## Relation of $\alpha$ and $\beta$ to Error Types
 
@@ -93,7 +93,7 @@ Test Retains H~0~ | Type II Error ($\beta$) | Correct Decision (1 - $\alpha$)
 
 ## Power and Sample Size Calculations
 
-- For most statistical tests, it is theoretically possible to estimate the power of the test in the design stage, (before any data are collected) for various sample sizes, so we can hone in on a sample size choice which will enable us to collect data only on as many subjects are truly necessary. 
+- For most statistical tests, it is theoretically possible to estimate the power of the test in the design stage, (before any data are collected) for various sample sizes, so we can hone in on a sample size choice which will enable us to collect data only on as many subjects as are truly necessary. 
 
 - A power calculation is likely the most common element of an scientific grant proposal on which a statistician is consulted. This is a fine idea in theory, but in practice...
 
