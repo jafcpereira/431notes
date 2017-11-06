@@ -44,7 +44,7 @@ We could argue for a one-sided comparison, but I'll be safe and use the two-side
 
 ### Question 9. What does the distribution of outcomes in each group tell us?
 
-```{r battery 1, fig.height=4.5}
+```{r battery1-fig, fig.height=4.5}
 ggplot(battery, aes(x = type, y = time, fill = type)) +
   geom_jitter(aes(color = type), alpha = 0.75, width = 0.125) +
   geom_boxplot(alpha = 0.5) +
@@ -57,7 +57,7 @@ ggplot(battery, aes(x = type, y = time, fill = type)) +
 
 We can generate histograms, too, but that's an issue, because we have so few observations.
 
-```{r histograms for battery, fig.height = 3.5}
+```{r histogram-battery-fig, fig.height = 3.5}
 ggplot(battery, aes(x = time, fill = type)) +
   geom_histogram(bins = 6, col = "white") +
   facet_wrap(~ type) +
@@ -140,7 +140,7 @@ The sample Pearson correlation coefficient is very strong and positive at 0.92, 
 
 We summarize the distribution of the paired differences (cornflakes - oatbran) below.
 
-```{r paired diffs breakfast, fig.height=4, echo = FALSE}
+```{r paired-breakfast-fig, fig.height=4, echo = FALSE}
 breakfast$diffs <- breakfast$cornflakes - breakfast$oatbran
 
 p1 <- ggplot(breakfast, aes(x = diffs)) +
@@ -172,7 +172,7 @@ gridExtra::grid.arrange(p1, p2, p3, nrow=1,
 
 The Normal distribution doesn't look too ridiculous in this case for the paired (cornflakes-oatbran) differences. Suppose we assume Normality and run the paired t test.
 
-```{r paired t breakfast}
+```{r paired-t-breakfast}
 t.test(breakfast$cornflakes - breakfast$oatbran)
 ```
 
@@ -199,7 +199,7 @@ We want to know *n*, the minimum required sample size for the new study, and we 
 
 **Question 1.** What sample size will be required to yield 90% power to detect an effect half the size of the effect we observed in the breakfast study, in a new paired samples study using a two-tailed 5% significance level?
 
-```{r power breakfast}
+```{r power-breakfast}
 power.t.test(delta = 0.18, sd = 0.41, sig.level = 0.05, 
              power = 0.9, type="paired", alternative="two.sided")
 ```
@@ -208,7 +208,7 @@ And so our new study will require at least **57 subjects** (each measured in two
 
 **Question 2.** What if we were willing to accept only 80% power?
 
-```{r power breakfast 2}
+```{r power-breakfast-2}
 power.t.test(delta = 0.18, sd = 0.41, sig.level = 0.05, 
              power = 0.8, type="paired", alternative="two.sided")
 ```
@@ -219,7 +219,7 @@ It turns out that this would require at least **43 subjects**.
 
 What would happen if, instead of doing a paired samples study, we did one using independent samples? Assuming we used a balanced design, and assigned the same number of different people at random to either the oatbran supplement or regular cornflakes alone, we could do such a study, but it would require many more people to obtain similar power to the paired samples study. 
 
-```{r power breakfast 3}
+```{r power-breakfast-3}
 power.t.test(delta = 0.18, sd = 0.41, sig.level = 0.05, 
              power = 0.9, type="two.sample", alternative="two.sided")
 ```
