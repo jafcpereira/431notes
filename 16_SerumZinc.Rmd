@@ -38,7 +38,7 @@ The code presented below builds:
 - a boxplot (with median notch) and 
 - a Normal Q-Q plot (with guiding straight line through the quartiles) 
 
-for the `zinc` results from the `serzinc` tibble. It does this while making use of several functions contained in the script `Love-R-functions.R`.
+for the `zinc` results from the `serzinc` tibble. It does this while making use of several functions contained in the script `Love-boost.R`.
 
 These functions include:
 
@@ -81,7 +81,7 @@ You could potentially add `coord_flip() +` to the histogram, and this would have
 
 This section describes some numerical summaries of interest to augment the plots in summarizing the center, spread and shape of the distribution of serum zinc among these 462 teenage males. 
 
-The tables below are built using two functions from the `Love-R-functions.R` script.
+The tables below are built using two functions from the `Love-boost.R` script.
 
 - `skew1` provides the skew~1~ value for the `zinc` data and 
 - `Emp_Rule` provides the results of applying the `68-95-99.7` Empirical Rule to the `zinc` data.
