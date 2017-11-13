@@ -85,7 +85,7 @@ md.pattern(wcgs.s3noNAchol)
 
 Following the approach we outlined in the R-20 document\footnote{Also see https://stat.ethz.ch/education/semesters/ss2012/ams/paper/mice.pdf}, we'll try fitting the model while imputing the 12 cholesterol values, 100 times each, creating 100 new "complete" data sets.
 
-```{r mi for chol model}
+```{r mi for chol model, cache=TRUE}
 wcgs.sub <- wcgs %>% dplyr::select(id, chol, age, bmi, sbp)
 chol.mi <- mice(wcgs.sub, m = 100, maxit = 5, 
                 meth = "pmm", printFlag = FALSE, seed = 4314)
@@ -106,7 +106,7 @@ Working with a particular imputation might allow us to produce plots of the impu
 
 Next, we'll fit a set of pooled regression model estimates across all 100 imputations, producing the following results. We'll even estimate both forms of R^2^.
 
-```{r running chol model with mi}
+```{r running chol model with mi, cache = TRUE}
 model.1mi <- with(chol.mi, lm(chol ~ age + bmi + sbp))
 pool(model.1mi)
 round(summary(pool(model.1mi)),2)
