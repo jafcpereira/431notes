@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.11.16)  13 NOV 2017 13:05
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.11.16)  13 NOV 2017 17:35
 entering extended mode
 **431-notes.tex
 (C:\Users\Thomas\Dropbox\2017-431\431notes\431-notes.tex
@@ -3026,13 +3026,13 @@ RING TWO POPULATION PROPORTIONS
  []
 
 [360] [361]
-Overfull \hbox (44.74348pt too wide) in paragraph at lines 18620--18620
+Overfull \hbox (44.74348pt too wide) in paragraph at lines 18629--18629
 []     \T1/lmtt/m/n/10 difference of proportion power calculation for binomial 
 distribution (arcsine transformation)[] 
  []
 
 
-Overfull \hbox (44.74348pt too wide) in paragraph at lines 18655--18655
+Overfull \hbox (44.74348pt too wide) in paragraph at lines 18664--18664
 []     \T1/lmtt/m/n/10 difference of proportion power calculation for binomial 
 distribution (arcsine transformation)[] 
  []
@@ -3074,7 +3074,7 @@ Underfull \vbox (badness 5147) has occurred while \output is active []
 File: 431-notes_files/figure-latex/a11-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/a11-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/a11-1.pdf used on input l
-ine 20176.
+ine 20185.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [385 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/a1
 1-1.pdf>] [386] [387] [388
@@ -3090,7 +3090,7 @@ t>
 File: 431-notes_files/figure-latex/simul1a-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/simul1a-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/simul1a-1.pdf used on inp
-ut line 20610.
+ut line 20619.
 (pdftex.def)             Requested size: 361.34912pt x 325.2142pt.
 [394 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/si
 mul1a-1.pdf>] <431-notes_files/figure-latex/simul1b-1.pdf, id=5284, 469.755pt x
@@ -3098,7 +3098,7 @@ mul1a-1.pdf>] <431-notes_files/figure-latex/simul1b-1.pdf, id=5284, 469.755pt x
 File: 431-notes_files/figure-latex/simul1b-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/simul1b-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/simul1b-1.pdf used on inp
-ut line 20624.
+ut line 20633.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [395 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/si
 mul1b-1.pdf>] <431-notes_files/figure-latex/simul1c-1.pdf, id=5296, 469.755pt x
@@ -3106,7 +3106,7 @@ mul1b-1.pdf>] <431-notes_files/figure-latex/simul1c-1.pdf, id=5296, 469.755pt x
 File: 431-notes_files/figure-latex/simul1c-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/simul1c-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/simul1c-1.pdf used on inp
-ut line 20679.
+ut line 20688.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [396 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/si
 mul1c-1.pdf>] <431-notes_files/figure-latex/check1c-1.pdf, id=5309, 469.755pt x
@@ -3114,7 +3114,7 @@ mul1c-1.pdf>] <431-notes_files/figure-latex/check1c-1.pdf, id=5309, 469.755pt x
 File: 431-notes_files/figure-latex/check1c-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/check1c-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/check1c-1.pdf used on inp
-ut line 20807.
+ut line 20816.
 (pdftex.def)             Requested size: 469.75386pt x 289.07928pt.
 
 Underfull \vbox (badness 1087) has occurred while \output is active []
@@ -3131,7 +3131,7 @@ File: 431-notes_files/figure-latex/scatterplot_matrix_hydrate_fig-1.pdf Graphic
  file (type pdf)
 <use 431-notes_files/figure-latex/scatterplot_matrix_hydrate_fig-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/scatterplot_matrix_hydrat
-e_fig-1.pdf used on input line 20908.
+e_fig-1.pdf used on input line 20917.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [400 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/sc
 atterplot_matrix_hydrate_fig-1.pdf>]
@@ -3141,7 +3141,7 @@ File: 431-notes_files/figure-latex/recov.score_eda-1.pdf Graphic file (type pdf
 )
 <use 431-notes_files/figure-latex/recov.score_eda-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/recov.score_eda-1.pdf use
-d on input line 20978.
+d on input line 20987.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3156,7 +3156,7 @@ File: 431-notes_files/figure-latex/scatterplot_model_hydrate_1-1.pdf Graphic fi
 le (type pdf)
 <use 431-notes_files/figure-latex/scatterplot_model_hydrate_1-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/scatterplot_model_hydrate
-_1-1.pdf used on input line 21007.
+_1-1.pdf used on input line 21016.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3171,7 +3171,7 @@ File: 431-notes_files/figure-latex/resid_for_hydrate_regression_1-1.pdf Graphic
  file (type pdf)
 <use 431-notes_files/figure-latex/resid_for_hydrate_regression_1-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/resid_for_hydrate_regress
-ion_1-1.pdf used on input line 21607.
+ion_1-1.pdf used on input line 21616.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3183,7 +3183,7 @@ Chapter 41.
 File: 431-notes_files/figure-latex/p11-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/p11-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/p11-1.pdf used on input l
-ine 21647.
+ine 21656.
 (pdftex.def)             Requested size: 469.75386pt x 505.88875pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3199,7 +3199,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: 431-notes_files/figure-latex/p23b-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/p23b-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/p23b-1.pdf used on input 
-line 22564.
+line 22573.
 (pdftex.def)             Requested size: 469.75386pt x 433.61894pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3213,7 +3213,7 @@ Chapter 42.
 File: 431-notes_files/figure-latex/p26-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/p26-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/p26-1.pdf used on input l
-ine 22757.
+ine 22766.
 (pdftex.def)             Requested size: 469.75386pt x 361.34912pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3222,7 +3222,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: 431-notes_files/figure-latex/p27-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/p27-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/p27-1.pdf used on input l
-ine 22801.
+ine 22810.
 (pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
 [427 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/p2
 6-1.pdf>] [428 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figur
@@ -3231,7 +3231,7 @@ t x 361.35pt>
 File: 431-notes_files/figure-latex/p28a-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/p28a-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/p28a-1.pdf used on input 
-line 22855.
+line 22864.
 (pdftex.def)             Requested size: 469.75386pt x 361.34912pt.
 [429 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/p2
 8a-1.pdf>] <431-notes_files/figure-latex/p29-1.pdf, id=5562, 325.215pt x 325.21
@@ -3239,7 +3239,7 @@ line 22855.
 File: 431-notes_files/figure-latex/p29-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/p29-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/p29-1.pdf used on input l
-ine 22901.
+ine 22910.
 (pdftex.def)             Requested size: 325.23901pt x 325.23901pt.
 [430 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/p2
 9-1.pdf>] <431-notes_files/figure-latex/p30-1.pdf, id=5573, 361.35pt x 289.08pt
@@ -3247,7 +3247,7 @@ ine 22901.
 File: 431-notes_files/figure-latex/p30-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/p30-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/p30-1.pdf used on input l
-ine 22941.
+ine 22950.
 (pdftex.def)             Requested size: 361.34912pt x 289.07928pt.
 
 <431-notes_files/figure-latex/p31 constant vs nonconstant variance examples-1.p
@@ -3258,7 +3258,7 @@ s-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/p31 constant vs nonconstant variance examples
 -1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/p31 constant vs nonconsta
-nt variance examples-1.pdf used on input line 22952.
+nt variance examples-1.pdf used on input line 22961.
 (pdftex.def)             Requested size: 469.75386pt x 505.88875pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3270,7 +3270,7 @@ figure-latex/p32-1.pdf, id=5597, 361.35pt x 361.35pt>
 File: 431-notes_files/figure-latex/p32-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/p32-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/p32-1.pdf used on input l
-ine 23027.
+ine 23036.
 (pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
 
 Underfull \vbox (badness 8056) has occurred while \output is active []
@@ -3281,7 +3281,7 @@ pt x 361.35pt>
 File: 431-notes_files/figure-latex/p35b-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/p35b-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/p35b-1.pdf used on input 
-line 23168.
+line 23177.
 (pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
 [436 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/p3
 5b-1.pdf>] <431-notes_files/figure-latex/p36b-1.pdf, id=5630, 469.755pt x 325.2
@@ -3289,7 +3289,7 @@ line 23168.
 File: 431-notes_files/figure-latex/p36b-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/p36b-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/p36b-1.pdf used on input 
-line 23208.
+line 23217.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Overfull \hbox (9.23866pt too wide) has occurred while \output is active
@@ -3303,13 +3303,13 @@ NCE ON THE MODEL \T1/lmr/m/n/10 437
 File: 431-notes_files/figure-latex/cooks1-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/cooks1-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/cooks1-1.pdf used on inpu
-t line 23252.
+t line 23261.
 (pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
 <431-notes_files/figure-latex/cooks2-1.pdf, id=5642, 361.35pt x 361.35pt>
 File: 431-notes_files/figure-latex/cooks2-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/cooks2-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/cooks2-1.pdf used on inpu
-t line 23266.
+t line 23275.
 (pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3321,13 +3321,13 @@ gure-latex/cooks2-1.pdf>] [440] [441]
 File: 431-notes_files/figure-latex/diagplotDW1-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/diagplotDW1-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/diagplotDW1-1.pdf used on
- input line 23525.
+ input line 23534.
 (pdftex.def)             Requested size: 397.48402pt x 361.34912pt.
 <431-notes_files/figure-latex/p41a-1.pdf, id=5678, 469.755pt x 433.62pt>
 File: 431-notes_files/figure-latex/p41a-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/p41a-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/p41a-1.pdf used on input 
-line 23534.
+line 23543.
 (pdftex.def)             Requested size: 469.75386pt x 433.61894pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3339,7 +3339,7 @@ es/figure-latex/p41a-1.pdf>]
 File: 431-notes_files/figure-latex/violsim 1-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/violsim 1-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/violsim 1-1.pdf used on i
-nput line 23559.
+nput line 23568.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 <431-notes_files/figure-latex/boxCox_1_violsim1-1.pdf, id=5704, 469.755pt x 325
@@ -3348,7 +3348,7 @@ File: 431-notes_files/figure-latex/boxCox_1_violsim1-1.pdf Graphic file (type p
 df)
 <use 431-notes_files/figure-latex/boxCox_1_violsim1-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/boxCox_1_violsim1-1.pdf u
-sed on input line 23570.
+sed on input line 23579.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3359,7 +3359,7 @@ olsim 1-1.pdf>]
 File: 431-notes_files/figure-latex/violsim_2-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/violsim_2-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/violsim_2-1.pdf used on i
-nput line 23590.
+nput line 23599.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3370,7 +3370,7 @@ xCox_1_violsim1-1.pdf>]
 File: 431-notes_files/figure-latex/violsim_2b-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/violsim_2b-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/violsim_2b-1.pdf used on 
-input line 23602.
+input line 23611.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3381,7 +3381,7 @@ olsim_2-1.pdf>]
 File: 431-notes_files/figure-latex/violsim_2c-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/violsim_2c-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/violsim_2c-1.pdf used on 
-input line 23623.
+input line 23632.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3392,7 +3392,7 @@ olsim_2b-1.pdf>]
 File: 431-notes_files/figure-latex/violsim_5-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/violsim_5-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/violsim_5-1.pdf used on i
-nput line 23635.
+nput line 23644.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3405,7 +3405,7 @@ File: 431-notes_files/figure-latex/viol_fit_without_72-1.pdf Graphic file (type
  pdf)
 <use 431-notes_files/figure-latex/viol_fit_without_72-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/viol_fit_without_72-1.pdf
- used on input line 23649.
+ used on input line 23658.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3418,7 +3418,7 @@ File: 431-notes_files/figure-latex/viol_fit_without_72_1and3-1.pdf Graphic file
  (type pdf)
 <use 431-notes_files/figure-latex/viol_fit_without_72_1and3-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/viol_fit_without_72_1and3
--1.pdf used on input line 23668.
+-1.pdf used on input line 23677.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3431,7 +3431,7 @@ File: 431-notes_files/figure-latex/viol_fit_without_72_2and5-1.pdf Graphic file
  (type pdf)
 <use 431-notes_files/figure-latex/viol_fit_without_72_2and5-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/viol_fit_without_72_2and5
--1.pdf used on input line 23687.
+-1.pdf used on input line 23696.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3442,7 +3442,7 @@ d=5787, 469.755pt x 325.215pt>
 File: 431-notes_files/figure-latex/viol2sim-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/viol2sim-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/viol2sim-1.pdf used on in
-put line 23715.
+put line 23724.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3455,10 +3455,10 @@ File: 431-notes_files/figure-latex/viol2sim_model3plot1-1.pdf Graphic file (typ
 e pdf)
 <use 431-notes_files/figure-latex/viol2sim_model3plot1-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/viol2sim_model3plot1-1.pd
-f used on input line 23726.
+f used on input line 23735.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 23726--23730
+Underfull \hbox (badness 10000) in paragraph at lines 23735--23739
 [][]
  []
 
@@ -3473,7 +3473,7 @@ File: 431-notes_files/figure-latex/viol2sim_model3plotboxcox-1.pdf Graphic file
  (type pdf)
 <use 431-notes_files/figure-latex/viol2sim_model3plotboxcox-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/viol2sim_model3plotboxcox
--1.pdf used on input line 23737.
+-1.pdf used on input line 23746.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3486,7 +3486,7 @@ File: 431-notes_files/figure-latex/viol2sim_model4plot2-1.pdf Graphic file (typ
 e pdf)
 <use 431-notes_files/figure-latex/viol2sim_model4plot2-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/viol2sim_model4plot2-1.pd
-f used on input line 23755.
+f used on input line 23764.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3499,7 +3499,7 @@ File: 431-notes_files/figure-latex/viol2sim_model4plot1-1.pdf Graphic file (typ
 e pdf)
 <use 431-notes_files/figure-latex/viol2sim_model4plot1-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/viol2sim_model4plot1-1.pd
-f used on input line 23766.
+f used on input line 23775.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3540,7 +3540,7 @@ File: 431-notes_files/figure-latex/my scatterplot matrix-1.pdf Graphic file (ty
 pe pdf)
 <use 431-notes_files/figure-latex/my scatterplot matrix-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/my scatterplot matrix-1.p
-df used on input line 25713.
+df used on input line 25722.
 (pdftex.def)             Requested size: 469.75386pt x 433.61894pt.
 
 <431-notes_files/figure-latex/ggally scatterplot matrix-1.pdf, id=6002, 469.755
@@ -3549,7 +3549,7 @@ File: 431-notes_files/figure-latex/ggally scatterplot matrix-1.pdf Graphic file
  (type pdf)
 <use 431-notes_files/figure-latex/ggally scatterplot matrix-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/ggally scatterplot matrix
--1.pdf used on input line 25724.
+-1.pdf used on input line 25733.
 (pdftex.def)             Requested size: 469.75386pt x 433.61894pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3562,7 +3562,7 @@ File: 431-notes_files/figure-latex/plot residuals for ebmodel.1-1.pdf Graphic f
 ile (type pdf)
 <use 431-notes_files/figure-latex/plot residuals for ebmodel.1-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/plot residuals for ebmode
-l.1-1.pdf used on input line 25739.
+l.1-1.pdf used on input line 25748.
 (pdftex.def)             Requested size: 469.75386pt x 433.61894pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3577,7 +3577,7 @@ Chapter 46.
 <figures/galapic.jpg, id=6045, 737.75626pt x 500.62032pt>
 File: figures/galapic.jpg Graphic file (type jpg)
 <use figures/galapic.jpg>
-Package pdftex.def Info: figures/galapic.jpg used on input line 25907.
+Package pdftex.def Info: figures/galapic.jpg used on input line 25916.
 (pdftex.def)             Requested size: 469.75334pt x 318.7612pt.
 [491] [492 <C:/Users/Thomas/Dropbox/2017-431/431notes/figures/galapic.jpg>] [49
 3] [494]
@@ -3587,7 +3587,7 @@ File: 431-notes_files/figure-latex/p51 fancy scatterplot matrix-1.pdf Graphic f
 ile (type pdf)
 <use 431-notes_files/figure-latex/p51 fancy scatterplot matrix-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/p51 fancy scatterplot mat
-rix-1.pdf used on input line 26092.
+rix-1.pdf used on input line 26101.
 (pdftex.def)             Requested size: 469.75385pt x 484.43365pt.
 [495 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/p5
 1 fancy scatterplot matrix-1.pdf>]
@@ -3598,13 +3598,13 @@ Underfull \vbox (badness 5985) has occurred while \output is active []
 File: 431-notes_files/figure-latex/p60-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/p60-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/p60-1.pdf used on input l
-ine 26586.
+ine 26595.
 (pdftex.def)             Requested size: 289.09251pt x 289.09251pt.
 <431-notes_files/figure-latex/p58-1.pdf, id=6150, 469.755pt x 578.16pt>
 File: 431-notes_files/figure-latex/p58-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/p58-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/p58-1.pdf used on input l
-ine 26611.
+ine 26620.
 (pdftex.def)             Requested size: 469.75386pt x 578.15858pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3619,7 +3619,7 @@ t>
 File: 431-notes_files/figure-latex/p61-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/p61-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/p61-1.pdf used on input l
-ine 26624.
+ine 26633.
 (pdftex.def)             Requested size: 361.34912pt x 325.2142pt.
 [503 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/p6
 1-1.pdf>] <431-notes_files/figure-latex/p62-1.pdf, id=6193, 361.35pt x 325.215p
@@ -3627,13 +3627,13 @@ t>
 File: 431-notes_files/figure-latex/p62-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/p62-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/p62-1.pdf used on input l
-ine 26668.
+ine 26677.
 (pdftex.def)             Requested size: 361.34912pt x 325.2142pt.
 <431-notes_files/figure-latex/p63-1.pdf, id=6194, 361.35pt x 325.215pt>
 File: 431-notes_files/figure-latex/p63-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/p63-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/p63-1.pdf used on input l
-ine 26708.
+ine 26717.
 (pdftex.def)             Requested size: 361.34912pt x 325.2142pt.
 
 Underfull \vbox (badness 1024) has occurred while \output is active []
@@ -3645,7 +3645,7 @@ e-latex/p63-1.pdf>] [506] <431-notes_files/figure-latex/p65-1.pdf, id=6237, 361
 File: 431-notes_files/figure-latex/p65-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/p65-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/p65-1.pdf used on input l
-ine 26904.
+ine 26913.
 (pdftex.def)             Requested size: 361.34912pt x 289.07928pt.
 [507 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/p6
 5-1.pdf>] <431-notes_files/figure-latex/p66-1.pdf, id=6249, 469.755pt x 252.945
@@ -3653,7 +3653,7 @@ pt>
 File: 431-notes_files/figure-latex/p66-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/p66-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/p66-1.pdf used on input l
-ine 26960.
+ine 26969.
 (pdftex.def)             Requested size: 469.75386pt x 252.94438pt.
 [508 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/p6
 6-1.pdf>] <431-notes_files/figure-latex/p67-1.pdf, id=6264, 469.755pt x 325.215
@@ -3661,13 +3661,13 @@ pt>
 File: 431-notes_files/figure-latex/p67-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/p67-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/p67-1.pdf used on input l
-ine 26991.
+ine 27000.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 <431-notes_files/figure-latex/p67-2-1.pdf, id=6265, 469.755pt x 252.945pt>
 File: 431-notes_files/figure-latex/p67-2-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/p67-2-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/p67-2-1.pdf used on input
- line 27019.
+ line 27028.
 (pdftex.def)             Requested size: 469.75386pt x 252.94438pt.
 [509 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/p6
 7-1.pdf>] <431-notes_files/figure-latex/p67-2-2.pdf, id=6280, 469.755pt x 252.9
@@ -3675,7 +3675,7 @@ Package pdftex.def Info: 431-notes_files/figure-latex/p67-2-1.pdf used on input
 File: 431-notes_files/figure-latex/p67-2-2.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/p67-2-2.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/p67-2-2.pdf used on input
- line 27029.
+ line 27038.
 (pdftex.def)             Requested size: 469.75386pt x 252.94438pt.
 [510 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/p6
 7-2-1.pdf> <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-la
@@ -3690,7 +3690,7 @@ File: 431-notes_files/figure-latex/model 1 diagnostic 4-1.pdf Graphic file (typ
 e pdf)
 <use 431-notes_files/figure-latex/model 1 diagnostic 4-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/model 1 diagnostic 4-1.pd
-f used on input line 27201.
+f used on input line 27210.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [513 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/mo
 del 1 diagnostic 4-1.pdf>] [514]
@@ -3702,18 +3702,18 @@ Chapter 49.
 [517
 
 ] [518] [519] [520] [521] [522]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 27934.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 27943.
 [523]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 27934.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 27943.
 (C:\Users\Thomas\Dropbox\2017-431\431notes\431-notes.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 27934.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 27943.
 
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 27934
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 27943
 .
 Package rerunfilecheck Info: File `431-notes.out' has not changed.
 (rerunfilecheck)             Checksum: BFDF04C8F0CC95C032CDD69A2B322EB1;100389.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 27934.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 27943.
  ) 
 Here is how much of TeX's memory you used:
  16892 strings out of 493705
@@ -3752,7 +3752,7 @@ eX 2.9/fonts/type1/public/lm/lmtk10.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/public/lm/lmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
 lic/lm/lmtt8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtti
 10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtto10.pfb>
-Output written on 431-notes.pdf (523 pages, 11194056 bytes).
+Output written on 431-notes.pdf (523 pages, 11202421 bytes).
 PDF statistics:
  6875 PDF objects out of 7423 (max. 8388607)
  1740 named destinations out of 2073 (max. 500000)

@@ -110,7 +110,14 @@ saifs.ci(x = 1229, n = 1737, conf=0.9)
 saifs.ci(x = 1229, n = 1737, conf=0.99, dig=5)
 ```
 
-Note that in the final interval, I asked the machine to round to five digits rather than the default of three. 
+Note that in the final interval, I asked the machine to round to five digits rather than the default of three. On my desktop (and probably yours), doing so results in this output:
+
+```
+Sample Proportion             0.005             0.995 
+          0.70754           0.67898           0.73585
+```
+
+I've got some setting wrong in my `bookdown` work so that this doesn't show up above when the function is called. Sorry!
 
 ### The `saifs.ci` function in R
 

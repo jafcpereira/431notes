@@ -1110,7 +1110,10 @@ probability of success
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">saifs.ci</span>(<span class="dt">x =</span> <span class="dv">1229</span>, <span class="dt">n =</span> <span class="dv">1737</span>, <span class="dt">conf=</span><span class="fl">0.99</span>, <span class="dt">dig=</span><span class="dv">5</span>)</code></pre></div>
 <pre><code>Sample Proportion             0.005             0.995 
             0.708             0.679             0.736 </code></pre>
-<p>Note that in the final interval, I asked the machine to round to five digits rather than the default of three.</p>
+<p>Note that in the final interval, I asked the machine to round to five digits rather than the default of three. On my desktop (and probably yours), doing so results in this output:</p>
+<pre><code>Sample Proportion             0.005             0.995 
+          0.70754           0.67898           0.73585</code></pre>
+<p>I’ve got some setting wrong in my <code>bookdown</code> work so that this doesn’t show up above when the function is called. Sorry!</p>
 <div id="the-saifs.ci-function-in-r" class="section level3">
 <h3><span class="header-section-number">29.8.1</span> The <code>saifs.ci</code> function in R</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">saifs.ci</span><span class="st">`</span> &lt;-<span class="st"> </span>
