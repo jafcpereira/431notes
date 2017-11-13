@@ -694,7 +694,9 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="30.16" data-path="comparing-population-rates-proportions.html"><a href="comparing-population-rates-proportions.html#building-a-2x2-table-in-r-from-a-data-frame"><i class="fa fa-check"></i><b>30.16</b> Building a 2x2 Table in R from a Data Frame</a></li>
 <li class="chapter" data-level="30.17" data-path="comparing-population-rates-proportions.html"><a href="comparing-population-rates-proportions.html#standard-epidemiological-format"><i class="fa fa-check"></i><b>30.17</b> Standard Epidemiological Format</a></li>
 <li class="chapter" data-level="30.18" data-path="comparing-population-rates-proportions.html"><a href="comparing-population-rates-proportions.html#use-the-bayesian-augmentation-x-1n-2"><i class="fa fa-check"></i><b>30.18</b> Use the Bayesian Augmentation <code>(x + 1)/(n + 2)</code></a></li>
-<li class="chapter" data-level="30.19" data-path="comparing-population-rates-proportions.html"><a href="comparing-population-rates-proportions.html#returning-to-the-ebola-virus-disease-survival-example"><i class="fa fa-check"></i><b>30.19</b> Returning to the Ebola Virus Disease Survival Example</a></li>
+<li class="chapter" data-level="30.19" data-path="comparing-population-rates-proportions.html"><a href="comparing-population-rates-proportions.html#returning-to-the-ebola-virus-disease-survival-example"><i class="fa fa-check"></i><b>30.19</b> Returning to the Ebola Virus Disease Survival Example</a><ul>
+<li class="chapter" data-level="30.19.1" data-path="comparing-population-rates-proportions.html"><a href="comparing-population-rates-proportions.html#answer-sketch-for-questions-2-4"><i class="fa fa-check"></i><b>30.19.1</b> Answer Sketch for questions 2-4</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="31" data-path="power-and-sample-size-for-comparing-two-population-proportions.html"><a href="power-and-sample-size-for-comparing-two-population-proportions.html"><i class="fa fa-check"></i><b>31</b> Power and Sample Size for Comparing Two Population Proportions</a><ul>
 <li class="chapter" data-level="31.1" data-path="power-and-sample-size-for-comparing-two-population-proportions.html"><a href="power-and-sample-size-for-comparing-two-population-proportions.html#tuberculosis-prevalence-among-iv-drug-users"><i class="fa fa-check"></i><b>31.1</b> Tuberculosis Prevalence Among IV Drug Users</a></li>
@@ -1624,8 +1626,11 @@ Conditional MLE Odds Ratio:  0.357     0.275    0.460
 <li>Develop the appropriate 2x2 table and get it into R for analysis.</li>
 <li>What conclusions can we draw from your comparison of fatality risks by sex?</li>
 </ol>
+<div id="answer-sketch-for-questions-2-4" class="section level3">
+<h3><span class="header-section-number">30.19.1</span> Answer Sketch for questions 2-4</h3>
+<p>The null hypothesis is that the population death rate among men is the same as the population death rate among women, against a two-sided alternative (that the rates are not the same)</p>
 <p>Here is the appropriate set of 2x2 table results, including the Bayesian augmentation.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">twobytwo</span>(<span class="dv">631</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span>, <span class="dv">213</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span>, <span class="dv">572</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span>, <span class="dv">246</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span>,
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">twobytwo</span>(<span class="dv">631</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span>, (<span class="dv">874</span> <span class="op">-</span><span class="st"> </span><span class="dv">631</span>) <span class="op">+</span><span class="st"> </span><span class="dv">1</span>, <span class="dv">572</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span>, (<span class="dv">818</span> <span class="op">-</span><span class="st"> </span><span class="dv">572</span>) <span class="op">+</span><span class="st"> </span><span class="dv">1</span>,
          <span class="st">&quot;Men&quot;</span>, <span class="st">&quot;Women&quot;</span>, <span class="st">&quot;Died&quot;</span>, <span class="st">&quot;Survived&quot;</span>)</code></pre></div>
 <pre><code>2 by 2 table analysis: 
 ------------------------------------------------------ 
@@ -1633,19 +1638,21 @@ Outcome   : Died
 Comparing : Men vs. Women 
 
       Died Survived    P(Died) 95% conf. interval
-Men    632      214      0.747     0.717    0.775
+Men    632      244      0.722     0.691    0.750
 Women  573      247      0.699     0.666    0.729
 
                                    95% conf. interval
-             Relative Risk: 1.0691    1.0072   1.1348
-         Sample Odds Ratio: 1.2731    1.0266   1.5786
-Conditional MLE Odds Ratio: 1.2729    1.0207   1.5882
-    Probability difference: 0.0483    0.0053   0.0911
+             Relative Risk: 1.0325    0.9714   1.0973
+         Sample Odds Ratio: 1.1165    0.9051   1.3774
+Conditional MLE Odds Ratio: 1.1165    0.9000   1.3851
+    Probability difference: 0.0227   -0.0205   0.0658
 
-             Exact P-value: 0.0286 
-        Asymptotic P-value: 0.0279 
+             Exact P-value: 0.309 
+        Asymptotic P-value: 0.303 
 ------------------------------------------------------</code></pre>
+<p>Our conclusions are (from any of the comparisons) that the survival rates do not differ significantly by sex, at least at the 5% significance level. We could use the relative risk, odds ratio, probability difference, or even chi-square test, to see this.</p>
 
+</div>
 </div>
 </div>
             </section>

@@ -337,12 +337,15 @@ Now, in the same *New England Journal of Medicine* article, data are provided fo
 3.	Develop the appropriate 2x2 table and get it into R for analysis.
 4.	What conclusions can we draw from your comparison of fatality risks by sex?  
 
+### Answer Sketch for questions 2-4
+
+The null hypothesis is that the population death rate among men is the same as the population death rate among women, against a two-sided alternative (that the rates are not the same)
+
 Here is the appropriate set of 2x2 table results, including the Bayesian augmentation.
 
 ```{r twobytwo for ebola 2}
-twobytwo(631 + 1, 213 + 1, 572 + 1, 246 + 1,
+twobytwo(631 + 1, (874 - 631) + 1, 572 + 1, (818 - 572) + 1,
          "Men", "Women", "Died", "Survived")
 ```
 
-
-
+Our conclusions are (from any of the comparisons) that the survival rates do not differ significantly by sex, at least at the 5% significance level. We could use the relative risk, odds ratio, probability difference, or even chi-square test, to see this.
