@@ -402,7 +402,7 @@ The great advantage of the bootstrap is its relative simplicity, but don't forge
 
 The bootstrap produces clean and robust inferences (such as confidence intervals) in many tricky situations. It is still possible that the results can be both:
 
-- **inaccurate** (i.e. they can, include the true value of the unknown population mean less often than the stated confidence probability) and 
+- **inaccurate** (i.e. they can include the true value of the unknown population mean less often than the stated confidence probability) and 
 - **imprecise** (i.e., they can include more extraneous values of the unknown population mean than is desirable).
 
 ## Large-Sample Normal Approximation CIs for $\mu$

@@ -289,14 +289,14 @@ Note that the stepwise approach first drops two degrees of freedom (two indicato
 
 As mentioned earlier, having built a model using complete cases, we should probably investigate the impact of multiple imputation on the missing observations. We'll fit 100 imputations using the `emp_bmi` data and then fit a pooled regression model across those imputations.
 
-```{r fit 100 imputations}
+```{r fit 100 imputations, cache = TRUE}
 emp_bmi_mi <- mice(emp_bmi, m = 100, maxit = 5, 
                    printFlag = FALSE, seed = 4476)
 ```
 
 Now, we'll fit the pooled kitchen sink regression model to these imputed data sets and pool them.
 
-```{r fit pooled model}
+```{r fit pooled model, cache = TRUE}
 model.empbmi.mi <- with(emp_bmi_mi, lm(bmi ~ age + gender + employed + married + 
                           alcohol + education))
 round(summary(pool(model.empbmi.mi)),3)
