@@ -69,7 +69,7 @@ ggplot(nyfs2a, aes(x = GMQ, y = income.cat3, fill = income.cat3)) +
 
 ### Numerical Summaries
 
-```{r numerical summary of hers2 by race-eth, message=FALSE, warning=FALSE}
+```{r hers2_numerical_by_income, message=FALSE, warning=FALSE}
 by(nyfs2a$GMQ, nyfs2a$income.cat3, mosaic::favstats)
 ```
 
@@ -186,7 +186,7 @@ Specifically, the elements of the ANOVA table are:
 anova(lm(GMQ ~ income.cat3, data = nyfs2a))
 ```
 
-- The **degrees of freedom** attributable to the factor of interest (here, Race/Ethnicity) is the number of levels of the factor minus 1. Here, we have three Income categories (levels), so df(income.cat3) = 2.
+- The **degrees of freedom** attributable to the factor of interest (here, Income category) is the number of levels of the factor minus 1. Here, we have three Income categories (levels), so df(income.cat3) = 2.
 - The total degrees of freedom are the number of observations (across all levels of the factor) minus 1. We have 280 GMQ scores in the `nyfs2a` data, so the df(Total) must be 279, although the Total row isn't shown by R in its output.
 - The Residual degrees of freedom are the Total df - Factor df. So, here, that's 279 - 2 = 277.
 
