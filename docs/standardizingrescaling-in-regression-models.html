@@ -762,6 +762,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="36.5.15" data-path="partial-review-to-help-you-prepare-for-quiz-2.html"><a href="partial-review-to-help-you-prepare-for-quiz-2.html#answer-15"><i class="fa fa-check"></i><b>36.5.15</b> Answer 15</a></li>
 </ul></li>
 </ul></li>
+<li class="part"><span><b>Part C. Building Models</b></span></li>
 <li class="chapter" data-level="37" data-path="introduction-for-part-c.html"><a href="introduction-for-part-c.html"><i class="fa fa-check"></i><b>37</b> Introduction for Part C</a><ul>
 <li class="chapter" data-level="37.1" data-path="introduction-for-part-c.html"><a href="introduction-for-part-c.html#additional-reading"><i class="fa fa-check"></i><b>37.1</b> Additional Reading</a></li>
 <li class="chapter" data-level="37.2" data-path="introduction-for-part-c.html"><a href="introduction-for-part-c.html#scatterplots"><i class="fa fa-check"></i><b>37.2</b> Scatterplots</a></li>
@@ -1012,7 +1013,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">49.1</span> Scaling Predictors using Z Scores: Semi-Standardized Coefficients</h2>
 <p>We know that the interpretation of the coefficients in a regression model is sensitive to the scale of the predictors. We have already seen how to “standardize” each predictor by subtracting its mean and dividing by its standard deviation.</p>
 <ul>
-<li>Remember that each coefficient in this semi-standardized model is the expected difference in the outcome, comparing units that differ by one standard deviation in one variable with all other variables fixed at their average.</li>
+<li>Each coefficient in this semi-standardized model has the following interpretation: the expected difference in the outcome, comparing units (subjects) that differ by one standard deviation in the variable of interest, but for which all other variables are fixed at their average.</li>
 <li>Remember also that the intercept in such a model shows the mean outcome across all subjects.</li>
 </ul>
 <p>Consider a two-variable model, using <code>area</code> and <code>elevation</code> to predict the number of <code>species</code>…</p>
@@ -1037,7 +1038,7 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 Residual standard error: 79.3 on 27 degrees of freedom
 Multiple R-squared:  0.554, Adjusted R-squared:  0.521 
 F-statistic: 16.8 on 2 and 27 DF,  p-value: 1.84e-05</code></pre>
-<p>Now compare these results to the ones we get after scaling the area and elevation variables (remember that the <code>scale</code> function centers a variable on zero by subtracting the mean from each observation, and then scales the result by dividing by the standard deviation, so as to ensure that each regression input has mean 0 and standard deviation 1, i.e. it is a <em>z score</em>.)</p>
+<p>Now compare these results to the ones we get after scaling the area and elevation variables. Remember that the <code>scale</code> function centers a variable on zero by subtracting the mean from each observation, and then scales the result by dividing by the standard deviation. This ensures that each regression input has mean 0 and standard deviation 1, and is thus a <em>z score</em>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">model2.z &lt;-<span class="st"> </span><span class="kw">lm</span>(species <span class="op">~</span><span class="st"> </span><span class="kw">scale</span>(area) <span class="op">+</span><span class="st"> </span><span class="kw">scale</span>(elevation), <span class="dt">data=</span>gala)
 <span class="kw">summary</span>(model2.z)</code></pre></div>
 <pre><code>

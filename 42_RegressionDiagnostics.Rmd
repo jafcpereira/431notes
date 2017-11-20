@@ -77,7 +77,7 @@ Here, I've simply placed `recov.score` on the vertical (Y) axis, plotted against
 
 The residuals should appear to have no pattern (no curve, for instance) with respect to the predicted (fitted) values. It is a very good idea to plot the residuals against the fitted values to check for patterns, especially bends or other indications of non-linearity. For a multiple regression, the fitted values are a combination of the x's given by the regression equation, so they combine the effects of the x's in a way that makes sense for our particular regression model. That makes them a good choice to plot against. We'll check for other things in this plot, as well. 
 
-When you ask R to plot the result of a linear model, it will produce up to five separate plots; the first of which is a plot of **residuals vs. fitted values**. To obtain this plot for the model including `dose`, `age` and `weight` that predicts `recov.score`, we indicate plot 1 using the `which` command within the `plot` function:
+When you ask R to plot the result of a linear model, it will produce up to five separate plots: the first of which is a plot of **residuals vs. fitted values**. To obtain this plot for the model including `dose`, `age` and `weight` that predicts `recov.score`, we indicate plot 1 using the `which` command within the `plot` function:
 
 ```{r p27, fig.height=5, fig.width=5, fig.align="center"}
 plot(lm(recov.score ~ dose + age + weight, data = hydrate), which=1)

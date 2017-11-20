@@ -5,7 +5,7 @@
 Confronted with a scatterplot describing a monotone association between two quantitative variables, we may decide the data are not well approximated by a straight line, and thus, that a least squares regression may not be not sufficiently useful. In these circumstances, we have at least two options, which are not mutually exclusive:
 
 a.	Let the data be as they may, and summarize the scatterplot using tools like loess curves, polynomial functions, or cubic splines to model the relationship.
-b.	Consider re-expressing the data (often we start with re-expressions of the outcome, or Y, data) using a transformation so that the transformed data may be modeled effectively using a straight line. 
+b.	Consider re-expressing the data (often we start with re-expressions of the outcome data [the Y variable]) using a transformation so that the transformed data may be modeled effectively using a straight line. 
 
 ## A New Tool: the Box-Cox Plot
 

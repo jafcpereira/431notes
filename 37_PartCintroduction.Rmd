@@ -1,3 +1,5 @@
+# (PART\*) Part C. Building Models {-}
+
 # Introduction for Part C
 
 In 431, my primary goal is to immerse you in several cases, which will demonstrate good statistical practice in the analysis of data using multiple regression models. Often, we will leave gaps for 432, but the principal goal is to get you to the point where you can do a solid (if not quite complete) analysis of data for the modeling part of your project.
