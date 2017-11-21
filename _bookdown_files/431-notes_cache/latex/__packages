@@ -15,6 +15,7 @@ tidyr
 readr
 purrr
 dplyr
+stringr
 bindrcpp
 lattice
 survival
