@@ -32,7 +32,7 @@ The steps are:
 There are several ways to partition the data into training (model development) and test (model checking) samples. For example, we could develop separate data frames for a holdout sample of 500 randomly selected subjects (`wcgs.test`), and then use the remainder as the model development sample (`wcgs.dev`). Remember to set a seed so that you can replicate the selection.
 
 ```{r p44 wcgs for model selection materials}
-set.seed(431); wcgs.test <- wcgs %>% sample_n(500)
+set.seed(4311); wcgs.test <- wcgs %>% sample_n(500)
 ## hold out exactly 500 randomly selected observations
 
 wcgs.dev <- anti_join(wcgs, wcgs.test, "id") 
@@ -101,8 +101,8 @@ anova(model.kitchensink, model.A, model.B)
 
 The ANOVA model also suggests model A, for the following reasons:
 
-- The *p* value of 0.233 indicates that moving from what we've called the kitchen sink model (model 1 in the ANOVA output) to what we've called model A (model 2 in the ANOVA output) does not have a statistically significant impact on predictive value.
-- On the other hand, the *p* value of 0.016 indicates that moving from what we've called model A (model 2 in the ANOVA output) to what we've called model B (model 3 in the ANOVA output) does have a statistically significant impact on predictive value.
+- The *p* value of 0.35 indicates that moving from what we've called the kitchen sink model (model 1 in the ANOVA output) to what we've called model A (model 2 in the ANOVA output) does not have a statistically significant impact on predictive value.
+- On the other hand, the *p* value of 0.013 indicates that moving from what we've called model A (model 2 in the ANOVA output) to what we've called model B (model 3 in the ANOVA output) does have a statistically significant impact on predictive value.
 - Because these models are **nested** (model B is a proper subset of model A which is a proper subset of the kitchen sink) we can make these ANOVA comparisons directly.
 
 ```{r p46c}
@@ -188,14 +188,14 @@ summary(modA.sqerr)
 summary(modB.sqerr)
 ```
 
-Model | MAPE | MSPE
-----: | -:| -:
-A (`age + bmi + dbp + smoke`) | 32.92 | 2083
-B (`age + dbp + smoke`) | 33.01 | 2094
+Model | MAPE | MSPE | Maximum Abs. Error
+----: | -:| -: | -:
+A (`age + bmi + dbp + smoke`) | 32.39 | 1669 | 125
+B (`age + dbp + smoke`) | 32.45 | 1668 | 123
 
-Note that smaller values on these metrics are better, so that each method (barely) selects Model A over Model B. The NAs you see above refer to two patients in the `wcgs` data with missing values on one or more of the variables included in our kitchen sink model. I absolutely should have identified that problem at the beginning, and either omitted those or done some imputation back at the start. I'll show that in the next section.
+Note that smaller values on these metrics are better, so that MAPE (barely) selects Model A over Model B, and MSPE (barely) selects Model B over Model A. We also sometimes look at the maximum absolute error, and here we see that Model B is slightly favored again. But really, there's little to choose from. The NAs you see above refer to patients in the `wcgs` data with missing values on one or more of the variables included in our kitchen sink model. I absolutely should have identified that problem at the beginning, and either omitted those or done some imputation back at the start. I'll show that in the next section.
 
-So, based on the test sample results, we slightly favor Model A.
+So, based on the test sample results, we might slightly favor Model B, but really, there's no meaningful difference.
 
 
 
