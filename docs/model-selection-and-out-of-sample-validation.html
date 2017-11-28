@@ -1045,7 +1045,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <div id="separating-the-data-into-a-training-and-a-test-sample" class="section level2">
 <h2><span class="header-section-number">43.2</span> Separating the Data into a Training and a Test Sample</h2>
 <p>There are several ways to partition the data into training (model development) and test (model checking) samples. For example, we could develop separate data frames for a holdout sample of 500 randomly selected subjects (<code>wcgs.test</code>), and then use the remainder as the model development sample (<code>wcgs.dev</code>). Remember to set a seed so that you can replicate the selection.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">431</span>); wcgs.test &lt;-<span class="st"> </span>wcgs <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">500</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">4311</span>); wcgs.test &lt;-<span class="st"> </span>wcgs <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">500</span>)
 ## hold out exactly 500 randomly selected observations
 
 wcgs.dev &lt;-<span class="st"> </span><span class="kw">anti_join</span>(wcgs, wcgs.test, <span class="st">&quot;id&quot;</span>) 
@@ -1055,16 +1055,16 @@ wcgs.test</code></pre></div>
 <pre><code># A tibble: 500 x 22
       id   age   agec height weight lnwght wghtcat   bmi   sbp lnsbp   dbp
    &lt;int&gt; &lt;int&gt; &lt;fctr&gt;  &lt;int&gt;  &lt;int&gt;  &lt;dbl&gt;  &lt;fctr&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt;
- 1 10191    50  46-50     71    190   5.25 170-200  26.5   120  4.79    80
- 2 13237    44  41-45     70    168   5.12 140-170  24.1   138  4.93    74
- 3 13361    52  51-55     70    176   5.17 170-200  25.3   110  4.70    78
- 4 10265    43  41-45     72    147   4.99 140-170  19.9   124  4.82    80
- 5 10207    46  46-50     64    136   4.91   &lt; 140  23.3   122  4.80    80
- 6 13463    55  51-55     66    165   5.11 140-170  26.6   144  4.97    94
- 7 21063    45  41-45     71    165   5.11 140-170  23.0   136  4.91    82
- 8 12260    45  41-45     69    145   4.98 140-170  21.4   118  4.77    84
- 9 10025    43  41-45     69    190   5.25 170-200  28.1   138  4.93    90
-10  6047    50  46-50     72    190   5.25 170-200  25.8   136  4.91    92
+ 1 13215    43  41-45     69    165   5.11 140-170  24.4   110  4.70    70
+ 2 21100    44  41-45     67    158   5.06 140-170  24.7   112  4.72    66
+ 3 21141    52  51-55     70    180   5.19 170-200  25.8   136  4.91    86
+ 4  3747    43  41-45     69    155   5.04 140-170  22.9   120  4.79    76
+ 5 12256    54  51-55     68    143   4.96 140-170  21.7   116  4.75    68
+ 6 11220    39  35-40     75    195   5.27 170-200  24.4   124  4.82    74
+ 7  3079    40  35-40     69    153   5.03 140-170  22.6   120  4.79    76
+ 8 13445    45  41-45     74    165   5.11 140-170  21.2   106  4.66    66
+ 9 21064    50  46-50     68    166   5.11 140-170  25.2   128  4.85    78
+10  3228    39  35-40     72    172   5.15 170-200  23.3   114  4.74    78
 # ... with 490 more rows, and 11 more variables: chol &lt;int&gt;,
 #   behpat &lt;fctr&gt;, dibpat &lt;fctr&gt;, smoke &lt;fctr&gt;, ncigs &lt;int&gt;, arcus &lt;int&gt;,
 #   chd69 &lt;fctr&gt;, typchd69 &lt;int&gt;, time169 &lt;int&gt;, t1 &lt;dbl&gt;, uni &lt;dbl&gt;</code></pre>
@@ -1093,55 +1093,55 @@ Call:
 lm(formula = chol ~ age + bmi + sbp + dbp + smoke, data = wcgs.dev)
 
 Residuals:
-    Min      1Q  Median      3Q     Max 
--130.96  -28.13   -2.33   25.90  173.24 
+   Min     1Q Median     3Q    Max 
+-129.9  -28.2   -2.4   25.4  418.9 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) 138.4118    11.1947   12.36  &lt; 2e-16 ***
-age           0.4788     0.1497    3.20  0.00139 ** 
-bmi           0.5222     0.3418    1.53  0.12675    
-sbp           0.0539     0.0856    0.63  0.52918    
-dbp           0.5031     0.1353    3.72  0.00021 ***
-smokeYes     10.2623     1.6693    6.15  9.1e-10 ***
+(Intercept) 132.1154    11.4386   11.55  &lt; 2e-16 ***
+age           0.4895     0.1542    3.17   0.0015 ** 
+bmi           0.8527     0.3493    2.44   0.0147 *  
+sbp           0.0824     0.0878    0.94   0.3481    
+dbp           0.4323     0.1395    3.10   0.0020 ** 
+smokeYes      9.6617     1.7040    5.67  1.6e-08 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
-Residual standard error: 42.1 on 2638 degrees of freedom
-  (10 observations deleted due to missingness)
-Multiple R-squared:  0.0379,    Adjusted R-squared:  0.0361 
-F-statistic: 20.8 on 5 and 2638 DF,  p-value: &lt;2e-16</code></pre>
+Residual standard error: 43 on 2640 degrees of freedom
+  (8 observations deleted due to missingness)
+Multiple R-squared:  0.0358,    Adjusted R-squared:  0.034 
+F-statistic: 19.6 on 5 and 2640 DF,  p-value: &lt;2e-16</code></pre>
 </div>
 <div id="stepwise-backward-elimination-procedure" class="section level3">
 <h3><span class="header-section-number">43.3.2</span> Stepwise (Backward Elimination) Procedure</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">step</span>(<span class="kw">lm</span>(chol <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>sbp <span class="op">+</span><span class="st"> </span>dbp <span class="op">+</span><span class="st"> </span>smoke, <span class="dt">data =</span> wcgs.dev))</code></pre></div>
-<pre><code>Start:  AIC=19784
+<pre><code>Start:  AIC=19912
 chol ~ age + bmi + sbp + dbp + smoke
 
         Df Sum of Sq     RSS   AIC
-- sbp    1       702 4677574 19782
-&lt;none&gt;               4676872 19784
-- bmi    1      4137 4681009 19784
-- age    1     18148 4695021 19792
-- dbp    1     24507 4701379 19796
-- smoke  1     67002 4743874 19820
+- sbp    1      1629 4885694 19911
+&lt;none&gt;               4884065 19912
+- bmi    1     11023 4895088 19916
+- dbp    1     17766 4901831 19919
+- age    1     18633 4902698 19920
+- smoke  1     59480 4943545 19942
 
-Step:  AIC=19782
+Step:  AIC=19911
 chol ~ age + bmi + dbp + smoke
 
         Df Sum of Sq     RSS   AIC
-&lt;none&gt;               4677574 19782
-- bmi    1      4370 4681944 19783
-- age    1     18964 4696538 19791
-- dbp    1     69038 4746612 19819
-- smoke  1     69338 4746912 19819</code></pre>
+&lt;none&gt;               4885694 19911
+- bmi    1     11404 4897098 19915
+- age    1     19708 4905402 19919
+- dbp    1     58934 4944628 19940
+- smoke  1     62605 4948300 19942</code></pre>
 <pre><code>
 Call:
 lm(formula = chol ~ age + bmi + dbp + smoke, data = wcgs.dev)
 
 Coefficients:
 (Intercept)          age          bmi          dbp     smokeYes  
-    139.377        0.487        0.536        0.566       10.377  </code></pre>
+    133.766        0.502        0.867        0.529        9.846  </code></pre>
 <p>The stepwise process first eliminates <code>sbp</code> from the model, then sees no substantial improvement in AIC after this has been done, so it lands on a four-predictor model with <code>age</code>, <code>bmi</code>, <code>dbp</code> and <code>smoke</code>.</p>
 </div>
 <div id="three-candidate-models" class="section level3">
@@ -1157,9 +1157,9 @@ model.B &lt;-<span class="st"> </span><span class="kw">lm</span>(chol <span clas
 <p>The stepwise regression output specifies the AIC value for each model, but we can also look at other characteristics, like the ANOVA table comparing the various models, or the Bayesian Information Criterion, abbreviated BIC.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">AIC</span>(model.kitchensink, model.A, model.B)</code></pre></div>
 <pre><code>                  df   AIC
-model.kitchensink  7 27289
-model.A            6 27288
-model.B            5 27288</code></pre>
+model.kitchensink  7 27423
+model.A            6 27422
+model.B            5 27426</code></pre>
 <p>AIC suggests model A (since it has the smallest AIC of these choices)</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(model.kitchensink, model.A, model.B)</code></pre></div>
 <pre><code>Analysis of Variance Table
@@ -1167,21 +1167,23 @@ model.B            5 27288</code></pre>
 Model 1: chol ~ age + bmi + sbp + dbp + smoke
 Model 2: chol ~ age + bmi + dbp + smoke
 Model 3: chol ~ age + dbp + smoke
-  Res.Df     RSS Df Sum of Sq    F Pr(&gt;F)
-1   2638 4676872                         
-2   2639 4677574 -1      -702 0.40   0.53
-3   2640 4681944 -1     -4370 2.46   0.12</code></pre>
+  Res.Df     RSS Df Sum of Sq    F Pr(&gt;F)  
+1   2640 4884065                           
+2   2641 4885694 -1     -1629 0.88  0.348  
+3   2642 4897098 -1    -11404 6.16  0.013 *
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>The ANOVA model also suggests model A, for the following reasons:</p>
 <ul>
-<li>The <em>p</em> value of 0.233 indicates that moving from what we’ve called the kitchen sink model (model 1 in the ANOVA output) to what we’ve called model A (model 2 in the ANOVA output) does not have a statistically significant impact on predictive value.</li>
-<li>On the other hand, the <em>p</em> value of 0.016 indicates that moving from what we’ve called model A (model 2 in the ANOVA output) to what we’ve called model B (model 3 in the ANOVA output) does have a statistically significant impact on predictive value.</li>
+<li>The <em>p</em> value of 0.35 indicates that moving from what we’ve called the kitchen sink model (model 1 in the ANOVA output) to what we’ve called model A (model 2 in the ANOVA output) does not have a statistically significant impact on predictive value.</li>
+<li>On the other hand, the <em>p</em> value of 0.013 indicates that moving from what we’ve called model A (model 2 in the ANOVA output) to what we’ve called model B (model 3 in the ANOVA output) does have a statistically significant impact on predictive value.</li>
 <li>Because these models are <strong>nested</strong> (model B is a proper subset of model A which is a proper subset of the kitchen sink) we can make these ANOVA comparisons directly.</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">BIC</span>(model.kitchensink, model.A, model.B)</code></pre></div>
 <pre><code>                  df   BIC
-model.kitchensink  7 27331
-model.A            6 27323
-model.B            5 27318</code></pre>
+model.kitchensink  7 27464
+model.A            6 27457
+model.B            5 27455</code></pre>
 <p>BIC disagrees, and prefers model B, since its BIC is smaller. The penalty for fitting additional predictors in BIC varies with the number of observations, and so (especially with larger samples) we can get meaningfully different AIC and BIC selections.</p>
 </div>
 <div id="comparing-models-in-the-test-sample-mspe-mape" class="section level2">
@@ -1196,67 +1198,70 @@ modB.pre &lt;-<span class="st"> </span><span class="kw">predict</span>(model.B, 
 <p>Just to fix ideas, here are the first few predictions for Model A…</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(modA.pre)</code></pre></div>
 <pre><code>  1   2   3   4   5   6 
-223 226 222 216 220 234 </code></pre>
+223 212 238 225 216 214 </code></pre>
 <p>We can compare these to the first few observed values of <code>chol</code> in the test sample.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(wcgs.test<span class="op">$</span>chol)</code></pre></div>
-<pre><code>[1] 171 326 220 256 276 194</code></pre>
+<pre><code>[1] 206 182 264 283 252 204</code></pre>
 <p>Next, calculate errors (observed value minus predicted value) for each model:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">modA.err &lt;-<span class="st"> </span>wcgs.test<span class="op">$</span>chol <span class="op">-</span><span class="st"> </span>modA.pre
 modB.err &lt;-<span class="st"> </span>wcgs.test<span class="op">$</span>chol <span class="op">-</span><span class="st"> </span>modB.pre</code></pre></div>
 <p>Again, just to be sure we understand, we look at the first few errors for Model A.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(modA.err)</code></pre></div>
 <pre><code>     1      2      3      4      5      6 
--52.24  99.99  -2.42  39.68  56.40 -39.68 </code></pre>
+-17.34 -30.21  26.41  57.76  36.32  -9.61 </code></pre>
 <p>Next, we calculate the absolute errors (as |observed - predicted|) from each model in turn:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">modA.abserr &lt;-<span class="st"> </span><span class="kw">abs</span>(modA.err)
 modB.abserr &lt;-<span class="st"> </span><span class="kw">abs</span>(modB.err)</code></pre></div>
 <p>Let’s look at the first few absolute errors for Model A.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(modA.abserr)</code></pre></div>
-<pre><code>     1      2      3      4      5      6 
- 52.24  99.99   2.42  39.68  56.40  39.68 </code></pre>
+<pre><code>    1     2     3     4     5     6 
+17.34 30.21 26.41 57.76 36.32  9.61 </code></pre>
 <p>Next, we calculate the squared prediction errors from each model in turn:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">modA.sqerr &lt;-<span class="st"> </span>modA.err<span class="op">^</span><span class="dv">2</span>
 modB.sqerr &lt;-<span class="st"> </span>modB.err<span class="op">^</span><span class="dv">2</span></code></pre></div>
 <p>And again, we look at the first few squared errors for Model A.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(modA.sqerr)</code></pre></div>
-<pre><code>      1       2       3       4       5       6 
-2729.26 9997.02    5.84 1574.86 3180.65 1574.34 </code></pre>
+<pre><code>     1      2      3      4      5      6 
+ 300.7  912.5  697.6 3336.7 1319.2   92.4 </code></pre>
 <p>To obtain our two key summaries: mean absolute prediction error and mean squared prediction error, I just use the <code>summary</code> function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(modA.abserr)</code></pre></div>
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
-      0      12      26      33      45     423       2 </code></pre>
+    0.1    13.1    26.7    32.4    45.9   125.2       4 </code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(modB.abserr)</code></pre></div>
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
-      0      13      26      33      45     426       2 </code></pre>
+    0.2    14.1    26.5    32.4    44.8   122.9       4 </code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(modA.sqerr)</code></pre></div>
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
-      0     146     686    2083    1988  179119       2 </code></pre>
+      0     173     713    1669    2107   15678       4 </code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(modB.sqerr)</code></pre></div>
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
-      0     157     682    2094    2031  181598       2 </code></pre>
+      0     197     702    1668    2008   15102       4 </code></pre>
 <table>
 <thead>
 <tr class="header">
 <th align="right">Model</th>
 <th align="right">MAPE</th>
 <th align="right">MSPE</th>
+<th align="right">Maximum Abs. Error</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="right">A (<code>age + bmi + dbp + smoke</code>)</td>
-<td align="right">32.92</td>
-<td align="right">2083</td>
+<td align="right">32.39</td>
+<td align="right">1669</td>
+<td align="right">125</td>
 </tr>
 <tr class="even">
 <td align="right">B (<code>age + dbp + smoke</code>)</td>
-<td align="right">33.01</td>
-<td align="right">2094</td>
+<td align="right">32.45</td>
+<td align="right">1668</td>
+<td align="right">123</td>
 </tr>
 </tbody>
 </table>
-<p>Note that smaller values on these metrics are better, so that each method (barely) selects Model A over Model B. The NAs you see above refer to two patients in the <code>wcgs</code> data with missing values on one or more of the variables included in our kitchen sink model. I absolutely should have identified that problem at the beginning, and either omitted those or done some imputation back at the start. I’ll show that in the next section.</p>
-<p>So, based on the test sample results, we slightly favor Model A.</p>
+<p>Note that smaller values on these metrics are better, so that MAPE (barely) selects Model A over Model B, and MSPE (barely) selects Model B over Model A. We also sometimes look at the maximum absolute error, and here we see that Model B is slightly favored again. But really, there’s little to choose from. The NAs you see above refer to patients in the <code>wcgs</code> data with missing values on one or more of the variables included in our kitchen sink model. I absolutely should have identified that problem at the beginning, and either omitted those or done some imputation back at the start. I’ll show that in the next section.</p>
+<p>So, based on the test sample results, we might slightly favor Model B, but really, there’s no meaningful difference.</p>
 
 </div>
 </div>
