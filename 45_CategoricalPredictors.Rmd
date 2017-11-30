@@ -241,7 +241,7 @@ If we wanted to predict a BMI level for a new subject like the ones used in the 
 
 Let's look at a scatterplot matrix of a few key predictors, with my favorite approach (at least for quantitative predictors)...
 
-```{r my scatterplot matrix, fig.height = 6}
+```{r pairs_scatter_mat_emp_bmi_fig, fig.height = 6}
 pairs( ~ bmi + age + gender + employed + education, data = emp_bmi_noNA,
        main = "emp_bmi Scatterplot and Correlation Matrix",
        upper.panel = panel.smooth,
@@ -253,7 +253,7 @@ pairs( ~ bmi + age + gender + employed + education, data = emp_bmi_noNA,
 
 Notice how the `ggpairs` approach reacts to the inclusion of factors as predictors...
 
-```{r ggally scatterplot matrix, message = FALSE, fig.height = 6}
+```{r ggpairs_emp_bmi_fig, message = FALSE, fig.height = 6}
 GGally::ggpairs(dplyr::select(emp_bmi_noNA, age, gender, employed, education, bmi))
 ```
 
@@ -263,7 +263,7 @@ GGally::ggpairs(dplyr::select(emp_bmi_noNA, age, gender, employed, education, bm
 
 Here are the main residual plots from the kitchen sink model `ebmodel.1` defined previously.
 
-```{r plot residuals for ebmodel.1, fig.height = 6}
+```{r resid_plot_ebmodel_1, fig.height = 6}
 par(mfrow=c(2,2))
 plot(ebmodel.1)
 par(mfrow=c(1,1))
@@ -277,7 +277,7 @@ Sometimes, in small samples, the categorical variables will make the regression 
 
 When R does backwards elimination for stepwise model selection, it makes decisions about each categorical variable as in/out across all of the indicator variables simultaneously, as you'd hope.
 
-```{r step for ebmodel.1}
+```{r step_ebmodel.1}
 step(ebmodel.1)
 ```
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.11.16)  28 NOV 2017 17:20
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.11.16)  30 NOV 2017 06:49
 entering extended mode
 **431-notes.tex
 (C:\Users\Thomas\Dropbox\2017-431\431notes\431-notes.tex
@@ -3251,24 +3251,19 @@ File: 431-notes_files/figure-latex/p30-1.pdf Graphic file (type pdf)
 Package pdftex.def Info: 431-notes_files/figure-latex/p30-1.pdf used on input l
 ine 23128.
 (pdftex.def)             Requested size: 361.34912pt x 289.07928pt.
-
-<431-notes_files/figure-latex/p31 constant vs nonconstant variance examples-1.p
-df, id=5622, 469.755pt x 505.89pt>
-File: 431-notes_files/figure-latex/p31 constant vs nonconstant variance example
-s-1.pdf Graphic file (type pdf)
-
-<use 431-notes_files/figure-latex/p31 constant vs nonconstant variance examples
--1.pdf>
-Package pdftex.def Info: 431-notes_files/figure-latex/p31 constant vs nonconsta
-nt variance examples-1.pdf used on input line 23139.
+<431-notes_files/figure-latex/p31_fig-1.pdf, id=5622, 469.755pt x 505.89pt>
+File: 431-notes_files/figure-latex/p31_fig-1.pdf Graphic file (type pdf)
+<use 431-notes_files/figure-latex/p31_fig-1.pdf>
+Package pdftex.def Info: 431-notes_files/figure-latex/p31_fig-1.pdf used on inp
+ut line 23139.
 (pdftex.def)             Requested size: 469.75386pt x 505.88875pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [437 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/p3
 0-1.pdf>] [438 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figur
-e-latex/p31 constant vs nonconstant variance examples-1.pdf>] <431-notes_files/
-figure-latex/p32-1.pdf, id=5645, 361.35pt x 361.35pt>
+e-latex/p31_fig-1.pdf>] <431-notes_files/figure-latex/p32-1.pdf, id=5645, 361.3
+5pt x 361.35pt>
 File: 431-notes_files/figure-latex/p32-1.pdf Graphic file (type pdf)
 <use 431-notes_files/figure-latex/p32-1.pdf>
 Package pdftex.def Info: 431-notes_files/figure-latex/p32-1.pdf used on input l
@@ -3536,43 +3531,42 @@ Underfull \vbox (badness 3098) has occurred while \output is active []
 Underfull \vbox (badness 4403) has occurred while \output is active []
 
 [490]
-<431-notes_files/figure-latex/my scatterplot matrix-1.pdf, id=6049, 469.755pt x
- 433.62pt>
-File: 431-notes_files/figure-latex/my scatterplot matrix-1.pdf Graphic file (ty
-pe pdf)
-<use 431-notes_files/figure-latex/my scatterplot matrix-1.pdf>
-Package pdftex.def Info: 431-notes_files/figure-latex/my scatterplot matrix-1.p
-df used on input line 25906.
+<431-notes_files/figure-latex/pairs_scatter_mat_emp_bmi_fig-1.pdf, id=6049, 469
+.755pt x 433.62pt>
+File: 431-notes_files/figure-latex/pairs_scatter_mat_emp_bmi_fig-1.pdf Graphic 
+file (type pdf)
+<use 431-notes_files/figure-latex/pairs_scatter_mat_emp_bmi_fig-1.pdf>
+Package pdftex.def Info: 431-notes_files/figure-latex/pairs_scatter_mat_emp_bmi
+_fig-1.pdf used on input line 25906.
 (pdftex.def)             Requested size: 469.75386pt x 433.61894pt.
 
-<431-notes_files/figure-latex/ggally scatterplot matrix-1.pdf, id=6050, 469.755
-pt x 433.62pt>
-File: 431-notes_files/figure-latex/ggally scatterplot matrix-1.pdf Graphic file
- (type pdf)
-<use 431-notes_files/figure-latex/ggally scatterplot matrix-1.pdf>
-Package pdftex.def Info: 431-notes_files/figure-latex/ggally scatterplot matrix
--1.pdf used on input line 25917.
+<431-notes_files/figure-latex/ggpairs_emp_bmi_fig-1.pdf, id=6050, 469.755pt x 4
+33.62pt>
+File: 431-notes_files/figure-latex/ggpairs_emp_bmi_fig-1.pdf Graphic file (type
+ pdf)
+<use 431-notes_files/figure-latex/ggpairs_emp_bmi_fig-1.pdf>
+Package pdftex.def Info: 431-notes_files/figure-latex/ggpairs_emp_bmi_fig-1.pdf
+ used on input line 25917.
 (pdftex.def)             Requested size: 469.75386pt x 433.61894pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[491 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/my
- scatterplot matrix-1.pdf>]
-<431-notes_files/figure-latex/plot residuals for ebmodel.1-1.pdf, id=6061, 469.
-755pt x 433.62pt>
-File: 431-notes_files/figure-latex/plot residuals for ebmodel.1-1.pdf Graphic f
-ile (type pdf)
-<use 431-notes_files/figure-latex/plot residuals for ebmodel.1-1.pdf>
-Package pdftex.def Info: 431-notes_files/figure-latex/plot residuals for ebmode
-l.1-1.pdf used on input line 25932.
+[491 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/pa
+irs_scatter_mat_emp_bmi_fig-1.pdf>]
+<431-notes_files/figure-latex/resid_plot_ebmodel_1-1.pdf, id=6061, 469.755pt x 
+433.62pt>
+File: 431-notes_files/figure-latex/resid_plot_ebmodel_1-1.pdf Graphic file (typ
+e pdf)
+<use 431-notes_files/figure-latex/resid_plot_ebmodel_1-1.pdf>
+Package pdftex.def Info: 431-notes_files/figure-latex/resid_plot_ebmodel_1-1.pd
+f used on input line 25932.
 (pdftex.def)             Requested size: 469.75386pt x 433.61894pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [492 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-notes_files/figure-latex/gg
-ally scatterplot matrix-1.pdf>] [493 <C:/Users/Thomas/Dropbox/2017-431/431notes
-/431-notes_files/figure-latex/plot residuals for ebmodel.1-1.pdf>] [494] [495] 
-[496
+pairs_emp_bmi_fig-1.pdf>] [493 <C:/Users/Thomas/Dropbox/2017-431/431notes/431-n
+otes_files/figure-latex/resid_plot_ebmodel_1-1.pdf>] [494] [495] [496
 
 ]
 Chapter 46.
@@ -3718,10 +3712,10 @@ Package rerunfilecheck Info: File `431-notes.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 28128.
  ) 
 Here is how much of TeX's memory you used:
- 16916 strings out of 493705
- 292410 string characters out of 3142148
+ 16915 strings out of 493705
+ 292217 string characters out of 3142148
  370298 words of memory out of 3000000
- 18046 multiletter control sequences out of 15000+200000
+ 18045 multiletter control sequences out of 15000+200000
  125335 words of font info for 197 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  33i,9n,35p,617b,507s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -3754,7 +3748,7 @@ eX 2.9/fonts/type1/public/lm/lmtk10.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/public/lm/lmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
 lic/lm/lmtt8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtti
 10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtto10.pfb>
-Output written on 431-notes.pdf (529 pages, 11218651 bytes).
+Output written on 431-notes.pdf (529 pages, 11218718 bytes).
 PDF statistics:
  6926 PDF objects out of 7423 (max. 8388607)
  1758 named destinations out of 2073 (max. 500000)

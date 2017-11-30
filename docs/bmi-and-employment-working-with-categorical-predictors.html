@@ -1603,17 +1603,17 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
        <span class="dt">upper.panel =</span> panel.smooth,
        <span class="dt">diag.panel =</span> panel.hist,
        <span class="dt">lower.panel =</span> panel.cor)</code></pre></div>
-<p><img src="431-notes_files/figure-html/my%20scatterplot%20matrix-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/pairs_scatter_mat_emp_bmi_fig-1.png" width="672" /></p>
 <p>Notice how the <code>ggpairs</code> approach reacts to the inclusion of factors as predictors…</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">GGally<span class="op">::</span><span class="kw">ggpairs</span>(dplyr<span class="op">::</span><span class="kw">select</span>(emp_bmi_noNA, age, gender, employed, education, bmi))</code></pre></div>
-<p><img src="431-notes_files/figure-html/ggally%20scatterplot%20matrix-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/ggpairs_emp_bmi_fig-1.png" width="672" /></p>
 </div>
 <div id="residual-plots-when-we-have-categorical-predictors" class="section level2">
 <h2><span class="header-section-number">45.5</span> Residual Plots when we have Categorical Predictors</h2>
 <p>Here are the main residual plots from the kitchen sink model <code>ebmodel.1</code> defined previously.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))
 <span class="kw">plot</span>(ebmodel.<span class="dv">1</span>)</code></pre></div>
-<p><img src="431-notes_files/figure-html/plot%20residuals%20for%20ebmodel.1-1.png" width="672" /></p>
+<p><img src="431-notes_files/figure-html/resid_plot_ebmodel_1-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</code></pre></div>
 <p>Sometimes, in small samples, the categorical variables will make the regression residuals line up in somewhat strange patterns. But in this case, there’s no real problem. The use of categorical variables also has some impact on leverage, as it’s hard for a subject to be a serious outlier in terms of a predictor if that predictor only has a few possible levels.</p>
 </div>

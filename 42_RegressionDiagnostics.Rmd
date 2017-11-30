@@ -154,7 +154,7 @@ plot(lm(recov.score ~ dose + age + weight, data = hydrate), which=3)
 
 It's helpful to see how this works in practice. Here are three sets of plots for two settings, where the left plots in each pair show simulated data that are homoscedastic (variance is constant across the levels of the predictor) and the right plots show data that are heteroscedastic (variance is not constant across predictor levels.) 
 
-```{r p31 constant vs nonconstant variance examples, fig.height=7, echo=FALSE}
+```{r p31_fig, fig.height=7, echo=FALSE}
 set.seed(5)
 
 N  = 500
