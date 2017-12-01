@@ -44,7 +44,7 @@ Next, we summarize the residuals, where Residual = Actual Value - Predicted Valu
 - This gives us a sense of how incorrect our predictions are for the `hydrate` observations.
     - The residuals will center near 0 (least squares is designed so the mean will always be zero, here the median prediction is 2.2 points too high)
     - Here, we predicted a `recov.score` that was 16.68 points too high for one patient, and another of our predicted `recov.score` values was 22.13 points too low. 
-    - The middle half of our predictions were between 6.5 points too low and 7.7 points too high.
+    - The middle half of our predictions were between 6.5 points too high (so the residual = observed - predicted is -6.5) and 7.7 points too low.
 
 ### Model Coefficients
 
