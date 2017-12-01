@@ -55,7 +55,7 @@ Of course, we've already collected the data. If we're willing to assume the 462 
 t.test(serzinc$zinc)
 ```
 
-Whoops! This is **WRONG**. Remember that we need to specify that our alternative hypothesis is that the true mean is not equal to 90, not to zero. To change this, we specify our null hypothesis `mu` value in the `t.test` function, as follows... 
+Whoops! This is **WRONG**. Remember that we need to specify that our alternative hypothesis is that the true mean is equal to 90, not to zero. To change this, we specify our null hypothesis `mu` value in the `t.test` function, as follows... 
 
 ```{r zinc hypothesis test approach 1 corrected}
 t.test(serzinc$zinc, mu=90)

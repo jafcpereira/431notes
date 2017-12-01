@@ -1078,7 +1078,7 @@ alternative hypothesis: true mean is not equal to 0
 sample estimates:
 mean of x 
      87.9 </code></pre>
-<p>Whoops! This is <strong>WRONG</strong>. Remember that we need to specify that our alternative hypothesis is that the true mean is not equal to 90, not to zero. To change this, we specify our null hypothesis <code>mu</code> value in the <code>t.test</code> function, as follows…</p>
+<p>Whoops! This is <strong>WRONG</strong>. Remember that we need to specify that our alternative hypothesis is that the true mean is equal to 90, not to zero. To change this, we specify our null hypothesis <code>mu</code> value in the <code>t.test</code> function, as follows…</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(serzinc<span class="op">$</span>zinc, <span class="dt">mu=</span><span class="dv">90</span>)</code></pre></div>
 <pre><code>
     One Sample t-test
