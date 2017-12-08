@@ -88,7 +88,7 @@ Our "crude" estimate of the **risk difference** of a good outcome for amoxicilli
 
 - The fact that this risk difference is greater than 0 indicates that the probability of a good outcome is higher for amoxicillin subjects than for placebo subjects.
 - A risk difference of 0 would indicate that the probability of a good outcome is the same for amoxicillin subjects and for placebo subjects.
-- A relative risk less than 0 would indicate that the probability of a good outcome is lower for amoxicillin subjects than for placebo subjects.
+- A risk difference less than 0 would indicate that the probability of a good outcome is lower for amoxicillin subjects than for placebo subjects.
 
 ## Defining the Odds Ratio, or the Cross-Product Ratio
 
