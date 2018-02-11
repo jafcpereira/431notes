@@ -226,7 +226,7 @@ pander(ebmodel.1)
 If we wanted to predict a BMI level for a new subject like the ones used in the development of this model, that prediction would be:
 
 - 26.15
-- minus 0.426 times the subject's `age`
+- minus 0.0426 times the subject's `age`
 - plus 0.298 if the subject's `gender` was `male`
 - minus 0.458 if the subject's employment status was `employed`
 - plus 0.253 if the subject's `alcohol` classification was `heavy drinker`
